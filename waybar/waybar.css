@@ -10,14 +10,14 @@ window#waybar {
 }
 
 #workspaces {
-  background: @bg;
+  background: #24273a;
   padding: 0px 2px 0px 2px;
   margin: 0px 0px 0px 5px;
   border-radius: 5px;
 }
 
 #workspaces {
-  background: @bg;
+  background: #24273a;
   padding: 0px 5px 0px 5px;
   margin: 0px 0px 0px 5px;
   border-radius: 5px;
@@ -26,7 +26,7 @@ window#waybar {
 #workspaces button,
 #workspaces button:hover {
   padding: 0;
-  background-color: @bg;
+  background-color: #24273a;
   /* color: @color4; */
 }
 #workspaces button.active,
@@ -46,7 +46,7 @@ window#waybar {
 #custom-weather,
 #window,
 #backlight {
-  background-color: @bg;
+  background-color: #24273a;
   /* color: @color4; */
   opacity: 1;
   border-radius: 5px;
@@ -75,11 +75,10 @@ window#waybar {
 }
 #memory,
 #cpu {
-  margin-right: 0px;
   padding-right: 2px;
-  border-top-right-radius: 0px;
-  border-bottom-right-radius: 0px;
-  border-right-width: 0px;
+  /* border-top-right-radius: 0px; */
+  /* border-bottom-right-radius: 0px; */
+  /* border-right-width: 0px; */
 }
 #memory,
 #battery {
