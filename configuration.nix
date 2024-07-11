@@ -93,7 +93,6 @@
     description = "Youwen Wu";
     extraGroups = [ "networkmanager" "wheel" "nixos" ];
     packages = with pkgs; [
-      kdePackages.kate
     #  thunderbird
     ];
   };
