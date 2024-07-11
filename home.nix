@@ -41,6 +41,7 @@
     eza # A modern replacement for ‘ls’
     fzf # A command-line fuzzy finder
     oh-my-posh
+    bat
 
     # networking tools
     mtr # A network diagnostic tool
@@ -216,14 +217,13 @@
       "float,class:^(org.kde.dolphin)$,title:^(Progress Dialog — Dolphin)$"
       "float,class:^(org.kde.dolphin)$,title:^(Copying — Dolphin)$"
       "float,title:^(Picture-in-Picture)$"
-      "float,class:^(firefox)$,title:^(Library)$"
+      "float,class:^(librewolf)$,title:^(Library)$"
       "float,class:^(vlc)$"
       "float,class:^(kvantummanager)$"
       "float,class:^(qt5ct)$"
       "float,class:^(qt6ct)$"
       "float,class:^(nwg-look)$"
       "float,class:^(org.kde.ark)$"
-      "float,class:^(Signal)$ # Signal-Gtk"
       "float,class:^(com.github.rafostar.Clapper)$ # Clapper-Gtk"
       "float,class:^(app.drey.Warp)$ # Warp-Gtk"
       "float,class:^(net.davidotek.pupgui2)$ # ProtonUp-Qt"
@@ -352,6 +352,7 @@
         };
       };
     };
+    style = ./waybar/waybar.css;
   };
 
   programs.zoxide = {
