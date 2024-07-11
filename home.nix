@@ -104,6 +104,7 @@
     dunst
     swww
     waypaper
+    bibata-cursors
 
     delta
     lazygit
@@ -122,6 +123,7 @@
     "$Right" = "O";
     "$Up" = "I";
     "$Down" = "U";
+    env = [ "HYPRCURSOR_THEME,Bibata-Modern-Ice" "HYPRCURSOR_SIZE,20" ];
     bind =
       [
         "$mod, F, exec, librewolf"
@@ -328,6 +330,11 @@
       confirm_os_window_close = -1;
       shell_integration = "enabled";
     };
+  };
+
+  programs.readline = {
+    enable = true;
+    extraConfig = "set editing-mode vi";
   };
 
   programs.waybar = {
