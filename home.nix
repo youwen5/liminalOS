@@ -124,11 +124,6 @@
     catppuccin.enable = true;
   };
 
-  programs.rofi = {
-    enable = true;
-    catppuccin.enable = true;
-  };
-
   wayland.windowManager.hyprland.enable = true;
   wayland.windowManager.hyprland.settings = {
     exec-once =
