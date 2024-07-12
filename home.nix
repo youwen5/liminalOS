@@ -92,7 +92,9 @@
     usbutils # lsusb
     wl-clipboard
     rofi-wayland
-    grimblast
+    grim
+    slurp
+    swappy
 
     # messaging apps
     vesktop
@@ -122,10 +124,6 @@
   services.dunst = {
     enable = true;
     catppuccin.enable = true;
-  };
-
-  catppuccin = {
-    flavor = "macchiato";
   };
 
   programs.fzf = {
@@ -192,6 +190,7 @@
 
         "$mod, A, exec, pkill -x rofi || rofi -show drun"
 
+        "$mod, P, exec, grim -g \"$(slurp)\" - | swappy -f -"
       ];
     bindm = [
       "$mod, mouse:272, movewindow"
