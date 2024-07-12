@@ -103,7 +103,6 @@
     nodePackages_latest.pnpm
     rustfmt
     rust-analyzer
-    gh
 
     zoxide
 
@@ -490,6 +489,11 @@
   programs.zoxide = {
     enable = true;
     enableZshIntegration = true;
+  };
+
+  programs.gh = {
+    enable = true;
+    extensions = [ pkgs.github-copilot-cli ];
   };
 
   programs.oh-my-posh = {
