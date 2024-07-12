@@ -189,6 +189,7 @@
       noto-fonts-cjk
       noto-fonts-emoji
       (nerdfonts.override { fonts = [ "CascadiaCode" ]; })
+      (google-fonts.override { fonts = [ "Lora" ]; })
     ];
   };
 }
