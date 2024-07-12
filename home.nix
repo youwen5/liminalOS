@@ -41,7 +41,6 @@
     yq-go # yaml processor https://github.com/mikefarah/yq
     eza # A modern replacement for ‘ls’
     fzf # A command-line fuzzy finder
-    oh-my-posh
     bat
     pavucontrol
 
@@ -493,6 +492,12 @@
     enableZshIntegration = true;
   };
 
+  programs.oh-my-posh = {
+    enable = true;
+    enableZshIntegration = true;
+    settings = builtins.fromJSON (builtins.unsafeDiscardStringContext (builtins.readFile ./prompt.omp.json));
+  };
+
   programs.zsh = {
     enable = true;
     enableCompletion = true;
@@ -503,7 +508,6 @@
       ls = "eza -l --icons=auto";
       update = "sudo nixos-rebuild switch";
     };
-    initExtra = "eval \"$(oh-my-posh init zsh --config \"/etc/nixos/prompt.omp.json\")\"";
     defaultKeymap = "viins";
 
     zimfw = {
