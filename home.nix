@@ -138,6 +138,10 @@
     catppuccin.enable = true;
   };
 
+  programs.wlogout = {
+    enable = true;
+  };
+
   wayland.windowManager.hyprland.enable = true;
   wayland.windowManager.hyprland.settings = {
     exec-once =
@@ -156,34 +160,22 @@
     ];
     bind =
       [
+        # Application Keybinds
         "$mod, F, exec, librewolf"
         "$mod, T, exec, kitty"
         "$mod, E, exec, dolphin"
         "$mod, R, exec, pavucontrol"
 
+        # Window actions
         "$mod, Q, killactive"
         "$mod, W, togglefloating"
+        "$mod, J, togglesplit"
 
+        # Move around
         "$mod, $Left, movefocus, l"
         "$mod, $Right, movefocus, r"
         "$mod, $Up, movefocus, u"
         "$mod, $Down, movefocus, d"
-
-        "$mod+Shift+Ctrl, $Left, movewindow, l"
-        "$mod+Shift+Ctrl, $Right, movewindow, r"
-        "$mod+Shift+Ctrl, $Up, movewindow, u"
-        "$mod+Shift+Ctrl, $Down, movewindow, d"
-
-        "$mod, J, togglesplit"
-
-        "$mod+Ctrl+Alt, $Right, movetoworkspace, r+1"
-        "$mod+Ctrl+Alt, $Left, movetoworkspace, r-1"
-
-        "$mod+Ctrl, $Right, workspace, r+1"
-        "$mod+Ctrl, $Left, workspace, r-1"
-
-        "$mod+Alt, S, movetoworkspacesilent, special"
-        "$mod, S, togglespecialworkspace"
 
         "$mod, 1, workspace, 1"
         "$mod, 2, workspace, 2"
@@ -196,9 +188,28 @@
         "$mod, 9, workspace, 9"
         "$mod, 0, workspace, 10"
 
-        "$mod, A, exec, pkill -x rofi || rofi -show drun"
+        "$mod, S, togglespecialworkspace"
 
-        "$mod, P, exec, grim -g \"$(slurp)\" - | swappy -f -"
+        # Move windows around
+        "$mod+Shift+Ctrl, $Left, movewindow, l"
+        "$mod+Shift+Ctrl, $Right, movewindow, r"
+        "$mod+Shift+Ctrl, $Up, movewindow, u"
+        "$mod+Shift+Ctrl, $Down, movewindow, d"
+
+        "$mod+Ctrl+Alt, $Right, movetoworkspace, r+1"
+        "$mod+Ctrl+Alt, $Left, movetoworkspace, r-1"
+
+        "$mod+Ctrl, $Right, workspace, r+1"
+        "$mod+Ctrl, $Left, workspace, r-1"
+
+        "$mod+Alt, S, movetoworkspacesilent, special"
+
+        # Utilities
+        "$mod, A, exec, pkill -x rofi || rofi -show drun" # Run rofi
+
+        "$mod, P, exec, grim -g \"$(slurp)\" - | swappy -f -" # Screenshot
+
+        "$mod, Backspace, exec, wlogout" # Screenshot
       ];
     bindm = [
       "$mod, mouse:272, movewindow"
