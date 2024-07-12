@@ -339,6 +339,8 @@
     delta.enable = true;
     extraConfig = {
       init.defaultBranch = "main";
+      commit.gpgsign = "true";
+      user.signingkey = "8F5E6C1AF90976CA7102917A865658ED1FE61EC3";
     };
   };
 
