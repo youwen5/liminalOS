@@ -110,7 +110,24 @@
     lazygit
   ];
 
-  services.dunst.enable = true;
+  services.dunst = {
+    enable = true;
+    catppuccin.enable = true;
+  };
+
+  catppuccin = {
+    flavor = "macchiato";
+  };
+
+  programs.fzf = {
+    enable = true;
+    catppuccin.enable = true;
+  };
+
+  programs.rofi = {
+    enable = true;
+    catppuccin.enable = true;
+  };
 
   wayland.windowManager.hyprland.enable = true;
   wayland.windowManager.hyprland.settings = {
@@ -489,6 +506,7 @@
     viAlias = true;
     vimAlias = true;
   };
+
 
   # This value determines the home Manager release that your
   # configuration is compatible with. This helps avoid breakage
