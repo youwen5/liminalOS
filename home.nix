@@ -375,6 +375,7 @@
       window_padding_width = "8 8 0";
       confirm_os_window_close = -1;
       shell_integration = "enabled";
+      enable_audio_bell = "no";
     };
   };
 
