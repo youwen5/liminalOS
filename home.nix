@@ -143,8 +143,8 @@
     "$Up" = "I";
     "$Down" = "U";
     env = [
-      "HYPRCURSOR_THEME,Bibata-Modern-Ice" "HYPRCURSOR_SIZE,20"
-      "XCURSOR_THEME,Bibata-Modern-Ice" "XCURSOR_SIZE,20"
+      "HYPRCURSOR_THEME,Bibata-Modern-Ice" "HYPRCURSOR_SIZE,26"
+      "XCURSOR_THEME,Bibata-Modern-Ice" "XCURSOR_SIZE,26"
     ];
     bind =
       [
@@ -366,7 +366,7 @@
     catppuccin.enable = true;
     cursorTheme = {
       name = "Bibata-Modern-Ice";
-      size = 20;
+      size = 26;
     };
     iconTheme = {
       name = "Papirus-Dark";
