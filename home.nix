@@ -364,11 +364,15 @@
       name = "Bibata-Modern-Ice";
       size = 20;
     };
+    iconTheme = {
+      name = "Papirus Dark";
+      package = pkgs.papirus-icon-theme;
+    };
   };
 
   qt = {
     enable = true;
-    platformTheme = "qtct";
+    platformTheme.name = "qtct";
     style.name = "kvantum";
   };
 
