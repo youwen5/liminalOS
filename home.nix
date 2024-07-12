@@ -27,6 +27,7 @@
     neofetch
     dolphin
     bitwarden-desktop
+    thunderbird
 
     # archives
     zip
