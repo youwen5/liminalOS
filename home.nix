@@ -143,6 +143,7 @@
     exec-once =
       [
         "waybar"
+        "waypaper --restore"
       ];
     "$mod" = "SUPER";
     "$Left" = "Y";
