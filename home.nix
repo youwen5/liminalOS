@@ -129,6 +129,10 @@
     };
   };
 
+  services.easyeffects = {
+    enable = true;
+  };
+
   programs.fzf = {
     enable = true;
     catppuccin.enable = true;
