@@ -42,6 +42,7 @@
     fzf # A command-line fuzzy finder
     oh-my-posh
     bat
+    pavucontrol
 
     # networking tools
     mtr # A network diagnostic tool
@@ -101,10 +102,13 @@
 
     zoxide
 
+    # ricing
     dunst
     swww
     waypaper
     bibata-cursors
+    libsForQt5.qtstyleplugin-kvantum
+    libsForQt5.qt5ct
 
     delta
     lazygit
@@ -135,12 +139,16 @@
     "$Right" = "O";
     "$Up" = "I";
     "$Down" = "U";
-    env = [ "HYPRCURSOR_THEME,Bibata-Modern-Ice" "HYPRCURSOR_SIZE,20" ];
+    env = [
+      "HYPRCURSOR_THEME,Bibata-Modern-Ice" "HYPRCURSOR_SIZE,20"
+      "XCURSOR_THEME,Bibata-Modern-Ice" "XCURSOR_SIZE,20"
+    ];
     bind =
       [
         "$mod, F, exec, librewolf"
         "$mod, T, exec, kitty"
         "$mod, E, exec, dolphin"
+        "$mod, R, exec, pavucontrol"
 
         "$mod, Q, killactive"
         "$mod, W, togglefloating"
@@ -349,6 +357,30 @@
     extraConfig = "set editing-mode vi";
   };
 
+  gtk = {
+    enable = true;
+    catppuccin.enable = true;
+    cursorTheme = {
+      name = "Bibata-Modern-Ice";
+      size = 20;
+    };
+  };
+
+  qt = {
+    enable = true;
+    platformTheme = "qtct";
+    style.name = "kvantum";
+  };
+
+  xdg.configFile = {
+    "Kvantum/kvantum.kvconfig".text = ''
+      [General]
+      theme=GraphiteNordDark
+    '';
+
+    "Kvantum/GraphiteNord".source = "${pkgs.graphite-kde-theme}/share/Kvantum/GraphiteNord";
+  };
+
   programs.waybar = {
     enable = true;
     settings = {
@@ -366,10 +398,6 @@
           active-only = false;
           all-outputs = false;
           format = "{icon}";
-          format-icons = {
-            default = "";
-            active = "";
-          };
           persistent-workspaces = {
             eDP-1 = [ 1 ];
             DP-1 = [ 2 3 4 5 ];
