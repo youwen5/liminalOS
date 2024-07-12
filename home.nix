@@ -28,6 +28,7 @@
     dolphin
     bitwarden-desktop
     thunderbird
+    spotify
 
     # archives
     zip
