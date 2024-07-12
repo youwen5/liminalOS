@@ -122,6 +122,11 @@
   services.dunst = {
     enable = true;
     catppuccin.enable = true;
+    iconTheme = {
+      name = "Papirus-Dark";
+      package = pkgs.papirus-icon-theme;
+      size = "32x32";
+    };
   };
 
   programs.fzf = {
