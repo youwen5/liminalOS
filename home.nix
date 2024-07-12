@@ -495,6 +495,7 @@
   programs.oh-my-posh = {
     enable = true;
     enableZshIntegration = true;
+    enableBashIntegration = true;
     settings = builtins.fromJSON (builtins.unsafeDiscardStringContext (builtins.readFile ./prompt.omp.json));
   };
 
