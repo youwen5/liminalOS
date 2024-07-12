@@ -90,6 +90,9 @@
     ethtool
     pciutils # lspci
     usbutils # lsusb
+    wl-clipboard
+    rofi-wayland
+    grimblast
 
     # messaging apps
     vesktop
@@ -109,6 +112,7 @@
     bibata-cursors
     libsForQt5.qtstyleplugin-kvantum
     libsForQt5.qt5ct
+    tela-circle-icon-theme
 
     delta
     lazygit
@@ -365,8 +369,7 @@
       size = 20;
     };
     iconTheme = {
-      name = "Papirus Dark";
-      package = pkgs.papirus-icon-theme;
+      name = "Tela-circle";
     };
   };
 

@@ -127,9 +127,6 @@
     gnupg
     openssh
     python3
-    wl-clipboard
-    hyprlock
-    rofi-wayland
   ];
   environment.variables.EDITOR = "nvim";
 
