@@ -505,15 +505,20 @@
     };
     initExtra = "eval \"$(oh-my-posh init zsh --config \"/etc/nixos/prompt.omp.json\")\"";
     defaultKeymap = "viins";
-    antidote = {
+
+    zimfw = {
       enable = true;
-      plugins = [
-        "zimfw/environment"
-        "zimfw/input"
-        "zimfw/archive"
-        "zimfw/fzf"
-        "zimfw/magic-enter"
-        "zimfw/utility"
+      disableVersionCheck = true;
+      degit = true;
+      zmodules = [
+        "environment"
+        "git"
+        "input"
+        "termtitle"
+        "utility"
+        "exa"
+        "fzf"
+        "magic-enter"
       ];
     };
   };
@@ -539,7 +544,6 @@
     viAlias = true;
     vimAlias = true;
   };
-
 
   # This value determines the home Manager release that your
   # configuration is compatible with. This helps avoid breakage

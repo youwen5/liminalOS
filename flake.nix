@@ -9,15 +9,16 @@
     };
     hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
     catppuccin.url = "github:catppuccin/nix";
+    zimfw.url = "github:joedevivo/zimfw.nix";
   };
 
-  outputs = { self, nixpkgs, home-manager, catppuccin, ... }@inputs: {
+  outputs = { self, nixpkgs, home-manager, catppuccin, zimfw, ... }@inputs: {
     nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
       specialArgs = { inherit inputs; };
       system = "x86_64-linux";
       modules = [
         ./configuration.nix
-
+  
         catppuccin.nixosModules.catppuccin
 
         home-manager.nixosModules.home-manager
@@ -25,6 +26,7 @@
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
           home-manager.backupFileExtension = "backup";
+          home-manager.sharedModules = [ zimfw.homeManagerModules.zimfw ];
           home-manager.users.youwen = {
             imports = [
               ./home.nix
