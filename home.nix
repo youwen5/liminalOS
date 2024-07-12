@@ -112,7 +112,8 @@
     bibata-cursors
     libsForQt5.qtstyleplugin-kvantum
     libsForQt5.qt5ct
-    tela-circle-icon-theme
+    papirus-icon-theme
+    libsForQt5.qt5ct
 
     delta
     lazygit
@@ -369,7 +370,7 @@
       size = 20;
     };
     iconTheme = {
-      name = "Tela-circle";
+      name = "Papirus-Dark";
     };
   };
 
