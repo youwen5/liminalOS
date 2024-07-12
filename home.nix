@@ -107,7 +107,6 @@
     zoxide
 
     # ricing
-    dunst
     swww
     waypaper
     bibata-cursors
