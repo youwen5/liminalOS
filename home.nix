@@ -206,7 +206,7 @@
         "$mod+Alt, S, movetoworkspacesilent, special"
 
         # Utilities
-        "$mod, A, exec, pkill -x rofi || rofi -show drun" # Run rofi
+        "$mod, Space, exec, pkill -x rofi || rofi -show drun" # Run rofi
 
         "$mod, P, exec, grim -g \"$(slurp)\" - | swappy -f -" # Screenshot
 
