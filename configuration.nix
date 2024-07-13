@@ -63,7 +63,7 @@
   services.displayManager.sddm = {
     enable = true;
     wayland.enable = true;
-
+    theme = "catppuccin-macchiato";
   };
   # services.desktopManager.plasma6.enable = true;
 
@@ -100,9 +100,6 @@
     isNormalUser = true;
     description = "Youwen Wu";
     extraGroups = [ "networkmanager" "wheel" "nixos" ];
-    packages = with pkgs; [
-    #  thunderbird
-    ];
   };
 
   nix.settings = {
@@ -118,8 +115,6 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-  #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-  #  wget
     neovim
     wget
     git
@@ -135,6 +130,7 @@
     gnupg
     openssh
     python3
+    catppuccin-sddm
   ];
   environment.variables.EDITOR = "nvim";
 
