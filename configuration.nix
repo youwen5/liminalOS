@@ -132,6 +132,7 @@
     openssh
     python3
     (pkgs.catppuccin-sddm.override { flavor = "mocha"; })
+    steam-run
   ];
   environment.variables.EDITOR = "nvim";
 
@@ -144,6 +145,32 @@
   };
 
   programs.dconf.enable = true;
+
+  programs.steam = {
+    enable = true;
+    remotePlay.openFirewall = true;
+    dedicatedServer.openFirewall = true;
+    localNetworkGameTransfers.openFirewall = true;
+    gamescopeSession.enable = true;
+  };
+
+  nixpkgs.config.packageOverrides = pkgs: {
+    steam = pkgs.steam.override {
+      extraPkgs = pkgs: with pkgs; [
+        xorg.libXcursor
+        xorg.libXi
+        xorg.libXinerama
+        xorg.libXScrnSaver
+        libpng
+        libpulseaudio
+        libvorbis
+        stdenv.cc.cc.lib
+        libkrb5
+        keyutils
+      ];
+    };
+  };
+
 
   # List services that you want to enable:
 
