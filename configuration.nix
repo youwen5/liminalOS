@@ -63,7 +63,8 @@
   services.displayManager.sddm = {
     enable = true;
     wayland.enable = true;
-    theme = "catppuccin-macchiato";
+    theme = "catppuccin-mocha";
+    package = pkgs.kdePackages.sddm;
   };
   # services.desktopManager.plasma6.enable = true;
 
@@ -130,7 +131,7 @@
     gnupg
     openssh
     python3
-    catppuccin-sddm
+    (pkgs.catppuccin-sddm.override { flavor = "mocha"; })
   ];
   environment.variables.EDITOR = "nvim";
 
