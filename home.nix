@@ -171,6 +171,7 @@
         "$mod, Q, killactive"
         "$mod, W, togglefloating"
         "$mod, J, togglesplit"
+        "$mod, Return, fullscreen"
 
         # Move around
         "$mod, $Left, movefocus, l"
