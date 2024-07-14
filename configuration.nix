@@ -16,6 +16,7 @@
     timeout = 15;
     systemd-boot = {
       enable = true;
+      consoleMode = "auto";
     };
   };
 
