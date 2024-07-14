@@ -377,6 +377,7 @@
       confirm_os_window_close = -1;
       shell_integration = "enabled";
       enable_audio_bell = "no";
+      background_opacity = "0.8";
     };
   };
 
