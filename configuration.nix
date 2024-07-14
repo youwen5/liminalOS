@@ -50,6 +50,10 @@
     LC_TIME = "en_US.UTF-8";
   };
 
+  systemd.services = {
+    NetworkManager-wait-online.enable = false;
+  };
+
   # Enable the X11 windowing system.
   # You can disable this if you're only using the Wayland session.
   services.xserver.enable = false;
@@ -66,6 +70,7 @@
     theme = "catppuccin-mocha";
     package = pkgs.kdePackages.sddm;
   };
+
   # services.desktopManager.plasma6.enable = true;
 
   # Configure keymap in X11
