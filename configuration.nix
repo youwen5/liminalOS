@@ -59,6 +59,11 @@
   # You can disable this if you're only using the Wayland session.
   services.xserver.enable = false;
 
+  programs.nix-ld = {
+    enable = true;
+    libraries = [ pkgs.icu ];
+  };
+
   programs.hyprland = {
     enable = true;
     package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
