@@ -145,7 +145,11 @@
     (pkgs.catppuccin-sddm.override { flavor = "mocha"; })
     steam-run
   ];
-  environment.variables.EDITOR = "nvim";
+
+  environment.variables = {
+    EDITOR = "nvim";
+    NIX_AUTO_RUN = 1;
+  };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
