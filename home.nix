@@ -335,6 +335,7 @@
       "col.inactive_border" = "rgba(b4befecc) rgba(6c7086cc) 45deg";
       layout = "dwindle";
       resize_on_border = "true";
+      sensitivity = "0.5";
     };
     decoration = {
       rounding = "10";
