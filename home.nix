@@ -48,12 +48,12 @@
     # networking tools
     mtr # A network diagnostic tool
     iperf3
-    dnsutils  # `dig` + `nslookup`
+    dnsutils # `dig` + `nslookup`
     ldns # replacement of `dig`, it provide the command `drill`
     aria2 # A lightweight multi-protocol & multi-source command-line download utility
     socat # replacement of openbsd-netcat
     nmap # A utility for network discovery and security auditing
-    ipcalc  # it is a calculator for the IPv4/v6 addresses
+    ipcalc # it is a calculator for the IPv4/v6 addresses
 
     # misc
     cowsay
@@ -76,7 +76,7 @@
     hugo # static site generator
     glow # markdown previewer in terminal
 
-    btop  # replacement of htop/nmon
+    btop # replacement of htop/nmon
     iotop # io monitoring
     iftop # network monitoring
 
@@ -130,89 +130,82 @@
     };
   };
 
-  services.easyeffects = {
-    enable = true;
-  };
+  services.easyeffects = { enable = true; };
 
   programs.fzf = {
     enable = true;
     catppuccin.enable = true;
   };
 
-  programs.wlogout = {
-    enable = true;
-  };
+  programs.wlogout = { enable = true; };
 
   wayland.windowManager.hyprland.enable = true;
   wayland.windowManager.hyprland.settings = {
-    exec-once =
-      [
-        "waybar"
-        "waypaper --restore"
-      ];
+    exec-once = [ "waybar" "waypaper --restore" ];
     "$mod" = "SUPER";
     "$Left" = "Y";
     "$Right" = "O";
     "$Up" = "I";
     "$Down" = "U";
     env = [
-      "HYPRCURSOR_THEME,Bibata-Modern-Ice" "HYPRCURSOR_SIZE,26"
-      "XCURSOR_THEME,Bibata-Modern-Ice" "XCURSOR_SIZE,26"
+      "HYPRCURSOR_THEME,Bibata-Modern-Ice"
+      "HYPRCURSOR_SIZE,26"
+      "XCURSOR_THEME,Bibata-Modern-Ice"
+      "XCURSOR_SIZE,26"
     ];
-    bind =
-      [
-        # Application Keybinds
-        "$mod, F, exec, librewolf"
-        "$mod, T, exec, kitty"
-        "$mod, E, exec, dolphin"
-        "$mod, R, exec, pavucontrol"
+    bind = [
+      # Application Keybinds
+      "$mod, F, exec, librewolf"
+      "$mod, T, exec, kitty"
+      "$mod, E, exec, dolphin"
+      "$mod, R, exec, pavucontrol"
 
-        # Window actions
-        "$mod, Q, killactive"
-        "$mod, W, togglefloating"
-        "$mod, J, togglesplit"
-        "$mod, Return, fullscreen"
+      # Window actions
+      "$mod, Q, killactive"
+      "$mod, W, togglefloating"
+      "$mod, J, togglesplit"
+      "$mod, Return, fullscreen"
 
-        # Move around
-        "$mod, $Left, movefocus, l"
-        "$mod, $Right, movefocus, r"
-        "$mod, $Up, movefocus, u"
-        "$mod, $Down, movefocus, d"
+      # Move around
+      "$mod, $Left, movefocus, l"
+      "$mod, $Right, movefocus, r"
+      "$mod, $Up, movefocus, u"
+      "$mod, $Down, movefocus, d"
 
-        "$mod, 1, workspace, 1"
-        "$mod, 2, workspace, 2"
-        "$mod, 3, workspace, 3"
-        "$mod, 4, workspace, 4"
-        "$mod, 5, workspace, 5"
-        "$mod, 6, workspace, 6"
-        "$mod, 7, workspace, 7"
-        "$mod, 8, workspace, 8"
-        "$mod, 9, workspace, 9"
-        "$mod, 0, workspace, 10"
+      "$mod, 1, workspace, 1"
+      "$mod, 2, workspace, 2"
+      "$mod, 3, workspace, 3"
+      "$mod, 4, workspace, 4"
+      "$mod, 5, workspace, 5"
+      "$mod, 6, workspace, 6"
+      "$mod, 7, workspace, 7"
+      "$mod, 8, workspace, 8"
+      "$mod, 9, workspace, 9"
+      "$mod, 0, workspace, 10"
 
-        "$mod, S, togglespecialworkspace"
+      "$mod, S, togglespecialworkspace"
 
-        # Move windows around
-        "$mod+Shift+Ctrl, $Left, movewindow, l"
-        "$mod+Shift+Ctrl, $Right, movewindow, r"
-        "$mod+Shift+Ctrl, $Up, movewindow, u"
-        "$mod+Shift+Ctrl, $Down, movewindow, d"
+      # Move windows around
+      "$mod+Shift+Ctrl, $Left, movewindow, l"
+      "$mod+Shift+Ctrl, $Right, movewindow, r"
+      "$mod+Shift+Ctrl, $Up, movewindow, u"
+      "$mod+Shift+Ctrl, $Down, movewindow, d"
 
-        "$mod+Ctrl+Alt, $Right, movetoworkspace, r+1"
-        "$mod+Ctrl+Alt, $Left, movetoworkspace, r-1"
+      "$mod+Ctrl+Alt, $Right, movetoworkspace, r+1"
+      "$mod+Ctrl+Alt, $Left, movetoworkspace, r-1"
 
-        "$mod+Ctrl, $Right, workspace, r+1"
-        "$mod+Ctrl, $Left, workspace, r-1"
+      "$mod+Ctrl, $Right, workspace, r+1"
+      "$mod+Ctrl, $Left, workspace, r-1"
 
-        "$mod+Alt, S, movetoworkspacesilent, special"
+      "$mod+Alt, S, movetoworkspacesilent, special"
 
-        # Utilities
-        "$mod, Space, exec, pkill -x rofi || rofi -show drun" # Run rofi
+      # Utilities
+      "$mod, Space, exec, pkill -x rofi || rofi -show drun" # Run rofi
 
-        "$mod, P, exec, grim -g \"$(slurp)\" - | swappy -f -" # Screenshot
+      ''$mod, P, exec, grim -g "$(slurp)" - | swappy -f -'' # Screenshot
 
-        "$mod, Backspace, exec, wlogout" # Screenshot
-      ];
+      "$mod, Backspace, exec, wlogout" # Screenshot
+    ];
     bindm = [
       "$mod, mouse:272, movewindow"
       "$mod, mouse:273, resizewindow"
@@ -298,10 +291,8 @@
       "ignorezero,swaync-control-center"
       "blur,logout_dialog"
     ];
-    monitor = [
-      "DP-1,2560x1440@165,1920x0,auto"
-      "HDMI-A-1,1920x1080@60,0x0,1"
-    ];
+    monitor =
+      [ "DP-1,2560x1440@165,1920x0,auto" "HDMI-A-1,1920x1080@60,0x0,1" ];
     dwindle = {
       pseudotile = "yes";
       preserve_split = "yes";
@@ -342,13 +333,13 @@
       drop_shadow = "false";
       dim_special = "0.3";
       blur = {
-          enabled = "yes";
-          size = "6";
-          passes = "3";
-          new_optimizations = "on";
-          ignore_opacity = "on";
-          xray = "false";
-          special = true;
+        enabled = "yes";
+        size = "6";
+        passes = "3";
+        new_optimizations = "on";
+        ignore_opacity = "on";
+        xray = "false";
+        special = true;
       };
     };
   };
@@ -394,9 +385,7 @@
       name = "Bibata-Modern-Ice";
       size = 26;
     };
-    iconTheme = {
-      name = "Papirus-Dark";
-    };
+    iconTheme = { name = "Papirus-Dark"; };
   };
 
   qt = {
@@ -411,7 +400,8 @@
       theme=GraphiteNordDark
     '';
 
-    "Kvantum/GraphiteNord".source = "${pkgs.graphite-kde-theme}/share/Kvantum/GraphiteNord";
+    "Kvantum/GraphiteNord".source =
+      "${pkgs.graphite-kde-theme}/share/Kvantum/GraphiteNord";
   };
 
   programs.waybar = {
@@ -450,7 +440,7 @@
         };
         "custom/weather" = {
           orientation = "horizontal";
-          exec = "curl wttr.in/?format=\"%l:%20%t\"";
+          exec = ''curl wttr.in/?format="%l:%20%t"'';
           interval = 10;
         };
         cpu = {
@@ -466,12 +456,8 @@
         #   format-paused = " 󰏤 {title}  ";
         #   format-stopped = "Nothing Playing";
         # };
-        tray = {
-          spacing = 10;
-        };
-        clock = {
-          format = "{:%a %b %d, %I:%M %p} ";
-        };
+        tray = { spacing = 10; };
+        clock = { format = "{:%a %b %d, %I:%M %p} "; };
         backlight = {
           device = "intel_backlight";
           format = "{percent}% {icon}";
@@ -486,9 +472,7 @@
           format = "{capacity}% {icon}";
           format-icons = [ "󰁻" "󰁽" "󰁿" "󰂀" "󰁹" ];
         };
-        "hyprland/window" = {
-          format = "{class}";
-        };
+        "hyprland/window" = { format = "{class}"; };
         network = {
           format-wifi = "{essid} ";
           format-linked = "{ifname} (No IP) ";
@@ -502,9 +486,7 @@
           format-muted = " {format_source}";
           format-source = "{volume}% ";
           format-source-muted = "";
-          format-icons = {
-            default = [ "" "" "" ];
-          };
+          format-icons = { default = [ "" "" "" ]; };
         };
       };
     };
@@ -525,7 +507,8 @@
     enable = true;
     enableZshIntegration = true;
     enableBashIntegration = true;
-    settings = with builtins; fromJSON (unsafeDiscardStringContext (readFile ./prompt.omp.json));
+    settings = with builtins;
+      fromJSON (unsafeDiscardStringContext (readFile ./prompt.omp.json));
   };
 
   programs.zsh = {
@@ -557,9 +540,7 @@
     };
   };
 
-  programs.bash = {
-    enable = true;
-  };
+  programs.bash = { enable = true; };
 
   programs.librewolf = {
     enable = true;

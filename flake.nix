@@ -18,48 +18,47 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, catppuccin, zimfw, lanzaboote, ... }@inputs: {
-    nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
-      specialArgs = { inherit inputs; };
-      system = "x86_64-linux";
-      modules = [
-        ./configuration.nix
+  outputs = { self, nixpkgs, home-manager, catppuccin, zimfw, lanzaboote, ...
+    }@inputs: {
+      formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixfmt;
+      nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
+        specialArgs = { inherit inputs; };
+        system = "x86_64-linux";
+        modules = [
+          ./configuration.nix
 
-        catppuccin.nixosModules.catppuccin
+          catppuccin.nixosModules.catppuccin
 
-        lanzaboote.nixosModules.lanzaboote
-        ({ pkgs, lib, ... }: {
-          environment.systemPackages = [
-            # For debugging and troubleshooting Secure Boot.
-            pkgs.sbctl
-          ];
-
-          # Lanzaboote currently replaces the systemd-boot module.
-          # This setting is usually set to true in configuration.nix
-          # generated at installation time. So we force it to false
-          # for now.
-          boot.loader.systemd-boot.enable = lib.mkForce false;
-
-          boot.lanzaboote = {
-            enable = true;
-            pkiBundle = "/etc/secureboot";
-          };
-        })
-
-        home-manager.nixosModules.home-manager
-        {
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-          home-manager.backupFileExtension = "backup";
-          home-manager.sharedModules = [ zimfw.homeManagerModules.zimfw ];
-          home-manager.users.youwen = {
-            imports = [
-              ./home.nix
-              catppuccin.homeManagerModules.catppuccin
+          lanzaboote.nixosModules.lanzaboote
+          ({ pkgs, lib, ... }: {
+            environment.systemPackages = [
+              # For debugging and troubleshooting Secure Boot.
+              pkgs.sbctl
             ];
-          };
-        }
-      ];
+
+            # Lanzaboote currently replaces the systemd-boot module.
+            # This setting is usually set to true in configuration.nix
+            # generated at installation time. So we force it to false
+            # for now.
+            boot.loader.systemd-boot.enable = lib.mkForce false;
+
+            boot.lanzaboote = {
+              enable = true;
+              pkiBundle = "/etc/secureboot";
+            };
+          })
+
+          home-manager.nixosModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.backupFileExtension = "backup";
+            home-manager.sharedModules = [ zimfw.homeManagerModules.zimfw ];
+            home-manager.users.youwen = {
+              imports = [ ./home.nix catppuccin.homeManagerModules.catppuccin ];
+            };
+          }
+        ];
+      };
     };
-  };
 }
