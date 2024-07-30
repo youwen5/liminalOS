@@ -48,7 +48,6 @@
 
     # desktop utils
     wl-clipboard
-    rofi-wayland
     grim
     slurp
     swappy
@@ -157,6 +156,12 @@
 
     "Kvantum/GraphiteNord".source =
       "${pkgs.graphite-kde-theme}/share/Kvantum/GraphiteNord";
+  };
+
+  programs.rofi = {
+    enable = true;
+    package = pkgs.rofi-wayland;
+    theme = "gruvbox-dark";
   };
 
   programs.waybar = import ./modules/desktop/waybar/waybar.nix;
