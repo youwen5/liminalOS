@@ -31,10 +31,7 @@
 
     # utils
     ripgrep # recursively searches directories for a regex pattern
-    fzf # A command-line fuzzy finder
     bat # replacement for cat
-    delta # git pager
-    lazygit # git TUI
 
     # nix related
     #
@@ -111,7 +108,17 @@
     };
   };
 
-  programs.lazygit.enable = true;
+  programs.lazygit = {
+    enable = true;
+    catppuccin.enable = true;
+    catppuccin.flavor = "macchiato";
+    settings = {
+      git.paging = {
+        colorArg = "always";
+        pager = "delta --dark --paging=never";
+      };
+    };
+  };
 
   programs.kitty = {
     enable = true;
