@@ -194,21 +194,21 @@
     };
     defaultKeymap = "viins";
 
-    zimfw = {
-      enable = true;
-      disableVersionCheck = true;
-      degit = true;
-      zmodules = [
-        "environment"
-        "git"
-        "input"
-        "termtitle"
-        "utility"
-        "exa"
-        "fzf"
-        "magic-enter"
-      ];
-    };
+    # zimfw = {
+    #   enable = true;
+    #   disableVersionCheck = true;
+    #   degit = true;
+    #   zmodules = [
+    #     "environment"
+    #     "git"
+    #     "input"
+    #     "termtitle"
+    #     "utility"
+    #     "exa"
+    #     "fzf"
+    #     "magic-enter"
+    #   ];
+    # };
   };
 
   programs.fish = {
