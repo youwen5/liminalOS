@@ -84,5 +84,5 @@
         };
       };
     };
-    style = ./waybar/waybar.css;
+    style = ./waybar.css;
   }

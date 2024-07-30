@@ -161,7 +161,7 @@
       "${pkgs.graphite-kde-theme}/share/Kvantum/GraphiteNord";
   };
 
-  programs.waybar = import ./modules/desktop/waybar.nix;
+  programs.waybar = import ./modules/desktop/waybar/waybar.nix;
 
   programs.zoxide = {
     enable = true;
