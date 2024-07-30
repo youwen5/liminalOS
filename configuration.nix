@@ -219,8 +219,9 @@
     nvidiaSettings = true;
   };
 
-  programs.zsh.enable = true;
-  users.users.youwen.shell = pkgs.zsh;
+  programs.zsh.enable = false;
+  programs.fish.enable = true;
+  users.users.youwen.shell = pkgs.fish;
 
   fonts = {
     enableDefaultPackages = true;

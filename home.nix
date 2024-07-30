@@ -495,7 +495,8 @@
 
   programs.zoxide = {
     enable = true;
-    enableZshIntegration = true;
+    # enableZshIntegration = true;
+    enableFishIntegration = true;
   };
 
   programs.gh = {
@@ -505,14 +506,14 @@
 
   programs.oh-my-posh = {
     enable = true;
-    enableZshIntegration = true;
+    # enableZshIntegration = true;
+    enableFishIntegration = true;
     enableBashIntegration = true;
-    settings = with builtins;
-      fromJSON (unsafeDiscardStringContext (readFile ./prompt.omp.json));
+    useTheme = "catppuccin_macchiato";
   };
 
   programs.zsh = {
-    enable = true;
+    enable = false;
     enableCompletion = true;
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
@@ -540,7 +541,19 @@
     };
   };
 
-  programs.bash = { enable = true; };
+  programs.fish = {
+    enable = true;
+    shellAliases = {
+      rebuild = "sudo nixos-rebuild switch";
+      ls = "eza -l --icons=auto";
+    };
+    interactiveShellInit = ''
+      fish_vi_key_bindings
+      set -g fish_greeting
+    '';
+  };
+
+  programs.bash.enable = true;
 
   programs.librewolf = {
     enable = true;
