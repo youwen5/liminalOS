@@ -18,8 +18,8 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, catppuccin, lanzaboote, ...
-    }@inputs: {
+  outputs =
+    { self, nixpkgs, home-manager, catppuccin, lanzaboote, ... }@inputs: {
       formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixfmt;
       nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs; };
