@@ -45,8 +45,6 @@
     # system tools
     pciutils # lspci
     usbutils # lsusb
-    btop # replacement of htop/nmon
-    fd # replacement for find
 
     # desktop utils
     wl-clipboard
@@ -259,6 +257,17 @@
         };
       }
     ];
+  };
+
+  programs.fd.enable = true;
+
+  programs.btop = {
+    enable = true;
+    settings = {
+      color_theme = "tokyo-night";
+      vim_keys = true;
+      theme_background = false;
+    };
   };
 
   programs.eza = {
