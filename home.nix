@@ -231,6 +231,8 @@
 
   programs.fish = {
     enable = true;
+    catppuccin.enable = true;
+    catppuccin.flavor = "macchiato";
     shellAliases = {
       rebuild = "sudo nixos-rebuild switch";
       ls = "eza -l --icons=auto";
