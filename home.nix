@@ -184,6 +184,7 @@
     enable = true;
     # enableZshIntegration = true;
     enableFishIntegration = true;
+    enableNushellIntegration = true;
   };
 
   programs.gh = {
@@ -276,6 +277,16 @@
         };
       }
     ];
+  };
+
+  programs.nushell = {
+    enable = true;
+    configFile.text = ''
+      $env.config = {
+        edit_mode: vi,
+        show_banner: false
+      }
+    '';
   };
 
   programs.fd.enable = true;
