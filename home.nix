@@ -30,8 +30,7 @@
     p7zip
 
     # utils
-    ripgrep # recursively searches directories for a regex pattern
-    bat # replacement for cat
+    nurl # helps fetch git data for nixpkgs
 
     # nix related
     #
@@ -42,6 +41,7 @@
     # system tools
     pciutils # lspci
     usbutils # lsusb
+
 
     # desktop utils
     wl-clipboard
@@ -71,7 +71,6 @@
     libsForQt5.qt5ct
     papirus-icon-theme
     libsForQt5.qt5ct
-
   ];
 
   services.dunst = {
@@ -119,6 +118,14 @@
       };
     };
   };
+
+  programs.bat.enable = true;
+  programs.bat.catppuccin = {
+    enable = true;
+    flavor = "macchiato";
+  };
+
+  programs.ripgrep.enable = true;
 
   programs.kitty = {
     enable = true;
