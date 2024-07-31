@@ -60,6 +60,7 @@
     spotify
     vesktop
     signal-desktop
+    modrinth-app
 
     # dev tools
     nodePackages_latest.pnpm
