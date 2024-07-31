@@ -196,7 +196,7 @@
     # enableZshIntegration = true;
     enableFishIntegration = true;
     enableBashIntegration = true;
-    useTheme = "catppuccin_macchiato";
+    useTheme = "gruvbox";
   };
 
   programs.zsh = {
