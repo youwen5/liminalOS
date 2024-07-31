@@ -18,6 +18,8 @@
   # home.file.".xxx".text = ''
   #     xxx
   # '';
+  
+  home.file.".config/neofetch/config.conf".source = ./config/neofetch.conf;
 
   # Packages that should be installed to the user profile.
   home.packages = with pkgs; [
