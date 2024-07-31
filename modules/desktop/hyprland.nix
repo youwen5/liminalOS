@@ -103,7 +103,7 @@
       "opacity 0.80 0.80,class:^(app.drey.Warp)$ # Warp-Gtk"
       "opacity 0.80 0.80,class:^(net.davidotek.pupgui2)$ # ProtonUp-Qt"
       "opacity 0.80 0.80,class:^(yad)$ # Protontricks-Gtk"
-      "opacity 0.80 0.80,class:^(Signal)$ # Signal-Gtk"
+      "opacity 0.80 0.80,class:^(signal)$ # Signal-Gtk"
       "opacity 0.80 0.80,class:^(io.github.alainm23.planify)$ # planify-Gtk"
       "opacity 0.80 0.80,class:^(io.gitlab.theevilskeleton.Upscaler)$ # Upscaler-Gtk"
       "opacity 0.80 0.80,class:^(com.github.unrud.VideoDownloader)$ # VideoDownloader-Gtk"
