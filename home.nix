@@ -42,7 +42,6 @@
     pciutils # lspci
     usbutils # lsusb
 
-
     # desktop utils
     wl-clipboard
     grim
