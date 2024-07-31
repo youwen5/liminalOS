@@ -2,11 +2,12 @@
   description = "System configuration flake.";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     home-manager = {
-      url = "github:nix-community/home-manager/release-24.05";
+      url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    stablepkgs.url = "github:nixos/nixpkgs/nixos-24.05";
     catppuccin.url = "github:catppuccin/nix";
     # zimfw.url = "github:joedevivo/zimfw.nix";
     lanzaboote = {
@@ -17,8 +18,8 @@
     };
   };
 
-  outputs =
-    { self, nixpkgs, home-manager, catppuccin, lanzaboote, ... }@inputs: {
+  outputs = { self, nixpkgs, home-manager, catppuccin, lanzaboote, stablepkgs
+    , ... }@inputs: {
       formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixfmt;
       nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs; };
@@ -46,6 +47,15 @@
               pkiBundle = "/etc/secureboot";
             };
           })
+
+          {
+            nixpkgs.overlays = [
+              (self: super: {
+                easyeffects =
+                  stablepkgs.legacyPackages.${self.system}.easyeffects;
+              })
+            ];
+          }
 
           home-manager.nixosModules.home-manager
           {

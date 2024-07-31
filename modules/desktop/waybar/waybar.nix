@@ -85,4 +85,5 @@
     };
   };
   style = ./waybar.css;
+  systemd.enable = true;
 }

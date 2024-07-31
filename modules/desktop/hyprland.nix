@@ -1,7 +1,7 @@
 {
   enable = true;
   settings = {
-    exec-once = [ "waybar" "waypaper --restore" ];
+    exec-once = [ "waypaper --restore" ];
     "$mod" = "SUPER";
     "$Left" = "Y";
     "$Right" = "O";
