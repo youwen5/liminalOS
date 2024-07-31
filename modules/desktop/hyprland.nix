@@ -79,6 +79,7 @@
       "opacity 0.80 0.80,class:^(steam)$"
       "opacity 0.80 0.80,class:^(steamwebhelper)$"
       "opacity 0.80 0.80,class:^(Spotify)$"
+      "opacity 0.80 0.80,initialTitle:^(Spotify Premium)$"
       "opacity 0.80 0.80,initialTitle:^(Spotify Free)$"
       "opacity 0.80 0.80,class:^(code-oss)$"
       "opacity 0.80 0.80,class:^(Code)$"
