@@ -61,12 +61,6 @@
     libraries = [ pkgs.icu ];
   };
 
-  programs.hyprland = {
-    enable = true;
-    package =
-      inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
-  };
-
   # Enable the KDE Plasma Desktop Environment.
   services.displayManager.sddm = {
     enable = true;
@@ -115,9 +109,6 @@
   nix.settings = {
     trusted-users = [ "root" "youwen" ];
     experimental-features = [ "nix-command" "flakes" ];
-    substituters = [ "https://hyprland.cachix.org" ];
-    trusted-public-keys =
-      [ "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc=" ];
   };
 
   # Allow unfree packages
@@ -150,6 +141,8 @@
     NIX_AUTO_RUN = 1;
   };
 
+  environment.sessionVariables.NIXOS_OZONE_WL = "1";
+
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
@@ -159,6 +152,8 @@
   };
 
   programs.dconf.enable = true;
+
+  programs.hyprland.enable = true;
 
   programs.steam = {
     enable = true;
