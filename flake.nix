@@ -16,9 +16,13 @@
       # Optional but recommended to limit the size of your system closure.
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    lix-module = {
+      url = "https://git.lix.systems/lix-project/nixos-module/archive/2.90.0.tar.gz";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs, home-manager, catppuccin, lanzaboote, stablepkgs
+  outputs = { self, nixpkgs, home-manager, catppuccin, lanzaboote, stablepkgs, lix-module
     , ... }@inputs: {
       formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixfmt;
       nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
@@ -28,6 +32,8 @@
           ./configuration.nix
 
           catppuccin.nixosModules.catppuccin
+
+          lix-module.nixosModules.default
 
           lanzaboote.nixosModules.lanzaboote
           ({ pkgs, lib, ... }: {
