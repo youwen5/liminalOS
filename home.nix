@@ -20,6 +20,10 @@
   # '';
 
   home.file.".config/neofetch/config.conf".source = ./config/neofetch.conf;
+  home.file.".wallpapers" = {
+    source = ./wallpapers;
+    recursive = true;
+  };
 
   # Packages that should be installed to the user profile.
   home.packages = with pkgs; [
