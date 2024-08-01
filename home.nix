@@ -240,6 +240,16 @@
       rebuild = "sudo nixos-rebuild switch";
       ls = "eza -l --icons=auto";
     };
+    functions = {
+      update-nixos = {
+        description =
+          "Update the system flake and attempt to build and switch to the new configuration.";
+        body = ''
+          nix flake update /etc/nixos
+          sudo nixos-rebuild switch
+        '';
+      };
+    };
     interactiveShellInit = ''
       fish_vi_key_bindings
       set -g fish_greeting
