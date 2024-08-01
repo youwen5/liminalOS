@@ -108,6 +108,7 @@
       "opacity 0.80 0.80,class:^(io.github.alainm23.planify)$ # planify-Gtk"
       "opacity 0.80 0.80,class:^(io.gitlab.theevilskeleton.Upscaler)$ # Upscaler-Gtk"
       "opacity 0.80 0.80,class:^(com.github.unrud.VideoDownloader)$ # VideoDownloader-Gtk"
+      "opacity 0.80 0.80,class:^(lutris)$ # Lutris game launcher"
 
       "opacity 0.80 0.70,class:^(pavucontrol)$"
       "opacity 0.80 0.70,class:^(blueman-manager)$"
