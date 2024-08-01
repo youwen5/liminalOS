@@ -8,6 +8,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     stablepkgs.url = "github:nixos/nixpkgs/nixos-24.05";
+    bleedingpkgs.url = "github:nixos/nixpkgs/master";
     catppuccin.url = "github:catppuccin/nix";
     # zimfw.url = "github:joedevivo/zimfw.nix";
     lanzaboote = {
@@ -24,7 +25,7 @@
   };
 
   outputs = { self, nixpkgs, home-manager, catppuccin, lanzaboote, stablepkgs
-    , lix-module, ... }@inputs: {
+    , bleedingpkgs, lix-module, ... }@inputs: {
       formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixfmt;
       nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs; };
@@ -58,8 +59,10 @@
           {
             nixpkgs.overlays = [
               (self: super: {
-                easyeffects =
-                  stablepkgs.legacyPackages.${self.system}.easyeffects;
+                # php81Extensions.simplexml =
+                #   stablepkgs.legacyPackages.${self.system}.php82Extensions.simplexml;
+                lsp-plugins =
+                  bleedingpkgs.legacyPackages.${self.system}.lsp-plugins;
               })
             ];
           }

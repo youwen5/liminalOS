@@ -1,5 +1,21 @@
 {
   "nodes": {
+    "bleedingpkgs": {
+      "locked": {
+        "lastModified": 1722549472,
+        "narHash": "sha256-ODPyXo5ip1Y1YBn6q97m/GVwfTUBprmp7W2Ov9bgO7w=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "56a2c695a4a02834f0705ae7072d2f4f4a96ad2a",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "ref": "master",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "catppuccin": {
       "locked": {
         "lastModified": 1721784420,
@@ -289,6 +305,7 @@
     },
     "root": {
       "inputs": {
+        "bleedingpkgs": "bleedingpkgs",
         "catppuccin": "catppuccin",
         "home-manager": "home-manager",
         "lanzaboote": "lanzaboote",
