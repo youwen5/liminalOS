@@ -65,6 +65,7 @@
     vesktop
     signal-desktop
     modrinth-app
+    lutris
 
     # dev tools
     nodePackages_latest.pnpm
