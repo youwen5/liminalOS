@@ -58,7 +58,7 @@
 
   programs.nix-ld = {
     enable = true;
-    libraries = [ pkgs.icu ];
+    libraries = with pkgs; [ icu xorg.libXtst xorg.libXi ];
   };
 
   # Enable the KDE Plasma Desktop Environment.
