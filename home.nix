@@ -66,6 +66,7 @@
     signal-desktop
     modrinth-app
     lutris
+    wine
 
     # dev tools
     nodePackages_latest.pnpm

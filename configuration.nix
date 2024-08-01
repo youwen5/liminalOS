@@ -163,6 +163,8 @@
     gamescopeSession.enable = true;
   };
 
+  programs.gamescope.enable = true;
+
   nixpkgs.config.packageOverrides = pkgs: {
     steam = pkgs.steam.override {
       extraPkgs = pkgs:
