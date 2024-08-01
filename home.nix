@@ -251,7 +251,8 @@
         description =
           "Update the system flake and attempt to build and switch to the new configuration.";
         body = ''
-          nix flake update /etc/nixos
+          cd /etc/nixos
+          nix flake update
           sudo nixos-rebuild switch
         '';
       };
