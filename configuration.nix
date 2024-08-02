@@ -134,6 +134,11 @@
     python3
     (pkgs.catppuccin-sddm.override { flavor = "mocha"; })
     steam-run
+
+    # deps for neovim compilation
+    lua51Packages.lua
+    lua51Packages.luarocks
+    tree-sitter
   ];
 
   environment.variables = {
