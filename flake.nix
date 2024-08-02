@@ -56,16 +56,7 @@
             };
           })
 
-          {
-            nixpkgs.overlays = [
-              (self: super: {
-                # php81Extensions.simplexml =
-                #   stablepkgs.legacyPackages.${self.system}.php82Extensions.simplexml;
-                lsp-plugins =
-                  bleedingpkgs.legacyPackages.${self.system}.lsp-plugins;
-              })
-            ];
-          }
+          { nixpkgs.overlays = [ (self: super: { }) ]; }
 
           home-manager.nixosModules.home-manager
           {
