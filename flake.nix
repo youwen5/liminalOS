@@ -10,7 +10,6 @@
     stablepkgs.url = "github:nixos/nixpkgs/nixos-24.05";
     bleedingpkgs.url = "github:nixos/nixpkgs/master";
     catppuccin.url = "github:catppuccin/nix";
-    # zimfw.url = "github:joedevivo/zimfw.nix";
     lanzaboote = {
       url = "github:nix-community/lanzaboote/v0.4.1";
 
@@ -63,7 +62,6 @@
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.backupFileExtension = "backup";
-            # home-manager.sharedModules = [ zimfw.homeManagerModules.zimfw ];
             home-manager.users.youwen = {
               imports = [ ./home.nix catppuccin.homeManagerModules.catppuccin ];
             };

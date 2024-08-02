@@ -209,35 +209,6 @@
     useTheme = "gruvbox";
   };
 
-  programs.zsh = {
-    enable = false;
-    enableCompletion = true;
-    autosuggestion.enable = true;
-    syntaxHighlighting.enable = true;
-
-    shellAliases = {
-      ls = "eza -l --icons=auto";
-      update = "sudo nixos-rebuild switch";
-    };
-    defaultKeymap = "viins";
-
-    # zimfw = {
-    #   enable = true;
-    #   disableVersionCheck = true;
-    #   degit = true;
-    #   zmodules = [
-    #     "environment"
-    #     "git"
-    #     "input"
-    #     "termtitle"
-    #     "utility"
-    #     "exa"
-    #     "fzf"
-    #     "magic-enter"
-    #   ];
-    # };
-  };
-
   programs.fish = {
     enable = true;
     catppuccin.enable = true;
