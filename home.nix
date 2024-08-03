@@ -103,7 +103,6 @@
 
   wayland.windowManager.hyprland = import ./modules/desktop/hyprland.nix;
 
-  # basic configuration of git, please change to your own
   programs.git = {
     enable = true;
     userName = "Youwen Wu";
