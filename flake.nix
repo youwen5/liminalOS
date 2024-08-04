@@ -32,6 +32,11 @@
         modules = [
           ./configuration.nix
           ./modules/nixos/secureboot.nix
+          ./modules/nixos/gaming.nix
+          ./modules/nixos/audio.nix
+          ./modules/nixos/nvidia.nix
+          ./modules/nixos/networking.nix
+          ./modules/common/fonts.nix
 
           catppuccin.nixosModules.catppuccin
 
