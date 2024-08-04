@@ -48,7 +48,9 @@
               imports = [
                 ./home.nix
                 ./modules/home-manager/linux/desktop.nix
-                catppuccin.homeManagerModules.catppuccin
+                ./modules/home-manager/linux/programs.nix
+                ./modules/home-manager/common/core.nix
+                inputs.catppuccin.homeManagerModules.catppuccin
               ];
             };
           }
