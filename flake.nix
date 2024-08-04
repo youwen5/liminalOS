@@ -31,31 +31,13 @@
         system = "x86_64-linux";
         modules = [
           ./configuration.nix
+          ./modules/nixos/secureboot.nix
 
           catppuccin.nixosModules.catppuccin
 
           lix-module.nixosModules.default
 
           lanzaboote.nixosModules.lanzaboote
-          ({ pkgs, lib, ... }: {
-            environment.systemPackages = [
-              # For debugging and troubleshooting Secure Boot.
-              pkgs.sbctl
-            ];
-
-            # Lanzaboote currently replaces the systemd-boot module.
-            # This setting is usually set to true in configuration.nix
-            # generated at installation time. So we force it to false
-            # for now.
-            boot.loader.systemd-boot.enable = lib.mkForce false;
-
-            boot.lanzaboote = {
-              enable = true;
-              pkiBundle = "/etc/secureboot";
-            };
-          })
-
-          { nixpkgs.overlays = [ (self: super: { }) ]; }
 
           home-manager.nixosModules.home-manager
           {
@@ -63,7 +45,11 @@
             home-manager.useUserPackages = true;
             home-manager.backupFileExtension = "backup";
             home-manager.users.youwen = {
-              imports = [ ./home.nix catppuccin.homeManagerModules.catppuccin ];
+              imports = [
+                ./home.nix
+                ./modules/home-manager/linux/desktop.nix
+                catppuccin.homeManagerModules.catppuccin
+              ];
             };
           }
         ];

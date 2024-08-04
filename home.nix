@@ -81,27 +81,10 @@
     libsForQt5.qt5ct
   ];
 
-  services.dunst = {
-    enable = true;
-    catppuccin.enable = true;
-    iconTheme = {
-      name = "Papirus-Dark";
-      package = pkgs.papirus-icon-theme;
-      size = "32x32";
-    };
-  };
-
-  services.easyeffects.enable = true;
-  services.easyeffects.package = pkgs.easyeffects;
-
   programs.fzf = {
     enable = true;
     catppuccin.enable = true;
   };
-
-  programs.wlogout.enable = true;
-
-  wayland.windowManager.hyprland = import ./modules/desktop/hyprland.nix;
 
   programs.git = {
     enable = true;
@@ -153,40 +136,6 @@
     enable = true;
     extraConfig = "set editing-mode vi";
   };
-
-  gtk = {
-    enable = true;
-    catppuccin.enable = true;
-    cursorTheme = {
-      name = "Bibata-Modern-Ice";
-      size = 26;
-    };
-    iconTheme = { name = "Papirus-Dark"; };
-  };
-
-  qt = {
-    enable = true;
-    platformTheme.name = "qtct";
-    style.name = "kvantum";
-  };
-
-  xdg.configFile = {
-    "Kvantum/kvantum.kvconfig".text = ''
-      [General]
-      theme=GraphiteNordDark
-    '';
-
-    "Kvantum/GraphiteNord".source =
-      "${pkgs.graphite-kde-theme}/share/Kvantum/GraphiteNord";
-  };
-
-  programs.rofi = {
-    enable = true;
-    package = pkgs.rofi-wayland;
-    theme = "gruvbox-dark";
-  };
-
-  programs.waybar = import ./modules/desktop/waybar/waybar.nix;
 
   programs.zoxide = {
     enable = true;
