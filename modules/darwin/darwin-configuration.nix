@@ -1,6 +1,6 @@
-{ config, pkgs, self, ... }: {
+{ config, pkgs, ... }: {
   # Expose the package set, including overlays, for convenience.
-  darwinPackages = self.darwinConfigurations."Youwens-MacBook-Pro".pkgs;
+  # darwinPackages = config.self.darwinConfigurations."Youwens-MacBook-Pro".pkgs;
 
   # List packages installed in system profile. To search by name, run:
   # $ nix-env -qaP | grep wget
@@ -39,4 +39,14 @@
   };
 
   security.pam.enableSudoTouchIdAuth = true;
+
+  fonts = {
+    packages = with pkgs; [
+      noto-fonts
+      noto-fonts-cjk
+      noto-fonts-emoji
+      (nerdfonts.override { fonts = [ "CascadiaCode" ]; })
+      (google-fonts.override { fonts = [ "Lora" ]; })
+    ];
+  };
 }

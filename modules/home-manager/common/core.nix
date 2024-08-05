@@ -12,10 +12,9 @@
 
   programs.fzf = {
     enable = true;
-    catppuccin.enable = true;
   };
 
-  programs.git = {
+  programs.git = pkgs.lib.mkDefault {
     enable = true;
     userName = "Youwen Wu";
     userEmail = "youwenw@gmail.com";
@@ -29,8 +28,6 @@
 
   programs.lazygit = {
     enable = true;
-    catppuccin.enable = true;
-    catppuccin.flavor = "macchiato";
     settings = {
       git.paging = {
         colorArg = "always";
@@ -40,10 +37,6 @@
   };
 
   programs.bat.enable = true;
-  programs.bat.catppuccin = {
-    enable = true;
-    flavor = "macchiato";
-  };
 
   programs.ripgrep.enable = true;
 
@@ -74,8 +67,6 @@
 
   programs.fish = {
     enable = true;
-    catppuccin.enable = true;
-    catppuccin.flavor = "mocha";
     shellAliases = {
       rebuild = "sudo nixos-rebuild switch";
       ls = "eza -l --icons=auto";

@@ -66,6 +66,7 @@
                 ./modules/home-manager/linux/desktop.nix
                 ./modules/home-manager/linux/programs.nix
                 ./modules/home-manager/common/core.nix
+		./modules/home-manager/common/catppuccin.nix
                 inputs.catppuccin.homeManagerModules.catppuccin
               ];
             };
@@ -78,7 +79,7 @@
       darwinConfigurations."Youwens-MacBook-Pro" = nix-darwin.lib.darwinSystem {
         specialArgs = { inherit inputs; };
         modules = [
-          ./modules/common/fonts.nix
+          ./modules/darwin/darwin-configuration.nix
           home-manager.darwinModules.home-manager
           {
             home-manager.useGlobalPkgs = true;
