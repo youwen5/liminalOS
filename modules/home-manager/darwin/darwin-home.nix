@@ -1,19 +1,52 @@
-{ pkgs, ... }: {
-  programs.bash.enable = true;
-  programs.nushell = {
-    enable = true;
-    configFile.text = ''
-      $env.config = {
-        edit_mode: vi,
-        show_banner: false
-      }
-    '';
-  };
+{ inputs, config, pkgs, ... }:
 
-  programs.fzf = {
-    enable = true;
-    catppuccin.enable = true;
-  };
+{
+  home.username = "youwen";
+  home.homeDirectory = "/Users/youwen";
+
+  # link the configuration file in current directory to the specified location in home directory
+  # home.file.".config/i3/wallpaper.jpg".source = ./wallpaper.jpg;
+
+  # link all files in `./scripts` to `~/.config/i3/scripts`
+  # home.file.".config/i3/scripts" = {
+  #   source = ./scripts;
+  #   recursive = true;   # link recursively
+  #   executable = true;  # make all files executable
+  # };
+
+  # encode the file content in nix configuration file directly
+  # home.file.".xxx".text = ''
+  #     xxx
+  # '';
+
+  home.file.".config/neofetch/config.conf".source = ./config/neofetch.conf;
+
+  # Packages that should be installed to the user profile.
+  home.packages = with pkgs; [
+    neofetch
+
+    # archives
+    zip
+    xz
+    unzip
+    p7zip
+
+    # utils
+    nurl # helps fetch git data for nixpkgs
+
+    # nix related
+    #
+    # it provides the command `nom` works just like `nix`
+    # with more details log output
+    nix-output-monitor
+
+    # dev tools
+    nodePackages_latest.pnpm
+    rustfmt
+    rust-analyzer
+  ];
+
+  programs.fzf = { enable = true; };
 
   programs.git = {
     enable = true;
@@ -22,15 +55,13 @@
     delta.enable = true;
     extraConfig = {
       init.defaultBranch = "main";
-      commit.gpgsign = "true";
+      commit.gpgsign = "false";
       user.signingkey = "8F5E6C1AF90976CA7102917A865658ED1FE61EC3";
     };
   };
 
   programs.lazygit = {
     enable = true;
-    catppuccin.enable = true;
-    catppuccin.flavor = "macchiato";
     settings = {
       git.paging = {
         colorArg = "always";
@@ -40,12 +71,22 @@
   };
 
   programs.bat.enable = true;
-  programs.bat.catppuccin = {
-    enable = true;
-    flavor = "macchiato";
-  };
 
   programs.ripgrep.enable = true;
+
+  programs.kitty = {
+    enable = true;
+    theme = "Tokyo Night";
+    font.name = "CaskaydiaCove Nerd Font";
+    settings = {
+      font_size = 12;
+      window_padding_width = "8 8 0";
+      confirm_os_window_close = -1;
+      shell_integration = "enabled";
+      enable_audio_bell = "no";
+      background_opacity = "0.8";
+    };
+  };
 
   programs.readline = {
     enable = true;
@@ -66,7 +107,7 @@
 
   programs.oh-my-posh = {
     enable = true;
-    # enableZshIntegration = true;
+    enableZshIntegration = true;
     enableFishIntegration = true;
     enableBashIntegration = true;
     useTheme = "gruvbox";
@@ -74,8 +115,6 @@
 
   programs.fish = {
     enable = true;
-    catppuccin.enable = true;
-    catppuccin.flavor = "mocha";
     shellAliases = {
       rebuild = "sudo nixos-rebuild switch";
       ls = "eza -l --icons=auto";
@@ -135,6 +174,16 @@
     ];
   };
 
+  programs.nushell = {
+    enable = true;
+    configFile.text = ''
+      $env.config = {
+        edit_mode: vi,
+        show_banner: false
+      }
+    '';
+  };
+
   programs.fd.enable = true;
 
   programs.btop = {
@@ -152,10 +201,27 @@
     enableBashIntegration = true;
   };
 
+  programs.bash.enable = true;
+  programs.zsh.enable = true;
+
   programs.neovim = {
     enable = true;
     defaultEditor = true;
     viAlias = true;
     vimAlias = true;
   };
+
+  # This value determines the home Manager release that your
+  # configuration is compatible with. This helps avoid breakage
+  # when a new home Manager release introduces backwards
+  # incompatible changes.
+  home.stateVersion = "24.05";
+  #
+  # You can update home Manager without changing this value. See
+  # the home Manager release notes for a list of state version
+  # changes in each release.
+
+  # Let home Manager install and manage itself.
+  programs.home-manager.enable = true;
+
 }

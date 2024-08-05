@@ -1,4 +1,7 @@
-{ config, pkgs, ... }: {
+{ config, pkgs, self, ... }: {
+  # Expose the package set, including overlays, for convenience.
+  darwinPackages = self.darwinConfigurations."Youwens-MacBook-Pro".pkgs;
+
   # List packages installed in system profile. To search by name, run:
   # $ nix-env -qaP | grep wget
   environment.systemPackages = with pkgs; [ ];

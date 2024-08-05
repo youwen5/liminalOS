@@ -9,6 +9,17 @@
     };
     stablepkgs.url = "github:nixos/nixpkgs/nixos-24.05";
     bleedingpkgs.url = "github:nixos/nixpkgs/master";
+    nix-darwin.url = "github:LnL7/nix-darwin";
+    nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
+    nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew";
+    homebrew-core = {
+      url = "github:homebrew/homebrew-core";
+      flake = false;
+    };
+    homebrew-cask = {
+      url = "github:homebrew/homebrew-cask";
+      flake = false;
+    };
     catppuccin.url = "github:catppuccin/nix";
     lanzaboote = {
       url = "github:nix-community/lanzaboote/v0.4.1";
@@ -24,7 +35,7 @@
   };
 
   outputs = { self, nixpkgs, home-manager, catppuccin, lanzaboote, stablepkgs
-    , bleedingpkgs, lix-module, ... }@inputs: {
+    , bleedingpkgs, lix-module, nix-darwin, nix-homebrew, ... }@inputs: rec {
       formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixfmt;
       nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs; };
@@ -51,7 +62,7 @@
             home-manager.backupFileExtension = "backup";
             home-manager.users.youwen = {
               imports = [
-                ./home.nix
+                ./modules/home-manager/linux/linux-home.nix
                 ./modules/home-manager/linux/desktop.nix
                 ./modules/home-manager/linux/programs.nix
                 ./modules/home-manager/common/core.nix
@@ -59,6 +70,31 @@
               ];
             };
           }
+        ];
+      };
+      formatter.aarch64-darwin = nixpkgs.legacyPackages.aarch64-darwin.nixfmt;
+      # Build darwin flake using:
+      # $ darwin-rebuild build --flake .#Youwens-MacBook-Pro
+      darwinConfigurations."Youwens-MacBook-Pro" = nix-darwin.lib.darwinSystem {
+        specialArgs = { inherit inputs; };
+        modules = [
+          ./modules/common/fonts.nix
+          home-manager.darwinModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users.youwen.imports = [
+              ./modules/home-manager/darwin/darwin-home.nix
+              ./modules/home-manager/common/core.nix
+            ];
+            home-manager.backupFileExtension = "backup";
+
+            # Optionally, use home-manager.extraSpecialArgs to pass
+            # arguments to home.nix
+          }
+          nix-homebrew.darwinModules.nix-homebrew
+          ./modules/darwin/homebrew.nix
+          ./modules/darwin/yabai.nix
         ];
       };
     };
