@@ -65,7 +65,7 @@
     useTheme = "gruvbox";
   };
 
-  programs.fish = {
+  programs.fish = pkgs.lib.mkDefault {
     enable = true;
     shellAliases = {
       rebuild = "sudo nixos-rebuild switch";
