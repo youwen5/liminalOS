@@ -30,7 +30,7 @@
         specialArgs = { inherit inputs; };
         system = "x86_64-linux";
         modules = [
-          ./configuration.nix
+          ./modules/nixos/nixos-configuration.nix
           ./modules/nixos/secureboot.nix
           ./modules/nixos/gaming.nix
           ./modules/nixos/audio.nix
