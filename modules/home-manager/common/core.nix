@@ -73,7 +73,7 @@
     useTheme = "gruvbox";
   };
 
-  programs.fish = {
+  programs.fish = pkgs.lib.mkDefault {
     enable = true;
     catppuccin.enable = true;
     catppuccin.flavor = "mocha";
