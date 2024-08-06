@@ -21,7 +21,6 @@
       mouse_drop_action = "swap";
     };
   };
-  services.skhd = { enable = true; };
   services.jankyborders = {
     enable = true;
     hidpi = true;
