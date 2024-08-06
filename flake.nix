@@ -48,6 +48,7 @@
           ./modules/nixos/nvidia.nix
           ./modules/nixos/networking.nix
           ./modules/common/fonts.nix
+          ./machines/nixos/hardware-configuration.nix
 
           catppuccin.nixosModules.catppuccin
 
