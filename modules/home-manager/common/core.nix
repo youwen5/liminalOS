@@ -10,9 +10,7 @@
     '';
   };
 
-  programs.fzf = pkgs.lib.mkDefault {
-    enable = true;
-  };
+  programs.fzf = pkgs.lib.mkDefault { enable = true; };
 
   programs.git = pkgs.lib.mkDefault {
     enable = true;

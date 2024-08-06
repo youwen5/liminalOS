@@ -67,7 +67,7 @@
                 ./modules/home-manager/linux/desktop.nix
                 ./modules/home-manager/linux/programs.nix
                 ./modules/home-manager/common/core.nix
-		./modules/home-manager/linux/catppuccin.nix
+                ./modules/home-manager/linux/catppuccin.nix
                 inputs.catppuccin.homeManagerModules.catppuccin
               ];
             };

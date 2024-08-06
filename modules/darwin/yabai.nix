@@ -12,7 +12,7 @@
       left_padding = 12;
       right_padding = 12;
       window_gap = 10;
-      split_ratio = 0.50;
+      split_ratio = 0.5;
       split_type = "auto";
       layout = "bsp";
       mouse_modifier = "fn";
