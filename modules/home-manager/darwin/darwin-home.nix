@@ -1,8 +1,8 @@
-{ config, pkgs, ... }:
+{ inputs, config, pkgs, ... }:
 
 {
   home.username = "youwen";
-  home.homeDirectory = "/home/youwen";
+  home.homeDirectory = "/Users/youwen";
 
   # link the configuration file in current directory to the specified location in home directory
   # home.file.".config/i3/wallpaper.jpg".source = ./wallpaper.jpg;
@@ -19,11 +19,8 @@
   #     xxx
   # '';
 
-  home.file.".config/neofetch/config.conf".source = ./config/neofetch.conf;
-  home.file.".wallpapers" = {
-    source = ./wallpapers;
-    recursive = true;
-  };
+  home.file.".config/neofetch/config.conf".source =
+    ../../../config/neofetch.conf;
 
   # Packages that should be installed to the user profile.
   home.packages = with pkgs; [
@@ -44,42 +41,18 @@
     # with more details log output
     nix-output-monitor
 
-    # system tools
-    pciutils # lspci
-    usbutils # lsusb
-
-    # desktop utils
-    wl-clipboard
-    grim
-    slurp
-    swappy
-    pavucontrol
-    swww
-    waypaper
-
-    # desktop apps
-    dolphin
-    bitwarden-desktop
-    thunderbird
-    spotify
-    vesktop
-    signal-desktop
-    modrinth-app
-    lutris
-    wine
-
     # dev tools
     nodePackages_latest.pnpm
     rustfmt
     rust-analyzer
-
-    # desktop ricing
-    bibata-cursors
-    libsForQt5.qtstyleplugin-kvantum
-    libsForQt5.qt5ct
-    papirus-icon-theme
-    libsForQt5.qt5ct
   ];
+
+  programs.git.extraConfig.commit.gpgsign = "false";
+
+  programs.oh-my-posh.enableZshIntegration = true;
+
+  programs.bash.enable = true;
+  programs.zsh.enable = true;
 
   # This value determines the home Manager release that your
   # configuration is compatible with. This helps avoid breakage
@@ -93,4 +66,5 @@
 
   # Let home Manager install and manage itself.
   programs.home-manager.enable = true;
+
 }

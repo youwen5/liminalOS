@@ -1,5 +1,4 @@
-{ pkgs, ...}:
-{
+{ pkgs, ... }: {
   wayland.windowManager.hyprland = import ./hyprland-conf.nix;
 
   # Audio effects and EQ tool

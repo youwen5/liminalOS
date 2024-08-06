@@ -1,7 +1,6 @@
-{ pkgs, ... }:
-{
-  programs.bash.enable = true;
-  programs.nushell = {
+{ pkgs, ... }: {
+  programs.bash.enable = pkgs.lib.mkDefault true;
+  programs.nushell = pkgs.lib.mkDefault {
     enable = true;
     configFile.text = ''
       $env.config = {
@@ -11,12 +10,9 @@
     '';
   };
 
-  programs.fzf = {
-    enable = true;
-    catppuccin.enable = true;
-  };
+  programs.fzf = pkgs.lib.mkDefault { enable = true; };
 
-  programs.git = {
+  programs.git = pkgs.lib.mkDefault {
     enable = true;
     userName = "Youwen Wu";
     userEmail = "youwenw@gmail.com";
@@ -28,10 +24,8 @@
     };
   };
 
-  programs.lazygit = {
+  programs.lazygit = pkgs.lib.mkDefault {
     enable = true;
-    catppuccin.enable = true;
-    catppuccin.flavor = "macchiato";
     settings = {
       git.paging = {
         colorArg = "always";
@@ -40,32 +34,28 @@
     };
   };
 
-  programs.bat.enable = true;
-  programs.bat.catppuccin = {
-    enable = true;
-    flavor = "macchiato";
-  };
+  programs.bat.enable = pkgs.lib.mkDefault true;
 
-  programs.ripgrep.enable = true;
+  programs.ripgrep.enable = pkgs.lib.mkDefault true;
 
   programs.readline = {
     enable = true;
     extraConfig = "set editing-mode vi";
   };
 
-  programs.zoxide = {
+  programs.zoxide = pkgs.lib.mkDefault {
     enable = true;
     # enableZshIntegration = true;
     enableFishIntegration = true;
     enableNushellIntegration = true;
   };
 
-  programs.gh = {
+  programs.gh = pkgs.lib.mkDefault {
     enable = true;
     extensions = [ pkgs.github-copilot-cli ];
   };
 
-  programs.oh-my-posh = {
+  programs.oh-my-posh = pkgs.lib.mkDefault {
     enable = true;
     # enableZshIntegration = true;
     enableFishIntegration = true;
@@ -75,8 +65,6 @@
 
   programs.fish = pkgs.lib.mkDefault {
     enable = true;
-    catppuccin.enable = true;
-    catppuccin.flavor = "mocha";
     shellAliases = {
       rebuild = "sudo nixos-rebuild switch";
       ls = "eza -l --icons=auto";
@@ -136,10 +124,9 @@
     ];
   };
 
+  programs.fd.enable = pkgs.lib.mkDefault true;
 
-  programs.fd.enable = true;
-
-  programs.btop = {
+  programs.btop = pkgs.lib.mkDefault {
     enable = true;
     settings = {
       color_theme = "tokyo-night";
@@ -148,13 +135,13 @@
     };
   };
 
-  programs.eza = {
+  programs.eza = pkgs.lib.mkDefault {
     enable = true;
     enableFishIntegration = true;
     enableBashIntegration = true;
   };
 
-  programs.neovim = {
+  programs.neovim = pkgs.lib.mkDefault {
     enable = true;
     defaultEditor = true;
     viAlias = true;
