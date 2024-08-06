@@ -19,9 +19,9 @@
   #     xxx
   # '';
 
-  home.file.".config/neofetch/config.conf".source = ./config/neofetch.conf;
+  home.file.".config/neofetch/config.conf".source = ../../../config/neofetch.conf;
   home.file.".wallpapers" = {
-    source = ./wallpapers;
+    source = ../../../wallpapers;
     recursive = true;
   };
 
