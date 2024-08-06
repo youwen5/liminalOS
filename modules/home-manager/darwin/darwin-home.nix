@@ -46,39 +46,10 @@
     rust-analyzer
   ];
 
-  programs.git = {
-    enable = true;
-    userName = "Youwen Wu";
-    userEmail = "youwenw@gmail.com";
-    delta.enable = true;
-    extraConfig = {
-      init.defaultBranch = "main";
-      commit.gpgsign = "false";
-      user.signingkey = "8F5E6C1AF90976CA7102917A865658ED1FE61EC3";
-    };
-  };
+  programs.git.extraConfig.commit.gpgsign = "false";
 
-  programs.kitty = {
-    enable = true;
-    theme = "Tokyo Night";
-    font.name = "CaskaydiaCove Nerd Font";
-    settings = {
-      font_size = 12;
-      window_padding_width = "8 8 0";
-      confirm_os_window_close = -1;
-      shell_integration = "enabled";
-      enable_audio_bell = "no";
-      background_opacity = "0.8";
-    };
-  };
+  programs.oh-my-posh.enableZshIntegration = true;
 
-  programs.oh-my-posh = {
-    enable = true;
-    enableZshIntegration = true;
-    enableFishIntegration = true;
-    enableBashIntegration = true;
-    useTheme = "gruvbox";
-  };
   programs.bash.enable = true;
   programs.zsh.enable = true;
 
