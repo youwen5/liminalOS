@@ -78,14 +78,13 @@
           specialArgs = { inherit inputs; };
           system = "x86_64-linux";
           modules = [
-            ./modules/nixos/nixos-configuration.nix
+            ./hosts/callisto
             ./modules/nixos/secureboot.nix
             ./modules/nixos/gaming.nix
             ./modules/nixos/audio.nix
             ./modules/nixos/nvidia.nix
             ./modules/nixos/networking.nix
             ./modules/common/fonts.nix
-            ./machines/nixos/hardware-configuration.nix
 
             catppuccin.nixosModules.catppuccin
 
