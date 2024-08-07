@@ -79,18 +79,18 @@
           system = "x86_64-linux";
           modules = [
             ./hosts/callisto
-            ./modules/nixos/secureboot.nix
-            ./modules/nixos/gaming.nix
-            ./modules/nixos/audio.nix
-            ./modules/nixos/nvidia.nix
-            ./modules/nixos/networking.nix
-            ./modules/common/fonts.nix
+            # ./modules/nixos/secureboot.nix
+            # ./modules/nixos/gaming.nix
+            # ./modules/nixos/audio.nix
+            # ./modules/nixos/nvidia.nix
+            # ./modules/nixos/networking.nix
+            # ./modules/common/fonts.nix
 
             catppuccin.nixosModules.catppuccin
 
-            lix-module.nixosModules.default
+            # lix-module.nixosModules.default
 
-            lanzaboote.nixosModules.lanzaboote
+            # lanzaboote.nixosModules.lanzaboote
 
             home-manager.nixosModules.home-manager
             {
@@ -99,11 +99,11 @@
               home-manager.backupFileExtension = "backup";
               home-manager.users.youwen = {
                 imports = [
-                  ./users/youwen/linux/linux-home.nix
-                  ./users/youwen/linux/desktop.nix
-                  ./users/youwen/linux/programs.nix
-                  ./users/youwen/common/core.nix
-                  ./users/youwen/linux/catppuccin.nix
+                  # ./users/youwen/linux/linux-home.nix
+                  # ./users/youwen/linux/desktop.nix
+                  # ./users/youwen/linux/programs.nix
+                  # ./users/youwen/common/core.nix
+                  # ./users/youwen/linux/catppuccin.nix
                   inputs.catppuccin.homeManagerModules.catppuccin
                 ];
               };

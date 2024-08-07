@@ -7,23 +7,19 @@
 {
   imports = [ # Include the results of the hardware scan.
     ./hardware-configuration.nix
+    ./apple-silicon-support
   ];
 
-  # Bootloader.
-  boot.loader = {
-    efi.canTouchEfiVariables = true;
-    timeout = 15;
-    systemd-boot = {
-      enable = true;
-      consoleMode = "auto";
-    };
-  };
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchVariables = false;
 
-  networking.hostName = "nixos"; # Define your hostname.
+  networking.hostName = "callisto"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
-  # select kernel
-  boot.kernelPackages = pkgs.linuxPackages_zen;
+  networking.wireless.iwd = {
+    enable = true;
+    settings.General.EnableNetworkConfiguration = true;
+  };
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
@@ -49,8 +45,6 @@
     LC_TELEPHONE = "en_US.UTF-8";
     LC_TIME = "en_US.UTF-8";
   };
-
-  systemd.services = { NetworkManager-wait-online.enable = false; };
 
   # Enable the X11 windowing system.
   # You can disable this if you're only using the Wayland session.
