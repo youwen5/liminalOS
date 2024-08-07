@@ -43,7 +43,7 @@
     }@inputs: rec {
       formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixfmt;
       nixosConfigurations = {
-        nixos = nixpkgs.lib.nixosSystem {
+        demeter = nixpkgs.lib.nixosSystem {
           specialArgs = { inherit inputs; };
           system = "x86_64-linux";
           modules = [
