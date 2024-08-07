@@ -1,1 +1,1 @@
-{ imports = [ ../common.nix ./desktop-only.nix ]; }
+{ imports = [ ../common.nix ]; }
