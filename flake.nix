@@ -32,10 +32,15 @@
         "https://git.lix.systems/lix-project/nixos-module/archive/2.90.0.tar.gz";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    apple-silicon = {
+      url = "github:tpwrules/nixos-apple-silicon";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = { self, nixpkgs, home-manager, catppuccin, lanzaboote, stablepkgs
-    , bleedingpkgs, lix-module, nix-darwin, nix-homebrew, ... }@inputs: rec {
+    , bleedingpkgs, lix-module, nix-darwin, nix-homebrew, apple-silicon, ...
+    }@inputs: rec {
       formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixfmt;
       nixosConfigurations = {
         nixos = nixpkgs.lib.nixosSystem {
@@ -63,7 +68,7 @@
               home-manager.backupFileExtension = "backup";
               home-manager.users.youwen = {
                 imports = [
-                  ./users/youwen/linux/linux-home.nix
+                  # ./users/youwen/linux/linux-home.nix
                   ./users/youwen/linux/desktop.nix
                   ./users/youwen/linux/programs.nix
                   ./users/youwen/common/core.nix
@@ -76,21 +81,19 @@
         };
         callisto = nixpkgs.lib.nixosSystem {
           specialArgs = { inherit inputs; };
-          system = "x86_64-linux";
+          system = "aarch64-linux";
           modules = [
             ./hosts/callisto
-            # ./modules/nixos/secureboot.nix
             # ./modules/nixos/gaming.nix
-            # ./modules/nixos/audio.nix
-            # ./modules/nixos/nvidia.nix
-            # ./modules/nixos/networking.nix
-            # ./modules/common/fonts.nix
+            ./modules/nixos/audio.nix
+            ./modules/nixos/networking.nix
+            ./modules/common/fonts.nix
+
+            apple-silicon.nixosModules.apple-silicon-support
 
             catppuccin.nixosModules.catppuccin
 
-            # lix-module.nixosModules.default
-
-            # lanzaboote.nixosModules.lanzaboote
+            lix-module.nixosModules.default
 
             home-manager.nixosModules.home-manager
             {
@@ -99,11 +102,11 @@
               home-manager.backupFileExtension = "backup";
               home-manager.users.youwen = {
                 imports = [
-                  # ./users/youwen/linux/linux-home.nix
-                  # ./users/youwen/linux/desktop.nix
-                  # ./users/youwen/linux/programs.nix
-                  # ./users/youwen/common/core.nix
-                  # ./users/youwen/linux/catppuccin.nix
+                  ./users/youwen/linux/linux-home.nix
+                  ./users/youwen/linux/desktop.nix
+                  ./users/youwen/linux/programs.nix
+                  ./users/youwen/common/core.nix
+                  ./users/youwen/linux/catppuccin.nix
                   inputs.catppuccin.homeManagerModules.catppuccin
                 ];
               };
@@ -112,6 +115,7 @@
         };
       };
       formatter.aarch64-darwin = nixpkgs.legacyPackages.aarch64-darwin.nixfmt;
+      formatter.aarch64-linux = nixpkgs.legacyPackages.aarch64-linux.nixfmt;
       # Build darwin flake using:
       # $ darwin-rebuild build --flake .#Youwens-MacBook-Pro
       darwinConfigurations."Youwens-MacBook-Pro" = nix-darwin.lib.darwinSystem {

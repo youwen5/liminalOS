@@ -60,14 +60,14 @@
 
     # desktop apps
     dolphin
-    bitwarden-desktop
+    # bitwarden-desktop
     thunderbird
-    spotify
+    # spotify
     vesktop
     signal-desktop
-    modrinth-app
-    lutris
-    wine
+    # modrinth-app
+    # lutris
+    # wine
 
     # dev tools
     nodePackages_latest.pnpm

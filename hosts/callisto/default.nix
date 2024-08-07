@@ -7,11 +7,21 @@
 {
   imports = [ # Include the results of the hardware scan.
     ./hardware-configuration.nix
-    ./apple-silicon-support
+    # ./apple-silicon-support
   ];
 
   boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchVariables = false;
+  boot.loader.efi.canTouchEfiVariables = false;
+
+  hardware.asahi = {
+    peripheralFirmwareDirectory = ./firmware;
+    useExperimentalGPUDriver = true;
+    experimentalGPUInstallMode = "overlay";
+  };
+
+  boot.extraModprobeConfig = ''
+    options hid_apple iso_layout=0
+  '';
 
   networking.hostName = "callisto"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -21,12 +31,16 @@
     settings.General.EnableNetworkConfiguration = true;
   };
 
+  nixpkgs.overlays = [ inputs.apple-silicon.overlays.apple-silicon-overlay ];
+
+  programs.light.enable = true;
+
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
   # Enable networking
-  networking.networkmanager.enable = true;
+  # networking.networkmanager.enable = true;
 
   # Set your time zone.
   time.timeZone = "America/Los_Angeles";
@@ -126,24 +140,24 @@
     wget
     git
     curl
-    librewolf
-    gnumake
-    clang
-    gcc
-    cachix
-    nodejs_22
-    cargo
-    rustc
-    gnupg
-    openssh
-    python3
+    # librewolf
+    # gnumake
+    # clang
+    # gcc
+    # cachix
+    # nodejs_22
+    # cargo
+    # rustc
+    # gnupg
+    # openssh
+    # python3
     (pkgs.catppuccin-sddm.override { flavor = "mocha"; })
-    steam-run
+    # steam-run
 
-    # deps for neovim compilation
-    lua51Packages.lua
-    lua51Packages.luarocks
-    tree-sitter
+    # # deps for neovim compilation
+    # lua51Packages.lua
+    # lua51Packages.luarocks
+    # tree-sitter
   ];
 
   environment.variables = {
@@ -172,7 +186,7 @@
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "24.05"; # Did you read the comment?
+  system.stateVersion = "24.11"; # Did you read the comment?
 
   programs.zsh.enable = false;
   programs.fish.enable = true;
