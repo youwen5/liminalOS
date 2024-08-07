@@ -87,13 +87,40 @@
   users.users.youwen = {
     isNormalUser = true;
     description = "Youwen Wu";
-    extraGroups = [ "networkmanager" "wheel" "nixos" ];
+    extraGroups = [ "networkmanager" "wheel" "nixos" "realtime" ];
   };
+
+  users.groups.realtime = { };
 
   nix.settings = {
     trusted-users = [ "root" "youwen" ];
     experimental-features = [ "nix-command" "flakes" ];
   };
+
+  services.udev.extraRules = ''
+    KERNEL=="cpu_dma_latency", GROUP="realtime"
+  '';
+
+  security.pam.loginLimits = [
+    {
+      domain = "@realtime";
+      type = "-";
+      item = "rtprio";
+      value = 98;
+    }
+    {
+      domain = "@realtime";
+      type = "-";
+      item = "memlock";
+      value = "unlimited";
+    }
+    {
+      domain = "@realtime";
+      type = "-";
+      item = "nice";
+      value = -11;
+    }
+  ];
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;

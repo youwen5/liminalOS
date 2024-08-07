@@ -37,42 +37,44 @@
   outputs = { self, nixpkgs, home-manager, catppuccin, lanzaboote, stablepkgs
     , bleedingpkgs, lix-module, nix-darwin, nix-homebrew, ... }@inputs: rec {
       formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixfmt;
-      nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit inputs; };
-        system = "x86_64-linux";
-        modules = [
-          ./modules/nixos/nixos-configuration.nix
-          ./modules/nixos/secureboot.nix
-          ./modules/nixos/gaming.nix
-          ./modules/nixos/audio.nix
-          ./modules/nixos/nvidia.nix
-          ./modules/nixos/networking.nix
-          ./modules/common/fonts.nix
-          ./machines/nixos/hardware-configuration.nix
+      nixosConfigurations = {
+        nixos = nixpkgs.lib.nixosSystem {
+          specialArgs = { inherit inputs; };
+          system = "x86_64-linux";
+          modules = [
+            ./modules/nixos/nixos-configuration.nix
+            ./modules/nixos/secureboot.nix
+            ./modules/nixos/gaming.nix
+            ./modules/nixos/audio.nix
+            ./modules/nixos/nvidia.nix
+            ./modules/nixos/networking.nix
+            ./modules/common/fonts.nix
+            ./machines/nixos/hardware-configuration.nix
 
-          catppuccin.nixosModules.catppuccin
+            catppuccin.nixosModules.catppuccin
 
-          lix-module.nixosModules.default
+            lix-module.nixosModules.default
 
-          lanzaboote.nixosModules.lanzaboote
+            lanzaboote.nixosModules.lanzaboote
 
-          home-manager.nixosModules.home-manager
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.backupFileExtension = "backup";
-            home-manager.users.youwen = {
-              imports = [
-                ./modules/home-manager/linux/linux-home.nix
-                ./modules/home-manager/linux/desktop.nix
-                ./modules/home-manager/linux/programs.nix
-                ./modules/home-manager/common/core.nix
-                ./modules/home-manager/linux/catppuccin.nix
-                inputs.catppuccin.homeManagerModules.catppuccin
-              ];
-            };
-          }
-        ];
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.backupFileExtension = "backup";
+              home-manager.users.youwen = {
+                imports = [
+                  ./users/youwen/home-manager/linux/linux-home.nix
+                  ./users/youwen/home-manager/linux/desktop.nix
+                  ./users/youwen/home-manager/linux/programs.nix
+                  ./users/youwen/home-manager/common/core.nix
+                  ./users/youwen/home-manager/linux/catppuccin.nix
+                  inputs.catppuccin.homeManagerModules.catppuccin
+                ];
+              };
+            }
+          ];
+        };
       };
       formatter.aarch64-darwin = nixpkgs.legacyPackages.aarch64-darwin.nixfmt;
       # Build darwin flake using:
