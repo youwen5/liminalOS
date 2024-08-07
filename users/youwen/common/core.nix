@@ -1,6 +1,6 @@
 { pkgs, ... }: {
-  programs.bash.enable = pkgs.lib.mkDefault true;
-  programs.nushell = pkgs.lib.mkDefault {
+  programs.bash.enable = true;
+  programs.nushell = {
     enable = true;
     configFile.text = ''
       $env.config = {
@@ -10,21 +10,21 @@
     '';
   };
 
-  programs.fzf = pkgs.lib.mkDefault { enable = true; };
+  programs.fzf = { enable = true; };
 
-  programs.git = pkgs.lib.mkDefault {
+  programs.git = {
     enable = true;
     userName = "Youwen Wu";
     userEmail = "youwenw@gmail.com";
     delta.enable = true;
     extraConfig = {
       init.defaultBranch = "main";
-      commit.gpgsign = "true";
+      commit.gpgsign = pkgs.lib.mkDefault "true";
       user.signingkey = "8F5E6C1AF90976CA7102917A865658ED1FE61EC3";
     };
   };
 
-  programs.lazygit = pkgs.lib.mkDefault {
+  programs.lazygit = {
     enable = true;
     settings = {
       git.paging = {
@@ -34,28 +34,28 @@
     };
   };
 
-  programs.bat.enable = pkgs.lib.mkDefault true;
+  programs.bat.enable = true;
 
-  programs.ripgrep.enable = pkgs.lib.mkDefault true;
+  programs.ripgrep.enable = true;
 
   programs.readline = {
     enable = true;
     extraConfig = "set editing-mode vi";
   };
 
-  programs.zoxide = pkgs.lib.mkDefault {
+  programs.zoxide = {
     enable = true;
     # enableZshIntegration = true;
     enableFishIntegration = true;
     enableNushellIntegration = true;
   };
 
-  programs.gh = pkgs.lib.mkDefault {
+  programs.gh = {
     enable = true;
     extensions = [ pkgs.github-copilot-cli ];
   };
 
-  programs.oh-my-posh = pkgs.lib.mkDefault {
+  programs.oh-my-posh = {
     enable = true;
     # enableZshIntegration = true;
     enableFishIntegration = true;
@@ -124,9 +124,9 @@
     ];
   };
 
-  programs.fd.enable = pkgs.lib.mkDefault true;
+  programs.fd.enable = true;
 
-  programs.btop = pkgs.lib.mkDefault {
+  programs.btop = {
     enable = true;
     settings = {
       color_theme = "tokyo-night";
@@ -135,13 +135,13 @@
     };
   };
 
-  programs.eza = pkgs.lib.mkDefault {
+  programs.eza = {
     enable = true;
     enableFishIntegration = true;
     enableBashIntegration = true;
   };
 
-  programs.neovim = pkgs.lib.mkDefault {
+  programs.neovim = {
     enable = true;
     defaultEditor = true;
     viAlias = true;
