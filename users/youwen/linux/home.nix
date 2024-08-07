@@ -19,7 +19,7 @@
   #     xxx
   # '';
 
-  home.file.".config/neofetch/config.conf".source = ../common/neofetch.conf
+  home.file.".config/neofetch/config.conf".source = ../common/neofetch.conf;
   home.file.".wallpapers" = {
     source = ../../../wallpapers;
     recursive = true;
@@ -33,6 +33,29 @@
   # You can update home Manager without changing this value. See
   # the home Manager release notes for a list of state version
   # changes in each release.
+
+  # Audio effects and EQ tool
+  services.easyeffects.enable = true;
+  services.easyeffects.package = pkgs.easyeffects;
+
+  # Notification daemon
+  services.dunst = {
+    enable = true;
+    catppuccin.enable = true;
+    iconTheme = {
+      name = "Papirus-Dark";
+      package = pkgs.papirus-icon-theme;
+      size = "32x32";
+    };
+  };
+
+  # Currently non-functional
+  programs.wlogout.enable = true;
+  programs.rofi = {
+    enable = true;
+    package = pkgs.rofi-wayland;
+    theme = "gruvbox-dark";
+  };
 
   # Let home Manager install and manage itself.
   programs.home-manager.enable = true;
