@@ -42,6 +42,42 @@
           specialArgs = { inherit inputs; };
           system = "x86_64-linux";
           modules = [
+            ./hosts/nixos
+            ./modules/nixos/secureboot.nix
+            ./modules/nixos/gaming.nix
+            ./modules/nixos/audio.nix
+            ./modules/nixos/nvidia.nix
+            ./modules/nixos/networking.nix
+            ./modules/common/fonts.nix
+
+            catppuccin.nixosModules.catppuccin
+
+            lix-module.nixosModules.default
+
+            lanzaboote.nixosModules.lanzaboote
+
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.backupFileExtension = "backup";
+              home-manager.users.youwen = {
+                imports = [
+                  ./users/youwen/linux/linux-home.nix
+                  ./users/youwen/linux/desktop.nix
+                  ./users/youwen/linux/programs.nix
+                  ./users/youwen/common/core.nix
+                  ./users/youwen/linux/catppuccin.nix
+                  inputs.catppuccin.homeManagerModules.catppuccin
+                ];
+              };
+            }
+          ];
+        };
+        callisto = nixpkgs.lib.nixosSystem {
+          specialArgs = { inherit inputs; };
+          system = "x86_64-linux";
+          modules = [
             ./modules/nixos/nixos-configuration.nix
             ./modules/nixos/secureboot.nix
             ./modules/nixos/gaming.nix
@@ -64,11 +100,11 @@
               home-manager.backupFileExtension = "backup";
               home-manager.users.youwen = {
                 imports = [
-                  ./users/youwen/home-manager/linux/linux-home.nix
-                  ./users/youwen/home-manager/linux/desktop.nix
-                  ./users/youwen/home-manager/linux/programs.nix
-                  ./users/youwen/home-manager/common/core.nix
-                  ./users/youwen/home-manager/linux/catppuccin.nix
+                  ./users/youwen/linux/linux-home.nix
+                  ./users/youwen/linux/desktop.nix
+                  ./users/youwen/linux/programs.nix
+                  ./users/youwen/common/core.nix
+                  ./users/youwen/linux/catppuccin.nix
                   inputs.catppuccin.homeManagerModules.catppuccin
                 ];
               };
@@ -88,8 +124,8 @@
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.users.youwen.imports = [
-              ./modules/home-manager/darwin/darwin-home.nix
-              ./modules/home-manager/common/core.nix
+              ./users/youwen/darwin/darwin-home.nix
+              ./users/youwen/common/core.nix
             ];
             home-manager.backupFileExtension = "backup";
 
