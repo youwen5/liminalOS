@@ -1,4 +1,10 @@
 {
-  imports = [ ../theming ../home.nix ../programs ../hyprland/desktop ../waybar/desktop ];
+  imports = [
+    ../theming
+    ../home.nix
+    ../programs
+    ../hyprland/desktop
+    ../waybar/desktop
+  ];
 }
 

@@ -48,17 +48,14 @@
           system = "x86_64-linux";
           modules = [
             ./hosts/nixos
-            ./modules/nixos/gaming.nix
-            ./modules/nixos/audio.nix
-            ./modules/nixos/networking.nix
-            ./modules/common/fonts.nix
+            ./modules/nixos/gaming
+            ./modules/nixos/audio
+            ./modules/nixos/networking
+            ./modules/common/fonts
 
             catppuccin.nixosModules.catppuccin
-
             lix-module.nixosModules.default
-
             lanzaboote.nixosModules.lanzaboote
-
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
@@ -66,11 +63,10 @@
               home-manager.backupFileExtension = "backup";
               home-manager.users.youwen = {
                 imports = [
-                  # ./users/youwen/linux/linux-home.nix
-                  ./users/youwen/linux/desktop.nix
-                  ./users/youwen/linux/programs.nix
-                  ./users/youwen/common/core.nix
-                  ./users/youwen/linux/catppuccin.nix
+                  ./users/youwen/linux/desktop
+                  ./users/youwen/linux/packages/x86_64
+                  ./users/youwen/linux/programs
+                  ./users/youwen/common
                   inputs.catppuccin.homeManagerModules.catppuccin
                 ];
               };
@@ -96,9 +92,9 @@
               home-manager.backupFileExtension = "backup";
               home-manager.users.youwen = {
                 imports = [
-		  ./users/youwen/common
-		  ./users/youwen/linux/laptop
-		  ./users/youwen/linux/packages/aarch-64
+                  ./users/youwen/common
+                  ./users/youwen/linux/laptop
+                  ./users/youwen/linux/packages/aarch-64
 
                   inputs.catppuccin.homeManagerModules.catppuccin
                 ];

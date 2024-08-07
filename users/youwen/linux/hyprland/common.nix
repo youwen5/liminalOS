@@ -20,19 +20,19 @@
         "$mod, T, exec, kitty"
         "$mod, E, exec, dolphin"
         "$mod, R, exec, pavucontrol"
-  
+
         # Window actions
         "$mod, Q, killactive"
         "$mod, W, togglefloating"
         "$mod, J, togglesplit"
         "$mod, Return, fullscreen"
-  
+
         # Move around
         "$mod, $Left, movefocus, l"
         "$mod, $Right, movefocus, r"
         "$mod, $Up, movefocus, u"
         "$mod, $Down, movefocus, d"
-  
+
         "$mod, 1, workspace, 1"
         "$mod, 2, workspace, 2"
         "$mod, 3, workspace, 3"
@@ -43,28 +43,28 @@
         "$mod, 8, workspace, 8"
         "$mod, 9, workspace, 9"
         "$mod, 0, workspace, 10"
-  
+
         "$mod, S, togglespecialworkspace"
-  
+
         # Move windows around
         "$mod+Shift+Ctrl, $Left, movewindow, l"
         "$mod+Shift+Ctrl, $Right, movewindow, r"
         "$mod+Shift+Ctrl, $Up, movewindow, u"
         "$mod+Shift+Ctrl, $Down, movewindow, d"
-  
+
         "$mod+Ctrl+Alt, $Right, movetoworkspace, r+1"
         "$mod+Ctrl+Alt, $Left, movetoworkspace, r-1"
-  
+
         "$mod+Ctrl, $Right, workspace, r+1"
         "$mod+Ctrl, $Left, workspace, r-1"
-  
+
         "$mod+Alt, S, movetoworkspacesilent, special"
-  
+
         # Utilities
         "$mod, Space, exec, pkill -x rofi || rofi -show drun" # Run rofi
-  
+
         ''$mod, P, exec, grim -g "$(slurp)" - | swappy -f -'' # Screenshot
-  
+
         "$mod, Backspace, exec, wlogout" # Screenshot
       ];
       bindm = [
@@ -93,7 +93,7 @@
         "opacity 0.80 0.80,class:^(qt5ct)$"
         "opacity 0.80 0.80,class:^(qt6ct)$"
         "opacity 0.80 0.80,class:^(kvantummanager)$"
-  
+
         "opacity 0.90 0.90,class:^(com.github.rafostar.Clapper)$ # Clapper-Gtk"
         "opacity 0.80 0.80,class:^(com.github.tchx84.Flatseal)$ # Flatseal-Gtk"
         "opacity 0.80 0.80,class:^(hu.kramo.Cartridges)$ # Cartridges-Gtk"
@@ -110,13 +110,13 @@
         "opacity 0.80 0.80,class:^(io.gitlab.theevilskeleton.Upscaler)$ # Upscaler-Gtk"
         "opacity 0.80 0.80,class:^(com.github.unrud.VideoDownloader)$ # VideoDownloader-Gtk"
         "opacity 0.80 0.80,class:^(lutris)$ # Lutris game launcher"
-  
+
         "opacity 0.80 0.70,class:^(pavucontrol)$"
         "opacity 0.80 0.70,class:^(blueman-manager)$"
         "opacity 0.80 0.70,class:^(nm-applet)$"
         "opacity 0.80 0.70,class:^(nm-connection-editor)$"
         "opacity 0.80 0.70,class:^(org.kde.polkit-kde-authentication-agent-1)$"
-  
+
         "float,class:^(org.kde.dolphin)$,title:^(Progress Dialog — Dolphin)$"
         "float,class:^(org.kde.dolphin)$,title:^(Copying — Dolphin)$"
         "float,title:^(Picture-in-Picture)$"

@@ -1,3 +1,1 @@
-{
-  imports = [ ../common.nix ./laptop-only.nix ];
-}
+{ imports = [ ../common.nix ./laptop-only.nix ]; }

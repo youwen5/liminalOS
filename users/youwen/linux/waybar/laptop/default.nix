@@ -9,8 +9,10 @@
         # width = 1000;
         reload-style-on-change = true;
         margin = "5px 0px 0px 0px";
-        modules-left = [ "hyprland/window" "hyprland/workspaces" "network" "clock" ];
-        modules-right = [ "group/hardware" "backlight" "group/adjustable" "custom/weather" ];
+        modules-left =
+          [ "hyprland/window" "hyprland/workspaces" "network" "clock" ];
+        modules-right =
+          [ "group/hardware" "backlight" "group/adjustable" "custom/weather" ];
         # modules-center = [ "network" "group/hardware" "clock" ];
         "hyprland/workspaces" = {
           active-only = false;
