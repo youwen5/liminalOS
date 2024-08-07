@@ -25,63 +25,6 @@
     source = ../../../wallpapers;
     recursive = true;
   };
-
-  # Packages that should be installed to the user profile.
-  home.packages = with pkgs; [
-    neofetch
-
-    # archives
-    zip
-    xz
-    unzip
-    p7zip
-
-    # utils
-    nurl # helps fetch git data for nixpkgs
-
-    # nix related
-    #
-    # it provides the command `nom` works just like `nix`
-    # with more details log output
-    nix-output-monitor
-
-    # system tools
-    pciutils # lspci
-    usbutils # lsusb
-
-    # desktop utils
-    wl-clipboard
-    grim
-    slurp
-    swappy
-    pavucontrol
-    swww
-    waypaper
-
-    # desktop apps
-    dolphin
-    # bitwarden-desktop
-    thunderbird
-    # spotify
-    vesktop
-    signal-desktop
-    # modrinth-app
-    # lutris
-    # wine
-
-    # dev tools
-    nodePackages_latest.pnpm
-    rustfmt
-    rust-analyzer
-
-    # desktop ricing
-    bibata-cursors
-    libsForQt5.qtstyleplugin-kvantum
-    libsForQt5.qt5ct
-    papirus-icon-theme
-    libsForQt5.qt5ct
-  ];
-
   # This value determines the home Manager release that your
   # configuration is compatible with. This helps avoid breakage
   # when a new home Manager release introduces backwards

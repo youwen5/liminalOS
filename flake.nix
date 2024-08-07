@@ -84,17 +84,13 @@
           system = "aarch64-linux";
           modules = [
             ./hosts/callisto
-            # ./modules/nixos/gaming.nix
-            ./modules/nixos/audio.nix
-            ./modules/nixos/networking.nix
-            ./modules/common/fonts.nix
+            ./modules/nixos/audio
+            ./modules/nixos/networking
+            ./modules/common/fonts
 
             apple-silicon.nixosModules.apple-silicon-support
-
             catppuccin.nixosModules.catppuccin
-
             lix-module.nixosModules.default
-
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
@@ -102,11 +98,10 @@
               home-manager.backupFileExtension = "backup";
               home-manager.users.youwen = {
                 imports = [
-                  ./users/youwen/linux/linux-home.nix
-                  ./users/youwen/linux/desktop.nix
-                  ./users/youwen/linux/programs.nix
-                  ./users/youwen/common/core.nix
-                  ./users/youwen/linux/catppuccin.nix
+		  ./users/youwen/common
+		  ./users/youwen/linux/laptop
+		  ./users/youwen/linux/packages/aarch-64
+
                   inputs.catppuccin.homeManagerModules.catppuccin
                 ];
               };
