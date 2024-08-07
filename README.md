@@ -1,6 +1,26 @@
-# NixOS Configuration Files
+# liminalOS
 
-This repository directly mirrors `/etc/nixos` on my main NixOS machine. In the future, it will be modularized to support deployment across multiple machines.
+This is a repository that implements liminalOS, my personal Linux distribution based on [NixOS](https://nixos.org/).
+
+## Installation guide
+
+TBD. May use `deploy-rs` or the in-house [dartgun](https://github.com/youwen5/dartgun) tool for easy deployment.
+
+## FAQ
+
+### This looks like a collection of NixOS configuration files and modules. What makes it a distinct distribution?
+
+Most Linux[^1] users will agree that any self-respecting distribution must include at least the following: installer, package manager, and some set of default packages. Therefore, anything that implements the aforementioned items must also be a Linux distribution.
+
+liminalOS comes with the Nix package manager (nothing says you need _a unique_ package manager. Ubuntu and Debian are distinct distributions yet both use `apt`), the Hyprland desktop environment as well as various applications installed by default, and [the means to generate an installer](https://nixos.wiki/wiki/Creating_a_NixOS_live_CD). Therefore, liminalOS is a Linux distribution. QED.[^2]
+
+### Should I actually install this?
+
+No.
+
+[^1]: also known as GNU/Linux, GNU+Linux, Freedesktop/systemd/musl/busybox Linux, Linux+friends, etc
+
+[^2]: disclaimer: this is unfortunately not actually how the converse works. $A \implies B$ does not necessarily imply $B \implies A$. I hope this satiates the rigor-hungry mathematicians reading.
 
 ## Keybinds
 
