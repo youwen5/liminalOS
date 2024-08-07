@@ -23,6 +23,8 @@
     options hid_apple iso_layout=0
   '';
 
+  boot.kernelParams = [ "apple_dcp.show_notch=1" ];
+
   networking.hostName = "callisto"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
