@@ -1,5 +1,5 @@
 * {
-  font-size: 10px;
+  font-size: 12px;
 }
 
 window#waybar {
@@ -59,6 +59,10 @@ window#waybar {
   border-top-right-radius: 0px;
   border-bottom-right-radius: 0px;
 }
+#network {
+  margin-left: 15px;
+  padding-right: 15px;
+}
 #mpris {
   padding-left: 0px;
   margin-left: 0px;
@@ -76,9 +80,9 @@ window#waybar {
 #memory,
 #cpu {
   padding-right: 2px;
-  /* border-top-right-radius: 0px; */
-  /* border-bottom-right-radius: 0px; */
-  /* border-right-width: 0px; */
+  border-top-right-radius: 0px; 
+  border-bottom-right-radius: 0px; 
+  border-right-width: 0px; 
 }
 #memory,
 #battery {
@@ -88,14 +92,17 @@ window#waybar {
   border-bottom-left-radius: 0px;
   border-left-width: 0px;
 }
+#cpu {
+  margin-right: 0px;
+}
 #battery {
   padding-right: 13px;
 }
 #custom-weather {
-  margin-right: 0px;
+  margin-right: 10px;
 }
 
 #window {
-  margin-right: 0px;
-  margin-left: 0px;
+  margin-right: 10px;
+  margin-left: 10px;
 }

@@ -6,12 +6,12 @@
         layer = "top";
         position = "top";
         height = 24;
-        width = 1000;
+        # width = 1000;
         reload-style-on-change = true;
-        margin = "10px 0px 0px 0px";
-        modules-left = [ "hyprland/window" "hyprland/workspaces" ];
-        modules-right = [ "backlight" "group/adjustable" "custom/weather" ];
-        modules-center = [ "network" "group/hardware" "clock" ];
+        margin = "5px 0px 0px 0px";
+        modules-left = [ "hyprland/window" "hyprland/workspaces" "network" "clock" ];
+        modules-right = [ "group/hardware" "backlight" "group/adjustable" "custom/weather" ];
+        # modules-center = [ "network" "group/hardware" "clock" ];
         "hyprland/workspaces" = {
           active-only = false;
           all-outputs = false;
@@ -23,7 +23,7 @@
         };
         "group/hardware" = {
           orientation = "inherit";
-          modules = [ "cpu" "memory" "battery" ];
+          modules = [ "cpu" "battery" ];
         };
         "group/adjustable" = {
           orientation = "inherit";
