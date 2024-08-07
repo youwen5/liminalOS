@@ -31,9 +31,11 @@ The modules in liminalOS are designed to be utilized by a wide variety of machin
 
 The [flake.nix](/flake.nix) currently contains configuration for three hosts:
 
-- "callisto": a Macbook Pro M1 (2021) running under Asahi Linux. Imports the laptop module sets as well as the core NixOS module sets.
-- "demeter": a custom desktop with an i7-13700KF and RTX 4080. Imports the desktop module, the core NixOS modules, and additionally the gaming module.
-- "phobos": Macbook Pro M1 (2021) running macOS with nix-darwin. Imports the core home-manager module as well as some darwin-specific modules for window managers and the like.
+| Hostname   | Description                                                                                                                                                         |
+| ---------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| "callisto" | a Macbook Pro M1 (2021) running under Asahi Linux. Imports the laptop module sets as well as the core NixOS module sets.                                            |
+| "demeter"  | a custom desktop with an i7-13700KF and RTX 4080. Imports the desktop module, the core NixOS modules, and additionally the gaming module.                           |
+| "phobos"   | Macbook Pro M1 (2021) running macOS with nix-darwin. Imports the core home-manager module as well as some darwin-specific modules for window managers and the like. |
 
 [^1]: also known as GNU/Linux, GNU+Linux, Freedesktop/systemd/musl/busybox Linux, Linux+friends, etc
 
