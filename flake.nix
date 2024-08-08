@@ -110,7 +110,7 @@
       darwinConfigurations.phobos = nix-darwin.lib.darwinSystem {
         specialArgs = { inherit inputs; };
         modules = [
-	  ./hosts/phobos
+          ./hosts/phobos
           home-manager.darwinModules.home-manager
           {
             home-manager.useGlobalPkgs = true;
@@ -127,7 +127,7 @@
           nix-homebrew.darwinModules.nix-homebrew
           ./modules/darwin/homebrew.nix
           ./modules/darwin/yabai.nix
-	  ./modules/darwin/skhd.nix
+          ./modules/darwin/skhd.nix
         ];
       };
     };
