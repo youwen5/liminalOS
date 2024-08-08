@@ -107,10 +107,10 @@
       formatter.aarch64-linux = nixpkgs.legacyPackages.aarch64-linux.nixfmt;
       # Build darwin flake using:
       # $ darwin-rebuild build --flake .#Youwens-MacBook-Pro
-      darwinConfigurations."Youwens-MacBook-Pro" = nix-darwin.lib.darwinSystem {
+      darwinConfigurations.phobos = nix-darwin.lib.darwinSystem {
         specialArgs = { inherit inputs; };
         modules = [
-          ./modules/darwin/darwin-configuration.nix
+          ./hosts/phobos
           home-manager.darwinModules.home-manager
           {
             home-manager.useGlobalPkgs = true;
@@ -127,6 +127,7 @@
           nix-homebrew.darwinModules.nix-homebrew
           ./modules/darwin/homebrew.nix
           ./modules/darwin/yabai.nix
+          ./modules/darwin/skhd.nix
         ];
       };
     };
