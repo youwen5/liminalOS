@@ -1,5 +1,6 @@
 * {
   font-size: 12px;
+  font-family: CaskaydiaCove Nerd Font;
 }
 
 window#waybar {
@@ -80,9 +81,9 @@ window#waybar {
 #memory,
 #cpu {
   padding-right: 2px;
-  border-top-right-radius: 0px; 
-  border-bottom-right-radius: 0px; 
-  border-right-width: 0px; 
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+  border-right-width: 0px;
 }
 #memory,
 #battery {
