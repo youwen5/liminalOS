@@ -1,7 +1,7 @@
 {
   services.skhd = {
     enable = true;
-    config = ''
+    skhdConfig = ''
       # opens iTerm2
       alt - return : kitty
       
