@@ -47,7 +47,7 @@
           specialArgs = { inherit inputs; };
           system = "x86_64-linux";
           modules = [
-            ./hosts/nixos
+            ./hosts/demeter
             ./modules/nixos/gaming
             ./modules/nixos/audio
             ./modules/nixos/networking
