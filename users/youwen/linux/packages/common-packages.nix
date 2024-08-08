@@ -48,8 +48,9 @@ with pkgs; [
   tree-sitter
   cargo
   rustc
-  haskellPackages.stack
-  haskellPackages.ghcup
+  # currently marked broken
+  # haskellPackages.stack
+  # haskellPackages.ghcup
 
   # desktop ricing
   bibata-cursors
