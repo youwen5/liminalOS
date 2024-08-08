@@ -127,6 +127,7 @@
           nix-homebrew.darwinModules.nix-homebrew
           ./modules/darwin/homebrew.nix
           ./modules/darwin/yabai.nix
+	  ./modules/darwin/skhd.nix
         ];
       };
     };

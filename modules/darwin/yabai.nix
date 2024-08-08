@@ -21,10 +21,11 @@
       mouse_drop_action = "swap";
     };
   };
-  services.skhd = { enable = true; };
   services.jankyborders = {
     enable = true;
     hidpi = true;
+    inactive_color = "gradient(top_right=0x9992B3F5,bottom_left=0x9992B3F5)";
+    blur_radius = 5.0;
   };
 }
 
