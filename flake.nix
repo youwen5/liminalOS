@@ -51,7 +51,7 @@
             ./modules/nixos/gaming
             ./modules/nixos/audio
             ./modules/nixos/networking
-            ./modules/common/fonts
+            ./modules/nixos/fonts
 
             catppuccin.nixosModules.catppuccin
             lix-module.nixosModules.default
@@ -80,7 +80,7 @@
             ./hosts/callisto
             ./modules/nixos/audio
             ./modules/nixos/networking
-            ./modules/common/fonts
+            ./modules/nixos/fonts
 
             apple-silicon.nixosModules.apple-silicon-support
             catppuccin.nixosModules.catppuccin
