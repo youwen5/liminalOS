@@ -181,6 +181,7 @@
           "workspaces, 1, 5, wind"
         ];
       };
+      
       general = {
         gaps_in = "3";
         gaps_out = "8";
@@ -193,6 +194,12 @@
         resize_on_border = "true";
         sensitivity = "0.5";
       };
+
+      misc = {
+        disable_hyprland_logo = true;
+        disable_splash_rendering = true;
+      };
+
       decoration = {
         rounding = "10";
         drop_shadow = "false";
