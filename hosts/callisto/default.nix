@@ -165,6 +165,31 @@
   environment.variables = {
     EDITOR = "nvim";
     NIX_AUTO_RUN = 1;
+
+  };
+  services.keyd = {
+    enable = true;
+    keyboards = {
+      default = {
+        ids = [ "*" ];
+        settings = {
+          main = {
+            capslock = "esc";
+            leftmeta = "leftcontrol";
+            leftalt = "leftmeta";
+            leftcontrol = "leftalt";
+            rightmeta = "leftalt";
+            rightalt = "layer(rightalt)";
+          };
+          rightalt = {
+            i = "up";
+            j = "left";
+            k = "down";
+            l = "right";
+          };
+        };
+      };
+    };
   };
 
   # tells electron apps to use Wayland
