@@ -27,8 +27,8 @@ with pkgs; [
   slurp
   swappy
   pavucontrol
-  swww
   waypaper
+  swaybg
 
   # desktop apps
   dolphin
