@@ -71,16 +71,6 @@
     libraries = with pkgs; [ icu xorg.libXtst xorg.libXi ];
   };
 
-  # Enable the KDE Plasma Desktop Environment.
-  services.displayManager.sddm = {
-    enable = true;
-    wayland.enable = true;
-    theme = "catppuccin-mocha";
-    package = pkgs.kdePackages.sddm;
-  };
-
-  # services.desktopManager.plasma6.enable = true;
-
   # Configure keymap in X11
   services.xserver = {
     xkb.layout = "us";
@@ -153,7 +143,6 @@
     # gnupg
     # openssh
     # python3
-    (pkgs.catppuccin-sddm.override { flavor = "mocha"; })
     # steam-run
 
     # # deps for neovim compilation
