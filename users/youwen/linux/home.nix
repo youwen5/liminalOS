@@ -24,6 +24,16 @@
     source = ../../../wallpapers;
     recursive = true;
   };
+
+  home.file.".config/easyeffects/input" = {
+    source = ./easyeffects/input;
+    recursive = true;
+  };
+
+  home.file.".config/easyeffects/output" = {
+    source = ./easyeffects/output;
+    recursive = true;
+  };
   # This value determines the home Manager release that your
   # configuration is compatible with. This helps avoid breakage
   # when a new home Manager release introduces backwards
