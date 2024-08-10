@@ -68,6 +68,13 @@
         "$mod, Backspace, exec, wlogout" # show logout menu
 
         "$mod, L, exec, hyprlock"
+
+        # System control
+        ",XF86MonBrightnessDown, exec, brightnessctl set 5%-"
+        ",XF86MonBrightnessUp, exec, brightnessctl set 5%+"
+        ",XF86AudioRaiseVolume, exec, pamixer -i 5"
+        ",XF86AudioLowerVolume, exec, pamixer -d 5"
+        ",XF86AudioMute, exec, pamixer -t"
       ];
       bindm = [
         "$mod, mouse:272, movewindow"

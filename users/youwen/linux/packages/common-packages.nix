@@ -29,6 +29,8 @@ with pkgs; [
   pavucontrol
   waypaper
   swaybg
+  pamixer
+  brightnessctl
 
   # desktop apps
   dolphin
