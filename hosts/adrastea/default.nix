@@ -28,7 +28,7 @@
     pkiBundle = "/etc/secureboot";
   };
 
-  boot.initrd.luks.devices."luks-af320a0f-b388-43f5-b5a3-af2b47cfc716".device = "/dev/disk/by-uuid/af320a0f-b388-43f5-b5a3-af2b47cfc716";
+  boot.initrd.luks.devices."luks-52d1be6d-b32f-41e0-a6d7-2ff52599fe7c".device = "/dev/disk/by-uuid/52d1be6d-b32f-41e0-a6d7-2ff52599fe7c";
 
   networking.hostName = "adrastea"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
