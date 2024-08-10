@@ -19,7 +19,6 @@
   #     xxx
   # '';
 
-  home.file.".config/neofetch/config.conf".source = ../common/neofetch.conf;
   home.file.".wallpapers" = {
     source = ../../../wallpapers;
     recursive = true;

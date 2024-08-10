@@ -19,8 +19,6 @@
   #     xxx
   # '';
 
-  home.file.".config/neofetch/config.conf".source = ../common/neofetch.conf;
-
   # Packages that should be installed to the user profile.
   home.packages = with pkgs; [
     neofetch

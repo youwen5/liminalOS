@@ -67,6 +67,7 @@
                   ./users/youwen/linux/desktop
                   ./users/youwen/linux/packages/x86_64
                   ./users/youwen/linux/programs
+                  ./users/youwen/common/neofetch
                   ./users/youwen/common
                   inputs.catppuccin.homeManagerModules.catppuccin
                 ];
@@ -95,6 +96,7 @@
               home-manager.users.youwen = {
                 imports = [
                   ./users/youwen/common
+                  ./users/youwen/common/neofetch/asahi-only.nix
                   ./users/youwen/linux/laptop
                   ./users/youwen/linux/packages/aarch-64
 
@@ -129,6 +131,7 @@
                   ./users/youwen/linux/packages/x86_64
                   ./users/youwen/linux/programs
                   ./users/youwen/common
+                  ./users/youwen/common/neofetch
                   ./hosts/adrastea/home-manager-overrides.nix
                   inputs.catppuccin.homeManagerModules.catppuccin
                 ];
@@ -152,6 +155,7 @@
             home-manager.users.youwen.imports = [
               ./users/youwen/darwin/darwin-home.nix
               ./users/youwen/common/core.nix
+              ./users/youwen/common/neofetch
             ];
             home-manager.backupFileExtension = "backup";
 
