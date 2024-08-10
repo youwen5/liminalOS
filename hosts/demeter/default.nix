@@ -28,6 +28,8 @@
     pkiBundle = "/etc/secureboot";
   };
 
+  boot.initrd.luks.devices."luks-af320a0f-b388-43f5-b5a3-af2b47cfc716".device = "/dev/disk/by-uuid/af320a0f-b388-43f5-b5a3-af2b47cfc716";
+
   networking.hostName = "demeter"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
