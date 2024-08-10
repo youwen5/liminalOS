@@ -104,6 +104,37 @@
             }
           ];
         };
+        adrastea = nixpkgs.lib.nixosSystem {
+          specialArgs = { inherit inputs; };
+          system = "x86_64-linux";
+          modules = [
+            ./hosts/adrastea
+            ./modules/nixos/gaming
+            ./modules/nixos/audio
+            ./modules/nixos/networking
+            ./modules/nixos/fonts
+            ./modules/nixos/greeter
+
+            catppuccin.nixosModules.catppuccin
+            lix-module.nixosModules.default
+            lanzaboote.nixosModules.lanzaboote
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.backupFileExtension = "backup";
+              home-manager.users.youwen = {
+                imports = [
+                  ./users/youwen/linux/laptop
+                  ./users/youwen/linux/packages/x86_64
+                  ./users/youwen/linux/programs
+                  ./users/youwen/common
+                  inputs.catppuccin.homeManagerModules.catppuccin
+                ];
+              };
+            }
+          ];
+        };
       };
       formatter.aarch64-darwin = nixpkgs.legacyPackages.aarch64-darwin.nixfmt;
       formatter.aarch64-linux = nixpkgs.legacyPackages.aarch64-linux.nixfmt;
