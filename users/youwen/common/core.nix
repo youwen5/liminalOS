@@ -1,4 +1,9 @@
 { pkgs, ... }: {
+  home.file.".essentials" = {
+    source = ./essentials;
+    recursive = true;
+  };
+
   programs.bash.enable = true;
   programs.nushell = {
     enable = true;
