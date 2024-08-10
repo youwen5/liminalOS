@@ -117,7 +117,7 @@
 
             catppuccin.nixosModules.catppuccin
             lix-module.nixosModules.default
-            lanzaboote.nixosModules.lanzaboote
+            # lanzaboote.nixosModules.lanzaboote
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
@@ -129,6 +129,7 @@
                   ./users/youwen/linux/packages/x86_64
                   ./users/youwen/linux/programs
                   ./users/youwen/common
+                  ./hosts/adrastea/home-manager-overrides.nix
                   inputs.catppuccin.homeManagerModules.catppuccin
                 ];
               };

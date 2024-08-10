@@ -23,10 +23,10 @@
     };
   };
 
-  boot.lanzaboote = {
-    enable = false;
-    pkiBundle = "/etc/secureboot";
-  };
+  # boot.lanzaboote = {
+  #   enable = false;
+  #   pkiBundle = "/etc/secureboot";
+  # };
 
   services.keyd = {
     enable = true;
