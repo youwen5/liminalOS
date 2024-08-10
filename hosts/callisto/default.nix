@@ -168,7 +168,7 @@
             leftalt = "leftmeta";
             leftcontrol = "leftalt";
             rightmeta = "leftalt";
-            rightalt = "leftmeta";
+            rightalt = "layer(rightalt)";
           };
           rightalt = {
             i = "up";
