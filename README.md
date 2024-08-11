@@ -2,12 +2,27 @@
 
 This is a repository that implements liminalOS, my personal Linux distribution based on [NixOS](https://nixos.org/).
 
-Traditional Linux distributions are either _rolling_ or _fixed_ release. liminalOS operates on a new kind of release schedule: _liminal_ release.
+Traditionally, we expect to configure each of our computers separately. We have a general idea of the programs, settings, and minor tweaks that we like
+to make on every computer, but we have to manually set all of these up. Many Unix hackers have therefore created sprawling installation scripts to manage
+their various systems so they can be deployed in a predictable manner each time. Of course, scripts are still heavily dependent on environment and prone to breakage.
+When they inevitably break, the system is left in a malformed state, where some setup actions have been taken and others have not, and it is up to the system
+administrator to fix the failing script and ensure the system is set up properly.
 
-> **lim·i·nal**  
-> 2. relating to a transitional or initial stage of a process.
+In essence, the primary failure of setup scripts is that they are _imperative_ - they must specify precisely _how_ to set up the system, down to minute details, whereas in a _declarative_ approach, the user can simply specify what the system _should look like_, and abstractions take care of the _how_.
 
-Users who install liminalOS may feel a sense of eeriness similar to a [liminal space](<https://en.wikipedia.org/wiki/Liminal_space_(aesthetic)>) - the system has clearly been configured exactly according to someone's preferences and specifications, yet they stand alone in an empty OS, with the usual user nowhere to be found, and a home directory devoid of human presence. System updates are released at random times, and upon installing, it appears that someone has adjusted minute configuration details, yet no other users exist in the system.
+NixOS provides the key tools for reliably deploying systems - namely, a _purely functional_ package manager that's reproducible by default and
+the necessary abstractions needed for a declarative system configuration. liminalOS is my set of opinionated NixOS and `home-manager` modules that aim to
+set up a computing environment _independent of the host_. This makes it possible for me to share common configuration between a multitude of entirely distinct machines,
+including an `x86_64` desktop, an `x86_64` laptop, an Apple Silicon Macbook running NixOS `aarch64` using [Asahi Linux](https://asahilinux.org/), and the same Macbook running macOS with `nix-darwin`, sharing `home-manager` configuration with NixOS. Specific configuration necessary to adjust hardware-specific details
+between each machines are isolated to the [hosts](./hosts) directory.
+
+> **lim·i·nal**
+>
+> 1. between or belonging to two different places, states, etc.
+
+The goal of liminalOS is to allow my computing environment to exist in different places at the same time, without the twiddling and settings syncing
+and minor disparities that arise from traditional approaches. This works exceptionally well, demonstrated by the fact that I have the exact same environment across
+three separate machines, spanning two completely different CPU architectures.
 
 ## Installation guide
 
@@ -23,7 +38,7 @@ liminalOS comes with the Nix package manager (nobody said you need a _unique_ pa
 
 ### Should I actually install this?
 
-No.
+No. You should instead use the modules as configuration examples if you need them as they are heavily customized for my needs, which are not the same as yours.
 
 ## Hosts
 
@@ -32,14 +47,14 @@ The modules in liminalOS are designed to be utilized by a wide variety of machin
 The [flake.nix](/flake.nix) currently contains configuration for three hosts:
 
 | Hostname   | Description                                                                                                                                                         |
-| ---------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | "callisto" | a Macbook Pro M1 (2021) running under Asahi Linux. Imports the laptop module sets as well as the core NixOS module sets.                                            |
 | "demeter"  | a custom desktop with an i7-13700KF and RTX 4080. Imports the desktop module, the core NixOS modules, and additionally the gaming module.                           |
 | "phobos"   | Macbook Pro M1 (2021) running macOS with nix-darwin. Imports the core home-manager module as well as some darwin-specific modules for window managers and the like. |
 
 [^1]: also known as GNU/Linux, GNU+Linux, Freedesktop/systemd/musl/busybox Linux, Linux+friends, etc
 
-[^2]: disclaimer: this is unfortunately not actually how the converse works. A => B does not necessarily imply B => A. I hope this satiates the rigor-hungry mathematicians reading.
+[^2]: although this is not actually how the converse works, the rigor-hungry mathematicians reading can cry about it.
 
 ## Keybinds
 
