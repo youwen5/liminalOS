@@ -1,3 +1,4 @@
+{ pkgs, ... }:
 {
   wayland.windowManager.hyprland = {
     enable = true;
@@ -285,5 +286,11 @@
       after_sleep_cmd =
         "hyprctl dispatch dpms on"; # to avoid having to press a key twice to turn on the display.
     };
+  };
+
+  xdg.portal = {
+    enable = true;
+    configPackages = [ pkgs.xdg-desktop-portal-hyprland ];
+    extraPortals = [ pkgs.xdg-desktop-portal-hyprland ];
   };
 }
