@@ -104,6 +104,14 @@
                 ];
               };
             }
+            {
+              nixpkgs.overlays = [
+                (self: super: {
+                  signal-desktop =
+                    bleedingpkgs.legacyPackages.${self.system}.signal-desktop;
+                })
+              ];
+            }
           ];
         };
         adrastea = nixpkgs.lib.nixosSystem {
