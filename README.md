@@ -3,8 +3,8 @@
 This is a repository that implements liminalOS, my personal Linux distribution
 based on [NixOS](https://nixos.org/).
 
-> **lim·i·nal**
->
+<!-- prettier-ignore -->
+> **lim·i·nal**  
 > 1. between or belonging to two different places, states, etc.
 
 The goal of liminalOS is to allow my computing environment to exist in different
