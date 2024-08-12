@@ -3,21 +3,35 @@
 This is a repository that implements liminalOS, my personal Linux distribution
 based on [NixOS](https://nixos.org/).
 
+> **lim·i·nal**
+>
+> 1. between or belonging to two different places, states, etc.
+
+The goal of liminalOS is to allow my computing environment to exist in different
+places (computers) at the same time, without the minor disparities, issues, and
+inconsistencies that arise from traditional approaches such as scripting. This
+works exceptionally well, demonstrated by the fact that I have the exact same
+environment across three separate machines, spanning two completely different
+CPU architectures.
+
 Traditionally, we expect to configure each of our computers separately. We have
 a general idea of the programs, settings, and minor tweaks that we like to make
 on every computer, but we have to manually set all of these up. Many Unix
-hackers have therefore created sprawling installation scripts to manage their
-various systems so they can be deployed in a predictable manner each time. Of
-course, scripts are still heavily dependent on environment and prone to
-breakage. When they inevitably break, the system is left in a malformed state,
-where some setup actions have been taken and others have not, and it is up to
-the system administrator to fix the failing script and ensure the system is set
-up properly.
+hackers have thus created sprawling installation scripts to manage their various
+systems so they can be deployed in a predictable manner each time. Of course,
+scripts are still heavily dependent on environment and prone to breakage. When
+they inevitably break, the system is left in a malformed state, where some setup
+actions have been taken and others have not, and it is up to the system
+administrator to fix the failing script and ensure the system is set up
+properly. Also, updating existing machines and rolling back to previous states
+is a separate, even more difficult issue to solve with this approach.
 
 In essence, the primary failure of setup scripts is that they are _imperative_ -
 they must specify precisely _how_ to set up the system, down to minute details,
 whereas in a _declarative_ approach, the user can simply specify what the system
-_should look like_, and abstractions take care of the _how_.
+_should look like_, and abstractions take care of the _how_. This is what NixOS
+does, and it gives you remote syncing, versioning (via `git`), and rollbacks
+_for free_.
 
 NixOS provides the key tools for reliably deploying systems - namely, a _purely
 functional_ package manager that's reproducible by default and the necessary
@@ -31,16 +45,6 @@ same Macbook running macOS with `nix-darwin`, sharing `home-manager`
 configuration with NixOS. Specific configuration necessary to adjust
 hardware-specific details between each machines are isolated to the
 [hosts](./hosts) directory.
-
-> **lim·i·nal**
->
-> 1. between or belonging to two different places, states, etc.
-
-The goal of liminalOS is to allow my computing environment to exist in different
-places at the same time, without the twiddling and settings syncing and minor
-disparities that arise from traditional approaches. This works exceptionally
-well, demonstrated by the fact that I have the exact same environment across
-three separate machines, spanning two completely different CPU architectures.
 
 ## Installation guide
 
