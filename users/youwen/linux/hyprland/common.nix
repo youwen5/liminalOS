@@ -208,6 +208,10 @@
         disable_splash_rendering = true;
       };
 
+      cursor = {
+        hide_on_key_press = true;
+      };
+
       decoration = {
         rounding = "10";
         drop_shadow = "false";
