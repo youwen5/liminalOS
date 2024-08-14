@@ -8,5 +8,6 @@ in {
     lutris
     wine
     sbctl
+    r2modman
   ]));
 }
