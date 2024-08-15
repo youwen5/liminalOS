@@ -31,6 +31,7 @@ with pkgs; [
   swaybg
   pamixer
   brightnessctl
+  bitwarden-cli
 
   # desktop apps
   dolphin
