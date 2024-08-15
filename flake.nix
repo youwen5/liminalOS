@@ -53,6 +53,7 @@
             ./modules/nixos/networking
             ./modules/nixos/fonts
             ./modules/nixos/greeter
+            ./modules/nixos/core
 
             catppuccin.nixosModules.catppuccin
             lix-module.nixosModules.default
@@ -84,6 +85,7 @@
             ./modules/nixos/networking
             ./modules/nixos/fonts
             ./modules/nixos/greeter
+            ./modules/nixos/core
 
             apple-silicon.nixosModules.apple-silicon-support
             catppuccin.nixosModules.catppuccin
@@ -124,6 +126,7 @@
             ./modules/nixos/networking
             ./modules/nixos/fonts
             ./modules/nixos/greeter
+            ./modules/nixos/core
 
             catppuccin.nixosModules.catppuccin
             lix-module.nixosModules.default
