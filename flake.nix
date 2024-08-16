@@ -190,4 +190,10 @@
       ];
     };
   };
+
+  nixConfig = {
+    extra-substituters = ["https://liminalos.cachix.org"];
+    extra-trusted-public-keys = ["liminalos.cachix.org-1:GpwgIRFfXwZtZaHA2RPaVGI2ErJKasbb15pkMmQ7dN4="];
+    allow-import-from-derivation = "true";
+  };
 }
