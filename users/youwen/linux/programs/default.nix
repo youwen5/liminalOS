@@ -15,8 +15,8 @@
       action_alias = "kitty_scrollback_nvim kitten /home/youwen/.local/share/nvim/lazy/kitty-scrollback.nvim/python/kitty_scrollback_nvim.py";
     };
     keybindings = {
-        "kitty_mod+h" = "kitty_scrollback_nvim";
-        "kitty_mod+g" = "kitty_scrollback_nvim --config ksb_builtin_last_cmd_output";
+      "kitty_mod+h" = "kitty_scrollback_nvim";
+      "kitty_mod+g" = "kitty_scrollback_nvim --config ksb_builtin_last_cmd_output";
     };
   };
 

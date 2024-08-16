@@ -1,4 +1,8 @@
-{ config, pkgs, ... }: {
+{
+  config,
+  pkgs,
+  ...
+}: {
   services.yabai = {
     enable = true;
     enableScriptingAddition = true;
@@ -28,4 +32,3 @@
     blur_radius = 5.0;
   };
 }
-

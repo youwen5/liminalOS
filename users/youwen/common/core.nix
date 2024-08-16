@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{pkgs, ...}: {
   home.file.".essentials" = {
     source = ./essentials;
     recursive = true;
@@ -15,7 +15,7 @@
     '';
   };
 
-  programs.fzf = { enable = true; };
+  programs.fzf = {enable = true;};
 
   programs.git = {
     enable = true;
@@ -57,7 +57,7 @@
 
   programs.gh = {
     enable = true;
-    extensions = [ pkgs.github-copilot-cli ];
+    extensions = [pkgs.github-copilot-cli];
   };
 
   programs.oh-my-posh = {
@@ -67,7 +67,6 @@
     enableBashIntegration = true;
     useTheme = "gruvbox";
   };
-
 
   programs.direnv.enable = true;
 
@@ -79,8 +78,7 @@
     };
     functions = {
       update-nixos = {
-        description =
-          "Update the system flake and attempt to build and switch to the new configuration.";
+        description = "Update the system flake and attempt to build and switch to the new configuration.";
         body = ''
           cd /etc/nixos
           nix flake update

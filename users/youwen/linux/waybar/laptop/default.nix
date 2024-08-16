@@ -9,23 +9,21 @@
         # width = 1000;
         reload-style-on-change = true;
         margin = "5px 0px 0px 0px";
-        modules-left =
-          [ "hyprland/window" "hyprland/workspaces" "network" "clock" ];
-        modules-right =
-          [ "group/hardware" "backlight" "group/adjustable" "custom/weather" ];
+        modules-left = ["hyprland/window" "hyprland/workspaces" "network" "clock"];
+        modules-right = ["group/hardware" "backlight" "group/adjustable" "custom/weather"];
         # modules-center = [ "network" "group/hardware" "clock" ];
         "hyprland/workspaces" = {
           active-only = false;
           all-outputs = false;
           format = "{icon}";
           persistent-workspaces = {
-            eDP-1 = [ 1 ];
-            DP-1 = [ 2 3 4 5 ];
+            eDP-1 = [1];
+            DP-1 = [2 3 4 5];
           };
         };
         "group/hardware" = {
           orientation = "inherit";
-          modules = [ "cpu" "battery" ];
+          modules = ["cpu" "battery"];
         };
         "group/adjustable" = {
           orientation = "inherit";
@@ -33,7 +31,7 @@
             transition-duration = 500;
             transition-left-to-right = true;
           };
-          modules = [ "pulseaudio" "mpris" ];
+          modules = ["pulseaudio" "mpris"];
         };
         "custom/weather" = {
           orientation = "horizontal";
@@ -53,12 +51,12 @@
         #   format-paused = " 󰏤 {title}  ";
         #   format-stopped = "Nothing Playing";
         # };
-        tray = { spacing = 10; };
-        clock = { format = "{:%a %b %d, %I:%M %p} "; };
+        tray = {spacing = 10;};
+        clock = {format = "{:%a %b %d, %I:%M %p} ";};
         backlight = {
           device = "intel_backlight";
           format = "{percent}% {icon}";
-          format-icons = [ "󰃞" "󰃠" ];
+          format-icons = ["󰃞" "󰃠"];
         };
         battery = {
           states = {
@@ -67,9 +65,9 @@
             critical = 10;
           };
           format = "{capacity}% {icon}";
-          format-icons = [ "󰁻" "󰁽" "󰁿" "󰂀" "󰁹" ];
+          format-icons = ["󰁻" "󰁽" "󰁿" "󰂀" "󰁹"];
         };
-        "hyprland/window" = { format = "{class}"; };
+        "hyprland/window" = {format = "{class}";};
         network = {
           format-wifi = "{essid} ";
           format-linked = "{ifname} (No IP) ";
@@ -83,7 +81,7 @@
           format-muted = " {format_source}";
           format-source = "{volume}% ";
           format-source-muted = "";
-          format-icons = { default = [ "" "" "" ]; };
+          format-icons = {default = ["" "" ""];};
         };
       };
     };

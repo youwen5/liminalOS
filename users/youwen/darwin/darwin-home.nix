@@ -1,6 +1,9 @@
-{ inputs, config, pkgs, ... }:
-
 {
+  inputs,
+  config,
+  pkgs,
+  ...
+}: {
   home.username = "youwen";
   home.homeDirectory = "/Users/youwen";
 
@@ -79,5 +82,4 @@
 
   # Let home Manager install and manage itself.
   programs.home-manager.enable = true;
-
 }

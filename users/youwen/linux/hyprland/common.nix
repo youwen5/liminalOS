@@ -1,9 +1,8 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   wayland.windowManager.hyprland = {
     enable = true;
     settings = {
-      exec-once = [ "waypaper --restore" ];
+      exec-once = ["waypaper --restore"];
       "$mod" = "SUPER";
       "$Left" = "Y";
       "$Right" = "O";
@@ -164,8 +163,7 @@
         "ignorezero,swaync-control-center"
         "blur,logout_dialog"
       ];
-      monitor =
-        [ "DP-1,2560x1440@165,1920x0,auto" "HDMI-A-1,1920x1080@60,0x0,1" ];
+      monitor = ["DP-1,2560x1440@165,1920x0,auto" "HDMI-A-1,1920x1080@60,0x0,1"];
       dwindle = {
         pseudotile = "yes";
         preserve_split = "yes";
@@ -189,7 +187,7 @@
           "workspaces, 1, 5, wind"
         ];
       };
-      
+
       general = {
         gaps_in = "3";
         gaps_out = "8";
@@ -284,17 +282,15 @@
   services.hypridle = {
     enable = true;
     settings = {
-      lock_cmd =
-        "pidof hyprlock || hyprlock"; # avoid starting multiple hyprlock instances.
+      lock_cmd = "pidof hyprlock || hyprlock"; # avoid starting multiple hyprlock instances.
       before_sleep_cmd = "loginctl lock-session"; # lock before suspend.
-      after_sleep_cmd =
-        "hyprctl dispatch dpms on"; # to avoid having to press a key twice to turn on the display.
+      after_sleep_cmd = "hyprctl dispatch dpms on"; # to avoid having to press a key twice to turn on the display.
     };
   };
 
   xdg.portal = {
     enable = true;
-    configPackages = [ pkgs.xdg-desktop-portal-hyprland ];
-    extraPortals = [ pkgs.xdg-desktop-portal-hyprland ];
+    configPackages = [pkgs.xdg-desktop-portal-hyprland];
+    extraPortals = [pkgs.xdg-desktop-portal-hyprland];
   };
 }

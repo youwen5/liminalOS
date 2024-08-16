@@ -1,11 +1,14 @@
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
-
-{ config, inputs, pkgs, ... }:
-
 {
-  imports = [ # Include the results of the hardware scan.
+  config,
+  inputs,
+  pkgs,
+  ...
+}: {
+  imports = [
+    # Include the results of the hardware scan.
     ./hardware-configuration.nix
     # ./apple-silicon-support
   ];
@@ -23,7 +26,7 @@
     options hid_apple iso_layout=0
   '';
 
-  boot.kernelParams = [ "apple_dcp.show_notch=1" ];
+  boot.kernelParams = ["apple_dcp.show_notch=1"];
 
   networking.hostName = "callisto"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -33,7 +36,7 @@
     settings.General.EnableNetworkConfiguration = true;
   };
 
-  nixpkgs.overlays = [ inputs.apple-silicon.overlays.apple-silicon-overlay ];
+  nixpkgs.overlays = [inputs.apple-silicon.overlays.apple-silicon-overlay];
 
   programs.light.enable = true;
 
@@ -68,7 +71,7 @@
 
   programs.nix-ld = {
     enable = true;
-    libraries = with pkgs; [ icu xorg.libXtst xorg.libXi ];
+    libraries = with pkgs; [icu xorg.libXtst xorg.libXi];
   };
 
   # Configure keymap in X11
@@ -87,14 +90,14 @@
   users.users.youwen = {
     isNormalUser = true;
     description = "Youwen Wu";
-    extraGroups = [ "networkmanager" "wheel" "nixos" "realtime" ];
+    extraGroups = ["networkmanager" "wheel" "nixos" "realtime"];
   };
 
-  users.groups.realtime = { };
+  users.groups.realtime = {};
 
   nix.settings = {
-    trusted-users = [ "root" "youwen" ];
-    experimental-features = [ "nix-command" "flakes" ];
+    trusted-users = ["root" "youwen"];
+    experimental-features = ["nix-command" "flakes"];
   };
 
   services.udev.extraRules = ''
@@ -155,13 +158,12 @@
   environment.variables = {
     EDITOR = "nvim";
     NIX_AUTO_RUN = 1;
-
   };
   services.keyd = {
     enable = true;
     keyboards = {
       default = {
-        ids = [ "*" ];
+        ids = ["*"];
         settings = {
           main = {
             capslock = "esc";

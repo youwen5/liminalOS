@@ -1,11 +1,15 @@
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
-
-{ config, inputs, pkgs, lib, ... }:
-
 {
-  imports = [ # Include the results of the hardware scan.
+  config,
+  inputs,
+  pkgs,
+  lib,
+  ...
+}: {
+  imports = [
+    # Include the results of the hardware scan.
     ./hardware-configuration.nix
   ];
 
@@ -61,7 +65,7 @@
     LC_TIME = "en_US.UTF-8";
   };
 
-  systemd.services = { NetworkManager-wait-online.enable = false; };
+  systemd.services = {NetworkManager-wait-online.enable = false;};
 
   # Enable the X11 windowing system.
   # You can disable this if you're only using the Wayland session.
@@ -69,7 +73,7 @@
 
   programs.nix-ld = {
     enable = true;
-    libraries = with pkgs; [ icu xorg.libXtst xorg.libXi ];
+    libraries = with pkgs; [icu xorg.libXtst xorg.libXi];
   };
 
   hardware.nvidia = {
@@ -91,7 +95,7 @@
 
   hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.stable;
 
-  services.xserver.videoDrivers = [ "nvidia" ];
+  services.xserver.videoDrivers = ["nvidia"];
 
   services.flatpak.enable = true;
 
@@ -113,14 +117,14 @@
   users.users.youwen = {
     isNormalUser = true;
     description = "Youwen Wu";
-    extraGroups = [ "networkmanager" "wheel" "nixos" "realtime" ];
+    extraGroups = ["networkmanager" "wheel" "nixos" "realtime"];
   };
 
-  users.groups.realtime = { };
+  users.groups.realtime = {};
 
   nix.settings = {
-    trusted-users = [ "root" "youwen" ];
-    experimental-features = [ "nix-command" "flakes" ];
+    trusted-users = ["root" "youwen"];
+    experimental-features = ["nix-command" "flakes"];
   };
 
   services.udev.extraRules = ''
