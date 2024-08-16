@@ -3,6 +3,9 @@
 This is a repository that implements liminalOS, my personal Linux distribution
 based on [NixOS](https://nixos.org/).
 
+Time wasted writing Nix code:
+![](https://wakatime.com/badge/user/018dc5b8-ba5a-4572-a38a-b526d1b28240/project/c59b3d5e-0c9c-4bd5-a752-e75522ab0cdc.svg)
+
 <!-- prettier-ignore -->
 > **lim·i·nal**  
 > 1. between or belonging to two different places, states, etc.
