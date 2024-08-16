@@ -68,6 +68,9 @@
     useTheme = "gruvbox";
   };
 
+
+  programs.direnv.enable = true;
+
   programs.fish = {
     enable = true;
     shellAliases = {
