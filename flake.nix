@@ -35,6 +35,10 @@
       url = "github:tpwrules/nixos-apple-silicon";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nixvim = {
+      url = "github:nix-community/nixvim";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
@@ -79,8 +83,10 @@
                 ./users/youwen/linux/packages/x86_64
                 ./users/youwen/linux/programs
                 ./users/youwen/common/neofetch
+		./users/youwen/common/neovim
                 ./users/youwen/common
                 inputs.catppuccin.homeManagerModules.catppuccin
+		inputs.nixvim.homeManagerModules.nixvim
               ];
             };
           }
@@ -111,8 +117,10 @@
                 ./users/youwen/common/neofetch/asahi-only.nix
                 ./users/youwen/linux/laptop
                 ./users/youwen/linux/packages/aarch-64
+		./users/youwen/common/neovim
 
                 inputs.catppuccin.homeManagerModules.catppuccin
+		inputs.nixvim.homeManagerModules.nixvim
               ];
             };
           }
@@ -151,10 +159,12 @@
                 ./users/youwen/linux/laptop
                 ./users/youwen/linux/packages/x86_64
                 ./users/youwen/linux/programs
+		./users/youwen/common/neovim
                 ./users/youwen/common
                 ./users/youwen/common/neofetch
                 ./hosts/adrastea/home-manager-overrides.nix
                 inputs.catppuccin.homeManagerModules.catppuccin
+		inputs.nixvim.homeManagerModules.nixvim
               ];
             };
           }
@@ -177,6 +187,7 @@
             ./users/youwen/darwin/darwin-home.nix
             ./users/youwen/common/core.nix
             ./users/youwen/common/neofetch
+	    ./users/youwen/common/neovim
           ];
           home-manager.backupFileExtension = "backup";
 
