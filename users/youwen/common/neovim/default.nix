@@ -6,14 +6,19 @@
     withNodeJs = true;
     withRuby = true;
 
-    extraPackages = with pkgs; [alejandra black stylua codespell];
+    extraPackages = with pkgs; [alejandra black stylua codespell nodePackages.prettier];
 
     luaLoader.enable = true;
+    performance = {
+      combinePlugins.enable = true;
+      byteCompileLua.enable = true;
+    };
 
-    colorschemes.gruvbox.enable = true;
+    colorschemes.cyberdream.enable = true;
 
     opts = {
-      showmode = false;
+      laststatus = 3;
+      relativenumber = true;
     };
 
     globals = {
@@ -32,14 +37,14 @@
         mode = "n";
       }
       {
-        action = "<cmd>sp<CR>";
+        action = "<cmd>sp<CR><C-w>j";
         key = "<Leader>-";
         options.silent = true;
         options.desc = "Split window horizontally";
       }
       {
-        action = "<cmd>vsp<CR>";
-        key = "<Leader>|";
+        action = "<cmd>vsp<CR><c-w>l";
+        key = "<Leader>\\";
         options.silent = true;
         options.desc = "Split window vertically";
       }
@@ -160,6 +165,138 @@
           desc = "List all files";
         };
       }
+      {
+        action = "<C-\\><C-n>";
+        key = "<C-Esc>";
+        options = {
+          silent = true;
+          noremap = true;
+          desc = "Go to normal mode in built-in terminal.";
+        };
+        mode = "t";
+      }
+      {
+        action = ":resize +4<CR>";
+        key = "<Leader>w=";
+        options = {
+          silent = true;
+          noremap = true;
+          desc = "Increase window height.";
+        };
+      }
+      {
+        action = ":resize -4<CR>";
+        key = "<Leader>w-";
+        options = {
+          silent = true;
+          noremap = true;
+          desc = "Decrease window height.";
+        };
+      }
+      {
+        action = ":vertical resize +4<CR>";
+        key = "<Leader>w]";
+        options = {
+          silent = true;
+          noremap = true;
+          desc = "Increase window width.";
+        };
+      }
+      {
+        action = ":vertical resize -4<CR>";
+        key = "<Leader>w[";
+        options = {
+          silent = true;
+          noremap = true;
+          desc = "Decrease window width.";
+        };
+      }
+      {
+        action = ":Bdelete!<CR>";
+        key = "<Leader>bd";
+        options = {
+          silent = true;
+          noremap = true;
+          desc = "Close buffer";
+        };
+      }
+      {
+        action = ":bprev<CR>";
+        key = "H";
+        options = {
+          silent = true;
+          noremap = true;
+          desc = "Move to the previous buffer.";
+        };
+      }
+      {
+        action = ":bnext<CR>";
+        key = "L";
+        options = {
+          silent = true;
+          noremap = true;
+          desc = "Move to the next buffer.";
+        };
+      }
+      {
+        action = ":LazyGit<CR>";
+        key = "<Leader>gg";
+        options = {
+          silent = true;
+          noremap = true;
+          desc = "Open LazyGit";
+        };
+      }
+      {
+        action = ":split | resize 50% | wincmd j | term<CR>";
+        key = "<Leader>tt";
+        options = {
+          silent = true;
+          noremap = true;
+          desc = "Open a half-size horizontal terminal split";
+        };
+        mode = "n";
+      }
+      {
+        action = ":split | wincmd j | term<CR>";
+        key = "<Leader>te";
+        options = {
+          silent = true;
+          noremap = true;
+          desc = "Open a horizontal terminal split";
+        };
+        mode = "n";
+      }
+      {
+        action = ":vsplit | wincmd l | term<CR>";
+        key = "<Leader>tv";
+        options = {
+          silent = true;
+          noremap = true;
+          desc = "Open a vertical terminal split";
+        };
+        mode = "n";
+      }
+      {
+        action = ":Trouble diagnostics<CR>";
+        key = "<Leader>xx";
+        options = {
+          silent = true;
+          noremap = true;
+          desc = "View trouble diagnostics";
+        };
+        mode = "n";
+      }
+      {
+        action = ":Trouble symbols<CR>";
+        key = "<Leader>xs";
+        options = {
+          silent = true;
+          noremap = true;
+          desc = "View symbols";
+        };
+        mode = "n";
+      }
       # {
       #   action = "<cmd>lua require'conform'.format({ bufnr = args.bf })<CR>";
       #   key = "<Leader>cf";
@@ -172,10 +309,6 @@
     ];
 
     plugins = {
-      lualine = {
-        enable = true;
-        globalstatus = true;
-      };
       lsp = {
         enable = true;
         inlayHints = true;
@@ -197,6 +330,7 @@
           marksman.enable = true;
         };
       };
+      typescript-tools.enable = true;
       presence-nvim = {
         enable = true;
         editingText = "Hacking %s";
@@ -219,10 +353,13 @@
           indent.enable = true;
         };
       };
+      treesitter-context.enable = true;
       wakatime.enable = true;
       lazygit.enable = true;
+      gitsigns.enable = true;
       intellitab.enable = true;
       guess-indent.enable = true;
+      vim-bbye.enable = true;
       indent-blankline.enable = true;
       which-key.enable = true;
       zen-mode.enable = true;
@@ -249,28 +386,88 @@
       };
       trouble.enable = true;
       direnv.enable = true;
+      # cmp = {
+      #   enable = true;
+      #   settings = {
+      #     mapping = {
+      #       "<C-Space>" = "cmp.mapping.complete()";
+      #       "<C-b>" = "cmp.mapping.scroll_docs(-4)";
+      #       "<C-e>" = "cmp.mapping.close()";
+      #       "<C-f>" = "cmp.mapping.scroll_docs(4)";
+      #       "<C-p>" = "cmp.mapping(cmp.mapping.select_prev_item(), {'i', 's'})";
+      #       "<C-n>" = "cmp.mapping(cmp.mapping.select_next_item(), {'i', 's'})";
+      #       "<Tab>" = "cmp.mapping.confirm({ select = true })";
+      #     };
+      #     completion.autocomplete = [
+      #       "require('cmp.types').cmp.TriggerEvent.TextChanged"
+      #     ];
+      #   };
+      # };
+      cmp-async-path.enable = true;
       cmp = {
         enable = true;
         settings = {
-          mapping = {
-            "<C-Space>" = "cmp.mapping.complete()";
-            "<C-b>" = "cmp.mapping.scroll_docs(-4)";
-            "<C-e>" = "cmp.mapping.close()";
-            "<C-f>" = "cmp.mapping.scroll_docs(4)";
-            "<C-p>" = "cmp.mapping(cmp.mapping.select_prev_item(), {'i', 's'})";
-            "<C-n>" = "cmp.mapping(cmp.mapping.select_next_item(), {'i', 's'})";
-            "<Tab>" = "cmp.mapping.confirm({ select = true })";
+          autoEnableSources = true;
+          experimental = {ghost_text = true;};
+          performance = {
+            debounce = 60;
+            fetchingTimeout = 200;
+            maxViewEntries = 30;
           };
-          completion.autocomplete = [
-            "require('cmp.types').cmp.TriggerEvent.TextChanged"
+          snippet = {expand = "luasnip";};
+          formatting = {fields = ["kind" "abbr" "menu"];};
+          sources = [
+            {name = "nvim_lsp";}
+            {name = "emoji";}
+            {
+              name = "buffer"; # text within current buffer
+              option.get_bufnrs.__raw = "vim.api.nvim_list_bufs";
+              keywordLength = 3;
+            }
+            # { name = "copilot"; } # enable/disable copilot
+            {
+              name = "path"; # file system paths
+              keywordLength = 3;
+            }
+            {
+              name = "luasnip"; # snippets
+              keywordLength = 3;
+            }
           ];
+
+          window = {
+            completion = {border = "solid";};
+            documentation = {border = "solid";};
+          };
+
+          mapping = {
+            "<Tab>" = "cmp.mapping(cmp.mapping.select_next_item(), {'i', 's'})";
+            "<C-n>" = "cmp.mapping.select_next_item()";
+            "<C-p>" = "cmp.mapping.select_prev_item()";
+            "<C-e>" = "cmp.mapping.abort()";
+            "<C-b>" = "cmp.mapping.scroll_docs(-4)";
+            "<C-f>" = "cmp.mapping.scroll_docs(4)";
+            "<C-Space>" = "cmp.mapping.complete()";
+            "<CR>" = "cmp.mapping.confirm({ select = true })";
+            "<S-CR>" = "cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = true })";
+          };
         };
       };
-      cmp-async-path.enable = true;
-      cmp-buffer.enable = true;
-      cmp-conventionalcommits.enable = true;
-      cmp-git.enable = true;
-      cmp-nvim-lsp.enable = true;
+      cmp-nvim-lsp = {
+        enable = true; # LSP
+      };
+      cmp-buffer = {
+        enable = true;
+      };
+      cmp-path = {
+        enable = true; # file system paths
+      };
+      cmp_luasnip = {
+        enable = true; # snippets
+      };
+      cmp-cmdline = {
+        enable = true; # autocomplete for cmdline
+      };
       crates-nvim.enable = true;
       conform-nvim = {
         enable = true;
@@ -282,10 +479,33 @@
           lua = ["stylua"];
           python = ["black"];
           nix = ["alejandra"];
+          svelte = ["prettier"];
+          rust = ["rust-analyzer"];
           "*" = ["codespell"];
           "_" = ["trim_whitespace"];
         };
       };
     };
+
+    extraPlugins = [
+      (pkgs.vimUtils.buildVimPlugin {
+        name = "satellite.nvim";
+        src = pkgs.fetchFromGitHub {
+          owner = "lewis6991";
+          repo = "satellite.nvim";
+          rev = "777ed56e1ef45ec808df701730b6597fc4fb0fbc";
+          hash = "sha256-04Js+9SB4VuCq/ACbNh5BZcolu8i8vlGU72qo5xxfpk=";
+        };
+      })
+      (pkgs.vimUtils.buildVimPlugin {
+        name = "render-markdown.nvim";
+        src = pkgs.fetchFromGitHub {
+          owner = "MeanderingProgrammer";
+          repo = "render-markdown.nvim";
+          rev = "7986be47531d652e950776536987e01dd5b55b94";
+          hash = "sha256-lc++IrXzEA3M2iUFZACAZOcH2EwVqX4p0fhET+en37o=";
+        };
+      })
+    ];
   };
 }
