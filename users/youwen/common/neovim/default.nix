@@ -19,6 +19,7 @@
     opts = {
       laststatus = 3;
       relativenumber = true;
+      number = true;
     };
 
     globals = {
@@ -356,6 +357,7 @@
     ];
 
     plugins = {
+      # LSP and Treesitter related
       lsp = {
         enable = true;
         inlayHints = true;
@@ -368,29 +370,8 @@
           svelte.enable = true;
           tailwindcss.enable = true;
           typst-lsp.enable = true;
-          rust-analyzer = {
-            enable = true;
-            installCargo = true;
-            installRustc = true;
-          };
           marksman.enable = true;
         };
-      };
-      typescript-tools.enable = true;
-      presence-nvim = {
-        enable = true;
-        editingText = "Hacking %s";
-        workspaceText = "The One True Text Editor";
-        buttons = [
-          {
-            label = "GitHub";
-            url = "https://github.com/youwen5";
-          }
-          {
-            label = "Code Forge";
-            url = "https://code.youwen.dev/";
-          }
-        ];
       };
       treesitter = {
         enable = true;
@@ -399,17 +380,26 @@
           indent.enable = true;
         };
       };
+      lsp-lines.enable = true;
+      crates-nvim.enable = true;
       treesitter-context.enable = true;
-      wakatime.enable = true;
+
+      # Language specific tools
+      markdown-preview.enable = true;
+      # rustaceanvim.enable = true;
+      typescript-tools.enable = true;
+
+      # git stuff
       lazygit.enable = true;
       gitsigns.enable = true;
+
+      # QoL and utility
       intellitab.enable = true;
       guess-indent.enable = true;
       vim-bbye.enable = true;
       indent-blankline.enable = true;
       which-key.enable = true;
       zen-mode.enable = true;
-      markdown-preview.enable = true;
       yanky = {
         enable = true;
         enableTelescope = true;
@@ -417,6 +407,34 @@
       telescope = {
         enable = true;
       };
+      trouble.enable = true;
+      direnv.enable = true;
+      yazi = {
+        enable = true;
+        settings = {
+          open_for_directories = true;
+        };
+      };
+
+      # Code formatting
+      conform-nvim = {
+        enable = true;
+        formatOnSave = {
+          timeoutMs = 500;
+          lspFallback = true;
+        };
+        formattersByFt = {
+          lua = ["stylua"];
+          python = ["black"];
+          nix = ["alejandra"];
+          svelte = ["prettier"];
+          rust = ["rust-analyzer"];
+          "*" = ["codespell"];
+          "_" = ["trim_whitespace"];
+        };
+      };
+
+      # mini.nvim
       mini = {
         enable = true;
         modules = {
@@ -430,25 +448,8 @@
           comment = {};
         };
       };
-      trouble.enable = true;
-      direnv.enable = true;
-      # cmp = {
-      #   enable = true;
-      #   settings = {
-      #     mapping = {
-      #       "<C-Space>" = "cmp.mapping.complete()";
-      #       "<C-b>" = "cmp.mapping.scroll_docs(-4)";
-      #       "<C-e>" = "cmp.mapping.close()";
-      #       "<C-f>" = "cmp.mapping.scroll_docs(4)";
-      #       "<C-p>" = "cmp.mapping(cmp.mapping.select_prev_item(), {'i', 's'})";
-      #       "<C-n>" = "cmp.mapping(cmp.mapping.select_next_item(), {'i', 's'})";
-      #       "<Tab>" = "cmp.mapping.confirm({ select = true })";
-      #     };
-      #     completion.autocomplete = [
-      #       "require('cmp.types').cmp.TriggerEvent.TextChanged"
-      #     ];
-      #   };
-      # };
+
+      # Completion
       cmp-async-path.enable = true;
       cmp = {
         enable = true;
@@ -511,28 +512,23 @@
       cmp-cmdline = {
         enable = true; # autocomplete for cmdline
       };
-      crates-nvim.enable = true;
-      conform-nvim = {
+
+      # Extra (stuff that doesn't affect editing)
+      wakatime.enable = true;
+      presence-nvim = {
         enable = true;
-        formatOnSave = {
-          timeoutMs = 500;
-          lspFallback = true;
-        };
-        formattersByFt = {
-          lua = ["stylua"];
-          python = ["black"];
-          nix = ["alejandra"];
-          svelte = ["prettier"];
-          rust = ["rust-analyzer"];
-          "*" = ["codespell"];
-          "_" = ["trim_whitespace"];
-        };
-      };
-      yazi = {
-        enable = true;
-        settings = {
-          open_for_directories = true;
-        };
+        editingText = "Hacking %s";
+        workspaceText = "The One True Text Editor";
+        buttons = [
+          {
+            label = "GitHub";
+            url = "https://github.com/youwen5";
+          }
+          {
+            label = "Code Forge";
+            url = "https://code.youwen.dev/";
+          }
+        ];
       };
     };
 
@@ -562,6 +558,15 @@
           repo = "haskell-tools.nvim";
           rev = "959eac0fadbdd27442904a8cb363f39afb528027";
           hash = "sha256-5CS5kvUSqQJe7iFFpicinBjCQXgFPL0ElGgnrZHTT+Y=";
+        };
+      })
+      (pkgs.vimUtils.buildVimPlugin {
+        name = "rustaceanvim";
+        src = pkgs.fetchFromGitHub {
+          owner = "mrcjkb";
+          repo = "rustaceanvim";
+          rev = "7cba8e599deca98d4b44cac1bcbd720c62937d90";
+          hash = "sha256-OYfeJuo4FZUBdW9wGGCT0lZGYr/ur1uy8frcyUJMF3k=";
         };
       })
     ];
