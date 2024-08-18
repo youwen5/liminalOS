@@ -248,7 +248,7 @@
         };
       }
       {
-        action = ":split | resize 50% | wincmd j | term<CR>";
+        action = ":split | wincmd j | resize 15 | term<CR>";
         key = "<Leader>tt";
         options = {
           silent = true;
@@ -315,7 +315,6 @@
         servers = {
           bashls.enable = true;
           clangd.enable = true;
-          hls.enable = true;
           pyright.enable = true;
           nixd.enable = true;
           nushell.enable = true;
@@ -462,9 +461,6 @@
       cmp-path = {
         enable = true; # file system paths
       };
-      cmp_luasnip = {
-        enable = true; # snippets
-      };
       cmp-cmdline = {
         enable = true; # autocomplete for cmdline
       };
@@ -504,6 +500,15 @@
           repo = "render-markdown.nvim";
           rev = "7986be47531d652e950776536987e01dd5b55b94";
           hash = "sha256-lc++IrXzEA3M2iUFZACAZOcH2EwVqX4p0fhET+en37o=";
+        };
+      })
+      (pkgs.vimUtils.buildVimPlugin {
+        name = "haskell-tools-nvim";
+        src = pkgs.fetchFromGitHub {
+          owner = "mrcjkb";
+          repo = "haskell-tools.nvim";
+          rev = "959eac0fadbdd27442904a8cb363f39afb528027";
+          hash = "sha256-5CS5kvUSqQJe7iFFpicinBjCQXgFPL0ElGgnrZHTT+Y=";
         };
       })
     ];
