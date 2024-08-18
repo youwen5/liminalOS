@@ -14,7 +14,7 @@
       byteCompileLua.enable = true;
     };
 
-    colorschemes.cyberdream.enable = true;
+    colorschemes.rose-pine.enable = true;
 
     opts = {
       laststatus = 3;
