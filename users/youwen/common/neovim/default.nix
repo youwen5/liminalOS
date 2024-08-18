@@ -304,33 +304,55 @@
       {
         action = "<Plug>(YankyPutAfter)";
         key = "p";
-        options = {};
         mode = ["n" "x"];
       }
       {
         action = "<Plug>(YankyPutBefore)";
         key = "P";
-        options = {};
         mode = ["n" "x"];
       }
       {
         action = "<Plug>(YankyGPutAfter)";
         key = "gp";
-        options = {};
         mode = ["n" "x"];
       }
       {
         action = "<Plug>(YankyGPutBefore)";
         key = "gP";
-        options = {};
         mode = ["n" "x"];
       }
       {
         action = ":Telescope yank_history<CR>";
         key = "<Leader>p";
-        options = {};
         mode = "n";
       }
+      {
+        action = '':lua require("yazi").yazi()<CR>'';
+        key = "<Leader>mm";
+        options = {
+          desc = "Open Yazi current nvim working directory";
+          noremap = true;
+          silent = true;
+        };
+      }
+      {
+        action = '':lua require("yazi").yazi("cwd")<CR>'';
+        key = "<Leader>mm";
+        options = {
+          desc = "Open Yazi current nvim working directory";
+          noremap = true;
+          silent = true;
+        };
+      }
+      # {
+      #   action = ":Yazi<CR>";
+      #   key = "<Leader>mf";
+      #   options = {
+      #     desc = "Open Yazi at current file";
+      #     noremap = true;
+      #     silent = true;
+      #   };
+      # }
       # {
       #   action = "<cmd>lua require'conform'.format({ bufnr = args.bf })<CR>";
       #   key = "<Leader>cf";
@@ -513,6 +535,12 @@
           rust = ["rust-analyzer"];
           "*" = ["codespell"];
           "_" = ["trim_whitespace"];
+        };
+      };
+      yazi = {
+        enable = true;
+        settings = {
+          open_for_directories = true;
         };
       };
     };
