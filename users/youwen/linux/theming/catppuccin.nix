@@ -15,4 +15,8 @@
     enable = true;
     flavor = "mocha";
   };
+  programs.yazi.catppuccin = {
+    enable = true;
+    flavor = "macchiato";
+  };
 }

@@ -335,15 +335,6 @@
           silent = true;
         };
       }
-      {
-        action = '':lua require("yazi").yazi("cwd")<CR>'';
-        key = "<Leader>mm";
-        options = {
-          desc = "Open Yazi current nvim working directory";
-          noremap = true;
-          silent = true;
-        };
-      }
       # {
       #   action = ":Yazi<CR>";
       #   key = "<Leader>mf";
@@ -574,5 +565,10 @@
         };
       })
     ];
+  };
+  programs.yazi = {
+    enable = true;
+    enableBashIntegration = true;
+    enableFishIntegration = true;
   };
 }
