@@ -39,21 +39,7 @@ with pkgs; [
   vesktop
   signal-desktop
 
-  # dev tools
-  nodePackages_latest.pnpm
-  rustfmt
-  rust-analyzer
   gcc
-  lua51Packages.luarocks
-  lua
-  nodejs_22
-  python3
-  tree-sitter
-  cargo
-  rustc
-  # currently marked broken
-  # haskellPackages.stack
-  # haskellPackages.ghcup
 
   # desktop ricing
   bibata-cursors

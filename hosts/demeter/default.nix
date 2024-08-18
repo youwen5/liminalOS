@@ -164,12 +164,8 @@
     curl
     librewolf
     gnumake
-    clang
     gcc
     cachix
-    nodejs_22
-    cargo
-    rustc
     gnupg
     openssh
     python3

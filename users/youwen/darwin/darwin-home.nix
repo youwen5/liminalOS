@@ -40,11 +40,6 @@
     # it provides the command `nom` works just like `nix`
     # with more details log output
     nix-output-monitor
-
-    # dev tools
-    nodePackages_latest.pnpm
-    rustfmt
-    rust-analyzer
   ];
 
   programs.git.extraConfig.commit.gpgsign = "false";

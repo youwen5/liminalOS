@@ -136,23 +136,6 @@
     wget
     git
     curl
-    # librewolf
-    # gnumake
-    # clang
-    # gcc
-    # cachix
-    # nodejs_22
-    # cargo
-    # rustc
-    # gnupg
-    # openssh
-    # python3
-    # steam-run
-
-    # # deps for neovim compilation
-    # lua51Packages.lua
-    # lua51Packages.luarocks
-    # tree-sitter
   ];
 
   environment.variables = {
