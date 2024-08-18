@@ -25,6 +25,10 @@
       mapleader = " ";
     };
 
+    extraConfigLua = ''
+      require("telescope").load_extension("yank_history")
+    '';
+
     keymaps = [
       {
         # Unmap space (leader)
@@ -295,6 +299,36 @@
           noremap = true;
           desc = "View symbols";
         };
+        mode = "n";
+      }
+      {
+        action = "<Plug>(YankyPutAfter)";
+        key = "p";
+        options = {};
+        mode = ["n" "x"];
+      }
+      {
+        action = "<Plug>(YankyPutBefore)";
+        key = "P";
+        options = {};
+        mode = ["n" "x"];
+      }
+      {
+        action = "<Plug>(YankyGPutAfter)";
+        key = "gp";
+        options = {};
+        mode = ["n" "x"];
+      }
+      {
+        action = "<Plug>(YankyGPutBefore)";
+        key = "gP";
+        options = {};
+        mode = ["n" "x"];
+      }
+      {
+        action = ":Telescope yank_history<CR>";
+        key = "<Leader>p";
+        options = {};
         mode = "n";
       }
       # {
