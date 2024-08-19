@@ -147,4 +147,32 @@
     enableFishIntegration = true;
     enableBashIntegration = true;
   };
+
+  programs.yazi = {
+    enable = true;
+    enableBashIntegration = true;
+    enableFishIntegration = true;
+    plugins = {
+      mediainfo = pkgs.fetchFromGitHub {
+        owner = "Ape";
+        repo = "mediainfo.yazi";
+        rev = "c69314e80f5b45fe87a0e06a10d064ed54110439";
+        hash = "sha256-8xdBPdKSiwB7iRU8DJdTHY+BjfR9D3FtyVtDL9tNiy4=";
+      };
+    };
+    settings = {
+      plugin = {
+        prepend_previewers = [
+          {
+            mime = "{image,audio,video}/*";
+            run = "mediainfo";
+          }
+          {
+            mime = "application/x-subrip";
+            run = "mediainfo";
+          }
+        ];
+      };
+    };
+  };
 }
