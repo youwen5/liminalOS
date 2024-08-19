@@ -524,6 +524,7 @@
           nix = ["alejandra"];
           svelte = ["prettier"];
           rust = ["rustfmt"];
+          haskell = ["fourmolu"];
           "*" = ["codespell"];
           "_" = ["trim_whitespace"];
         };
