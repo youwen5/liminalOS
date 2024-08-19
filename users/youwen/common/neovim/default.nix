@@ -24,6 +24,9 @@
       stylua
       lua-language-server
 
+      # Haskell
+      haskellPackages.fourmolu
+
       # Misc
       codespell
       ripgrep
