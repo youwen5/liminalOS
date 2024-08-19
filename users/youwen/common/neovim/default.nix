@@ -378,7 +378,7 @@
         };
       }
       {
-        action = '':lua require("lsp_lines").toggle<CR>'';
+        action = '':lua require("lsp_lines").toggle()<CR>'';
         key = "<Leader>cd";
         options = {
           desc = "Toggle lsp lines";
