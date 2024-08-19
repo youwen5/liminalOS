@@ -367,6 +367,15 @@
           silent = true;
         };
       }
+      {
+        action = '':lua vim.lsp.buf.rename()<CR>'';
+        key = "<Leader>cr";
+        options = {
+          desc = "Rename symbol";
+          noremap = true;
+          silent = true;
+        };
+      }
       # {
       #   action = ":Yazi<CR>";
       #   key = "<Leader>mf";
@@ -509,6 +518,8 @@
           tabline = {};
           trailspace = {};
           comment = {};
+          cursorword = {};
+          bracketed = {};
         };
       };
 
