@@ -25,6 +25,9 @@
 
       # Misc
       codespell
+      ripgrep
+      yazi
+      fd
     ];
 
     luaLoader.enable = true;
