@@ -12,6 +12,7 @@
 
       # Rust
       rust-analyzer
+      rustfmt
 
       # Nix
       alejandra
@@ -522,7 +523,7 @@
           python = ["black"];
           nix = ["alejandra"];
           svelte = ["prettier"];
-          rust = ["rust-analyzer"];
+          rust = ["rustfmt"];
           "*" = ["codespell"];
           "_" = ["trim_whitespace"];
         };
