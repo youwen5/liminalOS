@@ -6,7 +6,26 @@
     withNodeJs = true;
     withRuby = true;
 
-    extraPackages = with pkgs; [alejandra black stylua codespell nodePackages.prettier];
+    extraPackages = with pkgs; [
+      # TS/JS
+      nodePackages.prettier
+
+      # Rust
+      rust-analyzer
+
+      # Nix
+      alejandra
+
+      # Python
+      black
+
+      # Lua
+      stylua
+      lua-language-server
+
+      # Misc
+      codespell
+    ];
 
     luaLoader.enable = true;
     performance = {
@@ -336,6 +355,15 @@
           silent = true;
         };
       }
+      {
+        action = '':lua vim.lsp.buf.code_action()<CR>'';
+        key = "<Leader>ca";
+        options = {
+          desc = "View available code actions";
+          noremap = true;
+          silent = true;
+        };
+      }
       # {
       #   action = ":Yazi<CR>";
       #   key = "<Leader>mf";
@@ -406,6 +434,12 @@
       };
       telescope = {
         enable = true;
+        extensions.ui-select = {
+          enable = true;
+          settings = {
+            codeactions = true;
+          };
+        };
       };
       trouble.enable = true;
       direnv.enable = true;
