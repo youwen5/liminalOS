@@ -377,6 +377,15 @@
           silent = true;
         };
       }
+      {
+        action = '':lua require("lsp_lines").toggle<CR>'';
+        key = "<Leader>cd";
+        options = {
+          desc = "Toggle lsp lines";
+          noremap = true;
+          silent = true;
+        };
+      }
       # {
       #   action = ":Yazi<CR>";
       #   key = "<Leader>mf";
