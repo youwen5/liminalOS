@@ -409,6 +409,7 @@
         settings = {
           highlight.enable = true;
           indent.enable = true;
+          folding.enable = true;
         };
       };
       lsp-lines.enable = true;
@@ -437,10 +438,35 @@
       };
       telescope = {
         enable = true;
-        extensions.ui-select = {
-          enable = true;
-          settings = {
-            codeactions = true;
+        extensions = {
+          ui-select = {
+            enable = true;
+            settings = {
+              codeactions = true;
+            };
+          };
+          media-files = {
+            enable = true;
+            settings = {
+              filetypes = [
+                "png"
+                "webp"
+                "jpg"
+                "jpeg"
+                "mp4"
+                "svg"
+                "pdf"
+                "mov"
+                "mkv"
+                "avi"
+              ];
+              find_cmd = "rg";
+            };
+            dependencies = {
+              imageMagick.enable = true;
+              pdftoppm.enable = true;
+              ffmpegthumbnailer.enable = true;
+            };
           };
         };
       };
