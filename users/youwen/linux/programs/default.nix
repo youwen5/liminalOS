@@ -1,4 +1,4 @@
-{
+{pkgs, ...}: {
   programs.kitty = {
     enable = true;
     theme = "Tokyo Night";
@@ -29,5 +29,6 @@
       "privacy.clearOnShutdown.cookies" = false;
       "network.cookie.lifetimePolicy" = 0;
     };
+    package = pkgs.librewolf-wayland;
   };
 }
