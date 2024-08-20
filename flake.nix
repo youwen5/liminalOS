@@ -76,37 +76,9 @@
         system = "x86_64-linux";
         modules = [
           ./hosts/demeter
-          ./modules/nixos/gaming
-          ./modules/nixos/audio
-          ./modules/nixos/networking
-          ./modules/nixos/fonts
-          ./modules/nixos/greeter
-          ./modules/nixos/core
-          ./overlays
-
-          catppuccin.nixosModules.catppuccin
-          lix-module.nixosModules.default
-          lanzaboote.nixosModules.lanzaboote
-          home-manager.nixosModules.home-manager
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.backupFileExtension = "backup";
-            home-manager.users.youwen = {
-              imports = [
-                ./users/youwen/linux/desktop
-                ./users/youwen/linux/packages/x86_64
-                ./users/youwen/linux/programs
-                ./users/youwen/common/neofetch
-                ./users/youwen/common/neovim
-                ./users/youwen/common
-                inputs.catppuccin.homeManagerModules.catppuccin
-                inputs.nixvim.homeManagerModules.nixvim
-              ];
-            };
-          }
         ];
       };
+
       callisto = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs;};
         system = "aarch64-linux";
@@ -117,6 +89,7 @@
           ./modules/nixos/fonts
           ./modules/nixos/greeter
           ./modules/nixos/core
+          ./overlays
 
           apple-silicon.nixosModules.apple-silicon-support
           catppuccin.nixosModules.catppuccin
@@ -160,6 +133,7 @@
           ./modules/nixos/fonts
           ./modules/nixos/greeter
           ./modules/nixos/core
+          ./overlays
 
           catppuccin.nixosModules.catppuccin
           lix-module.nixosModules.default
