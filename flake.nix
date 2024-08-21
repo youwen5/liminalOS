@@ -69,7 +69,12 @@
     apple-silicon,
     ...
   } @ inputs: rec {
-    formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.alejandra;
+    formatter = with nixpkgs.legacyPackages; {
+      x86_64-linux = x86_64-linux.alejandra;
+      aarch64-linux = aarch64-linux.alejandra;
+      aarch64-darwin = aarch64-darwin.alejandra;
+    };
+
     nixosConfigurations = {
       demeter = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs;};
@@ -91,66 +96,13 @@
         system = "x86_64-linux";
         modules = [
           ./hosts/adrastea
-          ./modules/nixos/gaming
-          ./modules/nixos/audio
-          ./modules/nixos/networking
-          ./modules/nixos/fonts
-          ./modules/nixos/greeter
-          ./modules/nixos/core
-          ./overlays
-
-          catppuccin.nixosModules.catppuccin
-          lix-module.nixosModules.default
-          # lanzaboote.nixosModules.lanzaboote
-          home-manager.nixosModules.home-manager
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.backupFileExtension = "backup";
-            home-manager.users.youwen = {
-              imports = [
-                ./users/youwen/linux/laptop
-                ./users/youwen/linux/packages/x86_64
-                ./users/youwen/linux/programs
-                ./users/youwen/common/neovim
-                ./users/youwen/common
-                ./users/youwen/common/neofetch
-                ./hosts/adrastea/home-manager-overrides.nix
-                inputs.catppuccin.homeManagerModules.catppuccin
-                inputs.nixvim.homeManagerModules.nixvim
-              ];
-            };
-          }
         ];
       };
     };
-    formatter.aarch64-darwin = nixpkgs.legacyPackages.aarch64-darwin.alejandra;
-    formatter.aarch64-linux = nixpkgs.legacyPackages.aarch64-linux.alejandra;
-    # Build darwin flake using:
-    # $ darwin-rebuild build --flake .#Youwens-MacBook-Pro
     darwinConfigurations.phobos = nix-darwin.lib.darwinSystem {
       specialArgs = {inherit inputs;};
       modules = [
         ./hosts/phobos
-        home-manager.darwinModules.home-manager
-        {
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-          home-manager.users.youwen.imports = [
-            ./users/youwen/darwin/darwin-home.nix
-            ./users/youwen/common/core.nix
-            ./users/youwen/common/neofetch
-            ./users/youwen/common/neovim
-          ];
-          home-manager.backupFileExtension = "backup";
-
-          # Optionally, use home-manager.extraSpecialArgs to pass
-          # arguments to home.nix
-        }
-        nix-homebrew.darwinModules.nix-homebrew
-        ./modules/darwin/homebrew.nix
-        ./modules/darwin/yabai.nix
-        ./modules/darwin/skhd.nix
       ];
     };
   };
