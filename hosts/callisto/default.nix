@@ -1,4 +1,8 @@
-{inputs, ...}: {
+{
+  inputs,
+  system,
+  ...
+}: {
   imports = with inputs; [
     ./configuration.nix
     ../../modules/nixos/audio
@@ -16,6 +20,10 @@
       home-manager.useGlobalPkgs = true;
       home-manager.useUserPackages = true;
       home-manager.backupFileExtension = "backup";
+      home-manager.extraSpecialArgs = {
+        inherit inputs;
+        inherit system;
+      };
       home-manager.users.youwen = {
         imports = [
           ../../users/youwen/common
