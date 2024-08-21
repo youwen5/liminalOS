@@ -88,8 +88,10 @@
       };
 
       callisto = nixpkgs.lib.nixosSystem {
-        specialArgs = {inherit inputs;};
-        system = "aarch64-linux";
+        specialArgs = {
+          inherit inputs;
+          system = "aarch64-linux";
+        };
         modules = [
           ./hosts/callisto
         ];
