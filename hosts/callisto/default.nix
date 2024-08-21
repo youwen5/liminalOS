@@ -31,7 +31,7 @@
           ../../users/youwen/linux/laptop
           ../../users/youwen/linux/packages/aarch-64
           ../../users/youwen/common/neovim
-          ./home-manager-overrides/
+          ./home-manager-extras
 
           inputs.catppuccin.homeManagerModules.catppuccin
           inputs.nixvim.homeManagerModules.nixvim
