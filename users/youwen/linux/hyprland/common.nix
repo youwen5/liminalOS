@@ -6,7 +6,7 @@
 }: {
   wayland.windowManager.hyprland = {
     enable = true;
-    package = inputs.hyprland-stable.legacyPackages.${system}.hyprland;
+    package = inputs.stablepkgs.legacyPackages.${system}.hyprland;
     settings = {
       exec-once = ["waypaper --restore"];
       "$mod" = "SUPER";
