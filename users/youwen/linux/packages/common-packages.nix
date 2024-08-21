@@ -36,7 +36,7 @@ with pkgs; [
   # desktop apps
   dolphin
   thunderbird
-  # vesktop
+  vesktop
   signal-desktop
 
   gcc
