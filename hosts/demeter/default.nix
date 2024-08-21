@@ -1,4 +1,8 @@
-{inputs, ...}: {
+{
+  inputs,
+  system,
+  ...
+}: {
   imports = with inputs; [
     ./configuration.nix
     ../../modules/nixos/gaming
@@ -17,6 +21,10 @@
       home-manager.useGlobalPkgs = true;
       home-manager.useUserPackages = true;
       home-manager.backupFileExtension = "backup";
+      home-manager.extraSpecialArgs = {
+        inherit inputs;
+        inherit system;
+      };
       home-manager.users.youwen = {
         imports = [
           ../../users/youwen/linux/desktop
@@ -25,8 +33,8 @@
           ../../users/youwen/common/neofetch
           ../../users/youwen/common/neovim
           ../../users/youwen/common
-          inputs.catppuccin.homeManagerModules.catppuccin
-          inputs.nixvim.homeManagerModules.nixvim
+          catppuccin.homeManagerModules.catppuccin
+          nixvim.homeManagerModules.nixvim
         ];
       };
     }

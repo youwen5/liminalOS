@@ -53,6 +53,8 @@
       url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    hyprland-stable.url = "github:nixos/nixpkgs/6404fe89d602c9511c08f4978bcb214032cd3cfc";
   };
 
   outputs = {
@@ -77,8 +79,11 @@
 
     nixosConfigurations = {
       demeter = nixpkgs.lib.nixosSystem {
-        specialArgs = {inherit inputs;};
         system = "x86_64-linux";
+        specialArgs = {
+          inherit inputs;
+          system = "x86_64-linux";
+        };
         modules = [
           ./hosts/demeter
         ];
