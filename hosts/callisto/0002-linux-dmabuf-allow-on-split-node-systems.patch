@@ -1,0 +1,28 @@
+From 279ec1c291021479b050c83a0435ac7076c1aee0 Mon Sep 17 00:00:00 2001
+From: vaxerski <vaxry@vaxry.net>
+Date: Sun, 18 Aug 2024 19:51:54 +0200
+Subject: [PATCH] linux-dmabuf: allow on split-node systems
+
+ref #7364
+---
+ src/protocols/LinuxDMABUF.cpp | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/src/protocols/LinuxDMABUF.cpp b/src/protocols/LinuxDMABUF.cpp
+index 3cdb5b34..32625792 100644
+--- a/src/protocols/LinuxDMABUF.cpp
++++ b/src/protocols/LinuxDMABUF.cpp
+@@ -490,9 +490,8 @@ CLinuxDMABufV1Protocol::CLinuxDMABufV1Protocol(const wl_interface* iface, const
+                 return;
+             }
+         } else {
+-            LOGM(ERR, "DRM device {} has no render node, disabling linux dmabuf", device->nodes[DRM_NODE_PRIMARY] ? device->nodes[DRM_NODE_PRIMARY] : "null");
++            LOGM(ERR, "DRM device {} has no render node, disabling linux dmabuf checks", device->nodes[DRM_NODE_PRIMARY] ? device->nodes[DRM_NODE_PRIMARY] : "null");
+             drmFreeDevice(&device);
+-            removeGlobal();
+         }
+     });
+ }
+-- 
+2.45.2
+

@@ -45,7 +45,8 @@
           oldAttrs.patches
           or []
           ++ [
-            ./asahi-fix.patch
+            ./0001-protocols-refactor-protocol-logging-to-a-macro-7324.patch
+            ./0002-linux-dmabuf-allow-on-split-node-systems.patch
           ];
       });
     })

@@ -1,0 +1,767 @@
+From 12d9901472c6f9128fa8b16c25b3a879d1859e60 Mon Sep 17 00:00:00 2001
+From: Tom Englund <tomenglund26@gmail.com>
+Date: Thu, 15 Aug 2024 18:16:18 +0200
+Subject: [PATCH 2/2] protocols: refactor protocol logging to a macro (#7324)
+
+this avoids the usage of the unique_ptr PROTO::protocol before it has
+been constructed incase one wants to log something inside the
+constructor itself, move the logging to macros and print file:linenumber
+on ERR,CRIT,WARN and classname on the rest of the levels.
+---
+ src/protocols/AlphaModifier.cpp       |  2 --
+ src/protocols/CursorShape.cpp         |  2 --
+ src/protocols/DRMLease.cpp            |  4 +--
+ src/protocols/DRMSyncobj.cpp          |  2 --
+ src/protocols/DataDeviceWlr.cpp       |  2 --
+ src/protocols/FocusGrab.cpp           |  2 --
+ src/protocols/ForeignToplevel.cpp     |  2 --
+ src/protocols/ForeignToplevelWlr.cpp  |  2 --
+ src/protocols/FractionalScale.cpp     |  2 --
+ src/protocols/GammaControl.cpp        |  2 --
+ src/protocols/GlobalShortcuts.cpp     |  2 --
+ src/protocols/IdleNotify.cpp          |  2 --
+ src/protocols/InputMethodV2.cpp       |  2 --
+ src/protocols/LayerShell.cpp          |  2 --
+ src/protocols/LinuxDMABUF.cpp         | 10 +++----
+ src/protocols/MesaDRM.cpp             |  8 ++----
+ src/protocols/OutputManagement.cpp    |  2 --
+ src/protocols/OutputPower.cpp         |  2 --
+ src/protocols/PointerConstraints.cpp  |  2 --
+ src/protocols/PointerGestures.cpp     |  2 --
+ src/protocols/PresentationTime.cpp    |  2 --
+ src/protocols/PrimarySelection.cpp    |  2 --
+ src/protocols/Screencopy.cpp          |  2 --
+ src/protocols/ServerDecorationKDE.cpp |  2 --
+ src/protocols/SessionLock.cpp         |  2 --
+ src/protocols/ShortcutsInhibit.cpp    |  2 --
+ src/protocols/Tablet.cpp              |  2 --
+ src/protocols/TextInputV1.cpp         |  2 --
+ src/protocols/TextInputV3.cpp         |  2 --
+ src/protocols/ToplevelExport.cpp      |  2 --
+ src/protocols/Viewporter.cpp          |  2 --
+ src/protocols/VirtualKeyboard.cpp     |  2 --
+ src/protocols/VirtualPointer.cpp      |  2 --
+ src/protocols/WaylandProtocol.cpp     |  4 +--
+ src/protocols/WaylandProtocol.hpp     | 40 +++++++++++++++++++++------
+ src/protocols/XDGActivation.cpp       |  2 --
+ src/protocols/XDGDecoration.cpp       |  2 --
+ src/protocols/XDGOutput.cpp           |  2 --
+ src/protocols/XDGShell.cpp            |  2 --
+ src/protocols/XWaylandShell.cpp       |  2 --
+ src/protocols/core/Compositor.cpp     |  2 --
+ src/protocols/core/DataDevice.cpp     |  2 --
+ src/protocols/core/Seat.cpp           |  2 --
+ src/protocols/core/Shm.cpp            |  2 --
+ src/protocols/core/Subcompositor.cpp  |  2 --
+ 45 files changed, 42 insertions(+), 104 deletions(-)
+
+diff --git a/src/protocols/AlphaModifier.cpp b/src/protocols/AlphaModifier.cpp
+index 38b8c800..13597fa9 100644
+--- a/src/protocols/AlphaModifier.cpp
++++ b/src/protocols/AlphaModifier.cpp
+@@ -4,8 +4,6 @@
+ #include "../render/Renderer.hpp"
+ #include "core/Compositor.hpp"
+ 
+-#define LOGM PROTO::alphaModifier->protoLog
+-
+ CAlphaModifier::CAlphaModifier(SP<CWpAlphaModifierSurfaceV1> resource_, SP<CWLSurfaceResource> surface_) : resource(resource_), pSurface(surface_) {
+     if (!resource->resource())
+         return;
+diff --git a/src/protocols/CursorShape.cpp b/src/protocols/CursorShape.cpp
+index 812afe53..233a5df9 100644
+--- a/src/protocols/CursorShape.cpp
++++ b/src/protocols/CursorShape.cpp
+@@ -2,8 +2,6 @@
+ #include <algorithm>
+ #include "../helpers/CursorShapes.hpp"
+ 
+-#define LOGM PROTO::cursorShape->protoLog
+-
+ CCursorShapeProtocol::CCursorShapeProtocol(const wl_interface* iface, const int& ver, const std::string& name) : IWaylandProtocol(iface, ver, name) {
+     ;
+ }
+diff --git a/src/protocols/DRMLease.cpp b/src/protocols/DRMLease.cpp
+index 3ab38ea1..bc0945f1 100644
+--- a/src/protocols/DRMLease.cpp
++++ b/src/protocols/DRMLease.cpp
+@@ -4,8 +4,6 @@
+ #include <aquamarine/backend/DRM.hpp>
+ #include <fcntl.h>
+ 
+-#define LOGM PROTO::lease->protoLog
+-
+ CDRMLeaseResource::CDRMLeaseResource(SP<CWpDrmLeaseV1> resource_, SP<CDRMLeaseRequestResource> request) : resource(resource_) {
+     if (!good())
+         return;
+@@ -226,7 +224,7 @@ CDRMLeaseDevice::CDRMLeaseDevice(SP<Aquamarine::CDRMBackend> drmBackend) : backe
+     auto fd = drm->getNonMasterFD();
+ 
+     if (fd < 0) {
+-        Debug::log(ERR, "[DRMLease] Failed to dup fd for drm node {}", drm->gpuName);
++        LOGM(ERR, "Failed to dup fd for drm node {}", drm->gpuName);
+         return;
+     }
+ 
+diff --git a/src/protocols/DRMSyncobj.cpp b/src/protocols/DRMSyncobj.cpp
+index 9a48b99a..4993f1a4 100644
+--- a/src/protocols/DRMSyncobj.cpp
++++ b/src/protocols/DRMSyncobj.cpp
+@@ -7,8 +7,6 @@
+ 
+ #include <fcntl.h>
+ 
+-#define LOGM PROTO::sync->protoLog
+-
+ CDRMSyncobjSurfaceResource::CDRMSyncobjSurfaceResource(SP<CWpLinuxDrmSyncobjSurfaceV1> resource_, SP<CWLSurfaceResource> surface_) : surface(surface_), resource(resource_) {
+     if (!good())
+         return;
+diff --git a/src/protocols/DataDeviceWlr.cpp b/src/protocols/DataDeviceWlr.cpp
+index c039d3b4..ad6ee89a 100644
+--- a/src/protocols/DataDeviceWlr.cpp
++++ b/src/protocols/DataDeviceWlr.cpp
+@@ -3,8 +3,6 @@
+ #include "../managers/SeatManager.hpp"
+ #include "core/Seat.hpp"
+ 
+-#define LOGM PROTO::dataWlr->protoLog
+-
+ CWLRDataOffer::CWLRDataOffer(SP<CZwlrDataControlOfferV1> resource_, SP<IDataSource> source_) : source(source_), resource(resource_) {
+     if (!good())
+         return;
+diff --git a/src/protocols/FocusGrab.cpp b/src/protocols/FocusGrab.cpp
+index 40f9af44..2d6b2ee2 100644
+--- a/src/protocols/FocusGrab.cpp
++++ b/src/protocols/FocusGrab.cpp
+@@ -8,8 +8,6 @@
+ #include <memory>
+ #include <wayland-server.h>
+ 
+-#define LOGM PROTO::focusGrab->protoLog
+-
+ CFocusGrabSurfaceState::CFocusGrabSurfaceState(CFocusGrab* grab, SP<CWLSurfaceResource> surface) {
+     listeners.destroy = surface->events.destroy.registerListener([=](std::any d) { grab->eraseSurface(surface); });
+ }
+diff --git a/src/protocols/ForeignToplevel.cpp b/src/protocols/ForeignToplevel.cpp
+index f7b3886f..59888ce2 100644
+--- a/src/protocols/ForeignToplevel.cpp
++++ b/src/protocols/ForeignToplevel.cpp
+@@ -1,8 +1,6 @@
+ #include "ForeignToplevel.hpp"
+ #include "../Compositor.hpp"
+ 
+-#define LOGM PROTO::foreignToplevel->protoLog
+-
+ CForeignToplevelHandle::CForeignToplevelHandle(SP<CExtForeignToplevelHandleV1> resource_, PHLWINDOW pWindow_) : resource(resource_), pWindow(pWindow_) {
+     if (!resource_->resource())
+         return;
+diff --git a/src/protocols/ForeignToplevelWlr.cpp b/src/protocols/ForeignToplevelWlr.cpp
+index b31a4083..bd597a91 100644
+--- a/src/protocols/ForeignToplevelWlr.cpp
++++ b/src/protocols/ForeignToplevelWlr.cpp
+@@ -4,8 +4,6 @@
+ #include "protocols/core/Output.hpp"
+ #include "render/Renderer.hpp"
+ 
+-#define LOGM PROTO::foreignToplevelWlr->protoLog
+-
+ CForeignToplevelHandleWlr::CForeignToplevelHandleWlr(SP<CZwlrForeignToplevelHandleV1> resource_, PHLWINDOW pWindow_) : resource(resource_), pWindow(pWindow_) {
+     if (!resource_->resource())
+         return;
+diff --git a/src/protocols/FractionalScale.cpp b/src/protocols/FractionalScale.cpp
+index 5bf56c5a..d39fa67c 100644
+--- a/src/protocols/FractionalScale.cpp
++++ b/src/protocols/FractionalScale.cpp
+@@ -2,8 +2,6 @@
+ #include <algorithm>
+ #include "core/Compositor.hpp"
+ 
+-#define LOGM PROTO::fractional->protoLog
+-
+ CFractionalScaleProtocol::CFractionalScaleProtocol(const wl_interface* iface, const int& ver, const std::string& name) : IWaylandProtocol(iface, ver, name) {
+     ;
+ }
+diff --git a/src/protocols/GammaControl.cpp b/src/protocols/GammaControl.cpp
+index 4febffbb..c902d00e 100644
+--- a/src/protocols/GammaControl.cpp
++++ b/src/protocols/GammaControl.cpp
+@@ -5,8 +5,6 @@
+ #include "../Compositor.hpp"
+ #include "../protocols/core/Output.hpp"
+ 
+-#define LOGM PROTO::gamma->protoLog
+-
+ CGammaControl::CGammaControl(SP<CZwlrGammaControlV1> resource_, wl_resource* output) : resource(resource_) {
+     if (!resource_->resource())
+         return;
+diff --git a/src/protocols/GlobalShortcuts.cpp b/src/protocols/GlobalShortcuts.cpp
+index 860004c9..92bfbae4 100644
+--- a/src/protocols/GlobalShortcuts.cpp
++++ b/src/protocols/GlobalShortcuts.cpp
+@@ -1,8 +1,6 @@
+ #include "GlobalShortcuts.hpp"
+ #include "../Compositor.hpp"
+ 
+-#define LOGM PROTO::globalShortcuts->protoLog
+-
+ CShortcutClient::CShortcutClient(SP<CHyprlandGlobalShortcutsManagerV1> resource_) : resource(resource_) {
+     if (!good())
+         return;
+diff --git a/src/protocols/IdleNotify.cpp b/src/protocols/IdleNotify.cpp
+index 2ec7d2a1..8d915ac6 100644
+--- a/src/protocols/IdleNotify.cpp
++++ b/src/protocols/IdleNotify.cpp
+@@ -1,8 +1,6 @@
+ #include "IdleNotify.hpp"
+ #include "../managers/eventLoop/EventLoopManager.hpp"
+ 
+-#define LOGM PROTO::idle->protoLog
+-
+ static int onTimer(SP<CEventLoopTimer> self, void* data) {
+ 
+     const auto NOTIF = (CExtIdleNotification*)data;
+diff --git a/src/protocols/InputMethodV2.cpp b/src/protocols/InputMethodV2.cpp
+index fd306f09..a0820e0b 100644
+--- a/src/protocols/InputMethodV2.cpp
++++ b/src/protocols/InputMethodV2.cpp
+@@ -6,8 +6,6 @@
+ #include "core/Compositor.hpp"
+ #include <cstring>
+ 
+-#define LOGM PROTO::ime->protoLog
+-
+ CInputMethodKeyboardGrabV2::CInputMethodKeyboardGrabV2(SP<CZwpInputMethodKeyboardGrabV2> resource_, SP<CInputMethodV2> owner_) : resource(resource_), owner(owner_) {
+     if (!resource->resource())
+         return;
+diff --git a/src/protocols/LayerShell.cpp b/src/protocols/LayerShell.cpp
+index 17d3b22a..c02d23f3 100644
+--- a/src/protocols/LayerShell.cpp
++++ b/src/protocols/LayerShell.cpp
+@@ -4,8 +4,6 @@
+ #include "core/Compositor.hpp"
+ #include "core/Output.hpp"
+ 
+-#define LOGM PROTO::layerShell->protoLog
+-
+ void CLayerShellResource::SState::reset() {
+     anchor        = 0;
+     exclusive     = 0;
+diff --git a/src/protocols/LinuxDMABUF.cpp b/src/protocols/LinuxDMABUF.cpp
+index 0fbf832e..3cdb5b34 100644
+--- a/src/protocols/LinuxDMABUF.cpp
++++ b/src/protocols/LinuxDMABUF.cpp
+@@ -14,8 +14,6 @@
+ #include "../render/OpenGL.hpp"
+ #include "../Compositor.hpp"
+ 
+-#define LOGM PROTO::linuxDma->protoLog
+-
+ static std::optional<dev_t> devIDFromFD(int fd) {
+     struct stat stat;
+     if (fstat(fd, &stat) != 0)
+@@ -425,7 +423,7 @@ CLinuxDMABufV1Protocol::CLinuxDMABufV1Protocol(const wl_interface* iface, const
+         auto dev        = devIDFromFD(rendererFD);
+ 
+         if (!dev.has_value()) {
+-            protoLog(ERR, "failed to get drm dev, disabling linux dmabuf");
++            LOGM(ERR, "failed to get drm dev, disabling linux dmabuf");
+             removeGlobal();
+             return;
+         }
+@@ -477,7 +475,7 @@ CLinuxDMABufV1Protocol::CLinuxDMABufV1Protocol(const wl_interface* iface, const
+ 
+         drmDevice* device = nullptr;
+         if (drmGetDeviceFromDevId(mainDevice, 0, &device) != 0) {
+-            protoLog(ERR, "failed to get drm dev, disabling linux dmabuf");
++            LOGM(ERR, "failed to get drm dev, disabling linux dmabuf");
+             removeGlobal();
+             return;
+         }
+@@ -487,12 +485,12 @@ CLinuxDMABufV1Protocol::CLinuxDMABufV1Protocol(const wl_interface* iface, const
+             mainDeviceFD     = open(name, O_RDWR | O_CLOEXEC);
+             drmFreeDevice(&device);
+             if (mainDeviceFD < 0) {
+-                protoLog(ERR, "failed to open drm dev, disabling linux dmabuf");
++                LOGM(ERR, "failed to open drm dev, disabling linux dmabuf");
+                 removeGlobal();
+                 return;
+             }
+         } else {
+-            protoLog(ERR, "DRM device {} has no render node, disabling linux dmabuf", device->nodes[DRM_NODE_PRIMARY] ? device->nodes[DRM_NODE_PRIMARY] : "null");
++            LOGM(ERR, "DRM device {} has no render node, disabling linux dmabuf", device->nodes[DRM_NODE_PRIMARY] ? device->nodes[DRM_NODE_PRIMARY] : "null");
+             drmFreeDevice(&device);
+             removeGlobal();
+         }
+diff --git a/src/protocols/MesaDRM.cpp b/src/protocols/MesaDRM.cpp
+index ed412555..9fcd5f9b 100644
+--- a/src/protocols/MesaDRM.cpp
++++ b/src/protocols/MesaDRM.cpp
+@@ -4,8 +4,6 @@
+ #include "../Compositor.hpp"
+ #include "types/WLBuffer.hpp"
+ 
+-#define LOGM PROTO::mesaDRM->protoLog
+-
+ CMesaDRMBufferResource::CMesaDRMBufferResource(uint32_t id, wl_client* client, Aquamarine::SDMABUFAttrs attrs_) {
+     LOGM(LOG, "Creating a Mesa dmabuf, with id {}: size {}, fmt {}, planes {}", id, attrs_.size, attrs_.format, attrs_.planes);
+     for (int i = 0; i < attrs_.planes; ++i) {
+@@ -115,7 +113,7 @@ CMesaDRMProtocol::CMesaDRMProtocol(const wl_interface* iface, const int& ver, co
+     drmDevice* dev   = nullptr;
+     int        drmFD = g_pCompositor->m_iDRMFD;
+     if (drmGetDevice2(drmFD, 0, &dev) != 0) {
+-        protoLog(ERR, "Failed to get device, disabling MesaDRM");
++        LOGM(ERR, "Failed to get device, disabling MesaDRM");
+         removeGlobal();
+         return;
+     }
+@@ -126,13 +124,13 @@ CMesaDRMProtocol::CMesaDRMProtocol(const wl_interface* iface, const int& ver, co
+         ASSERT(dev->available_nodes & (1 << DRM_NODE_PRIMARY));
+ 
+         if (!dev->nodes[DRM_NODE_PRIMARY]) {
+-            protoLog(ERR, "No DRM render node available, both render and primary are null, disabling MesaDRM");
++            LOGM(ERR, "No DRM render node available, both render and primary are null, disabling MesaDRM");
+             drmFreeDevice(&dev);
+             removeGlobal();
+             return;
+         }
+ 
+-        protoLog(WARN, "No DRM render node, falling back to primary {}", dev->nodes[DRM_NODE_PRIMARY]);
++        LOGM(WARN, "No DRM render node, falling back to primary {}", dev->nodes[DRM_NODE_PRIMARY]);
+         nodeName = dev->nodes[DRM_NODE_PRIMARY];
+     }
+     drmFreeDevice(&dev);
+diff --git a/src/protocols/OutputManagement.cpp b/src/protocols/OutputManagement.cpp
+index 66f4c5f0..cfe388fa 100644
+--- a/src/protocols/OutputManagement.cpp
++++ b/src/protocols/OutputManagement.cpp
+@@ -4,8 +4,6 @@
+ 
+ using namespace Aquamarine;
+ 
+-#define LOGM PROTO::outputManagement->protoLog
+-
+ COutputManager::COutputManager(SP<CZwlrOutputManagerV1> resource_) : resource(resource_) {
+     if (!good())
+         return;
+diff --git a/src/protocols/OutputPower.cpp b/src/protocols/OutputPower.cpp
+index 597b9871..0c324bf0 100644
+--- a/src/protocols/OutputPower.cpp
++++ b/src/protocols/OutputPower.cpp
+@@ -2,8 +2,6 @@
+ #include "../Compositor.hpp"
+ #include "core/Output.hpp"
+ 
+-#define LOGM PROTO::outputPower->protoLog
+-
+ COutputPower::COutputPower(SP<CZwlrOutputPowerV1> resource_, CMonitor* pMonitor_) : resource(resource_), pMonitor(pMonitor_) {
+     if (!resource->resource())
+         return;
+diff --git a/src/protocols/PointerConstraints.cpp b/src/protocols/PointerConstraints.cpp
+index fd15242d..0f2dd991 100644
+--- a/src/protocols/PointerConstraints.cpp
++++ b/src/protocols/PointerConstraints.cpp
+@@ -5,8 +5,6 @@
+ #include "../managers/SeatManager.hpp"
+ #include "core/Compositor.hpp"
+ 
+-#define LOGM PROTO::constraints->protoLog
+-
+ CPointerConstraint::CPointerConstraint(SP<CZwpLockedPointerV1> resource_, SP<CWLSurfaceResource> surf, wl_resource* region_, zwpPointerConstraintsV1Lifetime lifetime_) :
+     resourceL(resource_), locked(true), lifetime(lifetime_) {
+     if (!resource_->resource())
+diff --git a/src/protocols/PointerGestures.cpp b/src/protocols/PointerGestures.cpp
+index 86510779..c83e3887 100644
+--- a/src/protocols/PointerGestures.cpp
++++ b/src/protocols/PointerGestures.cpp
+@@ -4,8 +4,6 @@
+ #include "core/Seat.hpp"
+ #include "core/Compositor.hpp"
+ 
+-#define LOGM PROTO::pointerGestures->protoLog
+-
+ CPointerGestureSwipe::CPointerGestureSwipe(SP<CZwpPointerGestureSwipeV1> resource_) : resource(resource_) {
+     if (!resource->resource())
+         return;
+diff --git a/src/protocols/PresentationTime.cpp b/src/protocols/PresentationTime.cpp
+index a2fc270c..335cf557 100644
+--- a/src/protocols/PresentationTime.cpp
++++ b/src/protocols/PresentationTime.cpp
+@@ -6,8 +6,6 @@
+ #include "core/Output.hpp"
+ #include <aquamarine/output/Output.hpp>
+ 
+-#define LOGM PROTO::presentation->protoLog
+-
+ CQueuedPresentationData::CQueuedPresentationData(SP<CWLSurfaceResource> surf) : surface(surf) {
+     ;
+ }
+diff --git a/src/protocols/PrimarySelection.cpp b/src/protocols/PrimarySelection.cpp
+index 78eb8d63..4fede706 100644
+--- a/src/protocols/PrimarySelection.cpp
++++ b/src/protocols/PrimarySelection.cpp
+@@ -4,8 +4,6 @@
+ #include "core/Seat.hpp"
+ #include "../config/ConfigValue.hpp"
+ 
+-#define LOGM PROTO::primarySelection->protoLog
+-
+ CPrimarySelectionOffer::CPrimarySelectionOffer(SP<CZwpPrimarySelectionOfferV1> resource_, SP<IDataSource> source_) : source(source_), resource(resource_) {
+     if (!good())
+         return;
+diff --git a/src/protocols/Screencopy.cpp b/src/protocols/Screencopy.cpp
+index a8afba84..f246f6dd 100644
+--- a/src/protocols/Screencopy.cpp
++++ b/src/protocols/Screencopy.cpp
+@@ -9,8 +9,6 @@
+ 
+ #include <algorithm>
+ 
+-#define LOGM PROTO::screencopy->protoLog
+-
+ CScreencopyFrame::~CScreencopyFrame() {
+     if (buffer && buffer->locked())
+         buffer->unlock();
+diff --git a/src/protocols/ServerDecorationKDE.cpp b/src/protocols/ServerDecorationKDE.cpp
+index 42da52a9..c7b98a9c 100644
+--- a/src/protocols/ServerDecorationKDE.cpp
++++ b/src/protocols/ServerDecorationKDE.cpp
+@@ -1,8 +1,6 @@
+ #include "ServerDecorationKDE.hpp"
+ #include "core/Compositor.hpp"
+ 
+-#define LOGM PROTO::serverDecorationKDE->protoLog
+-
+ CServerDecorationKDE::CServerDecorationKDE(SP<COrgKdeKwinServerDecoration> resource_, SP<CWLSurfaceResource> surf) : resource(resource_) {
+     if (!good())
+         return;
+diff --git a/src/protocols/SessionLock.cpp b/src/protocols/SessionLock.cpp
+index df97413c..7b0d8b3b 100644
+--- a/src/protocols/SessionLock.cpp
++++ b/src/protocols/SessionLock.cpp
+@@ -5,8 +5,6 @@
+ #include "core/Compositor.hpp"
+ #include "core/Output.hpp"
+ 
+-#define LOGM PROTO::sessionLock->protoLog
+-
+ CSessionLockSurface::CSessionLockSurface(SP<CExtSessionLockSurfaceV1> resource_, SP<CWLSurfaceResource> surface_, CMonitor* pMonitor_, WP<CSessionLock> owner_) :
+     resource(resource_), sessionLock(owner_), pSurface(surface_), pMonitor(pMonitor_) {
+     if (!resource->resource())
+diff --git a/src/protocols/ShortcutsInhibit.cpp b/src/protocols/ShortcutsInhibit.cpp
+index 1a0433e6..e4424ed7 100644
+--- a/src/protocols/ShortcutsInhibit.cpp
++++ b/src/protocols/ShortcutsInhibit.cpp
+@@ -3,8 +3,6 @@
+ #include "../Compositor.hpp"
+ #include "core/Compositor.hpp"
+ 
+-#define LOGM PROTO::shortcutsInhibit->protoLog
+-
+ CKeyboardShortcutsInhibitor::CKeyboardShortcutsInhibitor(SP<CZwpKeyboardShortcutsInhibitorV1> resource_, SP<CWLSurfaceResource> surf) : resource(resource_), pSurface(surf) {
+     if (!resource->resource())
+         return;
+diff --git a/src/protocols/Tablet.cpp b/src/protocols/Tablet.cpp
+index 72c7cfde..b974152e 100644
+--- a/src/protocols/Tablet.cpp
++++ b/src/protocols/Tablet.cpp
+@@ -7,8 +7,6 @@
+ #include <algorithm>
+ #include <cstring>
+ 
+-#define LOGM PROTO::tablet->protoLog
+-
+ CTabletPadStripV2Resource::CTabletPadStripV2Resource(SP<CZwpTabletPadStripV2> resource_, uint32_t id_) : id(id_), resource(resource_) {
+     if (!good())
+         return;
+diff --git a/src/protocols/TextInputV1.cpp b/src/protocols/TextInputV1.cpp
+index 78e910cb..f25f5aca 100644
+--- a/src/protocols/TextInputV1.cpp
++++ b/src/protocols/TextInputV1.cpp
+@@ -3,8 +3,6 @@
+ #include "../Compositor.hpp"
+ #include "core/Compositor.hpp"
+ 
+-#define LOGM PROTO::textInputV1->protoLog
+-
+ CTextInputV1::~CTextInputV1() {
+     events.destroy.emit();
+ }
+diff --git a/src/protocols/TextInputV3.cpp b/src/protocols/TextInputV3.cpp
+index 1302a57f..99d799f3 100644
+--- a/src/protocols/TextInputV3.cpp
++++ b/src/protocols/TextInputV3.cpp
+@@ -2,8 +2,6 @@
+ #include <algorithm>
+ #include "core/Compositor.hpp"
+ 
+-#define LOGM PROTO::textInputV3->protoLog
+-
+ void CTextInputV3::SState::reset() {
+     cause               = ZWP_TEXT_INPUT_V3_CHANGE_CAUSE_INPUT_METHOD;
+     surrounding.updated = false;
+diff --git a/src/protocols/ToplevelExport.cpp b/src/protocols/ToplevelExport.cpp
+index fb3fde2b..05e991d6 100644
+--- a/src/protocols/ToplevelExport.cpp
++++ b/src/protocols/ToplevelExport.cpp
+@@ -8,8 +8,6 @@
+ 
+ #include <algorithm>
+ 
+-#define LOGM PROTO::toplevelExport->protoLog
+-
+ CToplevelExportClient::CToplevelExportClient(SP<CHyprlandToplevelExportManagerV1> resource_) : resource(resource_) {
+     if (!good())
+         return;
+diff --git a/src/protocols/Viewporter.cpp b/src/protocols/Viewporter.cpp
+index 78f3039f..58cb851d 100644
+--- a/src/protocols/Viewporter.cpp
++++ b/src/protocols/Viewporter.cpp
+@@ -2,8 +2,6 @@
+ #include "core/Compositor.hpp"
+ #include <algorithm>
+ 
+-#define LOGM PROTO::viewport->protoLog
+-
+ CViewportResource::CViewportResource(SP<CWpViewport> resource_, SP<CWLSurfaceResource> surface_) : surface(surface_), resource(resource_) {
+     if (!good())
+         return;
+diff --git a/src/protocols/VirtualKeyboard.cpp b/src/protocols/VirtualKeyboard.cpp
+index 2642ec11..27a4f248 100644
+--- a/src/protocols/VirtualKeyboard.cpp
++++ b/src/protocols/VirtualKeyboard.cpp
+@@ -2,8 +2,6 @@
+ #include <sys/mman.h>
+ #include "../devices/IKeyboard.hpp"
+ 
+-#define LOGM PROTO::virtualKeyboard->protoLog
+-
+ CVirtualKeyboardV1Resource::CVirtualKeyboardV1Resource(SP<CZwpVirtualKeyboardV1> resource_) : resource(resource_) {
+     if (!good())
+         return;
+diff --git a/src/protocols/VirtualPointer.cpp b/src/protocols/VirtualPointer.cpp
+index 8626241a..eb92a640 100644
+--- a/src/protocols/VirtualPointer.cpp
++++ b/src/protocols/VirtualPointer.cpp
+@@ -1,8 +1,6 @@
+ #include "VirtualPointer.hpp"
+ #include "core/Output.hpp"
+ 
+-#define LOGM PROTO::virtualPointer->protoLog
+-
+ CVirtualPointerV1Resource::CVirtualPointerV1Resource(SP<CZwlrVirtualPointerV1> resource_, WP<CMonitor> boundOutput_) : boundOutput(boundOutput_), resource(resource_) {
+     if (!good())
+         return;
+diff --git a/src/protocols/WaylandProtocol.cpp b/src/protocols/WaylandProtocol.cpp
+index 954f160d..0782d323 100644
+--- a/src/protocols/WaylandProtocol.cpp
++++ b/src/protocols/WaylandProtocol.cpp
+@@ -21,7 +21,7 @@ IWaylandProtocol::IWaylandProtocol(const wl_interface* iface, const int& ver, co
+     m_pGlobal = wl_global_create(g_pCompositor->m_sWLDisplay, iface, ver, this, &bindManagerInternal);
+ 
+     if (!m_pGlobal) {
+-        protoLog(ERR, "could not create a global");
++        LOGM(ERR, "could not create a global [{}]", m_szName);
+         return;
+     }
+ 
+@@ -30,7 +30,7 @@ IWaylandProtocol::IWaylandProtocol(const wl_interface* iface, const int& ver, co
+     m_liDisplayDestroy.parent          = this;
+     wl_display_add_destroy_listener(g_pCompositor->m_sWLDisplay, &m_liDisplayDestroy.listener);
+ 
+-    protoLog(LOG, "Registered global");
++    LOGM(LOG, "Registered global [{}]", m_szName);
+ }
+ 
+ IWaylandProtocol::~IWaylandProtocol() {
+diff --git a/src/protocols/WaylandProtocol.hpp b/src/protocols/WaylandProtocol.hpp
+index 4d4e7925..0fa8daab 100644
+--- a/src/protocols/WaylandProtocol.hpp
++++ b/src/protocols/WaylandProtocol.hpp
+@@ -11,6 +11,35 @@
+ 
+ #define PROTO NProtocols
+ 
++#define EXTRACT_CLASS_NAME()                                                                                                                                                       \
++    []() constexpr -> std::string_view {                                                                                                                                           \
++        constexpr std::string_view prettyFunction = __PRETTY_FUNCTION__;                                                                                                           \
++        constexpr size_t           colons         = prettyFunction.find("::");                                                                                                     \
++        if (colons != std::string_view::npos) {                                                                                                                                    \
++            constexpr size_t begin = prettyFunction.substr(0, colons).rfind(' ') + 1;                                                                                              \
++            constexpr size_t end   = colons - begin;                                                                                                                               \
++            return prettyFunction.substr(begin, end);                                                                                                                              \
++        } else {                                                                                                                                                                   \
++            return "Global";                                                                                                                                                       \
++        }                                                                                                                                                                          \
++    }()
++
++#define LOGM(level, ...)                                                                                                                                                           \
++    do {                                                                                                                                                                           \
++        std::ostringstream oss;                                                                                                                                                    \
++        if (level == WARN || level == ERR || level == CRIT) {                                                                                                                      \
++            oss << "[" << __FILE__ << ":" << __LINE__ << "] ";                                                                                                                     \
++        } else if (level == LOG || level == INFO || level == TRACE) {                                                                                                              \
++            oss << "[" << EXTRACT_CLASS_NAME() << "] ";                                                                                                                            \
++        }                                                                                                                                                                          \
++        if constexpr (std::is_same_v<decltype(__VA_ARGS__), std::string>) {                                                                                                        \
++            oss << __VA_ARGS__;                                                                                                                                                    \
++            Debug::log(level, oss.str());                                                                                                                                          \
++        } else {                                                                                                                                                                   \
++            Debug::log(level, std::format("{}{}", oss.str(), std::format(__VA_ARGS__)));                                                                                           \
++        }                                                                                                                                                                          \
++    } while (0)
++
+ class IWaylandProtocol;
+ struct IWaylandProtocolDestroyWrapper {
+     wl_listener       listener;
+@@ -22,15 +51,10 @@ class IWaylandProtocol {
+     IWaylandProtocol(const wl_interface* iface, const int& ver, const std::string& name);
+     virtual ~IWaylandProtocol();
+ 
+-    virtual void onDisplayDestroy();
+-    virtual void removeGlobal();
+-
+-    virtual void bindManager(wl_client* client, void* data, uint32_t ver, uint32_t id) = 0;
++    virtual void                   onDisplayDestroy();
++    virtual void                   removeGlobal();
+ 
+-    template <typename... Args>
+-    void protoLog(LogLevel level, std::format_string<Args...> fmt, Args&&... args) {
+-        Debug::log(level, std::format("[{}] ", m_szName) + std::vformat(fmt.get(), std::make_format_args(args...)));
+-    };
++    virtual void                   bindManager(wl_client* client, void* data, uint32_t ver, uint32_t id) = 0;
+ 
+     IWaylandProtocolDestroyWrapper m_liDisplayDestroy;
+ 
+diff --git a/src/protocols/XDGActivation.cpp b/src/protocols/XDGActivation.cpp
+index 40f33f02..4a6c7bfe 100644
+--- a/src/protocols/XDGActivation.cpp
++++ b/src/protocols/XDGActivation.cpp
+@@ -4,8 +4,6 @@
+ #include "core/Compositor.hpp"
+ #include <algorithm>
+ 
+-#define LOGM PROTO::activation->protoLog
+-
+ CXDGActivationToken::CXDGActivationToken(SP<CXdgActivationTokenV1> resource_) : resource(resource_) {
+     if (!resource_->resource())
+         return;
+diff --git a/src/protocols/XDGDecoration.cpp b/src/protocols/XDGDecoration.cpp
+index 021a1141..07b1694c 100644
+--- a/src/protocols/XDGDecoration.cpp
++++ b/src/protocols/XDGDecoration.cpp
+@@ -1,8 +1,6 @@
+ #include "XDGDecoration.hpp"
+ #include <algorithm>
+ 
+-#define LOGM PROTO::xdgDecoration->protoLog
+-
+ CXDGDecoration::CXDGDecoration(SP<CZxdgToplevelDecorationV1> resource_, wl_resource* toplevel) : resource(resource_), pToplevelResource(toplevel) {
+     if (!resource->resource())
+         return;
+diff --git a/src/protocols/XDGOutput.cpp b/src/protocols/XDGOutput.cpp
+index 073aa502..9c2c353c 100644
+--- a/src/protocols/XDGOutput.cpp
++++ b/src/protocols/XDGOutput.cpp
+@@ -12,8 +12,6 @@
+ 
+ //
+ 
+-#define LOGM PROTO::xdgOutput->protoLog
+-
+ void CXDGOutputProtocol::onManagerResourceDestroy(wl_resource* res) {
+     std::erase_if(m_vManagerResources, [&](const auto& other) { return other->resource() == res; });
+ }
+diff --git a/src/protocols/XDGShell.cpp b/src/protocols/XDGShell.cpp
+index aea23329..eaf5c333 100644
+--- a/src/protocols/XDGShell.cpp
++++ b/src/protocols/XDGShell.cpp
+@@ -6,8 +6,6 @@
+ #include "core/Compositor.hpp"
+ #include <cstring>
+ 
+-#define LOGM PROTO::xdgShell->protoLog
+-
+ void SXDGPositionerState::setAnchor(xdgPositionerAnchor edges) {
+     anchor.setTop(edges == XDG_POSITIONER_ANCHOR_TOP || edges == XDG_POSITIONER_ANCHOR_TOP_LEFT || edges == XDG_POSITIONER_ANCHOR_TOP_RIGHT);
+     anchor.setLeft(edges == XDG_POSITIONER_ANCHOR_LEFT || edges == XDG_POSITIONER_ANCHOR_TOP_LEFT || edges == XDG_POSITIONER_ANCHOR_BOTTOM_LEFT);
+diff --git a/src/protocols/XWaylandShell.cpp b/src/protocols/XWaylandShell.cpp
+index 6cc5256f..d6c3b1a8 100644
+--- a/src/protocols/XWaylandShell.cpp
++++ b/src/protocols/XWaylandShell.cpp
+@@ -2,8 +2,6 @@
+ #include "core/Compositor.hpp"
+ #include <algorithm>
+ 
+-#define LOGM PROTO::xwaylandShell->protoLog
+-
+ CXWaylandSurfaceResource::CXWaylandSurfaceResource(SP<CXwaylandSurfaceV1> resource_, SP<CWLSurfaceResource> surface_) : surface(surface_), resource(resource_) {
+     if (!good())
+         return;
+diff --git a/src/protocols/core/Compositor.cpp b/src/protocols/core/Compositor.cpp
+index a767dd52..8b6f46b1 100644
+--- a/src/protocols/core/Compositor.cpp
++++ b/src/protocols/core/Compositor.cpp
+@@ -13,8 +13,6 @@
+ #include "../../render/Renderer.hpp"
+ #include <cstring>
+ 
+-#define LOGM PROTO::compositor->protoLog
+-
+ class CDefaultSurfaceRole : public ISurfaceRole {
+   public:
+     virtual eSurfaceRole role() {
+diff --git a/src/protocols/core/DataDevice.cpp b/src/protocols/core/DataDevice.cpp
+index fe3905d0..4ed28f24 100644
+--- a/src/protocols/core/DataDevice.cpp
++++ b/src/protocols/core/DataDevice.cpp
+@@ -6,8 +6,6 @@
+ #include "Seat.hpp"
+ #include "Compositor.hpp"
+ 
+-#define LOGM PROTO::data->protoLog
+-
+ CWLDataOfferResource::CWLDataOfferResource(SP<CWlDataOffer> resource_, SP<IDataSource> source_) : source(source_), resource(resource_) {
+     if (!good())
+         return;
+diff --git a/src/protocols/core/Seat.cpp b/src/protocols/core/Seat.cpp
+index bb6a9d4d..a111c12c 100644
+--- a/src/protocols/core/Seat.cpp
++++ b/src/protocols/core/Seat.cpp
+@@ -9,8 +9,6 @@
+ 
+ #include <fcntl.h>
+ 
+-#define LOGM PROTO::seat->protoLog
+-
+ CWLTouchResource::CWLTouchResource(SP<CWlTouch> resource_, SP<CWLSeatResource> owner_) : owner(owner_), resource(resource_) {
+     if (!good())
+         return;
+diff --git a/src/protocols/core/Shm.cpp b/src/protocols/core/Shm.cpp
+index 75c2134a..99459d9a 100644
+--- a/src/protocols/core/Shm.cpp
++++ b/src/protocols/core/Shm.cpp
+@@ -7,8 +7,6 @@
+ #include "../../Compositor.hpp"
+ #include "../../helpers/Format.hpp"
+ 
+-#define LOGM PROTO::shm->protoLog
+-
+ CWLSHMBuffer::CWLSHMBuffer(SP<CWLSHMPoolResource> pool_, uint32_t id, int32_t offset_, const Vector2D& size_, int32_t stride_, uint32_t fmt_) {
+     if (!pool_->pool->data)
+         return;
+diff --git a/src/protocols/core/Subcompositor.cpp b/src/protocols/core/Subcompositor.cpp
+index 2a7c06dc..e0679eff 100644
+--- a/src/protocols/core/Subcompositor.cpp
++++ b/src/protocols/core/Subcompositor.cpp
+@@ -2,8 +2,6 @@
+ #include "Compositor.hpp"
+ #include <algorithm>
+ 
+-#define LOGM PROTO::subcompositor->protoLog
+-
+ CWLSubsurfaceResource::CWLSubsurfaceResource(SP<CWlSubsurface> resource_, SP<CWLSurfaceResource> surface_, SP<CWLSurfaceResource> parent_) :
+     surface(surface_), parent(parent_), resource(resource_) {
+     if (!good())
+-- 
+2.45.2
+
