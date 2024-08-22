@@ -69,7 +69,7 @@
     apple-silicon,
     ...
   } @ inputs: let
-  in rec {
+  in {
     formatter = with nixpkgs.legacyPackages; {
       x86_64-linux = x86_64-linux.alejandra;
       aarch64-linux = aarch64-linux.alejandra;
