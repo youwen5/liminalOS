@@ -187,7 +187,6 @@
         "ignorezero,swaync-control-center"
         "blur,logout_dialog"
       ];
-      monitor = ["DP-1,2560x1440@165,1920x0,auto" "HDMI-A-1,1920x1080@60,0x0,1"];
       dwindle = {
         pseudotile = "yes";
         preserve_split = "yes";
