@@ -230,7 +230,7 @@
         };
       };
       input = {
-        sensitivity = "-0.4";
+        sensitivity = "-0.65";
       };
     };
   };
