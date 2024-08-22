@@ -10,10 +10,10 @@
     settings = {
       exec-once = ["waypaper --restore"];
       "$mod" = "SUPER";
-      "$Left" = "Y";
-      "$Right" = "O";
-      "$Up" = "I";
-      "$Down" = "U";
+      "$Left" = "H";
+      "$Right" = "L";
+      "$Up" = "K";
+      "$Down" = "J";
       env = [
         "HYPRCURSOR_THEME,Bibata-Modern-Ice"
         "HYPRCURSOR_SIZE,26"
@@ -30,7 +30,7 @@
         # Window actions
         "$mod, Q, killactive"
         "$mod, W, togglefloating"
-        "$mod, J, togglesplit"
+        "$mod, V, togglesplit"
         "$mod, Return, fullscreen"
 
         # Move around
@@ -73,7 +73,7 @@
 
         "$mod, Backspace, exec, wlogout" # show logout menu
 
-        "$mod, L, exec, hyprlock"
+        "$mod, I, exec, hyprlock"
 
         # System control
         ",XF86MonBrightnessDown, exec, brightnessctl set 5%-"
