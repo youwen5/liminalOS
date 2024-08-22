@@ -27,7 +27,6 @@
       home-manager.users.youwen = {
         imports = [
           ../../users/youwen/common
-          ../../users/youwen/common/neofetch/asahi-only.nix
           ../../users/youwen/linux/laptop
           ../../users/youwen/linux/packages/aarch-64
           ../../users/youwen/common/neovim
