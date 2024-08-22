@@ -68,24 +68,41 @@
         "$mod, 9, workspace, 9"
         "$mod, 0, workspace, 10"
 
+        # Move active window to a workspace with mainMod + SHIFT + [0-9]
+        "$mod+Shift, 1, movetoworkspace, 1"
+        "$mod+Shift, 2, movetoworkspace, 2"
+        "$mod+Shift, 3, movetoworkspace, 3"
+        "$mod+Shift, 4, movetoworkspace, 4"
+        "$mod+Shift, 5, movetoworkspace, 5"
+        "$mod+Shift, 6, movetoworkspace, 6"
+        "$mod+Shift, 7, movetoworkspace, 7"
+        "$mod+Shift, 8, movetoworkspace, 8"
+        "$mod+Shift, 9, movetoworkspace, 9"
+        "$mod+Shift, 0, movetoworkspace, 10"
+
+        # move to the first empty workspace instantly
+        "$mod+Ctrl, $Down, workspace, empty"
+        "$mod+Ctrl, $Up, movetoworkspace, empty"
+
+        # Special workspace
         "$mod, S, togglespecialworkspace"
+        "$mod+Alt, S, movetoworkspacesilent, special"
 
         # Move windows around
-        "$mod+Shift+Ctrl, $Left, movewindow, l"
-        "$mod+Shift+Ctrl, $Right, movewindow, r"
-        "$mod+Shift+Ctrl, $Up, movewindow, u"
-        "$mod+Shift+Ctrl, $Down, movewindow, d"
+        "$mod+Shift, $Left, movewindow, l"
+        "$mod+Shift, $Right, movewindow, r"
+        "$mod+Shift, $Up, movewindow, u"
+        "$mod+Shift, $Down, movewindow, d"
 
-        "$mod+Ctrl+Alt, $Right, movetoworkspace, r+1"
-        "$mod+Ctrl+Alt, $Left, movetoworkspace, r-1"
+        "$mod+Ctrl+Shift, $Right, movetoworkspace, r+1"
+        "$mod+Ctrl+Shift, $Left, movetoworkspace, r-1"
 
         "$mod+Ctrl, $Right, workspace, r+1"
         "$mod+Ctrl, $Left, workspace, r-1"
 
-        "$mod+Alt, S, movetoworkspacesilent, special"
-
         # Utilities
-        "$mod, Space, exec, pkill -x rofi || rofi -show drun" # Run rofi
+        "$mod, Space, exec, pkill -x rofi || rofi -show drun" # Run rofi application launcher
+        "$mod, G, exec, pkill -x rofi || rofi -show window" # Run rofi window switcher
 
         ''$mod, P, exec, grim -g "$(slurp)" - | swappy -f -'' # Screenshot
 
@@ -94,10 +111,6 @@
         "$mod, I, exec, hyprlock"
 
         # System control
-        ",XF86MonBrightnessDown, exec, brightnessctl set 5%-"
-        ",XF86MonBrightnessUp, exec, brightnessctl set 5%+"
-        ",XF86AudioRaiseVolume, exec, pamixer -i 5"
-        ",XF86AudioLowerVolume, exec, pamixer -d 5"
         ",XF86AudioMute, exec, pamixer -t"
       ];
       bindm = [
@@ -105,6 +118,19 @@
         "$mod, mouse:273, resizewindow"
         "$mod, Z, movewindow"
         "$mod, X, resizewindow"
+      ];
+      bindel = [
+        ",XF86MonBrightnessDown, exec, brightnessctl set 5%-"
+        ",XF86MonBrightnessUp, exec, brightnessctl set 5%+"
+        ",XF86AudioRaiseVolume, exec, pamixer -i 5"
+        ",XF86AudioLowerVolume, exec, pamixer -d 5"
+      ];
+      binde = [
+        # Resize windows
+        "$mod+Alt, $Right, resizeactive, 30 0"
+        "$mod+Alt, $Left, resizeactive, -30 0"
+        "$mod+Alt, $Up, resizeactive, 0 -30"
+        "$mod+Alt, $Down, resizeactive, 0 30"
       ];
       windowrulev2 = [
         "opacity 0.90 0.90,class:^(librewolf)$"
