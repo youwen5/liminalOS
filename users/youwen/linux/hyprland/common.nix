@@ -4,6 +4,24 @@
   system,
   ...
 }: {
+  home.packages = with pkgs; [
+    wl-clipboard
+    grim
+    slurp
+    swappy
+    pavucontrol
+    waypaper
+    swaybg
+    pamixer
+    brightnessctl
+
+    bibata-cursors
+    libsForQt5.qtstyleplugin-kvantum
+    libsForQt5.qt5ct
+    papirus-icon-theme
+    libsForQt5.qt5ct
+  ];
+
   wayland.windowManager.hyprland = {
     enable = true;
     package = inputs.stablepkgs.legacyPackages.${system}.hyprland;

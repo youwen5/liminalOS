@@ -22,15 +22,6 @@ with pkgs; [
   usbutils # lsusb
 
   # desktop utils
-  wl-clipboard
-  grim
-  slurp
-  swappy
-  pavucontrol
-  waypaper
-  swaybg
-  pamixer
-  brightnessctl
   bitwarden-cli
 
   # desktop apps
@@ -40,11 +31,4 @@ with pkgs; [
   signal-desktop
 
   gcc
-
-  # desktop ricing
-  bibata-cursors
-  libsForQt5.qtstyleplugin-kvantum
-  libsForQt5.qt5ct
-  papirus-icon-theme
-  libsForQt5.qt5ct
 ]
