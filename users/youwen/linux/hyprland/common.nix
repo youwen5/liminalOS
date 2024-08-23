@@ -152,6 +152,8 @@
         "opacity 0.80 0.80,class:^(qt6ct)$"
         "opacity 0.80 0.80,class:^(kvantummanager)$"
         "opacity 0.80 0.80,class:^(waypaper)$"
+        "opacity 0.80 0.80,class:^(org.pulseaudio.pavucontrol)$"
+        "opacity 0.80 0.80,class:^(thunderbird)$"
 
         "opacity 0.90 0.90,class:^(com.github.rafostar.Clapper)$ # Clapper-Gtk"
         "opacity 0.80 0.80,class:^(com.github.tchx84.Flatseal)$ # Flatseal-Gtk"
@@ -186,6 +188,7 @@
         "float,class:^(qt6ct)$"
         "float,class:^(nwg-look)$"
         "float,class:^(org.kde.ark)$"
+        "float,class:^(org.pulseaudio.pavucontrol)$"
         "float,class:^(com.github.rafostar.Clapper)$ # Clapper-Gtk"
         "float,class:^(app.drey.Warp)$ # Warp-Gtk"
         "float,class:^(net.davidotek.pupgui2)$ # ProtonUp-Qt"
