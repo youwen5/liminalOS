@@ -5,11 +5,11 @@
 }: {
   imports = with inputs; [
     ./configuration.nix
-    ../../modules/nixos/audio
-    ../../modules/nixos/networking
-    ../../modules/nixos/fonts
-    ../../modules/nixos/greeter
-    ../../modules/nixos/core
+    ../../modules/linux/audio
+    ../../modules/linux/networking
+    ../../modules/linux/fonts
+    ../../modules/linux/greeter
+    ../../modules/linux/core
     ../../overlays
 
     apple-silicon.nixosModules.apple-silicon-support

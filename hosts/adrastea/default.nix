@@ -5,12 +5,12 @@
 }: {
   imports = with inputs; [
     ./configuration.nix
-    ../../modules/nixos/gaming
-    ../../modules/nixos/audio
-    ../../modules/nixos/networking
-    ../../modules/nixos/fonts
-    ../../modules/nixos/greeter
-    ../../modules/nixos/core
+    ../../modules/linux/gaming
+    ../../modules/linux/audio
+    ../../modules/linux/networking
+    ../../modules/linux/fonts
+    ../../modules/linux/greeter
+    ../../modules/linux/core
     ../../overlays
 
     catppuccin.nixosModules.catppuccin
