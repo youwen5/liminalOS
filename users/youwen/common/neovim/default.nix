@@ -455,6 +455,7 @@
       indent-blankline.enable = true;
       which-key.enable = true;
       zen-mode.enable = true;
+      nvim-autopairs.enable = true;
       yanky = {
         enable = true;
         enableTelescope = true;
@@ -548,7 +549,6 @@
         enable = true;
         modules = {
           surround = {};
-          pairs = {};
           ai = {};
           hipatterns = {};
           notify = {};
