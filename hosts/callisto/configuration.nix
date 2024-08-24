@@ -45,7 +45,7 @@
           oldAttrs.patches
           or []
           ++ [
-            ./asahi-fix.patch
+            ./0001-linux-dmabuf-allow-on-split-node-systems.patch
           ];
       });
     })
