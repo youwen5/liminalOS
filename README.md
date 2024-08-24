@@ -7,7 +7,7 @@ Time wasted writing Nix code:
 ![](https://wakatime.com/badge/user/018dc5b8-ba5a-4572-a38a-b526d1b28240/project/c59b3d5e-0c9c-4bd5-a752-e75522ab0cdc.svg)
 
 <!-- prettier-ignore -->
-> **lim·i·nal**  
+> **lim·i·nal**
 > 1. between or belonging to two different places, states, etc.
 
 The goal of liminalOS is to allow my computing environment to exist in different
@@ -105,21 +105,23 @@ The [flake.nix](/flake.nix) currently contains my configuration for four hosts:
 
 ## Keybinds
 
+Non-exhaustive.
+
 | Shortcut                                                                                                 | Action                           |
 | -------------------------------------------------------------------------------------------------------- | -------------------------------- |
 | <kbd>Super</kbd> + <kbd>W</kbd>                                                                          | Toggle floating                  |
-| <kbd>Super</kbd> + <kbd>J</kbd>                                                                          | Toggle layout                    |
+| <kbd>Super</kbd> + <kbd>K</kbd>                                                                          | Toggle layout                    |
 | <kbd>Super</kbd> + <kbd>E</kbd>                                                                          | Open Dolphin                     |
 | <kbd>Super</kbd> + <kbd>T</kbd>                                                                          | Open kitty                       |
 | <kbd>Super</kbd> + <kbd>F</kbd>                                                                          | Open librewolf                   |
 | <kbd>Super</kbd> + <kbd>R</kbd>                                                                          | Open pavucontrol                 |
 | <kbd>Super</kbd> + <kbd>Space</kbd>                                                                      | Open rofi                        |
 | <kbd>Super</kbd> + <kbd>Backspace</kbd>                                                                  | Open logout menu                 |
-| <kbd>Super</kbd> + <kbd>P</kbd>                                                                          | Screenshot region                |
-| <kbd>Super</kbd> + <kbd>Y</kbd><kbd>U</kbd><kbd>I</kbd><kbd>O</kbd>                                      | Move around                      |
-| <kbd>Super</kbd> + <kbd>Ctrl</kbd> + <kbd>Y</kbd><kbd>O</kbd>                                            | Move workspaces                  |
-| <kbd>Super</kbd> + <kbd>Alt</kbd> + <kbd>Ctrl</kbd> + <kbd>Y</kbd><kbd>U</kbd><kbd>I</kbd><kbd>O</kbd>   | Move windows around workspaces   |
-| <kbd>Super</kbd> + <kbd>Shift</kbd> + <kbd>Ctrl</kbd> + <kbd>Y</kbd><kbd>U</kbd><kbd>I</kbd><kbd>O</kbd> | Move windows around              |
+| <kbd>Super</kbd> + <kbd>L</kbd>                                                                          | Screenshot region                |
+| <kbd>Super</kbd> + <kbd>H</kbd><kbd>J</kbd><kbd>K</kbd><kbd>L</kbd>                                      | Move around                      |
+| <kbd>Super</kbd> + <kbd>Ctrl</kbd> + <kbd>H</kbd><kbd>L</kbd>                                            | Move workspaces                  |
+| <kbd>Super</kbd> + <kbd>Alt</kbd> + <kbd>Ctrl</kbd> + <kbd>H</kbd><kbd>J</kbd><kbd>K</kbd><kbd>L</kbd>   | Move windows around workspaces   |
+| <kbd>Super</kbd> + <kbd>Shift</kbd> + <kbd>Ctrl</kbd> + <kbd>H</kbd><kbd>J</kbd><kbd>K</kbd><kbd>L</kbd> | Move windows around              |
 | <kbd>Super</kbd> + <kbd>S</kbd>                                                                          | Open Special Workspace           |
 | <kbd>Super</kbd> + <kbd>Enter</kbd>                                                                      | Fullscreen Window                |
 | <kbd>Super</kbd> + <kbd>Alt</kbd> + <kbd>S</kbd>                                                         | Move Window to Special Workspace |

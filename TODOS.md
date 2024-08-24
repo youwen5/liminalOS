@@ -6,6 +6,7 @@
 ## P2
 
 - [ ] Move wallpapers to submodule
+- [ ] Move Neovim to submodule
 
 
 ## Done
