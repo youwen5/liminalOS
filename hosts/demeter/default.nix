@@ -11,6 +11,7 @@
     ../../modules/nixos/fonts
     ../../modules/nixos/greeter
     ../../modules/nixos/core
+    ../../modules/nixos/hamachi
     ../../overlays
 
     catppuccin.nixosModules.catppuccin
