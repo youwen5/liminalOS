@@ -76,18 +76,7 @@
   programs.fish = {
     enable = true;
     shellAliases = {
-      rebuild = "sudo nixos-rebuild switch";
       ls = "eza -l --icons=auto";
-    };
-    functions = {
-      update-nixos = {
-        description = "Update the system flake and attempt to build and switch to the new configuration.";
-        body = ''
-          cd /etc/nixos
-          nix flake update
-          sudo nixos-rebuild switch
-        '';
-      };
     };
     interactiveShellInit = ''
       fish_vi_key_bindings
