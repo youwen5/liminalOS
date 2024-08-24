@@ -11,10 +11,14 @@ in {
 
   programs.spicetify = {
     enable = true;
-    theme = spicepkgs.themes.catppuccin;
-    colorScheme = "mocha";
+    theme = spicepkgs.themes.dribbblish;
+    colorScheme = "rosepine";
     enabledExtensions = with spicepkgs.extensions; [
       lastfm
+      fullAppDisplayMod
+    ];
+    enabledCustomApps = with spicepkgs.apps; [
+      lyricsPlus
     ];
   };
 }
