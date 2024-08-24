@@ -43,6 +43,7 @@
         "$mod, T, exec, kitty"
         "$mod, E, exec, dolphin"
         "$mod, R, exec, pavucontrol"
+        "$mod, M, exec, thunderbird"
 
         # Window actions
         "$mod, Q, killactive"
