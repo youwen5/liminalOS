@@ -34,6 +34,7 @@
           ../../users/youwen/common/neofetch
           ../../users/youwen/common/neovim
           ../../users/youwen/common
+          ../../users/youwen/linux/spicetify
           ./home-manager-extras
           catppuccin.homeManagerModules.catppuccin
           nixvim.homeManagerModules.nixvim

@@ -53,20 +53,16 @@
       url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    spicetify = {
+      url = "github:Gerg-L/spicetify-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
-    self,
     nixpkgs,
-    home-manager,
-    catppuccin,
-    lanzaboote,
-    stablepkgs,
-    bleedingpkgs,
-    lix-module,
     nix-darwin,
-    nix-homebrew,
-    apple-silicon,
     ...
   } @ inputs: let
   in {

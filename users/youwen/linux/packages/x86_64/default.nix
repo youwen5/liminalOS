@@ -4,7 +4,6 @@ in {
   home.packages =
     (createCommon pkgs)
     ++ (with pkgs; [
-      spotify
       bitwarden-desktop
       modrinth-app
       lutris
