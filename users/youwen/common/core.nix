@@ -78,10 +78,12 @@
     shellAliases = {
       ls = "eza -l --icons=auto";
     };
+    shellInit = ''
+      oh-my-posh disable notice
+    '';
     interactiveShellInit = ''
       fish_vi_key_bindings
       set -g fish_greeting
-      oh-my-posh disable notice
     '';
     plugins = [
       {
