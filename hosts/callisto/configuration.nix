@@ -103,10 +103,8 @@
   users.users.youwen = {
     isNormalUser = true;
     description = "Youwen Wu";
-    extraGroups = ["networkmanager" "wheel" "nixos" "realtime"];
+    extraGroups = ["networkmanager"];
   };
-
-  users.groups.realtime = {};
 
   nix.settings = {
     trusted-users = ["root" "youwen"];
@@ -117,27 +115,6 @@
     KERNEL=="cpu_dma_latency", GROUP="realtime"
     KERNEL=="macsmc-battery", SUBSYSTEM=="power_supply", ATTR{charge_control_end_threshold}="80", ATTR{charge_control_start_threshold}="70"
   '';
-
-  security.pam.loginLimits = [
-    {
-      domain = "@realtime";
-      type = "-";
-      item = "rtprio";
-      value = 98;
-    }
-    {
-      domain = "@realtime";
-      type = "-";
-      item = "memlock";
-      value = "unlimited";
-    }
-    {
-      domain = "@realtime";
-      type = "-";
-      item = "nice";
-      value = -11;
-    }
-  ];
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;

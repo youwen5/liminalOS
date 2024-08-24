@@ -5,6 +5,7 @@
     enable = true;
     extraRules = [
       {
+        users = ["youwen"];
         keepEnv = true;
         persist = true;
       }
