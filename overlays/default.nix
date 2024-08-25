@@ -1,7 +1,14 @@
-{inputs, ...}: {
+{
+  inputs,
+  pkgs,
+  ...
+}: let
+  stablepkgs = inputs.stablepkgs.legacyPackages.${pkgs.system};
+  bleedingpkgs = inputs.bleedingpkgs.legacyPackages.${pkgs.system};
+in {
   nixpkgs.overlays = [
     (self: super: {
-      librewolf = inputs.stablepkgs.${self.system}.librewolf;
+      librewolf = stablepkgs.librewolf;
     })
   ];
 }
