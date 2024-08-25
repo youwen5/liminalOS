@@ -135,23 +135,9 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    neovim
     wget
     git
     curl
-    librewolf
-    gnumake
-    gcc
-    cachix
-    gnupg
-    openssh
-    python3
-    steam-run
-
-    # deps for neovim compilation
-    lua51Packages.lua
-    lua51Packages.luarocks
-    tree-sitter
   ];
 
   environment.variables = {

@@ -36,7 +36,6 @@
           ../../users/youwen/linux/spicetify
           ./home-manager-extras
           catppuccin.homeManagerModules.catppuccin
-          neovim-config.homeManagerModules.default
         ];
       };
     }

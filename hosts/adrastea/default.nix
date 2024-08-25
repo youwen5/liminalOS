@@ -33,7 +33,6 @@
           ../../users/youwen/common
           ../../users/youwen/common/neofetch
           catppuccin.homeManagerModules.catppuccin
-          neovim-config.homeManagerModules.default
         ];
       };
     }

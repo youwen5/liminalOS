@@ -30,7 +30,6 @@
           ../../users/youwen/linux/laptop
           ../../users/youwen/linux/packages/aarch-64
           ./home-manager-extras
-          neovim-config.homeManagerModules.default
           catppuccin.homeManagerModules.catppuccin
         ];
       };
