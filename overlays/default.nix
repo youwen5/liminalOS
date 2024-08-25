@@ -9,6 +9,7 @@ in {
   nixpkgs.overlays = [
     (self: super: {
       librewolf = stablepkgs.librewolf;
+      manga-tui = bleedingpkgs.manga-tui;
     })
   ];
 }

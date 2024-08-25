@@ -30,5 +30,9 @@ with pkgs; [
   vesktop
   signal-desktop
 
+  # fun
+  ani-cli
+  manga-tui
+
   gcc
 ]
