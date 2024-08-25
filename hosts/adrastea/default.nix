@@ -30,7 +30,6 @@
           ../../users/youwen/linux/laptop
           ../../users/youwen/linux/packages/x86_64
           ../../users/youwen/linux/programs
-          ../../users/youwen/common/neovim
           ../../users/youwen/common
           ../../users/youwen/common/neofetch
           catppuccin.homeManagerModules.catppuccin

@@ -10,7 +10,6 @@
         ../../users/youwen/darwin/darwin-home.nix
         ../../users/youwen/common/core.nix
         ../../users/youwen/common/neofetch
-        ../../users/youwen/common/neovim
       ];
       home-manager.backupFileExtension = "backup";
     }

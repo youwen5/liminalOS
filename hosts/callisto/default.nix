@@ -29,7 +29,6 @@
           ../../users/youwen/common
           ../../users/youwen/linux/laptop
           ../../users/youwen/linux/packages/aarch-64
-          ../../users/youwen/common/neovim
           ./home-manager-extras
           neovim-config.homeManagerModules.default
           catppuccin.homeManagerModules.catppuccin
