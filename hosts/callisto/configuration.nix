@@ -40,6 +40,8 @@
     stablepkgs = inputs.stablepkgs.legacyPackages.${pkgs.system};
   in [
     inputs.apple-silicon.overlays.apple-silicon-overlay
+    inputs.vesktop-bin.overlays.default
+
     (final: prev: {
       hyprland = prev.hyprland.overrideAttrs (oldAttrs: {
         src = oldAttrs.src;
@@ -50,47 +52,6 @@
             ./0001-linux-dmabuf-allow-on-split-node-systems.patch
           ];
       });
-
-      vesktop = with pkgs; let
-        pname = "vesktop";
-        version = "1.5.3";
-
-        src = fetchurl {
-          url = "https://github.com/Vencord/Vesktop/releases/download/v${version}/${pname}-${version}-arm64.AppImage";
-          hash = "sha256-4F1oR2nc54EZ2heGVkz4vqZzmwn0exa2+AcYHpeTb98=";
-        };
-
-        appimageContents = appimageTools.extract {
-          inherit pname version src;
-        };
-
-        desktopItem = makeDesktopItem {
-          name = pname;
-          desktopName = "Vesktop";
-          exec = "vesktop %U --ozone-platform-hint=wayland --enable-features=WaylandWindowDecorations --enable-wayland-ime";
-          icon = "vesktop";
-          startupWMClass = "Vesktop";
-          genericName = "Internet Messenger";
-          keywords = [
-            "discord"
-          ];
-          categories = [
-            "Network"
-            "InstantMessaging"
-            "Chat"
-          ];
-        };
-      in
-        appimageTools.wrapType2 {
-          inherit pname version src;
-
-          extraInstallCommands = ''
-            mkdir -p $out/share
-            cp -rt $out/share ${desktopItem}/share/applications ${appimageContents}/usr/share/icons
-            chmod -R +w $out/share
-            mv $out/share/icons/hicolor/{16x16,256x256}
-          '';
-        };
     })
   ];
 

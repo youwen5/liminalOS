@@ -55,6 +55,8 @@
     };
 
     personal-neovim.url = "github:youwen5/neovim-flake";
+
+    vesktop-bin.url = "github:youwen5/vesktop-bin-flake";
   };
 
   outputs = {
