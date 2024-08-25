@@ -49,13 +49,13 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nixvim = {
-      url = "github:nix-community/nixvim";
+    spicetify = {
+      url = "github:Gerg-L/spicetify-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    spicetify = {
-      url = "github:Gerg-L/spicetify-nix";
+    neovim-config = {
+      url = "github:youwen5/neovim-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };

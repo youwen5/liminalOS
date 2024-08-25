@@ -32,12 +32,11 @@
           ../../users/youwen/linux/packages/x86_64
           ../../users/youwen/linux/programs
           ../../users/youwen/common/neofetch
-          ../../users/youwen/common/neovim
           ../../users/youwen/common
           ../../users/youwen/linux/spicetify
           ./home-manager-extras
           catppuccin.homeManagerModules.catppuccin
-          nixvim.homeManagerModules.nixvim
+          neovim-config.homeManagerModules.default
         ];
       };
     }

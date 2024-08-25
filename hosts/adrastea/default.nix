@@ -15,7 +15,6 @@
 
     catppuccin.nixosModules.catppuccin
     lix-module.nixosModules.default
-    # lanzaboote.nixosModules.lanzaboote
     home-manager.nixosModules.home-manager
     {
       home-manager.useGlobalPkgs = true;
@@ -34,8 +33,8 @@
           ../../users/youwen/common/neovim
           ../../users/youwen/common
           ../../users/youwen/common/neofetch
-          inputs.catppuccin.homeManagerModules.catppuccin
-          inputs.nixvim.homeManagerModules.nixvim
+          catppuccin.homeManagerModules.catppuccin
+          neovim-config.homeManagerModules.default
         ];
       };
     }
