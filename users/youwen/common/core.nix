@@ -26,6 +26,7 @@
       init.defaultBranch = "main";
       commit.gpgsign = pkgs.lib.mkDefault "true";
       user.signingkey = "8F5E6C1AF90976CA7102917A865658ED1FE61EC3";
+      safe.directory = "/etc/nixos/.git";
     };
   };
 
