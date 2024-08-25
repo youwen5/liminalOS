@@ -36,7 +36,9 @@
     settings.General.EnableNetworkConfiguration = true;
   };
 
-  nixpkgs.overlays = [
+  nixpkgs.overlays = let
+    stablepkgs = inputs.stablepkgs.legacyPackages.${pkgs.system};
+  in [
     inputs.apple-silicon.overlays.apple-silicon-overlay
     (final: prev: {
       hyprland = prev.hyprland.overrideAttrs (oldAttrs: {
@@ -48,6 +50,7 @@
             ./0001-linux-dmabuf-allow-on-split-node-systems.patch
           ];
       });
+      vesktop = stablepkgs.vesktop;
     })
   ];
 
