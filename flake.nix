@@ -54,10 +54,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    neovim-config = {
-      url = "github:youwen5/neovim-flake";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    personal-neovim.url = "github:youwen5/neovim-flake";
   };
 
   outputs = {
