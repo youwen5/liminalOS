@@ -1073,11 +1073,11 @@
     "wallpapers": {
       "flake": false,
       "locked": {
-        "lastModified": 1724660030,
-        "narHash": "sha256-l0Z4e7oeYJsvXIaRrlygxyVC7bQcJ5bd5dgH11TvKFg=",
+        "lastModified": 1724670714,
+        "narHash": "sha256-AmHrw0m2rpzXxieWEBRK0utg83i4B1XpUboo7gZJ84I=",
         "ref": "refs/heads/main",
-        "rev": "abfd5f3522fcac0ace21075b498c9e053165c53f",
-        "revCount": 5,
+        "rev": "89d778e59408fb0bcae728d4f3e272a4ab0cee6c",
+        "revCount": 6,
         "type": "git",
         "url": "https://code.youwen.dev/youwen5/wallpapers"
       },
