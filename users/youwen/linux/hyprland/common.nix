@@ -39,7 +39,7 @@
       ];
       bind = [
         # Application Keybinds
-        "$mod, F, exec, librewolf"
+        "$mod, F, exec, zen-browser || librewolf"
         "$mod, T, exec, kitty"
         "$mod, E, exec, dolphin"
         "$mod, R, exec, pavucontrol"
@@ -112,12 +112,14 @@
 
         # System control
         ",XF86AudioMute, exec, pamixer -t"
+
+        # Pass to zen-alpha
+        "SUPER, Z, pass, ^(zen-alpha)"
+        "SUPER, X, pass, ^(zen-alpha)"
       ];
       bindm = [
         "$mod, mouse:272, movewindow"
         "$mod, mouse:273, resizewindow"
-        "$mod, Z, movewindow"
-        "$mod, X, resizewindow"
       ];
       bindel = [
         ",XF86MonBrightnessDown, exec, brightnessctl set 5%-"
@@ -134,6 +136,7 @@
       ];
       windowrulev2 = [
         "opacity 0.90 0.90,class:^(librewolf)$"
+        "opacity 0.90 0.90,class:^(zen-alpha)$"
         "opacity 0.90 0.90,class:^(Brave-browser)$"
         "opacity 0.80 0.80,class:^(Steam)$"
         "opacity 0.80 0.80,class:^(steam)$"
@@ -183,6 +186,8 @@
         "float,class:^(org.kde.dolphin)$,title:^(Copying — Dolphin)$"
         "float,title:^(Picture-in-Picture)$"
         "float,class:^(librewolf)$,title:^(Library)$"
+        "float,class:^(zen-browser)$,title:^(Library)$"
+        "float,title:^(Extension: (Bitwarden Password Manager))$"
         "float,class:^(vlc)$"
         "float,class:^(kvantummanager)$"
         "float,class:^(qt5ct)$"
