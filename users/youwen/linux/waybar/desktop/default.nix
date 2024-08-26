@@ -11,7 +11,7 @@
         layer = "top";
         position = "top";
 
-        height = 16;
+        height = 28;
         # "width" = 1920;
 
         "margin" = "5px 10px 0px 10px";
