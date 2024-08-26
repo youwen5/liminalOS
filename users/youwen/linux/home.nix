@@ -1,5 +1,5 @@
 {
-  config,
+  inputs,
   pkgs,
   ...
 }: {
@@ -22,7 +22,7 @@
   # '';
 
   home.file.".wallpapers" = {
-    source = ../../../wallpapers;
+    source = inputs.wallpapers;
     recursive = true;
   };
 

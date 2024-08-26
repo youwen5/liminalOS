@@ -872,7 +872,8 @@
         "personal-neovim": "personal-neovim",
         "spicetify": "spicetify",
         "stablepkgs": "stablepkgs",
-        "vesktop-bin": "vesktop-bin"
+        "vesktop-bin": "vesktop-bin",
+        "wallpapers": "wallpapers"
       }
     },
     "rust-overlay": {
@@ -1067,6 +1068,22 @@
         "owner": "youwen5",
         "repo": "vesktop-bin-flake",
         "type": "github"
+      }
+    },
+    "wallpapers": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1724657366,
+        "narHash": "sha256-i0lo2ktQPcnAObhsSIY2SoENEjszdQduQh+jqz7gGUs=",
+        "ref": "refs/heads/main",
+        "rev": "0cc9bdb3dc8222f1761ce66d4ea35cba297b8be2",
+        "revCount": 3,
+        "type": "git",
+        "url": "https://code.youwen.dev/youwen5/wallpapers"
+      },
+      "original": {
+        "type": "git",
+        "url": "https://code.youwen.dev/youwen5/wallpapers"
       }
     }
   },

@@ -61,6 +61,11 @@
     personal-neovim.url = "github:youwen5/neovim-flake";
 
     vesktop-bin.url = "github:youwen5/vesktop-bin-flake";
+
+    wallpapers = {
+      url = "git+https://code.youwen.dev/youwen5/wallpapers";
+      flake = false;
+    };
   };
 
   outputs = {
