@@ -3,15 +3,14 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    stablepkgs.url = "github:nixos/nixpkgs/nixos-24.05";
+    bleedingpkgs.url = "github:nixos/nixpkgs/master";
+    nixpkgs-unstable-small.url = "github:nixos/nixpkgs/nixos-unstable-small";
 
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    stablepkgs.url = "github:nixos/nixpkgs/nixos-24.05";
-
-    bleedingpkgs.url = "github:nixos/nixpkgs/master";
 
     nix-darwin = {
       url = "github:LnL7/nix-darwin";
@@ -31,6 +30,11 @@
     };
 
     catppuccin.url = "github:catppuccin/nix";
+
+    # firefox-addons = {
+    #   url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
 
     lanzaboote = {
       url = "github:nix-community/lanzaboote/v0.4.1";

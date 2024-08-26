@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  inputs,
+  ...
+}: {
   programs.kitty = {
     enable = true;
     theme = "Tokyo Night";
@@ -31,6 +35,81 @@
       "privacy.clearOnShutdown.cookies" = false;
       "network.cookie.lifetimePolicy" = 0;
     };
-    package = pkgs.librewolf-wayland;
   };
+
+  # programs.firefox = {
+  #   enable = true;
+  #   # package = pkgs.librewolf;
+  #   profiles = {
+  #     Personal = {
+  #       name = "Youwen Wu";
+  #       settings = {
+  #         webgl.disabled = false;
+  #         privacy.resistFingerprinting = false;
+  #         privacy.clearOnShutdown.history = false;
+  #         privacy.clearOnShutdown.cookies = false;
+  #         network.cookie.lifetimePolicy = 0;
+  #         search.default = "Google";
+  #         search.force = true;
+  #         search.engines = {
+  #           "Nix Packages" = {
+  #             urls = [
+  #               {
+  #                 template = "https://search.nixos.org/packages";
+  #                 params = [
+  #                   {
+  #                     name = "type";
+  #                     value = "packages";
+  #                   }
+  #                   {
+  #                     name = "query";
+  #                     value = "{searchTerms}";
+  #                   }
+  #                 ];
+  #               }
+  #             ];
+  #
+  #             icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
+  #             definedAliases = ["@np"];
+  #           };
+  #
+  #           "NixOS Wiki" = {
+  #             urls = [{template = "https://wiki.nixos.org/index.php?search={searchTerms}";}];
+  #             iconUpdateURL = "https://wiki.nixos.org/favicon.png";
+  #             updateInterval = 24 * 60 * 60 * 1000; # every day
+  #             definedAliases = ["@nw"];
+  #           };
+  #
+  #           "Google" = {
+  #             urls = [
+  #               {
+  #                 template = "https://www.google.com/search";
+  #                 params = [
+  #                   {
+  #                     name = "q";
+  #                     value = "{searchTerms}";
+  #                   }
+  #                   {
+  #                     name = "udm";
+  #                     value = "14";
+  #                   }
+  #                 ];
+  #               }
+  #             ];
+  #             definedAliases = ["@g"];
+  #           };
+  #         };
+  #       };
+  #       extensions = with inputs.firefox-addons.packages.${pkgs.system}; [
+  #         ublock-origin
+  #         bitwarden
+  #         vimium
+  #         tabliss
+  #         privacy-badger
+  #         reddit-enhancement-suite
+  #         catppuccin
+  #       ];
+  #     };
+  #   };
+  # };
 }
