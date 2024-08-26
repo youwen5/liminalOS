@@ -24,11 +24,11 @@
     },
     "bleedingpkgs": {
       "locked": {
-        "lastModified": 1724581532,
-        "narHash": "sha256-h9a24T9AE4/kIsK1m6zoeEo8XyRDI83sVXQS4OOmVfk=",
+        "lastModified": 1724654909,
+        "narHash": "sha256-otsBriUWjxgJae6DwjsEO4TUQkEhtLmXxLUlqRK1HrU=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "cefe8a71e78741c16e88181c8cdf467d07a4b401",
+        "rev": "a64bbc6c1b77d2012b50370bc33102cb4ed0418c",
         "type": "github"
       },
       "original": {
@@ -111,29 +111,6 @@
         "owner": "numtide",
         "repo": "devshell",
         "type": "github"
-      }
-    },
-    "firefox-addons": {
-      "inputs": {
-        "flake-utils": "flake-utils",
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "dir": "pkgs/firefox-addons",
-        "lastModified": 1724645012,
-        "narHash": "sha256-XJ8B9ecksgZBlWV9pnDgBWVePyHDg/cLYJ/6YF/RdRA=",
-        "owner": "rycee",
-        "repo": "nur-expressions",
-        "rev": "70645c904b41b9ddf70f7218898c48df93e8254f",
-        "type": "gitlab"
-      },
-      "original": {
-        "dir": "pkgs/firefox-addons",
-        "owner": "rycee",
-        "repo": "nur-expressions",
-        "type": "gitlab"
       }
     },
     "flake-compat": {
@@ -259,21 +236,6 @@
       }
     },
     "flake-utils": {
-      "locked": {
-        "lastModified": 1629284811,
-        "narHash": "sha256-JHgasjPR0/J1J3DRm4KxM4zTyAj4IOJY8vIl75v/kPI=",
-        "owner": "numtide",
-        "repo": "flake-utils",
-        "rev": "c5d161cc0af116a2e17f54316f0bf43f0819785c",
-        "type": "github"
-      },
-      "original": {
-        "owner": "numtide",
-        "repo": "flake-utils",
-        "type": "github"
-      }
-    },
-    "flake-utils_2": {
       "inputs": {
         "systems": "systems"
       },
@@ -291,7 +253,7 @@
         "type": "github"
       }
     },
-    "flake-utils_3": {
+    "flake-utils_2": {
       "inputs": {
         "systems": "systems_2"
       },
@@ -309,7 +271,7 @@
         "type": "github"
       }
     },
-    "flake-utils_4": {
+    "flake-utils_3": {
       "inputs": {
         "systems": "systems_3"
       },
@@ -327,7 +289,7 @@
         "type": "github"
       }
     },
-    "flake-utils_5": {
+    "flake-utils_4": {
       "inputs": {
         "systems": "systems_4"
       },
@@ -345,7 +307,7 @@
         "type": "github"
       }
     },
-    "flake-utils_6": {
+    "flake-utils_5": {
       "inputs": {
         "systems": "systems_5"
       },
@@ -501,11 +463,11 @@
     "homebrew-cask": {
       "flake": false,
       "locked": {
-        "lastModified": 1724579842,
-        "narHash": "sha256-izixjuJn9JjWhmfRXCSVSODosdNcK0nEZVDWzk8+vJ0=",
+        "lastModified": 1724652617,
+        "narHash": "sha256-/iCv+iXkc6pnAQVb3K/ofJvAbnMz0s4Fx7bQQoMTDVs=",
         "owner": "homebrew",
         "repo": "homebrew-cask",
-        "rev": "f3046f799c32d169398e9940d00018c3535ec8f6",
+        "rev": "05f6a38cd2c3fa5e7e6c38b573cbb8fe6615d2d6",
         "type": "github"
       },
       "original": {
@@ -517,11 +479,11 @@
     "homebrew-core": {
       "flake": false,
       "locked": {
-        "lastModified": 1724581596,
-        "narHash": "sha256-/IEFvoNS7LM3mVIUvmKyekFTByORdTkcTWrmCz3gja8=",
+        "lastModified": 1724654372,
+        "narHash": "sha256-8kuJn915lC4NZn1q9P6x5O0oejbAQOUbkQknnaxfau8=",
         "owner": "homebrew",
         "repo": "homebrew-core",
-        "rev": "0f996959e7c025eb54aa1ada8b43dad0737e78a6",
+        "rev": "0ef0cd2c850c85d264922569d37badedcf701c9b",
         "type": "github"
       },
       "original": {
@@ -535,7 +497,7 @@
         "crane": "crane",
         "flake-compat": "flake-compat_2",
         "flake-parts": "flake-parts",
-        "flake-utils": "flake-utils_2",
+        "flake-utils": "flake-utils",
         "nixpkgs": [
           "nixpkgs"
         ],
@@ -573,7 +535,7 @@
     },
     "lix-module": {
       "inputs": {
-        "flake-utils": "flake-utils_3",
+        "flake-utils": "flake-utils_2",
         "flakey-profile": "flakey-profile",
         "lix": "lix",
         "nixpkgs": [
@@ -655,7 +617,7 @@
     "nix-homebrew": {
       "inputs": {
         "brew-src": "brew-src",
-        "flake-utils": "flake-utils_4",
+        "flake-utils": "flake-utils_3",
         "nix-darwin": "nix-darwin_2",
         "nixpkgs": "nixpkgs_2"
       },
@@ -825,7 +787,7 @@
     },
     "nuschtosSearch": {
       "inputs": {
-        "flake-utils": "flake-utils_5",
+        "flake-utils": "flake-utils_4",
         "nixpkgs": [
           "personal-neovim",
           "nixvim",
@@ -898,7 +860,6 @@
         "apple-silicon": "apple-silicon",
         "bleedingpkgs": "bleedingpkgs",
         "catppuccin": "catppuccin",
-        "firefox-addons": "firefox-addons",
         "home-manager": "home-manager",
         "homebrew-cask": "homebrew-cask",
         "homebrew-core": "homebrew-core",
@@ -963,11 +924,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1724559309,
-        "narHash": "sha256-9y3yreHjQyyn8bIQmTx1ZkiNGgq1og/PDUZLiE96iJA=",
+        "lastModified": 1724645793,
+        "narHash": "sha256-z0QdJ8N24msqy6uakRNHpCsrNsswTA9/Evsd3+DOAZc=",
         "owner": "Gerg-L",
         "repo": "spicetify-nix",
-        "rev": "8d823dea059ec5de57f276360acbd0601b20e433",
+        "rev": "2e3b9ea2f89113d71ab57127ca7226253afd2660",
         "type": "github"
       },
       "original": {
@@ -1091,15 +1052,15 @@
     },
     "vesktop-bin": {
       "inputs": {
-        "flake-utils": "flake-utils_6",
+        "flake-utils": "flake-utils_5",
         "nixpkgs": "nixpkgs_5"
       },
       "locked": {
-        "lastModified": 1724591359,
-        "narHash": "sha256-BOjN/xLegrPM02Uhhs3WyyTvin4tdWC+iBamoA7EtHY=",
+        "lastModified": 1724592759,
+        "narHash": "sha256-Nimd8iRzkCHWZuNq1TV3SSP5ZInpPExOwEgeH1gK/S8=",
         "owner": "youwen5",
         "repo": "vesktop-bin-flake",
-        "rev": "fe8b5fff01426dcb04dee671d228032c6894316f",
+        "rev": "52b8100929743aa051462509142ae7c17409f47d",
         "type": "github"
       },
       "original": {
