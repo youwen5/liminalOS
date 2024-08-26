@@ -9,8 +9,8 @@
 in {
   nixpkgs.overlays = [
     (self: super: {
-      librewolf = nixpkgs-small.librewolf;
       manga-tui = bleedingpkgs.manga-tui;
     })
+    inputs.zen-browser.overlays.default
   ];
 }

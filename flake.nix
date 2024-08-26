@@ -66,6 +66,8 @@
       url = "git+https://code.youwen.dev/youwen5/wallpapers";
       flake = false;
     };
+
+    zen-browser.url = "github:youwen5/zen-browser-flake";
   };
 
   outputs = {

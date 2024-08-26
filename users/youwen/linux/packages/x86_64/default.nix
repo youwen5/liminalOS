@@ -10,5 +10,6 @@ in {
       wine
       sbctl
       r2modman
+      zen-browser.default
     ]);
 }
