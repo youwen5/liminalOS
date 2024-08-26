@@ -38,6 +38,8 @@
         "XCURSOR_SIZE,26"
       ];
       bind = [
+        # External reserved keys: SUPER + Z and SUPER + X for zen-browser.
+
         # Application Keybinds
         "$mod, F, exec, zen-browser || librewolf"
         "$mod, T, exec, kitty"
@@ -112,10 +114,6 @@
 
         # System control
         ",XF86AudioMute, exec, pamixer -t"
-
-        # Pass to zen-alpha
-        "SUPER, Z, pass, ^(zen-alpha)"
-        "SUPER, X, pass, ^(zen-alpha)"
       ];
       bindm = [
         "$mod, mouse:272, movewindow"
