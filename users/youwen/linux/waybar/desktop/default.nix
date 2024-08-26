@@ -1,91 +1,126 @@
 {
+  # home.file.".config/waybar/config".source = ./config.jsonc;
   programs.waybar = {
     enable = true;
+    style = ./style.css;
+    systemd.enable = true;
     settings = {
       mainBar = {
+        name = "bar0";
+
         layer = "top";
         position = "top";
-        height = 24;
-        width = 1600;
-        reload-style-on-change = true;
-        margin = "10px 0px 0px 0px";
-        modules-left = ["hyprland/window" "hyprland/workspaces"];
-        modules-right = ["backlight" "group/adjustable" "custom/weather"];
-        modules-center = ["network" "group/hardware" "clock"];
-        "hyprland/workspaces" = {
-          active-only = false;
-          all-outputs = false;
+
+        height = 16;
+        # "width" = 1920;
+
+        "margin" = "5px 10px 0px 10px";
+        "spacing" = 10;
+
+        "mode" = "top";
+        # "exclusive" = true;
+
+        # "output" = "eDP-1";
+
+        reload_style_on_change = true;
+
+        modules-left = ["hyprland/workspaces"];
+        modules-center = ["hyprland/window"];
+        modules-right = [
+          "tray"
+          "idle_inhibitor"
+          "backlight"
+          "wireplumber"
+          "battery"
+          "disk"
+          "memory"
+          "cpu"
+          "temperature"
+          "clock"
+        ];
+
+        idle_inhibitor = {
           format = "{icon}";
-          persistent-workspaces = {
-            eDP-1 = [1];
-            DP-1 = [2 3 4 5];
+          format-icons = {
+            activated = "󰛊 ";
+            deactivated = "󰾫 ";
           };
         };
-        "group/hardware" = {
-          orientation = "inherit";
-          modules = ["cpu" "memory" "battery"];
+
+        backlight = {
+          interval = 2;
+          format = "󰖨 {percent}%";
+          on-scroll-up = "brightnessctl set +4";
+          on-scroll-down = "brightnessctl set 4-";
         };
-        "group/adjustable" = {
-          orientation = "inherit";
-          drawer = {
-            transition-duration = 500;
-            transition-left-to-right = true;
-          };
-          modules = ["pulseaudio" "mpris"];
+
+        wireplumber = {
+          format = "{icon} {volume}%";
+          format-muted = "󰝟 ";
+          on-click = "pamixer -t";
+          on-scroll-up = "pamixer set 5%+";
+          on-scroll-down = "pamixer set 5%-";
+          format-icons = ["" "" "" "" ""];
         };
-        "custom/weather" = {
-          orientation = "horizontal";
-          exec = ''curl wttr.in/?format="%l:%20%t"'';
+
+        battery = {
           interval = 10;
+          format = "{icon}{capacity}%";
+          format-icons = ["󰂎" "󰁺" "󰁻" "󰁼" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰂂" "󰁹"];
+          tooltip = true;
+          tooltip-format = "{timeTo}";
         };
-        cpu = {
-          interval = 10;
-          format = "{usage}%  ";
+
+        disk = {
+          intervel = 30;
+          format = "󰋊 {percentage_used}%";
+          tooltip-format = "{used} used out of {total} on \"{path}\" ({percentage_used}%)";
         };
+
         memory = {
           interval = 10;
-          format = "{percentage}%  ";
+          format = " {used}";
+          tooltip-format = "{used}GiB used of {total}GiB ({percentage}%)";
         };
-        # mpris = {
-        #   format-playing = "    {title}  ";
-        #   format-paused = " 󰏤 {title}  ";
-        #   format-stopped = "Nothing Playing";
-        # };
-        tray = {spacing = 10;};
-        clock = {format = "{:%a %b %d, %I:%M %p} ";};
-        backlight = {
-          device = "intel_backlight";
-          format = "{percent}% {icon}";
-          format-icons = ["󰃞" "󰃠"];
+
+        cpu = {
+          interval = 10;
+          format = " {usage}%";
         };
-        battery = {
-          states = {
-            good = 95;
-            warning = 20;
-            critical = 10;
+
+        temperature = {
+          interval = 10;
+        };
+
+        clock = {
+          interval = 1;
+          format = "{:%H:%M:%S}";
+        };
+
+        "hyprland/workspaces" = {
+          show-special = true;
+          persistent-workspaces = {
+            "*" = [1 2 3 4 5 6 7 8 9 10];
           };
-          format = "{capacity}% {icon}";
-          format-icons = ["󰁻" "󰁽" "󰁿" "󰂀" "󰁹"];
+          format = "{icon}";
+          format-icons = {
+            active = "";
+            empty = "";
+            default = "";
+            urgent = "";
+            special = "󰠱";
+          };
         };
-        "hyprland/window" = {format = "{class}";};
-        network = {
-          format-wifi = "{essid} ";
-          format-linked = "{ifname} (No IP) ";
-          format-disconnected = "Disconnected ⚠";
-          format-alt = "{ifname}: {ipaddr}/{cidr}";
-        };
-        pulseaudio = {
-          format = "{volume}% {icon}  {format_source}";
-          format-bluetooth = "{volume}% {icon}  {format_source}";
-          format-bluetooth-muted = " {icon} {format_source}";
-          format-muted = " {format_source}";
-          format-source = "{volume}% ";
-          format-source-muted = "";
-          format-icons = {default = ["" "" ""];};
+        "hyprland/window" = {
+          icon = true;
+          icon-size = 20;
+          max-length = 50;
+          rewrite = {
+            "(.*) — LibreWolf" = "$1";
+            "^$" = "👾";
+          };
         };
       };
     };
-    style = ./waybar.css;
-    systemd.enable = true;
   };
 }
