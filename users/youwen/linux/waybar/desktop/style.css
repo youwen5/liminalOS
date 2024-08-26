@@ -65,3 +65,7 @@ window#waybar {
 #temperature {
     color: lightslategray;
 }
+
+#network {
+    color: lightsteelblue;
+}

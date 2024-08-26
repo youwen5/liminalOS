@@ -31,6 +31,7 @@
           "idle_inhibitor"
           "backlight"
           "wireplumber"
+          "network"
           "battery"
           "disk"
           "memory"
@@ -45,6 +46,20 @@
             activated = "󰛊 ";
             deactivated = "󰾫 ";
           };
+        };
+
+        network = {
+          format = "{ifname}";
+          format-wifi = "{icon}{essid}";
+          format-ethernet = " {essid}";
+          format-disconnected = "󰤯 Disconnected";
+          format-icons = [
+            "󰤟 "
+            "󰤢 "
+            "󰤨 "
+          ];
+          tooltip-format = "  {bandwidthUpBits} |   {bandwidthDownBits}";
+          tooltip-format-wifi = "   {bandwidthUpBits} |    {bandwidthDownBits} | 󱄙   {signalStrength}";
         };
 
         backlight = {
