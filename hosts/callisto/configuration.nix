@@ -43,6 +43,7 @@
     inputs.vesktop-bin.overlays.default
 
     (final: prev: {
+      librewolf = stablepkgs.librewolf;
       hyprland = prev.hyprland.overrideAttrs (oldAttrs: {
         src = oldAttrs.src;
         patches =
