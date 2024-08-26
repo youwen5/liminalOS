@@ -1,10 +1,10 @@
 {
   inputs,
-  system,
+  pkgs,
   ...
 }: {
   environment.systemPackages = [
-    inputs.personal-neovim.packages.${system}.default
+    inputs.personal-neovim.packages.${pkgs.system}.default
   ];
 
   security.sudo.enable = false;

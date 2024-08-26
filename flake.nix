@@ -85,7 +85,6 @@
         system = "x86_64-linux";
         specialArgs = {
           inherit inputs;
-          system = "x86_64-linux";
         };
         modules = [
           ./hosts/demeter
@@ -95,7 +94,6 @@
       callisto = nixpkgs.lib.nixosSystem {
         specialArgs = {
           inherit inputs;
-          system = "aarch64-linux";
         };
         modules = [
           ./hosts/callisto
@@ -104,7 +102,6 @@
       adrastea = nixpkgs.lib.nixosSystem {
         specialArgs = {
           inherit inputs;
-          system = "x86_64-linux";
         };
         modules = [
           ./hosts/adrastea
