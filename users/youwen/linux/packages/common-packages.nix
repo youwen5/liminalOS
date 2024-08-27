@@ -22,7 +22,7 @@ with pkgs; [
   usbutils # lsusb
 
   # desktop utils
-  bitwarden-cli
+  # bitwarden-cli
 
   # desktop apps
   dolphin
