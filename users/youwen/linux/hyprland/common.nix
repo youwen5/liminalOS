@@ -46,6 +46,7 @@
         "$mod, E, exec, dolphin"
         "$mod, R, exec, pavucontrol"
         "$mod, M, exec, thunderbird"
+        "$mod, B, exec, waypaper"
 
         # Window actions
         "$mod, Q, killactive"
