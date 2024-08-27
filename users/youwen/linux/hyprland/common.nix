@@ -41,7 +41,7 @@
         # External reserved keys: SUPER + Z and SUPER + X for zen-browser.
 
         # Application Keybinds
-        "$mod, F, exec, zen-browser || librewolf"
+        "$mod, F, exec, zen-bin || librewolf"
         "$mod, T, exec, kitty"
         "$mod, E, exec, dolphin"
         "$mod, R, exec, pavucontrol"
@@ -184,7 +184,7 @@
         "float,class:^(org.kde.dolphin)$,title:^(Copying — Dolphin)$"
         "float,title:^(Picture-in-Picture)$"
         "float,class:^(librewolf)$,title:^(Library)$"
-        "float,class:^(zen-browser)$,title:^(Library)$"
+        "float,class:^(zen-alpha)$,title:^(Library)$"
         "float,title:^(Extension: (Bitwarden Password Manager))$"
         "float,class:^(vlc)$"
         "float,class:^(kvantummanager)$"

@@ -11,6 +11,6 @@ in {
     (self: super: {
       manga-tui = bleedingpkgs.manga-tui;
     })
-    inputs.zen-browser.overlays.default
+    # inputs.zen-browser.overlays.default
   ];
 }

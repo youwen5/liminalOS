@@ -325,24 +325,6 @@
         "type": "github"
       }
     },
-    "flake-utils_6": {
-      "inputs": {
-        "systems": "systems_6"
-      },
-      "locked": {
-        "lastModified": 1710146030,
-        "narHash": "sha256-SZ5L6eA7HJ/nmkzGG7/ISclqe6oZdOZTNoesiInkXPQ=",
-        "owner": "numtide",
-        "repo": "flake-utils",
-        "rev": "b1d9ab70662946ef0850d488da1c9019f3a9752a",
-        "type": "github"
-      },
-      "original": {
-        "owner": "numtide",
-        "repo": "flake-utils",
-        "type": "github"
-      }
-    },
     "flakey-profile": {
       "locked": {
         "lastModified": 1712898590,
@@ -776,11 +758,11 @@
     },
     "nixpkgs_6": {
       "locked": {
-        "lastModified": 1724479785,
-        "narHash": "sha256-pP3Azj5d6M5nmG68Fu4JqZmdGt4S4vqI5f8te+E/FTw=",
+        "lastModified": 1724224976,
+        "narHash": "sha256-Z/ELQhrSd7bMzTO8r7NZgi9g5emh+aRKoCdaAv5fiO0=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "d0e1602ddde669d5beb01aec49d71a51937ed7be",
+        "rev": "c374d94f1536013ca8e92341b540eba4c22f9c62",
         "type": "github"
       },
       "original": {
@@ -1064,21 +1046,6 @@
         "type": "github"
       }
     },
-    "systems_6": {
-      "locked": {
-        "lastModified": 1681028828,
-        "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",
-        "owner": "nix-systems",
-        "repo": "default",
-        "rev": "da67096a3b9bf56a91d16901293e51ba5b49a27e",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nix-systems",
-        "repo": "default",
-        "type": "github"
-      }
-    },
     "treefmt-nix": {
       "inputs": {
         "nixpkgs": [
@@ -1138,15 +1105,14 @@
     },
     "zen-browser": {
       "inputs": {
-        "flake-utils": "flake-utils_6",
         "nixpkgs": "nixpkgs_6"
       },
       "locked": {
-        "lastModified": 1724710271,
-        "narHash": "sha256-liq52KgbV2JppCO8xiF8x8/tod+O+Im/zKArhRXDcgk=",
+        "lastModified": 1724719995,
+        "narHash": "sha256-JBBaAYaW9g/hBH/O+sEwsH2PczaRlqiiUUOi4bopGDw=",
         "owner": "youwen5",
         "repo": "zen-browser-flake",
-        "rev": "6c1baeb25fd07dc810f75cafb59f81702e488f98",
+        "rev": "0d391c6f3a2616e070ed5a0c808c4b07e9affe27",
         "type": "github"
       },
       "original": {

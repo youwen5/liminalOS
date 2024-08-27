@@ -1,4 +1,8 @@
-{pkgs, ...}: let
+{
+  pkgs,
+  inputs,
+  ...
+}: let
   createCommon = import ../common-packages.nix;
 in {
   home.packages =
@@ -10,6 +14,6 @@ in {
       wine
       sbctl
       r2modman
-      zen-browser.default
+      inputs.zen-browser.packages.${pkgs.system}.specific
     ]);
 }
