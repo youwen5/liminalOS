@@ -68,6 +68,8 @@
     };
 
     zen-browser.url = "github:youwen5/zen-browser-flake";
+
+    manga-tui.url = "github:josueBarretogit/manga-tui";
   };
 
   outputs = {

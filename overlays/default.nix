@@ -9,8 +9,7 @@
 in {
   nixpkgs.overlays = [
     (self: super: {
-      manga-tui = bleedingpkgs.manga-tui;
+      manga-tui = inputs.manga-tui.packages.${pkgs.system}.default;
     })
-    # inputs.zen-browser.overlays.default
   ];
 }
