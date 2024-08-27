@@ -132,6 +132,7 @@
           max-length = 50;
           rewrite = {
             "(.*) — LibreWolf" = "$1";
+            "(.*) — Zen Browser" = "$1";
             "^$" = "👾";
           };
         };
