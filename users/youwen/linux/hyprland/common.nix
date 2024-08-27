@@ -37,85 +37,90 @@
         "XCURSOR_THEME,Bibata-Modern-Ice"
         "XCURSOR_SIZE,26"
       ];
-      bind = [
-        # External reserved keys: SUPER + Z and SUPER + X for zen-browser.
+      bind =
+        [
+          # External reserved keys: SUPER + Z and SUPER + X for zen-browser.
 
-        # Application Keybinds
-        "$mod, F, exec, zen-bin || librewolf"
-        "$mod, T, exec, kitty"
-        "$mod, E, exec, dolphin"
-        "$mod, R, exec, pavucontrol"
-        "$mod, M, exec, thunderbird"
-        "$mod, B, exec, waypaper"
+          # Application Keybinds
+          "$mod, T, exec, kitty"
+          "$mod, E, exec, dolphin"
+          "$mod, R, exec, pavucontrol"
+          "$mod, M, exec, thunderbird"
+          "$mod, B, exec, waypaper"
 
-        # Window actions
-        "$mod, Q, killactive"
-        "$mod, W, togglefloating"
-        "$mod, V, togglesplit"
-        "$mod, Return, fullscreen"
+          # Window actions
+          "$mod, Q, killactive"
+          "$mod, W, togglefloating"
+          "$mod, V, togglesplit"
+          "$mod, Return, fullscreen"
 
-        # Move around
-        "$mod, $Left, movefocus, l"
-        "$mod, $Right, movefocus, r"
-        "$mod, $Up, movefocus, u"
-        "$mod, $Down, movefocus, d"
+          # Move around
+          "$mod, $Left, movefocus, l"
+          "$mod, $Right, movefocus, r"
+          "$mod, $Up, movefocus, u"
+          "$mod, $Down, movefocus, d"
 
-        "$mod, 1, workspace, 1"
-        "$mod, 2, workspace, 2"
-        "$mod, 3, workspace, 3"
-        "$mod, 4, workspace, 4"
-        "$mod, 5, workspace, 5"
-        "$mod, 6, workspace, 6"
-        "$mod, 7, workspace, 7"
-        "$mod, 8, workspace, 8"
-        "$mod, 9, workspace, 9"
-        "$mod, 0, workspace, 10"
+          "$mod, 1, workspace, 1"
+          "$mod, 2, workspace, 2"
+          "$mod, 3, workspace, 3"
+          "$mod, 4, workspace, 4"
+          "$mod, 5, workspace, 5"
+          "$mod, 6, workspace, 6"
+          "$mod, 7, workspace, 7"
+          "$mod, 8, workspace, 8"
+          "$mod, 9, workspace, 9"
+          "$mod, 0, workspace, 10"
 
-        # Move active window to a workspace with mainMod + SHIFT + [0-9]
-        "$mod+Shift, 1, movetoworkspace, 1"
-        "$mod+Shift, 2, movetoworkspace, 2"
-        "$mod+Shift, 3, movetoworkspace, 3"
-        "$mod+Shift, 4, movetoworkspace, 4"
-        "$mod+Shift, 5, movetoworkspace, 5"
-        "$mod+Shift, 6, movetoworkspace, 6"
-        "$mod+Shift, 7, movetoworkspace, 7"
-        "$mod+Shift, 8, movetoworkspace, 8"
-        "$mod+Shift, 9, movetoworkspace, 9"
-        "$mod+Shift, 0, movetoworkspace, 10"
+          # Move active window to a workspace with mainMod + SHIFT + [0-9]
+          "$mod+Shift, 1, movetoworkspace, 1"
+          "$mod+Shift, 2, movetoworkspace, 2"
+          "$mod+Shift, 3, movetoworkspace, 3"
+          "$mod+Shift, 4, movetoworkspace, 4"
+          "$mod+Shift, 5, movetoworkspace, 5"
+          "$mod+Shift, 6, movetoworkspace, 6"
+          "$mod+Shift, 7, movetoworkspace, 7"
+          "$mod+Shift, 8, movetoworkspace, 8"
+          "$mod+Shift, 9, movetoworkspace, 9"
+          "$mod+Shift, 0, movetoworkspace, 10"
 
-        # move to the first empty workspace instantly
-        "$mod+Ctrl, $Down, workspace, empty"
-        "$mod+Ctrl, $Up, movetoworkspace, empty"
+          # move to the first empty workspace instantly
+          "$mod+Ctrl, $Down, workspace, empty"
+          "$mod+Ctrl, $Up, movetoworkspace, empty"
 
-        # Special workspace
-        "$mod, S, togglespecialworkspace"
-        "$mod+Alt, S, movetoworkspacesilent, special"
+          # Special workspace
+          "$mod, S, togglespecialworkspace"
+          "$mod+Alt, S, movetoworkspacesilent, special"
 
-        # Move windows around
-        "$mod+Shift, $Left, movewindow, l"
-        "$mod+Shift, $Right, movewindow, r"
-        "$mod+Shift, $Up, movewindow, u"
-        "$mod+Shift, $Down, movewindow, d"
+          # Move windows around
+          "$mod+Shift, $Left, movewindow, l"
+          "$mod+Shift, $Right, movewindow, r"
+          "$mod+Shift, $Up, movewindow, u"
+          "$mod+Shift, $Down, movewindow, d"
 
-        "$mod+Ctrl+Shift, $Right, movetoworkspace, r+1"
-        "$mod+Ctrl+Shift, $Left, movetoworkspace, r-1"
+          "$mod+Ctrl+Shift, $Right, movetoworkspace, r+1"
+          "$mod+Ctrl+Shift, $Left, movetoworkspace, r-1"
 
-        "$mod+Ctrl, $Right, workspace, r+1"
-        "$mod+Ctrl, $Left, workspace, r-1"
+          "$mod+Ctrl, $Right, workspace, r+1"
+          "$mod+Ctrl, $Left, workspace, r-1"
 
-        # Utilities
-        "$mod, Space, exec, pkill -x rofi || rofi -show drun" # Run rofi application launcher
-        "$mod, G, exec, pkill -x rofi || rofi -show window" # Run rofi window switcher
+          # Utilities
+          "$mod, Space, exec, pkill -x rofi || rofi -show drun" # Run rofi application launcher
+          "$mod, G, exec, pkill -x rofi || rofi -show window" # Run rofi window switcher
 
-        ''$mod, P, exec, grim -g "$(slurp)" - | swappy -f -'' # Screenshot
+          ''$mod, P, exec, grim -g "$(slurp)" - | swappy -f -'' # Screenshot
 
-        "$mod, Backspace, exec, wlogout" # show logout menu
+          "$mod, Backspace, exec, wlogout" # show logout menu
 
-        "$mod, I, exec, hyprlock"
+          "$mod, I, exec, hyprlock"
 
-        # System control
-        ",XF86AudioMute, exec, pamixer -t"
-      ];
+          # System control
+          ",XF86AudioMute, exec, pamixer -t"
+        ]
+        ++ (
+          if pkgs.system != "aarch64-linux"
+          then ["$mod, F, exec, zen-bin"]
+          else ["$mod, F, exec, librewolf"]
+        );
       bindm = [
         "$mod, mouse:272, movewindow"
         "$mod, mouse:273, resizewindow"
