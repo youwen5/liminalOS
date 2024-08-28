@@ -907,11 +907,11 @@
         "nixvim": "nixvim"
       },
       "locked": {
-        "lastModified": 1724569831,
-        "narHash": "sha256-GwBiSvqGOlkWqRfsgv9A+e+v6dPDd8J3YEwtez3jnkI=",
+        "lastModified": 1724834346,
+        "narHash": "sha256-IzX0QV6telnbiaj9Z1yckAGnAu6Ny1Fq1lGFUceuLGg=",
         "owner": "youwen5",
         "repo": "neovim-flake",
-        "rev": "e78144554b191f08a05c7e3d0cb7966c363fcdbb",
+        "rev": "11b7a7943f94daf8a35820bb8b2fa174bd0df011",
         "type": "github"
       },
       "original": {
