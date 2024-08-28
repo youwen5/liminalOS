@@ -1,5 +1,10 @@
 let
-  universalAllowedPorts = [27016 42805];
+  universalAllowedPorts = [
+    27016 # grim dawn
+    42805 # grim dawn
+    5173 # vite test server
+    4173 # vite test server
+  ];
   universalAllowedRanges = [
     {
       from = 42852;
