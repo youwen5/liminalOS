@@ -10,6 +10,7 @@
     ../../modules/linux/fonts
     ../../modules/linux/greeter
     ../../modules/linux/core
+    ../../modules/linux/desktop-portal
     ../../overlays
 
     apple-silicon.nixosModules.apple-silicon-support

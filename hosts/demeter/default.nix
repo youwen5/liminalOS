@@ -12,6 +12,7 @@
     ../../modules/linux/greeter
     ../../modules/linux/core
     ../../modules/linux/hamachi
+    ../../modules/linux/desktop-portal
     ../../overlays
 
     catppuccin.nixosModules.catppuccin
