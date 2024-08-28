@@ -109,7 +109,7 @@
 
           ''$mod, P, exec, grim -g "$(slurp)" - | swappy -f -'' # Screenshot
 
-          "$mod, Backspace, exec, wlogout" # show logout menu
+          "$mod, Backspace, exec, pkill -x wlogout || wlogout" # show logout menu
 
           "$mod, I, exec, hyprlock"
 
