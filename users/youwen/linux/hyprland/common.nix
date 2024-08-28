@@ -118,7 +118,7 @@
         ]
         ++ (
           if pkgs.system != "aarch64-linux"
-          then ["$mod, F, exec, zen-bin"]
+          then ["$mod, F, exec, zen"]
           else ["$mod, F, exec, librewolf"]
         );
       bindm = [

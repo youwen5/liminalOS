@@ -31,6 +31,6 @@ in {
   };
 
   home.sessionVariables = {
-    DEFAULT_BROWSER = "${zen-browser}/bin/zen-bin";
+    DEFAULT_BROWSER = "${zen-browser}/bin/zen";
   };
 }
