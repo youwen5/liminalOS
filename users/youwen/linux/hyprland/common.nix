@@ -113,8 +113,11 @@
 
           "$mod, I, exec, hyprlock"
 
-          # System control
+          # Media controls
           ",XF86AudioMute, exec, pamixer -t"
+          ",XF86AudioPlay, exec, playerctl play-pause"
+          ",XF86AudioNext, exec, playerctl next"
+          ",XF86AudioRewind, exec, playerctl previous"
         ]
         ++ (
           if pkgs.system != "aarch64-linux"
