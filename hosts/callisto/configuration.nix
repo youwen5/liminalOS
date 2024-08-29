@@ -41,18 +41,6 @@
   in [
     inputs.apple-silicon.overlays.apple-silicon-overlay
     inputs.vesktop-bin.overlays.default
-
-    (final: prev: {
-      hyprland = prev.hyprland.overrideAttrs (oldAttrs: {
-        src = oldAttrs.src;
-        patches =
-          oldAttrs.patches
-          or []
-          ++ [
-            ./0001-linux-dmabuf-allow-on-split-node-systems.patch
-          ];
-      });
-    })
   ];
 
   programs.light.enable = true;
