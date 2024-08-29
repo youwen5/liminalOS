@@ -1,4 +1,7 @@
-{
+{pkgs, ...}: {
+  environment.systemPackages = with pkgs; [
+    ryujinx
+  ];
   programs.steam = {
     enable = true;
     remotePlay.openFirewall = true;

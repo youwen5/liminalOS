@@ -35,6 +35,4 @@ with pkgs; [
   manga-tui
 
   gcc
-
-  ryujinx
 ]
