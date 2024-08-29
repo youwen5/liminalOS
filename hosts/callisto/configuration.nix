@@ -163,6 +163,13 @@
 
   services.tlp.enable = true;
 
+  hardware.bluetooth = {
+    enable = true;
+    powerOnBoot = true;
+  };
+
+  services.blueman.enable = true;
+
   # tells electron apps to use Wayland
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
