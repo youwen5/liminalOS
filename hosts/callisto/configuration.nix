@@ -43,7 +43,6 @@
     inputs.vesktop-bin.overlays.default
 
     (final: prev: {
-      librewolf = stablepkgs.librewolf;
       hyprland = prev.hyprland.overrideAttrs (oldAttrs: {
         src = oldAttrs.src;
         patches =
@@ -108,7 +107,8 @@
   users.users.youwen = {
     isNormalUser = true;
     description = "Youwen Wu";
-    extraGroups = ["networkmanager"];
+    # Wheel is required for iwctl as non-root
+    extraGroups = ["wheel"];
   };
 
   nix.settings = {
