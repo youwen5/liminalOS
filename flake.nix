@@ -86,27 +86,20 @@
 
     nixosConfigurations = {
       demeter = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        specialArgs = {
-          inherit inputs;
-        };
+        specialArgs = {inherit inputs;};
         modules = [
           ./hosts/demeter
         ];
       };
 
       callisto = nixpkgs.lib.nixosSystem {
-        specialArgs = {
-          inherit inputs;
-        };
+        specialArgs = {inherit inputs;};
         modules = [
           ./hosts/callisto
         ];
       };
       adrastea = nixpkgs.lib.nixosSystem {
-        specialArgs = {
-          inherit inputs;
-        };
+        specialArgs = {inherit inputs;};
         modules = [
           ./hosts/adrastea
         ];
