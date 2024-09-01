@@ -3,15 +3,15 @@
   pkgs,
   ...
 }: let
-  pkgs = inputs.nixpkgs.legacyPackages.${pkgs.system};
   stablepkgs = inputs.stablepkgs.legacyPackages.${pkgs.system};
   bleedingpkgs = inputs.bleedingpkgs.legacyPackages.${pkgs.system};
   nixpkgs-small = inputs.nixpkgs-unstable-small.legacyPackages.${pkgs.system};
+  fetchpatch = pkgs.fetchpatch;
 in {
   nixpkgs.overlays = [
     (self: super: {
       manga-tui = inputs.manga-tui.packages.${pkgs.system}.default;
-      xdg-desktop-portal-hyprland = super.hyprland.overrideAttrs (oldAttrs: {
+      xdg-desktop-portal-hyprland = super.xdg-desktop-portal-hyprland.overrideAttrs (oldAttrs: {
         src = oldAttrs.src;
         patches =
           oldAttrs.patches
