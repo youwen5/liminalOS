@@ -10,7 +10,7 @@
 in {
   nixpkgs.overlays = [
     (self: super: {
-      manga-tui = inputs.manga-tui.packages.${pkgs.system}.default;
+      # manga-tui = inputs.manga-tui.packages.${pkgs.system}.default;
       xdg-desktop-portal-hyprland = super.xdg-desktop-portal-hyprland.overrideAttrs (oldAttrs: {
         src = oldAttrs.src;
         patches =
