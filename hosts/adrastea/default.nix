@@ -11,6 +11,7 @@
     ../../modules/linux/fonts
     ../../modules/linux/greeter
     ../../modules/linux/core
+    ../../modules/linux/desktop-portal
     ../../overlays
 
     catppuccin.nixosModules.catppuccin
@@ -20,10 +21,7 @@
       home-manager.useGlobalPkgs = true;
       home-manager.useUserPackages = true;
       home-manager.backupFileExtension = "backup";
-      home-manager.extraSpecialArgs = {
-        inherit inputs;
-        inherit system;
-      };
+      home-manager.extraSpecialArgs = {inherit inputs;};
       home-manager.users.youwen = {
         imports = [
           ./home-manager-extras
@@ -31,6 +29,7 @@
           ../../users/youwen/linux/packages/x86_64
           ../../users/youwen/linux/programs
           ../../users/youwen/common
+          ../../users/youwen/linux/spicetify
           ../../users/youwen/common/neofetch
           catppuccin.homeManagerModules.catppuccin
         ];
