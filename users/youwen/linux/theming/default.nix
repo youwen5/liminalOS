@@ -1,5 +1,6 @@
-{pkgs, ...}: {
-  imports = [./catppuccin.nix];
+{ pkgs, ... }:
+{
+  imports = [ ./catppuccin.nix ];
 
   gtk = {
     enable = true;
@@ -8,7 +9,9 @@
       name = "Bibata-Modern-Ice";
       size = 26;
     };
-    iconTheme = {name = "Papirus-Dark";};
+    iconTheme = {
+      name = "Papirus-Dark";
+    };
   };
 
   qt = {

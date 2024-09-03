@@ -24,8 +24,8 @@
 
         reload_style_on_change = true;
 
-        modules-left = ["hyprland/workspaces"];
-        modules-center = ["hyprland/window"];
+        modules-left = [ "hyprland/workspaces" ];
+        modules-center = [ "hyprland/window" ];
         modules-right = [
           "tray"
           "idle_inhibitor"
@@ -75,13 +75,31 @@
           on-click = "pamixer -t";
           on-scroll-up = "pamixer set 5%+";
           on-scroll-down = "pamixer set 5%-";
-          format-icons = ["" "" "" "" ""];
+          format-icons = [
+            ""
+            ""
+            ""
+            ""
+            ""
+          ];
         };
 
         battery = {
           interval = 10;
           format = "{icon}{capacity}%";
-          format-icons = ["󰂎" "󰁺" "󰁻" "󰁼" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰂂" "󰁹"];
+          format-icons = [
+            "󰂎"
+            "󰁺"
+            "󰁻"
+            "󰁼"
+            "󰁽"
+            "󰁾"
+            "󰁿"
+            "󰂀"
+            "󰂁"
+            "󰂂"
+            "󰁹"
+          ];
           tooltip = true;
           tooltip-format = "{timeTo}";
         };
@@ -115,7 +133,18 @@
         "hyprland/workspaces" = {
           show-special = true;
           persistent-workspaces = {
-            "*" = [1 2 3 4 5 6 7 8 9 10];
+            "*" = [
+              1
+              2
+              3
+              4
+              5
+              6
+              7
+              8
+              9
+              10
+            ];
           };
           format = "{icon}";
           format-icons = {

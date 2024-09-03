@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   environment.systemPackages = with pkgs; [
     ryujinx
   ];
@@ -14,8 +15,8 @@
 
   nixpkgs.config.packageOverrides = pkgs: {
     steam = pkgs.steam.override {
-      extraPkgs = pkgs:
-        with pkgs; [
+      extraPkgs =
+        pkgs: with pkgs; [
           xorg.libXcursor
           xorg.libXi
           xorg.libXinerama

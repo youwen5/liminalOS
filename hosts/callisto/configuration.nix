@@ -6,7 +6,8 @@
   inputs,
   pkgs,
   ...
-}: {
+}:
+{
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
@@ -26,7 +27,7 @@
     options hid_apple iso_layout=0
   '';
 
-  boot.kernelParams = ["apple_dcp.show_notch=1"];
+  boot.kernelParams = [ "apple_dcp.show_notch=1" ];
 
   networking.hostName = "callisto"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -36,12 +37,14 @@
     settings.General.EnableNetworkConfiguration = true;
   };
 
-  nixpkgs.overlays = let
-    stablepkgs = inputs.stablepkgs.legacyPackages.${pkgs.system};
-  in [
-    inputs.apple-silicon.overlays.apple-silicon-overlay
-    inputs.vesktop-bin.overlays.default
-  ];
+  nixpkgs.overlays =
+    let
+      stablepkgs = inputs.stablepkgs.legacyPackages.${pkgs.system};
+    in
+    [
+      inputs.apple-silicon.overlays.apple-silicon-overlay
+      inputs.vesktop-bin.overlays.default
+    ];
 
   programs.light.enable = true;
 
@@ -76,7 +79,11 @@
 
   programs.nix-ld = {
     enable = true;
-    libraries = with pkgs; [icu xorg.libXtst xorg.libXi];
+    libraries = with pkgs; [
+      icu
+      xorg.libXtst
+      xorg.libXi
+    ];
   };
 
   # Configure keymap in X11
@@ -96,12 +103,18 @@
     isNormalUser = true;
     description = "Youwen Wu";
     # Wheel is required for iwctl as non-root
-    extraGroups = ["wheel"];
+    extraGroups = [ "wheel" ];
   };
 
   nix.settings = {
-    trusted-users = ["root" "youwen"];
-    experimental-features = ["nix-command" "flakes"];
+    trusted-users = [
+      "root"
+      "youwen"
+    ];
+    experimental-features = [
+      "nix-command"
+      "flakes"
+    ];
   };
 
   services.udev.extraRules = ''
@@ -128,7 +141,7 @@
     enable = true;
     keyboards = {
       default = {
-        ids = ["*"];
+        ids = [ "*" ];
         settings = {
           main = {
             capslock = "esc";

@@ -3,13 +3,14 @@
   config,
   pkgs,
   ...
-}: {
+}:
+{
   # Expose the package set, including overlays, for convenience.
   # darwinPackages = inputs.self.darwinConfigurations."Youwens-MacBook-Pro".pkgs;
 
   # List packages installed in system profile. To search by name, run:
   # $ nix-env -qaP | grep wget
-  environment.systemPackages = with pkgs; [];
+  environment.systemPackages = with pkgs; [ ];
 
   # Use a custom configuration.nix location.
   # $ darwin-rebuild switch -I darwin-config=$HOME/.config/nixpkgs/darwin/configuration.nix
@@ -28,8 +29,7 @@
   programs.fish.enable = true;
   programs.bash.enable = true;
 
-  system.configurationRevision =
-    config.self.rev or config.self.dirtyRev or null;
+  system.configurationRevision = config.self.rev or config.self.dirtyRev or null;
 
   nixpkgs.hostPlatform = "aarch64-darwin";
 
@@ -50,8 +50,8 @@
       noto-fonts
       noto-fonts-cjk
       noto-fonts-emoji
-      (nerdfonts.override {fonts = ["CascadiaCode"];})
-      (google-fonts.override {fonts = ["Lora"];})
+      (nerdfonts.override { fonts = [ "CascadiaCode" ]; })
+      (google-fonts.override { fonts = [ "Lora" ]; })
     ];
   };
 }

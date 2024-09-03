@@ -3,7 +3,8 @@
   inputs,
   system,
   ...
-}: {
+}:
+{
   home.packages = with pkgs; [
     wl-clipboard
     grim
@@ -25,7 +26,7 @@
   wayland.windowManager.hyprland = {
     enable = true;
     settings = {
-      exec-once = ["waypaper --restore"];
+      exec-once = [ "waypaper --restore" ];
       "$mod" = "SUPER";
       "$Left" = "H";
       "$Right" = "L";
@@ -120,9 +121,7 @@
           ",XF86AudioRewind, exec, playerctl previous"
         ]
         ++ (
-          if pkgs.system != "aarch64-linux"
-          then ["$mod, F, exec, zen"]
-          else ["$mod, F, exec, librewolf"]
+          if pkgs.system != "aarch64-linux" then [ "$mod, F, exec, zen" ] else [ "$mod, F, exec, librewolf" ]
         );
       bindm = [
         "$mod, mouse:272, movewindow"

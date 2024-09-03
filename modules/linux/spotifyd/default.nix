@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   services.spotifyd = {
     enable = true;
     # settings = {global = 320;};

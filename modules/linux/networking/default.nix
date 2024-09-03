@@ -11,7 +11,8 @@ let
       to = 42872;
     }
   ];
-in {
+in
+{
   services.openssh.enable = true;
   networking.firewall = {
     allowedTCPPorts = universalAllowedPorts;
@@ -20,5 +21,8 @@ in {
     allowedTCPPortRanges = universalAllowedRanges;
   };
   networking.firewall.enable = true;
-  networking.nameservers = ["1.1.1.1" "1.0.0.1"];
+  networking.nameservers = [
+    "1.1.1.1"
+    "1.0.0.1"
+  ];
 }

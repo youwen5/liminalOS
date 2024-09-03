@@ -2,7 +2,8 @@
   inputs,
   pkgs,
   ...
-}: {
+}:
+{
   environment.systemPackages = [
     inputs.personal-neovim.packages.${pkgs.system}.default
   ];
@@ -13,7 +14,7 @@
     enable = true;
     extraRules = [
       {
-        users = ["youwen"];
+        users = [ "youwen" ];
         keepEnv = true;
         persist = true;
       }

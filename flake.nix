@@ -72,44 +72,55 @@
     manga-tui.url = "github:josueBarretogit/manga-tui";
   };
 
-  outputs = {
-    nixpkgs,
-    nix-darwin,
-    ...
-  } @ inputs: let
-  in {
-    formatter = with nixpkgs.legacyPackages; {
-      x86_64-linux = x86_64-linux.alejandra;
-      aarch64-linux = aarch64-linux.alejandra;
-      aarch64-darwin = aarch64-darwin.alejandra;
-    };
-
-    nixosConfigurations = {
-      demeter = nixpkgs.lib.nixosSystem {
-        specialArgs = {inherit inputs;};
-        modules = [
-          ./hosts/demeter
-        ];
+  outputs =
+    {
+      nixpkgs,
+      nix-darwin,
+      ...
+    }@inputs:
+    let
+    in
+    {
+      formatter = with nixpkgs.legacyPackages; {
+        x86_64-linux = x86_64-linux.nixfmt-rfc-style;
+        aarch64-linux = aarch64-linux.nixfmt-rfc-style;
+        aarch64-darwin = aarch64-darwin.nixfmt-rfc-style;
       };
 
-      callisto = nixpkgs.lib.nixosSystem {
-        specialArgs = {inherit inputs;};
-        modules = [
-          ./hosts/callisto
-        ];
+      nixosConfigurations = {
+        demeter = nixpkgs.lib.nixosSystem {
+          specialArgs = {
+            inherit inputs;
+          };
+          modules = [
+            ./hosts/demeter
+          ];
+        };
+
+        callisto = nixpkgs.lib.nixosSystem {
+          specialArgs = {
+            inherit inputs;
+          };
+          modules = [
+            ./hosts/callisto
+          ];
+        };
+        adrastea = nixpkgs.lib.nixosSystem {
+          specialArgs = {
+            inherit inputs;
+          };
+          modules = [
+            ./hosts/adrastea
+          ];
+        };
       };
-      adrastea = nixpkgs.lib.nixosSystem {
-        specialArgs = {inherit inputs;};
+      darwinConfigurations.phobos = nix-darwin.lib.darwinSystem {
+        specialArgs = {
+          inherit inputs;
+        };
         modules = [
-          ./hosts/adrastea
+          ./hosts/phobos
         ];
       };
     };
-    darwinConfigurations.phobos = nix-darwin.lib.darwinSystem {
-      specialArgs = {inherit inputs;};
-      modules = [
-        ./hosts/phobos
-      ];
-    };
-  };
 }

@@ -1,3 +1,7 @@
-{pkgs, ...}: let
+{ pkgs, ... }:
+let
   createCommon = import ../common-packages.nix;
-in {home.packages = (createCommon pkgs) ++ [];}
+in
+{
+  home.packages = (createCommon pkgs) ++ [ ];
+}

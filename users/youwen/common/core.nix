@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   home.file.".essentials" = {
     source = ./essentials;
     recursive = true;
@@ -15,7 +16,9 @@
     '';
   };
 
-  programs.fzf = {enable = true;};
+  programs.fzf = {
+    enable = true;
+  };
 
   programs.git = {
     enable = true;
@@ -58,7 +61,7 @@
 
   programs.gh = {
     enable = true;
-    extensions = [pkgs.github-copilot-cli];
+    extensions = [ pkgs.github-copilot-cli ];
   };
 
   programs.oh-my-posh = {

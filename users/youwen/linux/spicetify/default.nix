@@ -2,9 +2,11 @@
   inputs,
   pkgs,
   ...
-}: let
+}:
+let
   spicepkgs = inputs.spicetify.legacyPackages.${pkgs.system};
-in {
+in
+{
   imports = [
     inputs.spicetify.homeManagerModules.default
   ];

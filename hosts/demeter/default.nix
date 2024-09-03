@@ -2,7 +2,8 @@
   inputs,
   system,
   ...
-}: {
+}:
+{
   imports = with inputs; [
     ./configuration.nix
     ../../modules/linux/gaming
@@ -23,7 +24,9 @@
       home-manager.useGlobalPkgs = true;
       home-manager.useUserPackages = true;
       home-manager.backupFileExtension = "backup";
-      home-manager.extraSpecialArgs = {inherit inputs;};
+      home-manager.extraSpecialArgs = {
+        inherit inputs;
+      };
       home-manager.users.youwen = {
         imports = [
           ../../users/youwen/linux/desktop

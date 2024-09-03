@@ -1,5 +1,6 @@
-{lib, ...}: {
-  imports = [../common.nix];
+{ lib, ... }:
+{
+  imports = [ ../common.nix ];
   wayland.windowManager.hyprland.settings.input.touchpad = {
     natural_scroll = true;
     disable_while_typing = true;

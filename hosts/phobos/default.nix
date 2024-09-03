@@ -1,9 +1,12 @@
-{inputs, ...}: {
+{ inputs, ... }:
+{
   imports = with inputs; [
     ./configuration.nix
     home-manager.darwinModules.home-manager
     {
-      extraSpecialArgs = {inherit inputs;};
+      extraSpecialArgs = {
+        inherit inputs;
+      };
       home-manager.useGlobalPkgs = true;
       home-manager.useUserPackages = true;
       home-manager.users.youwen.imports = [
