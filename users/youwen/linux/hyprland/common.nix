@@ -121,7 +121,7 @@
           ",XF86AudioRewind, exec, playerctl previous"
         ]
         ++ (
-          if pkgs.system != "aarch64-linux" then [ "$mod, F, exec, zen" ] else [ "$mod, F, exec, librewolf" ]
+          if pkgs.system != "aarch64-linux" then [ "$mod, F, exec, zen" ] else [ "$mod, F, exec, floorp" ]
         );
       bindm = [
         "$mod, mouse:272, movewindow"
@@ -142,6 +142,7 @@
       ];
       windowrulev2 = [
         "opacity 0.90 0.90,class:^(librewolf)$"
+        "opacity 0.90 0.90,class:^(floorp)$"
         "opacity 0.90 0.90,class:^(zen-alpha)$"
         "opacity 0.90 0.90,class:^(Brave-browser)$"
         "opacity 0.80 0.80,class:^(Steam)$"
@@ -192,6 +193,7 @@
         "float,class:^(org.kde.dolphin)$,title:^(Copying — Dolphin)$"
         "float,title:^(Picture-in-Picture)$"
         "float,class:^(librewolf)$,title:^(Library)$"
+        "float,class:^(floorp)$,title:^(Library)$"
         "float,class:^(zen-alpha)$,title:^(Library)$"
         "float,title:^(Extension: (Bitwarden Password Manager))$"
         "float,class:^(vlc)$"

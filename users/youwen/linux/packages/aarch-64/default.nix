@@ -3,5 +3,6 @@ let
   createCommon = import ../common-packages.nix;
 in
 {
-  home.packages = (createCommon pkgs) ++ [ ];
+  home.packages = (createCommon pkgs) ++ (with pkgs; [ floorp ]);
+
 }
