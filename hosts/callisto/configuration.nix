@@ -135,7 +135,6 @@
 
   environment.variables = {
     EDITOR = "nvim";
-    NIX_AUTO_RUN = 1;
   };
   services.keyd = {
     enable = true;

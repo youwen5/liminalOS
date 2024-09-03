@@ -155,7 +155,6 @@
 
   environment.variables = {
     EDITOR = "nvim";
-    NIX_AUTO_RUN = 1;
   };
 
   # tells electron apps to use Wayland
