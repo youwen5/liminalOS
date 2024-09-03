@@ -160,7 +160,7 @@
           icon-size = 20;
           max-length = 50;
           rewrite = {
-            "(.*) — LibreWolf" = "$1";
+            "(.*) — Ablaze Floorp" = "$1";
             "(.*) — Zen Browser" = "$1";
             "^$" = "👾";
           };
