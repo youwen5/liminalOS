@@ -3,8 +3,8 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    stablepkgs.url = "github:nixos/nixpkgs/nixos-24.05";
-    bleedingpkgs.url = "github:nixos/nixpkgs/master";
+    # stablepkgs.url = "github:nixos/nixpkgs/nixos-24.05";
+    # bleedingpkgs.url = "github:nixos/nixpkgs/master";
     nixpkgs-unstable-small.url = "github:nixos/nixpkgs/nixos-unstable-small";
 
     home-manager = {
@@ -17,7 +17,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew";
+    nix-homebrew = {
+      url = "github:zhaofengli-wip/nix-homebrew";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     homebrew-core = {
       url = "github:homebrew/homebrew-core";
@@ -38,8 +41,6 @@
 
     lanzaboote = {
       url = "github:nix-community/lanzaboote/v0.4.1";
-
-      # Optional but recommended to limit the size of your system closure.
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -58,18 +59,25 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    personal-neovim.url = "github:youwen5/neovim-flake";
+    personal-neovim = {
+      url = "github:youwen5/neovim-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
-    vesktop-bin.url = "github:youwen5/vesktop-bin-flake";
+    vesktop-bin = {
+      url = "github:youwen5/vesktop-bin-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     wallpapers = {
       url = "git+https://code.youwen.dev/youwen5/wallpapers";
       flake = false;
     };
 
-    zen-browser.url = "github:youwen5/zen-browser-flake";
-
-    manga-tui.url = "github:josueBarretogit/manga-tui";
+    zen-browser = {
+      url = "github:youwen5/zen-browser-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
