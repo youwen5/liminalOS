@@ -1,5 +1,21 @@
 {
   "nodes": {
+    "apple-firmware": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1725472850,
+        "narHash": "sha256-v+4olhpAPlvNBuQT0wRel4Jn++5m+TQ5seETUR12/MA=",
+        "ref": "refs/heads/main",
+        "rev": "a967c5942a7f44feabd0326a23ada2b701ea157b",
+        "revCount": 4,
+        "type": "git",
+        "url": "https://code.youwen.dev/youwen5/apple-firmware"
+      },
+      "original": {
+        "type": "git",
+        "url": "https://code.youwen.dev/youwen5/apple-firmware"
+      }
+    },
     "apple-silicon": {
       "inputs": {
         "flake-compat": "flake-compat",
@@ -797,6 +813,7 @@
     },
     "root": {
       "inputs": {
+        "apple-firmware": "apple-firmware",
         "apple-silicon": "apple-silicon",
         "catppuccin": "catppuccin",
         "home-manager": "home-manager",
