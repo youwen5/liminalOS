@@ -50,7 +50,7 @@
     };
 
     apple-silicon = {
-      url = "github:rowanG077/nixos-apple-silicon/fix-mesa";
+      url = "github:tpwrules/nixos-apple-silicon";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
