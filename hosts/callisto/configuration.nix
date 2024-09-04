@@ -18,7 +18,7 @@
   boot.loader.efi.canTouchEfiVariables = false;
 
   hardware.asahi = {
-    peripheralFirmwareDirectory = ./firmware;
+    peripheralFirmwareDirectory = "${inputs.apple-firmware}/firmware"
     useExperimentalGPUDriver = true;
     experimentalGPUInstallMode = "overlay";
   };

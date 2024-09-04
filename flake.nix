@@ -54,6 +54,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    apple-firmware = {
+      url = "git+https://code.youwen.dev/youwen5/apple-firmware";
+      flake = false;
+    };
+
     spicetify = {
       url = "github:Gerg-L/spicetify-nix";
       inputs.nixpkgs.follows = "nixpkgs";
