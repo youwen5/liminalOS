@@ -9,16 +9,15 @@
         "rust-overlay": "rust-overlay"
       },
       "locked": {
-        "lastModified": 1725213692,
-        "narHash": "sha256-owQBVWS05OKLjDrPkQW5+gGz/SNgIF7/9nZLkZ0bkFw=",
-        "owner": "rowanG077",
+        "lastModified": 1725418254,
+        "narHash": "sha256-2zPzPP9Eu5NxgJxTVcuCCX5xh7CWy7rYaLHfaAZS6H8=",
+        "owner": "tpwrules",
         "repo": "nixos-apple-silicon",
-        "rev": "fc4503fa956c4f07b5cb0b7d446a04be25786402",
+        "rev": "c5f944f49a052232015bb3c03524b69e3fdd2aa4",
         "type": "github"
       },
       "original": {
-        "owner": "rowanG077",
-        "ref": "fix-mesa",
+        "owner": "tpwrules",
         "repo": "nixos-apple-silicon",
         "type": "github"
       }
@@ -464,11 +463,11 @@
     "homebrew-core": {
       "flake": false,
       "locked": {
-        "lastModified": 1725421174,
-        "narHash": "sha256-br3POYCjqmyKNZ3gdoyWOiIjzHQaIY7n5qbGKj9i1X4=",
+        "lastModified": 1725426272,
+        "narHash": "sha256-D99zdyyWCq6ZM895Qq369Fg+2c/WcEHtZWx31cPWtkw=",
         "owner": "homebrew",
         "repo": "homebrew-core",
-        "rev": "d9a29bbb79fbfd7b8beb12b4fe85ce2e45313686",
+        "rev": "835e3c4a685aaa3a486f3b1a7650bdb45a909ee3",
         "type": "github"
       },
       "original": {
