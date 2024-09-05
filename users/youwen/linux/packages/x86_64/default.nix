@@ -16,7 +16,6 @@ in
         bitwarden-desktop
         modrinth-app
         lutris
-        wine
         sbctl
         r2modman
       ]

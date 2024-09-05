@@ -14,6 +14,8 @@
     ../../modules/linux/core
     ../../modules/linux/hamachi
     ../../modules/linux/desktop-portal
+    ../../modules/linux/audio-prod
+    ../../modules/linux/wine
     ../../overlays
 
     catppuccin.nixosModules.catppuccin
