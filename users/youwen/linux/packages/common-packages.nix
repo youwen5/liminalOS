@@ -26,8 +26,11 @@ pkgs: with pkgs; [
   # desktop apps
   dolphin
   thunderbird
-  vesktop
+
+  # messengers
   signal-desktop
+  vesktop
+  iamb
 
   # fun
   ani-cli
