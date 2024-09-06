@@ -211,13 +211,16 @@
         "float,class:^(io.github.alainm23.planify)$ # planify-Gtk"
         "float,class:^(io.gitlab.theevilskeleton.Upscaler)$ # Upscaler-Gtk"
         "float,class:^(com.github.unrud.VideoDownloader)$ # VideoDownloader-Gkk"
-        "float,class:^(pavucontrol)$"
         "float,class:^(blueman-manager)$"
         "float,class:^(nm-applet)$"
         "float,class:^(nm-connection-editor)$"
         "float,class:^(org.kde.polkit-kde-authentication-agent-1)$"
         "opacity 0.80 0.80,class:^(org.freedesktop.impl.portal.desktop.gtk)$"
         "opacity 0.80 0.80,class:^(org.freedesktop.impl.portal.desktop.hyprland)$"
+
+        "size 50% 50%,class:^(org.pulseaudio.pavucontrol)"
+
+        "stayfocused, class:^(pinentry-)" # fix pinentry losing focus
       ];
       layerrule = [
         "blur,rofi"
