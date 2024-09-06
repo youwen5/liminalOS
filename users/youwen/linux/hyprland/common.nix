@@ -45,7 +45,7 @@
           # Application Keybinds
           "$mod, T, exec, kitty"
           "$mod, E, exec, dolphin"
-          "$mod, R, exec, pavucontrol"
+          "$mod, R, exec, pavucontrol -t 3" # open pavucontrol on 'outputs' tab
           "$mod, M, exec, thunderbird"
           "$mod, B, exec, waypaper"
 
