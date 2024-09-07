@@ -31,6 +31,7 @@ pkgs: with pkgs; [
   signal-desktop
   vesktop
   iamb
+  discordo
 
   # fun
   ani-cli
