@@ -4,14 +4,14 @@
   ...
 }:
 let
-  # stablepkgs = inputs.stablepkgs.legacyPackages.${pkgs.system};
-  # bleedingpkgs = inputs.bleedingpkgs.legacyPackages.${pkgs.system};
-  nixpkgs-small = inputs.nixpkgs-unstable-small.legacyPackages.${pkgs.system};
 in
+# stablepkgs = inputs.stablepkgs.legacyPackages.${pkgs.system};
+# bleedingpkgs = inputs.bleedingpkgs.legacyPackages.${pkgs.system};
+# nixpkgs-small = inputs.nixpkgs-unstable-small.legacyPackages.${pkgs.system};
 {
   nixpkgs.overlays = [
     (self: super: {
-      xdg-desktop-portal-hyprland = nixpkgs-small.xdg-desktop-portal-hyprland;
+      # xdg-desktop-portal-hyprland = nixpkgs-small.xdg-desktop-portal-hyprland;
     })
   ];
 }
