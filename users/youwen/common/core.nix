@@ -129,6 +129,12 @@
     ];
   };
 
+  programs.nix-index = {
+    enable = true;
+    enableBashIntegration = true;
+    enableFishIntegration = true;
+  };
+
   programs.fd.enable = true;
 
   programs.btop = {
