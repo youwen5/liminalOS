@@ -755,11 +755,11 @@
         "nixvim": "nixvim"
       },
       "locked": {
-        "lastModified": 1726041252,
-        "narHash": "sha256-d8VR5i+r7UG9dfI1vnmy42CcyDuzGwnGKTfT7BzprQY=",
+        "lastModified": 1726083054,
+        "narHash": "sha256-R46I6oqiBZ3jPZB6gq9lNKeQwMOHhx9q7HyyG+WolZU=",
         "owner": "youwen5",
         "repo": "neovim-flake",
-        "rev": "1d60fb7dd24d9371e4f4928d6489af5c5f5b6749",
+        "rev": "4e04b1c8fadfebda2d96bdbb0eaf5e28fc917171",
         "type": "github"
       },
       "original": {
