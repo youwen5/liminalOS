@@ -771,15 +771,14 @@
         ],
         "nixvim": "nixvim",
         "render-markdown": "render-markdown",
-        "rustaceanvim": "rustaceanvim",
         "satellite": "satellite"
       },
       "locked": {
-        "lastModified": 1726180953,
-        "narHash": "sha256-bVMI4LHIbg/mUlatnJAioVUzaOkkFbsyvejjXiVAnLE=",
+        "lastModified": 1726182346,
+        "narHash": "sha256-JHwASonZb3x0BenXn2ZyOQjCX+kiZRht2plfhUOfnQw=",
         "owner": "youwen5",
         "repo": "neovim-flake",
-        "rev": "957cc89ec5d94d042073c4a0988bc12b235bde8b",
+        "rev": "b1028bc4d31cfba7ad7b28d6525ddefea85c4d00",
         "type": "github"
       },
       "original": {
@@ -889,22 +888,6 @@
       "original": {
         "owner": "oxalica",
         "repo": "rust-overlay",
-        "type": "github"
-      }
-    },
-    "rustaceanvim": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1726158967,
-        "narHash": "sha256-wZ8SZjHSU1WnhkKx2hXgI5pLRSglOM52kOtJbB3QCds=",
-        "owner": "mrcjkb",
-        "repo": "rustaceanvim",
-        "rev": "5610d5e01dc803717cc0b6b87625f2fbb548b49e",
-        "type": "github"
-      },
-      "original": {
-        "owner": "mrcjkb",
-        "repo": "rustaceanvim",
         "type": "github"
       }
     },
