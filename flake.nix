@@ -64,8 +64,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    personal-neovim = {
-      url = "github:youwen5/neovim-flake";
+    viminal = {
+      url = "github:youwen5/viminal";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 

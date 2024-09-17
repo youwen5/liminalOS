@@ -5,7 +5,7 @@
 }:
 {
   environment.systemPackages = [
-    inputs.personal-neovim.packages.${pkgs.system}.default
+    inputs.viminal.packages.${pkgs.system}.default
   ];
 
   security.sudo.enable = false;
