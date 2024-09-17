@@ -791,11 +791,11 @@
         "satellite": "satellite"
       },
       "locked": {
-        "lastModified": 1726562347,
-        "narHash": "sha256-E7FvnLG7GypE5tV3dONnITEsL2syWQQh41qAMdAOfH0=",
+        "lastModified": 1726564137,
+        "narHash": "sha256-kN7fK4WjkeU9wKP4PxFv9NAEDGiq6dIy5QZkw7/CW9k=",
         "owner": "youwen5",
         "repo": "neovim-flake",
-        "rev": "d1db93ef00954e2b5cb546e2fab421353c661546",
+        "rev": "10253909c98a586ffdbe31f5806e96b58da01be1",
         "type": "github"
       },
       "original": {
