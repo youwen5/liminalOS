@@ -149,10 +149,6 @@
       "root"
       "youwen"
     ];
-    experimental-features = [
-      "nix-command"
-      "flakes"
-    ];
   };
 
   services.udev.extraRules = ''
