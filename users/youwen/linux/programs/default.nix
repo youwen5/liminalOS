@@ -24,6 +24,16 @@
     };
   };
 
+  programs.neovide = {
+    enable = true;
+    settings = {
+      font = {
+        normal = [ ];
+        size = 12;
+      };
+    };
+  };
+
   # programs.firefox = {
   #   enable = true;
   #   # package = pkgs.librewolf;

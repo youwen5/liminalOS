@@ -150,6 +150,7 @@
         "opacity 0.80 0.80,class:^(code-url-handler)$"
         "opacity 0.80 0.80,class:^(code-insiders-url-handler)$"
         "opacity 0.80 0.80,class:^(kitty)$"
+        "opacity 0.80 0.80,class:^(neovide)$"
         "opacity 0.80 0.80,class:^(org.kde.dolphin)$"
         "opacity 0.80 0.80,class:^(org.kde.ark)$"
         "opacity 0.80 0.80,class:^(nwg-look)$"
