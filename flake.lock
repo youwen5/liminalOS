@@ -70,6 +70,22 @@
         "type": "github"
       }
     },
+    "cellular-automaton": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1719777869,
+        "narHash": "sha256-nIv7ISRk0+yWd1lGEwAV6u1U7EFQj/T9F8pU6O0Wf0s=",
+        "owner": "Eandrju",
+        "repo": "cellular-automaton.nvim",
+        "rev": "11aea08aa084f9d523b0142c2cd9441b8ede09ed",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Eandrju",
+        "repo": "cellular-automaton.nvim",
+        "type": "github"
+      }
+    },
     "crane": {
       "inputs": {
         "nixpkgs": [
@@ -1039,6 +1055,7 @@
     },
     "viminal": {
       "inputs": {
+        "cellular-automaton": "cellular-automaton",
         "flake-parts": "flake-parts_2",
         "haskell-tools": "haskell-tools",
         "lsp-progress": "lsp-progress",
@@ -1050,11 +1067,11 @@
         "satellite": "satellite"
       },
       "locked": {
-        "lastModified": 1726615423,
-        "narHash": "sha256-cX5zX8US0E5Aw1xzFuumTlQTxZSzwqp7kz7i+qFDBIQ=",
+        "lastModified": 1726648282,
+        "narHash": "sha256-AiISDYvrUuPmfIhbGIahn9KAE1By7RTeI4zpRktYxzA=",
         "owner": "youwen5",
         "repo": "viminal",
-        "rev": "0fff5154e69feb5bbb0e634e654eb65feee9c5cf",
+        "rev": "2543f9775517d9358eb8b4d3e8cf5ecfca156ee0",
         "type": "github"
       },
       "original": {
