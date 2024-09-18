@@ -9,6 +9,7 @@ pkgs: with pkgs; [
 
   # utils
   nurl # helps fetch git data for nixpkgs
+  ffmpeg
 
   # nix related
   #
