@@ -8,11 +8,7 @@
     grim
     slurp
     swappy
-    pavucontrol
-    waypaper
     swaybg
-    pamixer
-    brightnessctl
 
     bibata-cursors
     libsForQt5.qtstyleplugin-kvantum
@@ -24,7 +20,7 @@
   wayland.windowManager.hyprland = {
     enable = true;
     settings = {
-      exec-once = [ "waypaper --restore" ];
+      exec-once = [ "${pkgs.waypaper}/bin/waypaper --restore" ];
       "$mod" = "SUPER";
       "$Left" = "H";
       "$Right" = "L";
@@ -41,11 +37,11 @@
           # External reserved keys: SUPER + Z and SUPER + X for zen-browser.
 
           # Application Keybinds
-          "$mod, T, exec, kitty"
-          "$mod, E, exec, dolphin"
-          "$mod, R, exec, pavucontrol -t 3" # open pavucontrol on 'outputs' tab
-          "$mod, M, exec, thunderbird"
-          "$mod, B, exec, waypaper"
+          "$mod, T, exec, ${pkgs.kitty}/bin/kitty"
+          "$mod, E, exec, ${pkgs.dolphin}/bin/dolphin"
+          "$mod, R, exec, ${pkgs.pavucontrol}/bin/pavucontrol -t 3" # open pavucontrol on 'outputs' tab
+          "$mod, M, exec, ${pkgs.thunderbird}/bin/thunderbird"
+          "$mod, B, exec, ${pkgs.waypaper}/bin/waypaper"
 
           # Window actions
           "$mod, Q, killactive"
@@ -113,10 +109,10 @@
           "$mod, I, exec, hyprlock"
 
           # Media controls
-          ",XF86AudioMute, exec, pamixer -t"
-          ",XF86AudioPlay, exec, playerctl play-pause"
-          ",XF86AudioNext, exec, playerctl next"
-          ",XF86AudioRewind, exec, playerctl previous"
+          ",XF86AudioMute, exec, ${pkgs.pamixer}/bin/pamixer -t"
+          ",XF86AudioPlay, exec, ${pkgs.playerctl}/bin/playerctl play-pause"
+          ",XF86AudioNext, exec, ${pkgs.playerctl}/bin/playerctl next"
+          ",XF86AudioRewind, exec, ${pkgs.playerctl}/bin/playerctl previous"
         ]
         ++ (
           if pkgs.system != "aarch64-linux" then [ "$mod, F, exec, zen" ] else [ "$mod, F, exec, floorp" ]
@@ -126,10 +122,10 @@
         "$mod, mouse:273, resizewindow"
       ];
       bindel = [
-        ",XF86MonBrightnessDown, exec, brightnessctl set 5%-"
-        ",XF86MonBrightnessUp, exec, brightnessctl set 5%+"
-        ",XF86AudioRaiseVolume, exec, pamixer -i 5"
-        ",XF86AudioLowerVolume, exec, pamixer -d 5"
+        ",XF86MonBrightnessDown, exec, ${pkgs.brightnessctl}/bin/brightnessctl set 5%-"
+        ",XF86MonBrightnessUp, exec, ${pkgs.brightnessctl}/bin/brightnessctl set 5%+"
+        ",XF86AudioRaiseVolume, exec, ${pkgs.pamixer}/bin/pamixer -i 5"
+        ",XF86AudioLowerVolume, exec, ${pkgs.pamixer}/bin/pamixer -d 5"
       ];
       binde = [
         # Resize windows
@@ -351,7 +347,7 @@
   services.hypridle = {
     enable = true;
     settings = {
-      lock_cmd = "pidof hyprlock || hyprlock"; # avoid starting multiple hyprlock instances.
+      lock_cmd = "pidof hyprlock || ${pkgs.hyprlock}/bin/hyprlock"; # avoid starting multiple hyprlock instances.
       before_sleep_cmd = "loginctl lock-session"; # lock before suspend.
       after_sleep_cmd = "hyprctl dispatch dpms on"; # to avoid having to press a key twice to turn on the display.
     };

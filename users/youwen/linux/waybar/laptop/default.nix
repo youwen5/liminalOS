@@ -1,5 +1,5 @@
+{ pkgs, ... }:
 {
-  # home.file.".config/waybar/config".source = ./config.jsonc;
   programs.waybar = {
     enable = true;
     style = ./style.css;
@@ -67,16 +67,16 @@
         backlight = {
           interval = 2;
           format = "󰖨 {percent}%";
-          on-scroll-up = "brightnessctl set +4";
-          on-scroll-down = "brightnessctl set 4-";
+          on-scroll-up = "${pkgs.brightnessctl}/bin/brightnessctl set +4";
+          on-scroll-down = "${pkgs.brightnessctl}/bin/brightnessctl set 4-";
         };
 
         wireplumber = {
           format = "{icon} {volume}%";
           format-muted = "󰝟 ";
           on-click = "pamixer -t";
-          on-scroll-up = "pamixer set 5%+";
-          on-scroll-down = "pamixer set 5%-";
+          on-scroll-up = "${pkgs.pamixer}/bin/pamixer set 5%+";
+          on-scroll-down = "${pkgs.pamixer}/bin/pamixer set 5%-";
           format-icons = [
             ""
             ""
