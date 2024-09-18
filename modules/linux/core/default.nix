@@ -6,6 +6,7 @@
 {
   environment.systemPackages = [
     inputs.viminal.packages.${pkgs.system}.default
+    inputs.viminal.packages.${pkgs.system}.vimg
   ];
 
   security.sudo.enable = false;
