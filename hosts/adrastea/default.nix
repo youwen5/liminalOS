@@ -13,6 +13,9 @@
     ../../modules/linux/greeter
     ../../modules/linux/core
     ../../modules/linux/desktop-portal
+    ../../modules/linux/desktop-portal
+    ../../modules/linux/audio-prod
+    ../../modules/linux/wine
     ../../overlays
 
     catppuccin.nixosModules.catppuccin
