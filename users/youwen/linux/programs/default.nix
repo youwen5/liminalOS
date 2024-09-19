@@ -17,7 +17,7 @@
       background_opacity = "0.8";
       allow_remote_control = "socket-only";
       listen_on = "unix:/tmp/kitty";
-      scrollback_pager = ''nvim --noplugin -c "set signcolumn=no showtabline=0 clipboard=unnamedplus" -c "silent write! /tmp/kitty_scrollback_buffer | te cat /tmp/kitty_scrollback_buffer - "'';
+      scrollback_pager = ''nvim --noplugin -c "set signcolumn=no showtabline=0" -c "silent write! /tmp/kitty_scrollback_buffer | te cat /tmp/kitty_scrollback_buffer - "'';
     };
     keybindings = {
       "kitty_mod+h" = "show_scrollback";
