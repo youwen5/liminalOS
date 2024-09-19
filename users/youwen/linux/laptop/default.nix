@@ -10,4 +10,5 @@
 
   # some overrides for laptop specifically
   programs.kitty.settings.font_size = pkgs.lib.mkForce 11;
+  programs.neovide.settings.font.size = pkgs.lib.mkForce 12;
 }

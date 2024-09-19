@@ -28,8 +28,8 @@
     enable = true;
     settings = {
       font = {
-        normal = [ ];
-        size = 12;
+        normal = [ "CaskaydiaCove Nerd Font" ];
+        size = 13;
       };
     };
   };
