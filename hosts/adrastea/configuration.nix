@@ -33,21 +33,21 @@
   #   pkiBundle = "/etc/secureboot";
   # };
 
-  services.keyd = {
-    enable = true;
-    keyboards = {
-      default = {
-        ids = [ "*" ];
-        settings = {
-          main = {
-            capslock = "esc";
-            leftalt = "leftcontrol";
-            leftcontrol = "leftalt";
-          };
-        };
-      };
-    };
-  };
+  # services.keyd = {
+  #   enable = true;
+  #   keyboards = {
+  #     default = {
+  #       ids = [ "*" ];
+  #       settings = {
+  #         main = {
+  #           capslock = "esc";
+  #           leftalt = "leftcontrol";
+  #           leftcontrol = "leftalt";
+  #         };
+  #       };
+  #     };
+  #   };
+  # };
 
   boot.initrd.luks.devices."luks-52d1be6d-b32f-41e0-a6d7-2ff52599fe7c".device = "/dev/disk/by-uuid/52d1be6d-b32f-41e0-a6d7-2ff52599fe7c";
 
@@ -107,14 +107,15 @@
     powerManagement.finegrained = false;
     open = false;
     nvidiaSettings = true;
-    prime = {
-      amdgpuBusId = "PCI:4:0:0";
-      nvidiaBusId = "PCI:1:0:0";
-      offload = {
-        enable = true;
-        enableOffloadCmd = true;
-      };
-    };
+    # prime = {
+    #   amdgpuBusId = "PCI:4:0:0";
+    #   nvidiaBusId = "PCI:1:0:0";
+    #   # offload = {
+    #   #   enable = true;
+    #   #   enableOffloadCmd = true;
+    #   # };
+    #   sync.enable = true;
+    # };
   };
 
   hardware.graphics.enable = true;
