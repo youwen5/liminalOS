@@ -53,6 +53,8 @@
 
   services.tlp.enable = true;
 
+  powerManagement.powerDownCommands = "pidof hyprlock || ${pkgs.hyprlock}/bin/hyprlock";
+
   networking.hostName = "adrastea"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
@@ -105,8 +107,8 @@
     modesetting.enable = true;
     powerManagement.enable = true;
     powerManagement.finegrained = false;
-    open = false;
     nvidiaSettings = true;
+    open = true;
     prime = {
       amdgpuBusId = "PCI:4:0:0";
       nvidiaBusId = "PCI:1:0:0";
