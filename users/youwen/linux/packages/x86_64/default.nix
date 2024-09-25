@@ -18,6 +18,7 @@ in
         lutris
         sbctl
         r2modman
+        zoom-us
       ]
       ++ [ zen-browser ]
     );
