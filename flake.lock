@@ -1067,11 +1067,11 @@
         "satellite": "satellite"
       },
       "locked": {
-        "lastModified": 1726709907,
-        "narHash": "sha256-ap2p8r77Cllx5hsHtPlqglEsKyN37E1Z+M9Dso3Oc74=",
+        "lastModified": 1727297744,
+        "narHash": "sha256-cqcDJig8zanFiA5bPmqviYcc/OWXkdFXDX5GGE15/Wc=",
         "owner": "youwen5",
         "repo": "viminal",
-        "rev": "cb70a0c30aa8f9a1b6bce1e4a097568b0a46ce5e",
+        "rev": "88462d0794a6de06abd717ef5abe3025f7bfd8cd",
         "type": "github"
       },
       "original": {
