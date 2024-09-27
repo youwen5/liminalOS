@@ -1084,11 +1084,11 @@
         "typst-preview": "typst-preview"
       },
       "locked": {
-        "lastModified": 1727473742,
-        "narHash": "sha256-Ul3dGuINVJ5pOXb9jMA2xdPuspMRIJYpZUTmWi9T9Lc=",
+        "lastModified": 1727474724,
+        "narHash": "sha256-SoIjJkedX2LrIWErzPf1gcX7+iSEZHvLrRtrJSoYdrg=",
         "owner": "youwen5",
         "repo": "viminal",
-        "rev": "da19031199995d8443f59d11a60fb6d819f4bfb2",
+        "rev": "dce298154a95656119dd1b2f4fbc8369e85d3649",
         "type": "github"
       },
       "original": {
