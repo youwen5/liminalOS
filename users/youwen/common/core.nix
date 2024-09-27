@@ -5,6 +5,11 @@
     recursive = true;
   };
 
+  home.file.".gitignore".text = ''
+    result
+    .direnv/
+  '';
+
   programs.bash.enable = true;
   programs.nushell = {
     enable = true;
