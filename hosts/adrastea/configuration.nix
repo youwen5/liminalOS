@@ -109,15 +109,15 @@
     powerManagement.finegrained = false;
     nvidiaSettings = true;
     open = true;
-    prime = {
-      amdgpuBusId = "PCI:4:0:0";
-      nvidiaBusId = "PCI:1:0:0";
-      # offload = {
-      #   enable = true;
-      #   enableOffloadCmd = true;
-      # };
-      sync.enable = true;
-    };
+    # prime = {
+    #   amdgpuBusId = "PCI:4:0:0";
+    #   nvidiaBusId = "PCI:1:0:0";
+    #   # offload = {
+    #   #   enable = true;
+    #   #   enableOffloadCmd = true;
+    #   # };
+    #   sync.enable = true;
+    # };
   };
 
   hardware.graphics.enable = true;
