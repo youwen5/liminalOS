@@ -5,4 +5,6 @@
     "eDP-1, disable"
     "HDMI-A-1,2560x1440@144,0x0,1.0"
   ];
+
+  programs.waybar.settings.mainBar.output = "HDMI-A-1";
 }
