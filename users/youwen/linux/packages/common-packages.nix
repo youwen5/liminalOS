@@ -39,4 +39,6 @@ pkgs: with pkgs; [
   manga-tui
 
   gcc
+
+  hledger
 ]
