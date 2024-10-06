@@ -109,9 +109,9 @@
 
           # Media controls
           ",XF86AudioMute, exec, ${pkgs.pamixer}/bin/pamixer -t"
-          ",XF86AudioPlay, exec, ${pkgs.playerctl}/bin/playerctl play-pause"
-          ",XF86AudioNext, exec, ${pkgs.playerctl}/bin/playerctl next"
-          ",XF86AudioRewind, exec, ${pkgs.playerctl}/bin/playerctl previous"
+          ",XF86AudioPlay, exec, ${pkgs.playerctl}/bin/playerctl --player=%any,firefox play-pause"
+          ",XF86AudioNext, exec, ${pkgs.playerctl}/bin/playerctl --player=%any,firefox next"
+          ",XF86AudioRewind, exec, ${pkgs.playerctl}/bin/playerctl --player=%any,firefox previous"
         ]
         ++ (
           if pkgs.system != "aarch64-linux" then [ "$mod, F, exec, zen" ] else [ "$mod, F, exec, floorp" ]
