@@ -5,9 +5,6 @@
 {
   home.packages = with pkgs; [
     wl-clipboard
-    grim
-    slurp
-    swappy
     swaybg
 
     bibata-cursors
@@ -103,7 +100,7 @@
           "$mod, Space, exec, pkill -x rofi || rofi -show drun" # Run rofi application launcher
           "$mod, G, exec, pkill -x rofi || rofi -show window" # Run rofi window switcher
 
-          ''$mod, P, exec, grim -g "$(slurp)" - | swappy -f -'' # Screenshot
+          ''$mod, P, exec, ${pkgs.grim}/bin/grim -g "$(${pkgs.slurp}/bin/slurp)" - | ${pkgs.swappy}/bin/swappy -f -'' # Screenshot
 
           "$mod, Backspace, exec, pkill -x wlogout || wlogout" # show logout menu
 
