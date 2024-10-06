@@ -101,6 +101,7 @@
           "$mod, G, exec, pkill -x rofi || rofi -show window" # Run rofi window switcher
 
           ''$mod, P, exec, ${pkgs.grim}/bin/grim -g "$(${pkgs.slurp}/bin/slurp)" - | ${pkgs.swappy}/bin/swappy -f -'' # Screenshot
+          ''$mod+Shift, P, exec, ${pkgs.grim}/bin/grim - | ${pkgs.swappy}/bin/swappy -f -'' # Screenshot
 
           "$mod, Backspace, exec, pkill -x wlogout || wlogout" # show logout menu
 
