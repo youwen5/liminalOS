@@ -60,7 +60,7 @@
     };
 
     viminal = {
-      url = "github:youwen5/viminal";
+      url = "git+https://code.youwen.dev/youwen5/viminal2";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
