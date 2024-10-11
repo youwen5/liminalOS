@@ -1,6 +1,7 @@
 {
   inputs,
   pkgs,
+  osConfig,
   ...
 }:
 {
@@ -71,4 +72,13 @@
 
   # Let home Manager install and manage itself.
   programs.home-manager.enable = true;
+
+  programs.fish.functions = {
+    rebuild = ''doas nixos-rebuild --flake ~/.config/liminalOS\#${osConfig.networking.hostName} switch &| nom'';
+    nixos-update = ''
+      cd ~/.config/liminalOS
+      nix flake update --commit-lock-file
+      doas nixos-rebuild --flake ~/.config/liminalOS\#${osConfig.networking.hostName} switch &| nom
+    '';
+  };
 }

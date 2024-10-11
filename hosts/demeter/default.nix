@@ -1,6 +1,7 @@
 {
   inputs,
   system,
+  osConfig,
   ...
 }:
 {
@@ -28,6 +29,7 @@
       home-manager.backupFileExtension = "backup";
       home-manager.extraSpecialArgs = {
         inherit inputs;
+        inherit osConfig;
       };
       home-manager.users.youwen = {
         imports = [
