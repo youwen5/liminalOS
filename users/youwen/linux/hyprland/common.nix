@@ -53,12 +53,20 @@
           "$mod, $Up, movefocus, u"
           "$mod, $Down, movefocus, d"
 
+          "$mod, D, workspace, previous"
+
           "$mod, 1, workspace, 1"
+          "$mod+Ctrl, H, workspace, 1"
           "$mod, 2, workspace, 2"
+          "$mod+Ctrl, J, workspace, 2"
           "$mod, 3, workspace, 3"
+          "$mod+Ctrl, K, workspace, 3"
           "$mod, 4, workspace, 4"
+          "$mod+Ctrl, L, workspace, 4"
           "$mod, 5, workspace, 5"
+          "$mod+Ctrl, semicolon, workspace, 5"
           "$mod, 6, workspace, 6"
+          "$mod+Ctrl, apostrophe, workspace, 6"
           "$mod, 7, workspace, 7"
           "$mod, 8, workspace, 8"
           "$mod, 9, workspace, 9"
@@ -66,19 +74,25 @@
 
           # Move active window to a workspace with mainMod + SHIFT + [0-9]
           "$mod+Shift, 1, movetoworkspace, 1"
+          "$mod+Ctrl+Shift, H, movetoworkspace, 1"
           "$mod+Shift, 2, movetoworkspace, 2"
+          "$mod+Ctrl+Shift, J, movetoworkspace, 2"
           "$mod+Shift, 3, movetoworkspace, 3"
+          "$mod+Ctrl+Shift, K, movetoworkspace, 3"
           "$mod+Shift, 4, movetoworkspace, 4"
+          "$mod+Ctrl+Shift, L, movetoworkspace, 4"
           "$mod+Shift, 5, movetoworkspace, 5"
+          "$mod+Ctrl+Shift, semicolon, movetoworkspace, 5"
           "$mod+Shift, 6, movetoworkspace, 6"
+          "$mod+Ctrl+Shift, apostrophe, movetoworkspace, 6"
           "$mod+Shift, 7, movetoworkspace, 7"
           "$mod+Shift, 8, movetoworkspace, 8"
           "$mod+Shift, 9, movetoworkspace, 9"
           "$mod+Shift, 0, movetoworkspace, 10"
 
           # move to the first empty workspace instantly
-          "$mod+Ctrl, $Down, workspace, empty"
-          "$mod+Ctrl, $Up, movetoworkspace, empty"
+          "$mod+Ctrl, U, workspace, empty"
+          "$mod+Ctrl, I, movetoworkspace, empty"
 
           # Special workspace
           "$mod, S, togglespecialworkspace"
@@ -90,11 +104,11 @@
           "$mod+Shift, $Up, movewindow, u"
           "$mod+Shift, $Down, movewindow, d"
 
-          "$mod+Ctrl+Shift, $Right, movetoworkspace, r+1"
-          "$mod+Ctrl+Shift, $Left, movetoworkspace, r-1"
+          "$mod+Ctrl+Shift, O, movetoworkspace, r+1"
+          "$mod+Ctrl+Shift, Y, movetoworkspace, r-1"
 
-          "$mod+Ctrl, $Right, workspace, r+1"
-          "$mod+Ctrl, $Left, workspace, r-1"
+          "$mod+Ctrl, O, workspace, r+1"
+          "$mod+Ctrl, Y, workspace, r-1"
 
           # Utilities
           "$mod, Space, exec, pkill -x rofi || rofi -show drun" # Run rofi application launcher
