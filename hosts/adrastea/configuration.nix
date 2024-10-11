@@ -49,6 +49,8 @@
   #   };
   # };
 
+  services.flatpak.enable = true;
+
   boot.initrd.luks.devices."luks-52d1be6d-b32f-41e0-a6d7-2ff52599fe7c".device = "/dev/disk/by-uuid/52d1be6d-b32f-41e0-a6d7-2ff52599fe7c";
 
   services.tlp.enable = true;
