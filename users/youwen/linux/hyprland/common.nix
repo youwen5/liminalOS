@@ -17,7 +17,10 @@
   wayland.windowManager.hyprland = {
     enable = true;
     settings = {
-      exec-once = [ "${pkgs.waypaper}/bin/waypaper --restore" ];
+      exec-once = [
+        "${pkgs.waypaper}/bin/waypaper --restore"
+        "[workspace silent 2]${pkgs.kitty}/bin/kitty"
+      ];
       "$mod" = "SUPER";
       "$Left" = "H";
       "$Right" = "L";
@@ -31,8 +34,6 @@
       ];
       bind =
         [
-          # External reserved keys: SUPER + Z and SUPER + X for zen-browser.
-
           # Application Keybinds
           "$mod, T, exec, ${pkgs.kitty}/bin/kitty"
           "$mod, E, exec, ${pkgs.dolphin}/bin/dolphin"
@@ -68,9 +69,13 @@
           "$mod, 6, workspace, 6"
           "$mod+Ctrl, apostrophe, workspace, 6"
           "$mod, 7, workspace, 7"
+          "$mod+Ctrl, U, workspace, 7"
           "$mod, 8, workspace, 8"
+          "$mod+Ctrl, I, workspace, 8"
           "$mod, 9, workspace, 9"
+          "$mod+Ctrl, O, workspace, 9"
           "$mod, 0, workspace, 10"
+          "$mod+Ctrl, P, workspace, 10"
 
           # Move active window to a workspace with mainMod + SHIFT + [0-9]
           "$mod+Shift, 1, movetoworkspace, 1"
@@ -86,13 +91,13 @@
           "$mod+Shift, 6, movetoworkspace, 6"
           "$mod+Ctrl+Shift, apostrophe, movetoworkspace, 6"
           "$mod+Shift, 7, movetoworkspace, 7"
+          "$mod+Ctrl+Shift, U, movetoworkspace, 7"
           "$mod+Shift, 8, movetoworkspace, 8"
+          "$mod+Ctrl+Shift, I, movetoworkspace, 8"
           "$mod+Shift, 9, movetoworkspace, 9"
+          "$mod+Ctrl+Shift, O, movetoworkspace, 9"
           "$mod+Shift, 0, movetoworkspace, 10"
-
-          # move to the first empty workspace instantly
-          "$mod+Ctrl, U, workspace, empty"
-          "$mod+Ctrl, I, movetoworkspace, empty"
+          "$mod+Ctrl+Shift, P, movetoworkspace, 10"
 
           # Special workspace
           "$mod, S, togglespecialworkspace"
@@ -104,11 +109,11 @@
           "$mod+Shift, $Up, movewindow, u"
           "$mod+Shift, $Down, movewindow, d"
 
-          "$mod+Ctrl+Shift, O, movetoworkspace, r+1"
-          "$mod+Ctrl+Shift, Y, movetoworkspace, r-1"
+          "$mod+Ctrl, bracketleft, movetoworkspace, r+1"
+          "$mod+Ctrl, bracketright, movetoworkspace, r-1"
 
-          "$mod+Ctrl, O, workspace, r+1"
-          "$mod+Ctrl, Y, workspace, r-1"
+          "$mod, bracketleft, workspace, r+1"
+          "$mod, bracketright, workspace, r-1"
 
           # Utilities
           "$mod, Space, exec, pkill -x rofi || rofi -show drun" # Run rofi application launcher
