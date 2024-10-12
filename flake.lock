@@ -49,11 +49,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1728503719,
-        "narHash": "sha256-LMRZFzq3kP1JBbIcjOuiKstOfShdKHpyIGB9/wgxttA=",
+        "lastModified": 1728709956,
+        "narHash": "sha256-rTw88OMPunviQM6LmNfgMyM2oHNcWD/VJdUp1OMvkMA=",
         "owner": "Saghen",
         "repo": "blink.cmp",
-        "rev": "fc348dac16f190042d20aee62ea61b66c7c1380a",
+        "rev": "2f1b85bc4f15e2f3660550ef92161a93482f2fd8",
         "type": "github"
       },
       "original": {
@@ -877,11 +877,11 @@
     "nixCats": {
       "locked": {
         "dir": "nix",
-        "lastModified": 1727835465,
-        "narHash": "sha256-Sj/eP/K/MHxp6K/ZqAYGY7cT+iyebf3P5HTnS/mLFCM=",
+        "lastModified": 1728657329,
+        "narHash": "sha256-eKLrDi2dqyuzTyW1PgBPJ+VC+mKgo5AyIEGLO4PATgs=",
         "owner": "BirdeeHub",
         "repo": "nixCats-nvim",
-        "rev": "b02e9655894c402e9398369b94fab57d2bf5f359",
+        "rev": "63687d601963606934ba7c8262aa975fcd66600f",
         "type": "github"
       },
       "original": {
@@ -1160,11 +1160,11 @@
     "plugins-typst-preview": {
       "flake": false,
       "locked": {
-        "lastModified": 1727642175,
-        "narHash": "sha256-n0TfcXJLlRXdS6S9dwYHN688IipVSDLVXEqyYs+ROG8=",
+        "lastModified": 1728689675,
+        "narHash": "sha256-UljxDPDLC6riWwbpoai6OBE6CSUrH+p9aUJwImFLS6I=",
         "owner": "chomosuke",
         "repo": "typst-preview.nvim",
-        "rev": "0354cc1a7a5174a2e69cdc21c4db9a3ee18bb20a",
+        "rev": "a53a136f893a59635166afcb4f277f581bd4bc73",
         "type": "github"
       },
       "original": {
@@ -1510,11 +1510,11 @@
         "plugins-typst-preview": "plugins-typst-preview"
       },
       "locked": {
-        "lastModified": 1728706087,
-        "narHash": "sha256-i3C4H+v5mcFfTF9nKEsgkVoDVO7wN/bdSKGjfHU+/UA=",
+        "lastModified": 1728716034,
+        "narHash": "sha256-ASMntQHSBGRrrQhK3/A9lzZyLaoEtrRcbaRHwU7D1Es=",
         "ref": "refs/heads/main",
-        "rev": "f4f7326044ae5afa36a85cbfe801ba6cfc2207b7",
-        "revCount": 22,
+        "rev": "77ed4bd95039beb8b5085c695f6a2d924187bc42",
+        "revCount": 25,
         "type": "git",
         "url": "https://code.youwen.dev/youwen5/viminal2"
       },
