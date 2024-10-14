@@ -55,7 +55,10 @@
 
   services.tlp.enable = true;
 
-  powerManagement.powerDownCommands = "pidof hyprlock || ${pkgs.hyprlock}/bin/hyprlock";
+  powerManagement = {
+    powerDownCommands = "pidof hyprlock || ${pkgs.hyprlock}/bin/hyprlock";
+    cpuFreqGovernor = "performance";
+  };
 
   networking.hostName = "adrastea"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
