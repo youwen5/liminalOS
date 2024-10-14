@@ -124,7 +124,7 @@
 
           "$mod, Backspace, exec, pkill -x wlogout || wlogout" # show logout menu
 
-          "$mod, I, exec, hyprlock"
+          "$mod, Z, exec, hyprlock"
 
           # Media controls
           ",XF86AudioMute, exec, ${pkgs.pamixer}/bin/pamixer -t"
