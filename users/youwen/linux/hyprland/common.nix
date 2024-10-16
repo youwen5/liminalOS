@@ -19,7 +19,7 @@
     settings = {
       exec-once = [
         "${pkgs.waypaper}/bin/waypaper --restore"
-        "[workspace silent 2]${pkgs.kitty}/bin/kitty"
+        "[workspace 2 silent] ${pkgs.kitty}/bin/kitty"
       ];
       "$mod" = "SUPER";
       "$Left" = "H";
