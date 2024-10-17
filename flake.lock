@@ -1514,11 +1514,11 @@
         "plugins-typst-preview": "plugins-typst-preview"
       },
       "locked": {
-        "lastModified": 1729152632,
-        "narHash": "sha256-k53f/aT/MUSQ9cA0FYNaJROcWBk4AcDv3uP8ix+GBak=",
+        "lastModified": 1729152765,
+        "narHash": "sha256-EpEv9gVmRu+GbGQhKWi86wfu0GLKFLp3GYPQyCWVdP0=",
         "ref": "refs/heads/main",
-        "rev": "ed85611e1ffac646682653af4e04a512f117750e",
-        "revCount": 33,
+        "rev": "20c4b74119b1b6b7f6a02a3b2c1bc41c1422db25",
+        "revCount": 34,
         "type": "git",
         "url": "https://code.youwen.dev/youwen5/viminal2"
       },
