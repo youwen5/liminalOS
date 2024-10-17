@@ -41,7 +41,10 @@
     "blink-cmp": {
       "inputs": {
         "devenv": "devenv",
-        "fenix": "fenix",
+        "fenix": [
+          "viminal",
+          "fenix"
+        ],
         "flake-parts": "flake-parts_3",
         "nixpkgs": [
           "viminal",
@@ -298,21 +301,21 @@
       "inputs": {
         "nixpkgs": [
           "viminal",
-          "blink-cmp",
           "nixpkgs"
         ],
         "rust-analyzer-src": "rust-analyzer-src"
       },
       "locked": {
-        "lastModified": 1728196311,
-        "narHash": "sha256-JoDDlmjPj0sGo1beOo3bRh7BDppm0Kuet7I7BqTmSl4=",
-        "owner": "nix-community",
+        "lastModified": 1729101030,
+        "narHash": "sha256-9HapI5PEBLFpJBN26kR2HbeI9q07gJk3v91EyLB9ZBI=",
+        "owner": "andresilva",
         "repo": "fenix",
-        "rev": "26971356e387b5ec0578f52be1bbd82ecf6dbad4",
+        "rev": "3b3764c5420d037b7910443af048045ca6907b08",
         "type": "github"
       },
       "original": {
-        "owner": "nix-community",
+        "owner": "andresilva",
+        "ref": "fix-platforms",
         "repo": "fenix",
         "type": "github"
       }
@@ -1160,11 +1163,11 @@
     "plugins-typst-preview": {
       "flake": false,
       "locked": {
-        "lastModified": 1728689675,
-        "narHash": "sha256-UljxDPDLC6riWwbpoai6OBE6CSUrH+p9aUJwImFLS6I=",
+        "lastModified": 1729054993,
+        "narHash": "sha256-olO2hh2xU/tiuwMNKGuKU+Wa5taiTUOv9jlK2/99yvk=",
         "owner": "chomosuke",
         "repo": "typst-preview.nvim",
-        "rev": "a53a136f893a59635166afcb4f277f581bd4bc73",
+        "rev": "0f43ed7fa661617751bfd0ca2f01ee13eba6569e",
         "type": "github"
       },
       "original": {
@@ -1327,11 +1330,11 @@
     "rust-analyzer-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1728064742,
-        "narHash": "sha256-tFvUGvqUZjES1yxYT2zEFiTAE0iQKYd+eWKX/6ZqeVw=",
+        "lastModified": 1728921748,
+        "narHash": "sha256-BOCZ5osPOMh2BPHnkK4sVdTGj7sn47rBn1nxjrzWe5U=",
         "owner": "rust-lang",
         "repo": "rust-analyzer",
-        "rev": "5982d9c420d0dc90739171829f0d2e9c80d98979",
+        "rev": "0319586ef2a2636f6d6b891690b7ebebf4337c85",
         "type": "github"
       },
       "original": {
@@ -1502,6 +1505,7 @@
     "viminal": {
       "inputs": {
         "blink-cmp": "blink-cmp",
+        "fenix": "fenix",
         "nixCats": "nixCats",
         "nixpkgs": [
           "nixpkgs"
@@ -1510,11 +1514,11 @@
         "plugins-typst-preview": "plugins-typst-preview"
       },
       "locked": {
-        "lastModified": 1728953055,
-        "narHash": "sha256-yxoIkq4tXhsLmask8Kejp4kcMHz9dFCGmZs8PXeykfU=",
+        "lastModified": 1729152223,
+        "narHash": "sha256-yizCSfoZhB5eyvK0oUF8OOLG1IgZlGHwz2L/woWj/dk=",
         "ref": "refs/heads/main",
-        "rev": "a1c2f6709ae2d00ba7a6508d87326c5562b43050",
-        "revCount": 28,
+        "rev": "9bed7a28d79fb7545262b7948c1837176ddb4598",
+        "revCount": 32,
         "type": "git",
         "url": "https://code.youwen.dev/youwen5/viminal2"
       },
