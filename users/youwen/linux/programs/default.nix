@@ -6,7 +6,7 @@
 {
   programs.kitty = {
     enable = true;
-    theme = "Tokyo Night";
+    themeFile = "tokyo_night_night";
     font.name = "CaskaydiaCove Nerd Font";
     shellIntegration.enableFishIntegration = true;
     shellIntegration.enableBashIntegration = true;
