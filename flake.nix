@@ -45,6 +45,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    flake-parts.url = "github:hercules-ci/flake-parts";
+
     apple-silicon = {
       url = "github:tpwrules/nixos-apple-silicon";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -82,54 +84,59 @@
   };
 
   outputs =
-    {
+    inputs@{
       nixpkgs,
       nix-darwin,
+      flake-parts,
       ...
-    }@inputs:
-    let
-    in
-    {
-      formatter = with nixpkgs.legacyPackages; {
-        x86_64-linux = x86_64-linux.nixfmt-rfc-style;
-        aarch64-linux = aarch64-linux.nixfmt-rfc-style;
-        aarch64-darwin = aarch64-darwin.nixfmt-rfc-style;
-      };
+    }:
+    flake-parts.lib.mkFlake { inherit inputs; } {
+      systems = [
+        "x86_64-linux"
+        "aarch64-linux"
+        "aarch64-darwin"
+      ];
+      flake = {
+        nixosConfigurations = {
+          demeter = nixpkgs.lib.nixosSystem {
+            specialArgs = {
+              inherit inputs;
+            };
+            modules = [
+              ./hosts/demeter
+            ];
+          };
 
-      nixosConfigurations = {
-        demeter = nixpkgs.lib.nixosSystem {
-          specialArgs = {
-            inherit inputs;
+          callisto = nixpkgs.lib.nixosSystem {
+            specialArgs = {
+              inherit inputs;
+            };
+            modules = [
+              ./hosts/callisto
+            ];
           };
-          modules = [
-            ./hosts/demeter
-          ];
+          adrastea = nixpkgs.lib.nixosSystem {
+            specialArgs = {
+              inherit inputs;
+            };
+            modules = [
+              ./hosts/adrastea
+            ];
+          };
         };
-
-        callisto = nixpkgs.lib.nixosSystem {
+        darwinConfigurations.phobos = nix-darwin.lib.darwinSystem {
           specialArgs = {
             inherit inputs;
           };
           modules = [
-            ./hosts/callisto
-          ];
-        };
-        adrastea = nixpkgs.lib.nixosSystem {
-          specialArgs = {
-            inherit inputs;
-          };
-          modules = [
-            ./hosts/adrastea
+            ./hosts/phobos
           ];
         };
       };
-      darwinConfigurations.phobos = nix-darwin.lib.darwinSystem {
-        specialArgs = {
-          inherit inputs;
+      perSystem =
+        { pkgs, ... }:
+        {
+          formatter = pkgs.nixfmt-rfc-style;
         };
-        modules = [
-          ./hosts/phobos
-        ];
-      };
     };
 }
