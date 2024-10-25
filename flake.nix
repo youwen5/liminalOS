@@ -90,6 +90,9 @@
       flake-parts,
       ...
     }:
+    let
+      buildLiminalOS = import ./lib/buildLiminalOS.nix;
+    in
     flake-parts.lib.mkFlake { inherit inputs; } {
       systems = [
         "x86_64-linux"
@@ -98,30 +101,17 @@
       ];
       flake = {
         nixosConfigurations = {
-          demeter = nixpkgs.lib.nixosSystem {
-            specialArgs = {
-              inherit inputs;
-            };
-            modules = [
-              ./hosts/demeter
-            ];
+          demeter = buildLiminalOS {
+            inherit inputs nixpkgs;
+            systemModule = ./hosts/demeter;
           };
-
-          callisto = nixpkgs.lib.nixosSystem {
-            specialArgs = {
-              inherit inputs;
-            };
-            modules = [
-              ./hosts/callisto
-            ];
+          callisto = buildLiminalOS {
+            inherit nixpkgs inputs;
+            systemModule = ./hosts/callisto;
           };
-          adrastea = nixpkgs.lib.nixosSystem {
-            specialArgs = {
-              inherit inputs;
-            };
-            modules = [
-              ./hosts/adrastea
-            ];
+          adrastea = buildLiminalOS {
+            inherit inputs nixpkgs;
+            systemModule = ./hosts/adrastea;
           };
         };
         darwinConfigurations.phobos = nix-darwin.lib.darwinSystem {
