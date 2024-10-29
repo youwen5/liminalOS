@@ -48,7 +48,8 @@
     flake-parts.url = "github:hercules-ci/flake-parts";
 
     apple-silicon = {
-      url = "github:tpwrules/nixos-apple-silicon";
+      # url = "github:tpwrules/nixos-apple-silicon";
+      url = "github:zzywysm/nixos-asahi";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
