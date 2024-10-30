@@ -1,6 +1,4 @@
 pkgs: with pkgs; [
-  neofetch
-
   # archives
   zip
   xz

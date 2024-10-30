@@ -36,7 +36,7 @@
           ../../users/youwen/linux/programs
           ../../users/youwen/common
           ../../users/youwen/linux/spicetify
-          ../../users/youwen/common/neofetch
+          ../../users/youwen/common/fastfetch
           catppuccin.homeManagerModules.catppuccin
         ];
       };
