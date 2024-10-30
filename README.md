@@ -20,8 +20,9 @@ Complex](https://www.reddit.com/r/NixOS/comments/kauf1m/dealing_with_post_nixfla
 
 If you would like advice on whether or not to use NixOS:
 
-<details> <summary>see [hlissner](https://github.com/hlissner/dotfiles)'s
-breakdown, reproduced below:</summary> Should I use NixOS?
+<details> <summary>see <a
+href="https://github.com/hlissner/dotfiles">hlissner's</a> breakdown,
+reproduced below:</summary> Should I use NixOS?
 
 Short answer: no.
 
