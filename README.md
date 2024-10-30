@@ -4,7 +4,7 @@ This is a repository that implements liminalOS, my personal Linux distribution
 based on [NixOS](https://nixos.org/).
 
 Time wasted writing Nix code:
-![](https://wakatime.com/badge/user/018dc5b8-ba5a-4572-a38a-b526d1b28240/project/c59b3d5e-0c9c-4bd5-a752-e75522ab0cdc.svg)
+![](https://wakatime.com/badge/user/018dc5b8-ba5a-4572-a38a-b526d1b28240/project/c59b3d5e-0c9c-4bd5-a752-e75522ab0cdc.svg) + [![wakatime](https://wakatime.com/badge/user/018dc5b8-ba5a-4572-a38a-b526d1b28240/project/de5e82f8-8a09-42cb-ae45-9c80f2ab5a41.svg)](https://wakatime.com/badge/user/018dc5b8-ba5a-4572-a38a-b526d1b28240/project/de5e82f8-8a09-42cb-ae45-9c80f2ab5a41)
 
 <!-- prettier-ignore -->
 > **lim·i·nal**
