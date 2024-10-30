@@ -125,9 +125,23 @@
         };
       };
       perSystem =
-        { pkgs, ... }:
+        { pkgs, system, ... }:
         {
           formatter = pkgs.nixfmt-rfc-style;
+
+          devShells.default = pkgs.mkShell {
+            buildInputs =
+              with pkgs;
+              [
+                nixd
+                nixfmt-rfc-style
+                prettierd
+                taplo
+              ]
+              ++ [
+                inputs.viminal.packages.${system}.default
+              ];
+          };
         };
     };
 }
