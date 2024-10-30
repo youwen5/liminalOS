@@ -101,6 +101,7 @@ in
     enable = true;
     shellAliases = {
       ls = "eza -l --icons=auto";
+      neofetch = "${pkgs.fastfetch}/bin/fastfetch";
     };
     # shellInit = ''
     #   oh-my-posh disable notice

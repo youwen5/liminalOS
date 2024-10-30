@@ -5,8 +5,4 @@
   programs.fastfetch = {
     enable = true;
   };
-
-  home.packages = [
-    (pkgs.writeShellScriptBin "neofetch" "${pkgs.fastfetch}/bin/fastfetch")
-  ];
 }
