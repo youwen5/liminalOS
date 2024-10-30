@@ -83,7 +83,7 @@ configurations and applications seems incredibly unwieldy, through our usual
 conception of how we interact with our operating systems.
 
 The more obsessive system tweakers might try a dotfile manager like `chezmoi`
-or GNU Stow. I have not tried these so I make no judgements on their utility,
+or GNU Stow. I have not tried these so I make no judgements on their utility for their intended purpose,
 but generally these solutions miss a key feature: they provide the
 configuration, but don't install the software. But the software and the
 configuration are fundamentally tied together; these are not concerns to be
