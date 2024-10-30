@@ -31,6 +31,7 @@
           ../../users/youwen/common
           ../../users/youwen/linux/laptop
           ../../users/youwen/linux/packages/aarch-64
+          ../../users/youwen/common/fastfetch
           ./home-manager-extras
           catppuccin.homeManagerModules.catppuccin
         ];
