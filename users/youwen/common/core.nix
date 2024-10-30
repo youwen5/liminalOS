@@ -1,12 +1,6 @@
 { pkgs, ... }:
 let
-  inherit (builtins) fromTOML readFile fetchurl;
-  rose-pine-starship = fromTOML (
-    readFile (fetchurl {
-      url = "https://raw.githubusercontent.com/rose-pine/starship/f8b3cdc0aefecae9e7e5999ecad97d4701a6e602/rose-pine.toml";
-      sha256 = "sha256:1ywk5xjl3vhyyc7iq89h01ry3nzs78spp5zf495fh0m0wnalrxvq";
-    })
-  );
+  inherit (builtins) readFile;
 in
 {
   home.file.".essentials" = {
@@ -91,8 +85,9 @@ in
     enableFishIntegration = true;
     enableBashIntegration = true;
     enableNushellIntegration = true;
-    settings = rose-pine-starship;
   };
+
+  home.file.".config/starship.toml".text = readFile ./jetpack.toml;
 
   programs.direnv = {
     enable = true;
