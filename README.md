@@ -14,7 +14,9 @@ you to build your own immutable operating system anyways.)
 Many have written at length about the virtues of NixOS and _declarative
 configuration_ and _immutability_ and such. I doubt what I have to say is
 particularly novel, but I'll leave a few thoughts about Nix and NixOS and why
-they do things better anyways. Essentially: allow me to introduce you to the
+they do things better anyways. In particular, instead of immediately evangelizing about the virtues of Nix, I'll first motivate the reasons for why I chose a tool with exactly its properties, based on my use case (but not to worry, the evangelizing will come later).
+
+Essentially: allow me to introduce you to the
 origins of [NixOS God
 Complex](https://www.reddit.com/r/NixOS/comments/kauf1m/dealing_with_post_nixflake_god_complex/).
 
@@ -87,7 +89,7 @@ configuration, but don't install the software. But the software and the
 configuration are fundamentally tied together; these are not concerns to be
 separated. If the software is installed, it almost always needs to be
 configured anyways. If the configuration exists, the software should be
-installed.
+installed. These solutions may work well for managing configuration, but they have the same issue as before: you also need to install the software you're configuring!
 
 So, *nix hackers reach for things like [Ansible](https://www.ansible.com/), that
 promise automatic configuration of entire systems. Though Ansible was designed
@@ -100,7 +102,7 @@ which aren't expected to be as ephemeral as servers).
 If you agree with the premises I've laid out up to this point,  you might come
 to the conclusion that I've made: to solve this issue, we need a solution that
 does _all of it_. A unified tool for deploying software and managing systems.
-And it must necessarily be declarative and reproducible.
+And it must necessarily be declarative and reproducible, because that is the only way to sanely manage a system. Imagine working on a programming project where recompiling with the same source code would non-deterministically produce different results based on the environment!
 
 Well, [Nix](https://nixos.org/) is the _purely functional_ package manager
 (i.e. declarative, reproducible), and NixOS is a Linux distribution that is
