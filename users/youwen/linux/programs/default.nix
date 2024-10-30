@@ -1,12 +1,7 @@
 {
-  pkgs,
-  inputs,
-  ...
-}:
-{
   programs.kitty = {
     enable = true;
-    themeFile = "tokyo_night_night";
+    themeFile = "rose-pine";
     font.name = "CaskaydiaCove Nerd Font";
     shellIntegration.enableFishIntegration = true;
     shellIntegration.enableBashIntegration = true;
@@ -19,6 +14,8 @@
       allow_remote_control = "socket-only";
       listen_on = "unix:/tmp/kitty";
       scrollback_pager = ''nvim --noplugin -c "set signcolumn=no showtabline=0" -c "silent write! /tmp/kitty_scrollback_buffer | te cat /tmp/kitty_scrollback_buffer - "'';
+      cursor = "#c0caf5";
+      cursor_text_color = "#1a1b26";
     };
     keybindings = {
       "kitty_mod+h" = "show_scrollback";

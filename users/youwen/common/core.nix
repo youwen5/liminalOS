@@ -1,4 +1,13 @@
 { pkgs, ... }:
+let
+  inherit (builtins) fromTOML readFile fetchurl;
+  rose-pine-starship = fromTOML (
+    readFile (fetchurl {
+      url = "https://raw.githubusercontent.com/rose-pine/starship/f8b3cdc0aefecae9e7e5999ecad97d4701a6e602/rose-pine.toml";
+      sha256 = "sha256:1ywk5xjl3vhyyc7iq89h01ry3nzs78spp5zf495fh0m0wnalrxvq";
+    })
+  );
+in
 {
   home.file.".essentials" = {
     source = ./essentials;
@@ -69,12 +78,20 @@
     extensions = [ pkgs.github-copilot-cli ];
   };
 
-  programs.oh-my-posh = {
+  # programs.oh-my-posh = {
+  #   enable = true;
+  #   # enableZshIntegration = true;
+  #   enableFishIntegration = true;
+  #   enableBashIntegration = true;
+  #   useTheme = "gruvbox";
+  # };
+
+  programs.starship = {
     enable = true;
-    # enableZshIntegration = true;
     enableFishIntegration = true;
     enableBashIntegration = true;
-    useTheme = "gruvbox";
+    enableNushellIntegration = true;
+    settings = rose-pine-starship;
   };
 
   programs.direnv = {
@@ -87,9 +104,9 @@
     shellAliases = {
       ls = "eza -l --icons=auto";
     };
-    shellInit = ''
-      oh-my-posh disable notice
-    '';
+    # shellInit = ''
+    #   oh-my-posh disable notice
+    # '';
     interactiveShellInit = ''
       fish_vi_key_bindings
       set -g fish_greeting
