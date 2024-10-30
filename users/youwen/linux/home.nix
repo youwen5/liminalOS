@@ -75,6 +75,7 @@
 
   programs.fish.functions = {
     rebuild = ''doas nixos-rebuild --flake ~/.config/liminalOS\#${osConfig.networking.hostName} switch &| nom'';
+    os-test = ''doas nixos-rebuild --flake ~/.config/liminalOS\#${osConfig.networking.hostName} test &| nom'';
     nixos-update = ''
       cd ~/.config/liminalOS
       nix flake update --commit-lock-file
