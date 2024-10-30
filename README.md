@@ -6,48 +6,153 @@ based on [NixOS](https://nixos.org/).
 Time wasted writing Nix code:
 ![](https://wakatime.com/badge/user/018dc5b8-ba5a-4572-a38a-b526d1b28240/project/c59b3d5e-0c9c-4bd5-a752-e75522ab0cdc.svg) + [![wakatime](https://wakatime.com/badge/user/018dc5b8-ba5a-4572-a38a-b526d1b28240/project/de5e82f8-8a09-42cb-ae45-9c80f2ab5a41.svg)](https://wakatime.com/badge/user/018dc5b8-ba5a-4572-a38a-b526d1b28240/project/de5e82f8-8a09-42cb-ae45-9c80f2ab5a41)
 
+These are essentially just my NixOS configuration files. I use flakes,
+home-manager, `agenix`, all the buzzwords. But it sounds cool to have your own
+OS! (and NixOS is essentially a purpose-built language and ecosystem to allow
+you to build your own immutable operating system anyways.)
+
+Many have written at length about the virtues of NixOS and _declarative
+configuration_ and _immutability_ and such. I doubt what I have to say is
+particularly novel, but I'll leave a few thoughts about Nix and NixOS and why
+they do things better anyways. Essentially: allow me to introduce you to the
+origins of [NixOS God
+Complex](https://www.reddit.com/r/NixOS/comments/kauf1m/dealing_with_post_nixflake_god_complex/).
+
+If you would like advice on whether or not to use NixOS:
+
+<details> <summary>see [hlissner](https://github.com/hlissner/dotfiles)'s
+breakdown, reproduced below:</summary> Should I use NixOS?
+
+Short answer: no.
+
+Long answer: no really. Don't.
+
+Long long answer: I'm not kidding. Don't.
+
+Unsigned long long answer: Alright alright. Here's why not:
+
+Its learning curve is steep. You will trial and error your way to
+enlightenment, if you survive the frustration long enough. NixOS is unlike
+other Linux distros. Your issues will be unique and difficult to google. A
+decent grasp of Linux and your chosen services is a must, if only to
+distinguish Nix(OS) issues from Linux (or upstream) issues -- as well as to
+debug them or report them to the correct authority (and coherently). If words
+like "declarative", "generational", and "immutable" don't put your sexuality in
+jeopardy, you're considering NixOS for the wrong reasons. The overhead of
+managing a NixOS config will rarely pay for itself with 3 systems or fewer
+(perhaps another distro with nix on top would suit you better?). Official
+documentation for Nix(OS) is vast, but shallow. Unofficial resources and
+example configs are sparse and tend toward too simple or too complex (and most
+are outdated). Case in point: this repo. The Nix language is obtuse and its
+toolchain is not intuitive. Your experience will be infinitely worse if
+functional languages are alien to you, however, learning Nix is a must to do
+even a fraction of what makes NixOS worth the trouble. If you need somebody
+else to tell you whether or not you need NixOS, you don't need NixOS.
+</details>
+
+<hr />
+
 <!-- prettier-ignore -->
 > **lim·i·nal**
 > 1. between or belonging to two different places, states, etc.
 
-The goal of liminalOS is to allow my computing environment to exist in different
-places (computers) at the same time, without the minor disparities, issues, and
-inconsistencies that arise from traditional approaches such as scripting. This
-works exceptionally well, demonstrated by the fact that I have the exact same
-environment across three separate machines, spanning two completely different
-CPU architectures.
+The goal of liminalOS is to allow my computing environment to exist in
+different computers at the same time, and to be absolutely unbreakable while
+doing so. Let's talk about existing in multiple computers first, or otherwise
+known as some form of "settings sync". To the typical user, stuck in the
+_imperative world_, this sounds unrealistic at worst, and janky at best.
+Generally, people encounter environment or settings syncing in two ways: either
+the entire service is ran in the cloud, so it's really the _same_ environment
+accessed from multiple places, or it's some often half baked opaque solution
+involving you making an account and sending all your settings to a sync server
+(see: Mozilla Firefox).
 
-Traditionally, we expect to configure each of our computers separately. We have
-a general idea of the programs, settings, and minor tweaks that we like to make
-on every computer, but we have to manually set all of these up. Many Unix
-hackers have thus created sprawling installation scripts to manage their various
-systems so they can be deployed in a predictable manner each time. Of course,
-scripts are still heavily dependent on environment and prone to breakage. When
-they inevitably break, the system is left in a malformed state, where some setup
-actions have been taken and others have not, and it is up to the system
-administrator to fix the failing script and ensure the system is set up
-properly. Also, updating existing machines and rolling back to previous states
-is a separate, even more difficult issue to solve with this approach.
+The more technically minded may instead opt to create a "dotfiles" repository,
+holding their vast corpus of meticulously crafted configuration files. These
+repos often come with a janky `install.sh` that does its best to throw all the
+files into the correct place. This usually works the first time, but trying to
+keep the installed dotfiles in sync with a central repository is a whole other
+problem.
 
-In essence, the primary failure of setup scripts is that they are _imperative_ -
-they must specify precisely _how_ to set up the system, down to minute details,
-whereas in a _declarative_ approach, the user can simply specify what the system
-_should look like_, and abstractions take care of the _how_. This is what NixOS
-does, and it gives you remote syncing, versioning (via `git`), and rollbacks
-_for free_.
+But these solutions are generally used for singular services or applications.
+Keeping an entire _system_ synced up across computers down to the minute
+configurations and applications seems incredibly unwieldy, through our usual
+conception of how we interact with our operating systems.
 
-NixOS provides the key tools for reliably deploying systems - namely, a _purely
-functional_ package manager that's reproducible by default and the necessary
-abstractions needed for a declarative system configuration. liminalOS is my set
-of opinionated NixOS and `home-manager` modules that aim to set up a computing
-environment _independent of the host_. This makes it possible for me to share
-common configuration between a multitude of entirely distinct machines,
-including an `x86_64` desktop, an `x86_64` laptop, an Apple Silicon Macbook
-running NixOS `aarch64` using [Asahi Linux](https://asahilinux.org/), and the
-same Macbook running macOS with `nix-darwin`, sharing `home-manager`
-configuration with NixOS. Specific configuration necessary to adjust
-hardware-specific details between each machines are isolated to the
-[hosts](./hosts) directory.
+The more obsessive system tweakers might try a dotfile manager like `chezmoi`
+or GNU Stow. I have not tried these so I make no judgements on their utility,
+but generally these solutions miss a key feature: they provide the
+configuration, but don't install the software. But the software and the
+configuration are fundamentally tied together; these are not concerns to be
+separated. If the software is installed, it almost always needs to be
+configured anyways. If the configuration exists, the software should be
+installed.
+
+So, *nix hackers reach for things like [Ansible](https://www.ansible.com/), that
+promise automatic configuration of entire systems. Though Ansible was designed
+to deploy cloud servers quickly through the Infrastructure-as-Code approach,
+some people opt to use it for deploying their systems quickly as well. I have
+not tried it, but from what I've heard, it works fine for simple deployment but
+gets quite unwieldy for more complex purposes (especially for personal systems,
+which aren't expected to be as ephemeral as servers).
+
+If you agree with the premises I've laid out up to this point,  you might come
+to the conclusion that I've made: to solve this issue, we need a solution that
+does _all of it_. A unified tool for deploying software and managing systems.
+And it must necessarily be declarative and reproducible.
+
+Well, [Nix](https://nixos.org/) is the _purely functional_ package manager
+(i.e. declarative, reproducible), and NixOS is a Linux distribution that is
+managed entirely by Nix. Essentially, Nix provides a solution to the problem of
+_software deployment_, and in fact was purpose built to do so in Eelco
+Dolstra's seminal [PhD
+thesis](https://edolstra.github.io/pubs/phd-thesis.pdf). NixOS is a system that
+takes the power of Nix and applies it to declaratively configure an _entire
+Linux system_. All of the software can be specified precisely using the Nix
+expression language, a purely functional DSL used by Nix. And alongside the
+software, it also configures it, effectively acting as a dotfile manager.
+Indeed, many core NixOS services and a wide range of programs can be set up
+through _NixOS modules_, where the program is installed and configured in the
+same place. (and many programs like `fzf`, `btop`, etc have similar
+corresponding `home-manager` modules).
+
+NixOS is also _immutable_, which means that the system cannot be modified after
+it is built from the Nix files that declare it. How do you make changes to the
+system then? Obviously, we just create a new system where the changed programs
+and files are included, and the old ones are removed. But they are not deleted
+from the hard drive, they still exist in the _Nix store_. So, the system can
+provide precise atomic rollbacks between each "generation" of itself. Broke
+your GRUB configuration so your system won't boot? Messed up your kernel
+settings? Just select an older working generation from the boot menu and you
+instantly have a working system again. You never worry about breaking things
+during either routine or massive system updates.
+
+And because the system is fully declarative, and modifying the system is done
+only through modifying its Nix configuration files,  you can version and sync
+them up with Git. This solves the problem of keeping system environments in
+sync; now, you truly only have to keep one repository of all your configuration
+in sync, and all the software installation and deployment is handled for you by
+a system designed precisely for that purpose.
+
+This makes it possible for me to share common configuration between a multitude
+of entirely distinct machines, including an `x86_64` desktop, an `x86_64`
+laptop, an Apple Silicon Macbook running NixOS `aarch64` using [Asahi
+Linux](https://asahilinux.org/), and the same Macbook running macOS with
+`nix-darwin`, sharing `home-manager` configuration with NixOS. Specific
+configuration necessary to adjust hardware-specific details between each
+machines are isolated to the [hosts](./hosts) directory.
+
+This works exceptionally well, evidenced by the fact that I have (almost) the
+exact same environment across three separate machines, spanning two entirely
+distinct CPU architectures.
+
+In essence, the primary failure of deployment scripts, Ansible and the like is
+that they are _imperative_ - they must specify precisely _how_ to set up the
+system, down to minute details, whereas in a _declarative_ approach, the user
+can simply specify what the system _should look like_, and abstractions take
+care of the _how_. This is what NixOS does, and it gives you remote syncing,
+versioning (via `git`), and rollbacks _for free_.
+
 
 ## Installation guide
 
