@@ -137,6 +137,7 @@
                 nixfmt-rfc-style
                 prettierd
                 taplo
+                marksman
               ]
               ++ [
                 inputs.viminal.packages.${system}.default
