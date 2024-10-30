@@ -373,11 +373,11 @@
     "homebrew-cask": {
       "flake": false,
       "locked": {
-        "lastModified": 1730231459,
-        "narHash": "sha256-JnnBOpPcbmotjquS7wOSg9d6r99V7bSauKT5/yT/wqQ=",
+        "lastModified": 1730268348,
+        "narHash": "sha256-72vcVXNB46wH8ufhJaIaZPihFa331YONX48AXK7Sj+o=",
         "owner": "homebrew",
         "repo": "homebrew-cask",
-        "rev": "2161a3b0bec1f4bc5cfeb02faab53928a4b7b081",
+        "rev": "857189fae2aec190d61cbe74202f3f0c54689f3b",
         "type": "github"
       },
       "original": {
@@ -389,11 +389,11 @@
     "homebrew-core": {
       "flake": false,
       "locked": {
-        "lastModified": 1730231441,
-        "narHash": "sha256-NuAGKWjNzIfjn8mRhXYlmY4PZgn1ZbrFfHWPMwM0pV8=",
+        "lastModified": 1730265505,
+        "narHash": "sha256-DDaTJa3085JxdzLyD2xKWBWDPiltBOcmUUXQBgipGuQ=",
         "owner": "homebrew",
         "repo": "homebrew-core",
-        "rev": "8b13a3bac20e74dd828d4ec498c5b3b4d2fe3d14",
+        "rev": "75c0a69cda3c0551977a54acd678b2c2d4b680cf",
         "type": "github"
       },
       "original": {
@@ -755,11 +755,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1730175473,
-        "narHash": "sha256-JASnF3cFrQ1k6KsitR2yylpeWdPNb2xJeIaMeipe3BA=",
+        "lastModified": 1730261837,
+        "narHash": "sha256-syeN2dLFxJ9bhsG1YnwWpwMgCttBY1S60KUrqLIrmMo=",
         "owner": "Gerg-L",
         "repo": "spicetify-nix",
-        "rev": "446351c37e053a0098aa19d8c61448bbcfd8f0cc",
+        "rev": "1c482c8baffd494119b7f61735d35c62a0a22244",
         "type": "github"
       },
       "original": {
@@ -860,11 +860,11 @@
         "plugins-typst-preview": "plugins-typst-preview"
       },
       "locked": {
-        "lastModified": 1730257706,
-        "narHash": "sha256-+xyqOXiDT+k10Hsi2U4AvLMwka25nQrUYThz14A/HgM=",
+        "lastModified": 1730268319,
+        "narHash": "sha256-2cQhQi6+KcadTzc0Kx56Y/Hn3PoHAGVEkqKo+uXQsZU=",
         "ref": "refs/heads/main",
-        "rev": "25b63a02346342ea2525eb0ff9b06cd4d5bfd35e",
-        "revCount": 41,
+        "rev": "8e15fc1902e5078bb1c1f6f89fa0ddefb91f7b3d",
+        "revCount": 42,
         "type": "git",
         "url": "https://code.youwen.dev/youwen5/viminal2"
       },
