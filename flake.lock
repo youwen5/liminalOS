@@ -144,21 +144,6 @@
         "type": "github"
       }
     },
-    "catppuccin": {
-      "locked": {
-        "lastModified": 1730036420,
-        "narHash": "sha256-rv2bz7J6Wo7AenPiu4+ptCB1AFyaMcS77y89zbRAtI8=",
-        "owner": "catppuccin",
-        "repo": "nix",
-        "rev": "0b7bf04628414a402d255924f65e9a0d1a53d92b",
-        "type": "github"
-      },
-      "original": {
-        "owner": "catppuccin",
-        "repo": "nix",
-        "type": "github"
-      }
-    },
     "crane": {
       "inputs": {
         "nixpkgs": [
@@ -845,7 +830,6 @@
       "inputs": {
         "apple-firmware": "apple-firmware",
         "apple-silicon": "apple-silicon",
-        "catppuccin": "catppuccin",
         "flake-parts": "flake-parts",
         "home-manager": "home-manager",
         "homebrew-cask": "homebrew-cask",

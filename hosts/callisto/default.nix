@@ -12,10 +12,10 @@
     ../../modules/linux/greeter
     ../../modules/linux/core
     ../../modules/linux/desktop-portal
+    ../../modules/linux/stylix
     ../../overlays
 
     apple-silicon.nixosModules.apple-silicon-support
-    catppuccin.nixosModules.catppuccin
     lix-module.nixosModules.default
     home-manager.nixosModules.home-manager
     {
@@ -33,7 +33,6 @@
           ../../users/youwen/linux/packages/aarch-64
           ../../users/youwen/common/fastfetch
           ./home-manager-extras
-          catppuccin.homeManagerModules.catppuccin
         ];
       };
     }

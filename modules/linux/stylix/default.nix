@@ -6,9 +6,10 @@
 
   stylix = {
     enable = true;
-    image = "${inputs.wallpapers}/aesthetic/afterglow_city_skyline_at_night.png";
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/rose-pine.yaml";
-    polarity = "dark";
+    # image = "${inputs.wallpapers}/aesthetic/afterglow_city_skyline_at_night.png";
+    image = "${inputs.wallpapers}/aesthetic/afterglow_sand_dunes.jpg";
+    # base16Scheme = "${pkgs.base16-schemes}/share/themes/rose-pine.yaml";
+    # polarity = "dark";
 
     fonts = {
       serif = {

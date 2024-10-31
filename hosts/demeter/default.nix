@@ -19,7 +19,6 @@
     ../../modules/linux/wine
     ../../overlays
 
-    catppuccin.nixosModules.catppuccin
     lix-module.nixosModules.default
     lanzaboote.nixosModules.lanzaboote
     home-manager.nixosModules.home-manager
@@ -40,7 +39,6 @@
           ../../users/youwen/common
           ../../users/youwen/linux/spicetify
           ./home-manager-extras
-          catppuccin.homeManagerModules.catppuccin
         ];
       };
     }

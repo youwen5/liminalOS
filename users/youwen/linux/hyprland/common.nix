@@ -18,7 +18,7 @@
     enable = true;
     settings = {
       exec-once = [
-        "${pkgs.waypaper}/bin/waypaper --restore"
+        # "${pkgs.waypaper}/bin/waypaper --restore"
         "[workspace 2 silent] ${pkgs.kitty}/bin/kitty"
       ];
       "$mod" = "SUPER";
@@ -36,10 +36,10 @@
         [
           # Application Keybinds
           "$mod, T, exec, ${pkgs.kitty}/bin/kitty"
-          "$mod, E, exec, ${pkgs.dolphin}/bin/dolphin"
+          "$mod, E, exec, ${pkgs.xfce.thunar}/bin/thunar"
           "$mod, R, exec, ${pkgs.pavucontrol}/bin/pavucontrol -t 3" # open pavucontrol on 'outputs' tab
           "$mod, M, exec, ${pkgs.thunderbird}/bin/thunderbird"
-          "$mod, B, exec, ${pkgs.waypaper}/bin/waypaper"
+          # "$mod, B, exec, ${pkgs.waypaper}/bin/waypaper"
           "$mod, A, exec, ${pkgs.neovide}/bin/neovide"
 
           # Window actions
@@ -170,6 +170,7 @@
         "opacity 0.80 0.80,class:^(kitty)$"
         "opacity 0.80 0.80,class:^(neovide)$"
         "opacity 0.80 0.80,class:^(org.kde.dolphin)$"
+        "opacity 0.80 0.80,class:^(thunar)$"
         "opacity 0.80 0.80,class:^(org.kde.ark)$"
         "opacity 0.80 0.80,class:^(nwg-look)$"
         "opacity 0.80 0.80,class:^(qt5ct)$"
@@ -276,8 +277,8 @@
         border_size = "2";
         #
         # the dot is a hyprland name, not nix syntax, so we escape it
-        "col.active_border" = "rgba(ca9ee6ff) rgba(f2d5cfff) 45deg";
-        "col.inactive_border" = "rgba(b4befecc) rgba(6c7086cc) 45deg";
+        "col.active_border" = pkgs.lib.mkForce "rgba(ca9ee6ff) rgba(f2d5cfff) 45deg";
+        "col.inactive_border" = pkgs.lib.mkForce "rgba(b4befecc) rgba(6c7086cc) 45deg";
         layout = "dwindle";
         resize_on_border = "true";
       };

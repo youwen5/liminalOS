@@ -23,7 +23,7 @@ pkgs: with pkgs; [
   # bitwarden-cli
 
   # desktop apps
-  dolphin
+  xfce.thunar
   thunderbird
 
   # messengers
