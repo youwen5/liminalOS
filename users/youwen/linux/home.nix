@@ -54,7 +54,7 @@
   # Notification daemon
   services.dunst = {
     enable = true;
-    catppuccin.enable = true;
+    # catppuccin.enable = true;
     iconTheme = {
       name = "Papirus-Dark";
       package = pkgs.papirus-icon-theme;
@@ -67,7 +67,7 @@
   programs.rofi = {
     enable = true;
     package = pkgs.rofi-wayland;
-    theme = "gruvbox-dark";
+    # theme = "gruvbox-dark";
   };
 
   # Let home Manager install and manage itself.

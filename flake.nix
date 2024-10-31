@@ -73,6 +73,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    stylix.url = "github:danth/stylix";
+
     wallpapers = {
       url = "git+https://code.youwen.dev/youwen5/wallpapers";
       flake = false;

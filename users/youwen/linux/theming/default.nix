@@ -1,6 +1,8 @@
 { pkgs, ... }:
 {
-  imports = [ ./catppuccin.nix ];
+  # imports = [ ./catppuccin.nix ];
+  #
+  imports = [ ./stylix.nix ];
 
   gtk = {
     enable = true;
@@ -11,20 +13,20 @@
     iconTheme = {
       name = "Papirus-Dark";
     };
-    theme = {
-      name = "rose-pine";
-      package = pkgs.rose-pine-gtk-theme;
-    };
+    # theme = {
+    #   name = "rose-pine";
+    #   package = pkgs.rose-pine-gtk-theme;
+    # };
   };
 
-  qt = {
-    enable = true;
-    platformTheme.name = "gtk";
-    style.name = "gtk2";
-  };
+  # qt = {
+  #   enable = true;
+  #   platformTheme.name = "gtk";
+  #   style.name = "gtk2";
+  # };
 
-  home.file.".config/kdeglobals".text = ''
-    [Colors:View]
-    BackgroundNormal=#191724
-  '';
+  # home.file.".config/kdeglobals".text = ''
+  #   [Colors:View]
+  #   BackgroundNormal=#191724
+  # '';
 }

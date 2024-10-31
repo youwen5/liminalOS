@@ -1,7 +1,8 @@
+{ pkgs, ... }:
 {
   programs.kitty = {
     enable = true;
-    themeFile = "rose-pine";
+    # themeFile = "rose-pine";
     font.name = "CaskaydiaCove Nerd Font";
     shellIntegration.enableFishIntegration = true;
     shellIntegration.enableBashIntegration = true;
@@ -10,7 +11,7 @@
       window_padding_width = "8 8 0";
       confirm_os_window_close = -1;
       enable_audio_bell = "no";
-      background_opacity = "0.8";
+      background_opacity = pkgs.lib.mkForce "0.8";
       allow_remote_control = "socket-only";
       listen_on = "unix:/tmp/kitty";
       scrollback_pager = ''nvim --noplugin -c "set signcolumn=no showtabline=0" -c "silent write! /tmp/kitty_scrollback_buffer | te cat /tmp/kitty_scrollback_buffer - "'';
