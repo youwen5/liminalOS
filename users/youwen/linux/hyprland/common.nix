@@ -7,7 +7,6 @@
     wl-clipboard
     swaybg
 
-    bibata-cursors
     libsForQt5.qtstyleplugin-kvantum
     libsForQt5.qt5ct
     papirus-icon-theme
@@ -26,12 +25,12 @@
       "$Right" = "L";
       "$Up" = "K";
       "$Down" = "J";
-      env = [
-        "HYPRCURSOR_THEME,Bibata-Modern-Ice"
-        "HYPRCURSOR_SIZE,26"
-        "XCURSOR_THEME,Bibata-Modern-Ice"
-        "XCURSOR_SIZE,26"
-      ];
+      # env = [
+      #   "HYPRCURSOR_THEME,Bibata-Modern-Ice"
+      #   "HYPRCURSOR_SIZE,26"
+      #   "XCURSOR_THEME,Bibata-Modern-Ice"
+      #   "XCURSOR_SIZE,26"
+      # ];
       bind =
         [
           # Application Keybinds

@@ -29,5 +29,11 @@
         package = (pkgs.nerdfonts.override { fonts = [ "CascadiaCode" ]; });
       };
     };
+
+    cursor = {
+      package = pkgs.bibata-cursors;
+      name = "Bibata-Modern-Ice";
+      size = 26;
+    };
   };
 }
