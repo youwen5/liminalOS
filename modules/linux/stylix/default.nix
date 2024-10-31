@@ -6,8 +6,8 @@
 
   stylix = {
     enable = true;
-    # image = "${inputs.wallpapers}/aesthetic/afterglow_city_skyline_at_night.png";
-    image = "${inputs.wallpapers}/aesthetic/afterglow_sand_dunes.jpg";
+    image = "${inputs.wallpapers}/aesthetic/red_deadly_sun.jpg";
+    # image = "${inputs.wallpapers}/aesthetic/afterglow_sand_dunes.jpg";
     # base16Scheme = "${pkgs.base16-schemes}/share/themes/rose-pine.yaml";
     # polarity = "dark";
 
