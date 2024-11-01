@@ -5,8 +5,6 @@
 {
   home.packages = with pkgs; [
     wl-clipboard
-    swaybg
-
     libsForQt5.qtstyleplugin-kvantum
     libsForQt5.qt5ct
     papirus-icon-theme
@@ -310,6 +308,8 @@
       };
     };
   };
+
+  services.hyprpaper.enable = true;
 
   programs.hyprlock = {
     enable = true;
