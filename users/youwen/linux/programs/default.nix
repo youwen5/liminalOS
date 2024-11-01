@@ -8,7 +8,7 @@
     shellIntegration.enableBashIntegration = true;
     settings = {
       font_size = 12;
-      window_padding_width = "8 8 0";
+      window_padding_width = "8 8";
       confirm_os_window_close = -1;
       enable_audio_bell = "no";
       background_opacity = pkgs.lib.mkForce "0.8";
