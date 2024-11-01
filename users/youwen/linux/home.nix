@@ -68,6 +68,16 @@
     enable = true;
     package = pkgs.rofi-wayland;
     # theme = "gruvbox-dark";
+    terminal = "${pkgs.kitty}/bin/kitty";
+    extraConfig = {
+      modi = "window,drun,ssh,combi,filebrowser,recursivebrowser";
+      display-drun = " 󰘧 ";
+      combi-modi = "window,drun,ssh";
+      run-shell-command = "{terminal} -e {cmd}";
+      sidebar-mode = true;
+      background-color = "transparent";
+      sorting = "fuzzy";
+    };
   };
 
   # Let home Manager install and manage itself.
