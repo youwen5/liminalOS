@@ -156,6 +156,8 @@ in
     enableFishIntegration = true;
   };
 
+  programs.nix-index-database.comma.enable = true;
+
   programs.fd.enable = true;
 
   programs.btop = {

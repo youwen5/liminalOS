@@ -73,6 +73,11 @@
 
     stylix.url = "github:danth/stylix";
 
+    nix-index-database = {
+      url = "github:nix-community/nix-index-database";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     wallpapers = {
       url = "git+https://code.youwen.dev/youwen5/wallpapers";
       flake = false;

@@ -26,15 +26,19 @@
           inherit inputs;
         };
         home-manager.users.youwen = {
-          imports = [
-            ./home-manager-extras
-            ../../users/youwen/linux/laptop
-            ../../users/youwen/linux/packages/x86_64
-            ../../users/youwen/linux/programs
-            ../../users/youwen/common
-            ../../users/youwen/linux/spicetify
-            ../../users/youwen/common/fastfetch
-          ];
+          imports =
+            [
+              ./home-manager-extras
+              ../../users/youwen/linux/laptop
+              ../../users/youwen/linux/packages/x86_64
+              ../../users/youwen/linux/programs
+              ../../users/youwen/common
+              ../../users/youwen/linux/spicetify
+              ../../users/youwen/common/fastfetch
+            ]
+            ++ (with inputs; [
+              nix-index-database.hmModules.nix-index
+            ]);
         };
       }
     ]

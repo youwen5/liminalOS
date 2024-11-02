@@ -667,6 +667,26 @@
         "type": "github"
       }
     },
+    "nix-index-database": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1729999765,
+        "narHash": "sha256-LYsavZXitFjjyETZoij8usXjTa7fa9AIF3Sk3MJSX+Y=",
+        "owner": "nix-community",
+        "repo": "nix-index-database",
+        "rev": "0e3a8778c2ee218eff8de6aacf3d2fa6c33b2d4f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "nix-index-database",
+        "type": "github"
+      }
+    },
     "nixCats": {
       "locked": {
         "lastModified": 1730202844,
@@ -838,6 +858,7 @@
         "lix-module": "lix-module",
         "nix-darwin": "nix-darwin",
         "nix-homebrew": "nix-homebrew",
+        "nix-index-database": "nix-index-database",
         "nixpkgs": "nixpkgs_2",
         "spicetify": "spicetify",
         "stylix": "stylix",
