@@ -237,10 +237,12 @@
       layerrule = [
         "blur,rofi"
         "ignorezero,rofi"
+        "animation slide bottom 0.2 0.2 wind,rofi"
         "blur,notifications"
         "ignorezero,notifications"
         "blur,swaync-notification-window"
-        "animation,swaync-notification-window,popin"
+        "animation slide right 0.5 0.5,swaync-control-center"
+        "animation slide right 0.5 0.5,notifications"
         "ignorezero,swaync-notification-window"
         "blur,swaync-control-center"
         "ignorezero,swaync-control-center"
@@ -267,6 +269,7 @@
           # "borderangle, 1, 30, liner, loop"
           "fade, 1, 10, default"
           "workspaces, 1, 5, wind"
+          # "layers, 1, 8, default, slide"
         ];
       };
 
