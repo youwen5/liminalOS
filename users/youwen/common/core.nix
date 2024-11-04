@@ -44,6 +44,8 @@ in
     };
   };
 
+  home.packages = [ pkgs.git-absorb ];
+
   programs.lazygit = {
     enable = true;
     settings = {
