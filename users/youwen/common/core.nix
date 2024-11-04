@@ -33,10 +33,13 @@ in
     userName = "Youwen Wu";
     userEmail = "youwenw@gmail.com";
     delta.enable = true;
+    maintenance.enable = true;
+    signing = {
+      signByDefault = true;
+      key = "8F5E6C1AF90976CA7102917A865658ED1FE61EC3";
+    };
     extraConfig = {
       init.defaultBranch = "main";
-      commit.gpgsign = pkgs.lib.mkDefault "true";
-      user.signingkey = "8F5E6C1AF90976CA7102917A865658ED1FE61EC3";
       safe.directory = "/etc/nixos/.git";
     };
   };
@@ -173,6 +176,7 @@ in
     enable = true;
     enableFishIntegration = true;
     enableBashIntegration = true;
+    git = true;
   };
 
   programs.yazi = {
