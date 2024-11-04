@@ -243,6 +243,7 @@
         "blur,swaync-notification-window"
         "animation slide right 0.5 0.5,swaync-control-center"
         "animation slide right 0.5 0.5,notifications"
+        "animation slide right 0.5 0.5,swaync-notification-window"
         "ignorezero,swaync-notification-window"
         "blur,swaync-control-center"
         "ignorezero,swaync-control-center"
