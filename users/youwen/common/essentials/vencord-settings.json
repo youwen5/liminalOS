@@ -6,7 +6,9 @@
         "themeLinks": [
             "https://raw.githubusercontent.com/catppuccin/discord/main/themes/macchiato.theme.css"
         ],
-        "enabledThemes": [],
+        "enabledThemes": [
+            "stylix.theme.css"
+        ],
         "enableReactDevtools": false,
         "frameless": false,
         "transparent": false,
@@ -45,13 +47,18 @@
                 "enabled": true
             },
             "AlwaysAnimate": {
-                "enabled": true
+                "enabled": false
             },
             "AlwaysTrust": {
-                "enabled": true
+                "enabled": true,
+                "domain": true,
+                "file": true
             },
             "AnonymiseFileNames": {
-                "enabled": true
+                "enabled": true,
+                "anonymiseByDefault": true,
+                "method": 0,
+                "randomisedLength": 7
             },
             "AppleMusicRichPresence": {
                 "enabled": false
@@ -66,7 +73,14 @@
                 "enabled": false
             },
             "BetterFolders": {
-                "enabled": true
+                "enabled": true,
+                "sidebar": true,
+                "showFolderIcon": 1,
+                "keepIcons": false,
+                "closeAllHomeButton": false,
+                "closeAllFolders": false,
+                "forceOpen": false,
+                "sidebarAnim": true
             },
             "BetterGifAltText": {
                 "enabled": false
@@ -81,13 +95,18 @@
                 "enabled": false
             },
             "BetterRoleDot": {
-                "enabled": true
+                "enabled": true,
+                "bothStyles": false,
+                "copyRoleColorInProfilePopout": false
             },
             "BetterSessions": {
-                "enabled": true
+                "enabled": true,
+                "backgroundCheck": false
             },
             "BetterSettings": {
-                "enabled": true
+                "enabled": false,
+                "disableFade": true,
+                "eagerLoad": true
             },
             "BetterUploadButton": {
                 "enabled": false
@@ -353,9 +372,6 @@
             "PreviewMessage": {
                 "enabled": false
             },
-            "PronounDB": {
-                "enabled": false
-            },
             "QuickMention": {
                 "enabled": false
             },
@@ -389,9 +405,6 @@
             "RoleColorEverywhere": {
                 "enabled": false
             },
-            "SearchReply": {
-                "enabled": false
-            },
             "SecretRingToneEnabler": {
                 "enabled": false
             },
@@ -413,17 +426,21 @@
             "ShowAllMessageButtons": {
                 "enabled": false
             },
-            "ShowAllRoles": {
-                "enabled": false
-            },
             "ShowConnections": {
                 "enabled": false
             },
             "ShowHiddenChannels": {
-                "enabled": true
+                "enabled": true,
+                "showMode": 0,
+                "hideUnreads": true
             },
             "ShowHiddenThings": {
-                "enabled": true
+                "enabled": true,
+                "showTimeouts": true,
+                "showInvitesPaused": true,
+                "showModView": true,
+                "disableDiscoveryFilters": true,
+                "disableDisallowedDiscoveryFilters": true
             },
             "ShowMeYourName": {
                 "enabled": false
@@ -441,7 +458,8 @@
                 "enabled": false
             },
             "SpotifyControls": {
-                "enabled": true
+                "enabled": true,
+                "hoverControls": false
             },
             "SpotifyCrack": {
                 "enabled": false
@@ -547,6 +565,39 @@
             },
             "YoutubeAdblock": {
                 "enabled": true
+            },
+            "AlwaysExpandRoles": {
+                "enabled": false
+            },
+            "FullSearchContext": {
+                "enabled": false
+            },
+            "UserMessagesPronouns": {
+                "enabled": false
+            },
+            "DynamicImageModalAPI": {
+                "enabled": false
+            },
+            "AccountPanelServerProfile": {
+                "enabled": false
+            },
+            "CopyFileContents": {
+                "enabled": false
+            },
+            "FixImagesQuality": {
+                "enabled": false
+            },
+            "MentionAvatars": {
+                "enabled": false
+            },
+            "NoMaskedUrlPaste": {
+                "enabled": false
+            },
+            "StickerPaste": {
+                "enabled": false
+            },
+            "VolumeBooster": {
+                "enabled": false
             }
         },
         "notifications": {
@@ -559,7 +610,7 @@
             "authenticated": false,
             "url": "https://api.vencord.dev/",
             "settingsSync": false,
-            "settingsSyncVersion": 1722547675778
+            "settingsSyncVersion": 1730351821316
         }
     },
     "quickCss": ""
