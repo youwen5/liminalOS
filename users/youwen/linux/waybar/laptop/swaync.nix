@@ -16,7 +16,7 @@
     timeout-critical = 0;
     fit-to-screen = false;
     control-center-width = 500;
-    control-center-height = 1025;
+    control-center-height = 800;
     notification-window-width = 500;
     keyboard-shortcuts = true;
     image-visibility = "when-available";
