@@ -52,15 +52,15 @@
   services.easyeffects.package = pkgs.easyeffects;
 
   # Notification daemon
-  services.dunst = {
-    enable = true;
-    # catppuccin.enable = true;
-    iconTheme = {
-      name = "Papirus-Dark";
-      package = pkgs.papirus-icon-theme;
-      size = "32x32";
-    };
-  };
+  # services.dunst = {
+  #   enable = true;
+  #   # catppuccin.enable = true;
+  #   iconTheme = {
+  #     name = "Papirus-Dark";
+  #     package = pkgs.papirus-icon-theme;
+  #     size = "32x32";
+  #   };
+  # };
 
   # Currently non-functional
   programs.wlogout.enable = true;

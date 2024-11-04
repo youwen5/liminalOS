@@ -38,6 +38,7 @@
           "$mod, M, exec, ${pkgs.thunderbird}/bin/thunderbird"
           # "$mod, B, exec, ${pkgs.waypaper}/bin/waypaper"
           "$mod, A, exec, ${pkgs.neovide}/bin/neovide"
+          "$mod, N, exec, sleep 0.1 && ${pkgs.swaynotificationcenter}/bin/swaync-client -t -sw"
 
           # Window actions
           "$mod, Q, killactive"
@@ -239,6 +240,7 @@
         "blur,notifications"
         "ignorezero,notifications"
         "blur,swaync-notification-window"
+        "animation,swaync-notification-window,popin"
         "ignorezero,swaync-notification-window"
         "blur,swaync-control-center"
         "ignorezero,swaync-control-center"

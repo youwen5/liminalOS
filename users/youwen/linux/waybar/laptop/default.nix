@@ -1,5 +1,6 @@
 { pkgs, ... }:
 {
+  imports = [ ./swaync.nix ];
   programs.waybar = {
     enable = true;
     style = ./style.css;
@@ -40,6 +41,7 @@
           "cpu"
           "temperature"
           "clock"
+          "custom/notification"
         ];
 
         idle_inhibitor = {
@@ -132,6 +134,22 @@
           format = "{:%H:%M:%S}";
         };
 
+        "custom/notification" = {
+          tooltip = false;
+          format = "{icon}";
+          format-icons = {
+            notification = "<span foreground='red'><small><sup>⬤</sup></small></span>";
+            none = " ";
+            dnd-notification = "<span foreground='red'><small><sup>⬤</sup></small></span>";
+            dnd-none = " ";
+          };
+          return-type = "json";
+          exec = "${pkgs.swaynotificationcenter}/bin/swaync-client -swb";
+          on-click = "sleep 0.1 && ${pkgs.swaynotificationcenter}/bin/swaync-client -t -sw";
+          on-click-right = "sleep 0.1 && ${pkgs.swaynotificationcenter}/bin/swaync-client -d -sw";
+          escape = true;
+        };
+
         "hyprland/workspaces" = {
           show-special = true;
           persistent-workspaces = {
@@ -157,6 +175,7 @@
             special = "󰠱";
           };
         };
+
         "hyprland/window" = {
           icon = true;
           icon-size = 20;
