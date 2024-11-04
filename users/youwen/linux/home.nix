@@ -84,12 +84,25 @@
   programs.home-manager.enable = true;
 
   programs.fish.functions = {
-    rebuild = ''doas nixos-rebuild --flake ~/.config/liminalOS\#${osConfig.networking.hostName} switch &| nom'';
-    os-test = ''doas nixos-rebuild --flake ~/.config/liminalOS\#${osConfig.networking.hostName} test &| nom'';
-    nixos-update = ''
-      cd ~/.config/liminalOS
-      nix flake update --commit-lock-file
-      doas nixos-rebuild --flake ~/.config/liminalOS\#${osConfig.networking.hostName} switch &| nom
-    '';
+    # rebuild = ''doas nixos-rebuild --flake ~/.config/liminalOS\#${osConfig.networking.hostName} switch &| nom'';
+    # os-test = ''doas nixos-rebuild --flake ~/.config/liminalOS\#${osConfig.networking.hostName} test &| nom'';
+    # nixos-update = ''
+    #   cd ~/.config/liminalOS
+    #   nix flake update --commit-lock-file
+    #   doas nixos-rebuild --flake ~/.config/liminalOS\#${osConfig.networking.hostName} switch &| nom
+    # '';
+    nh = {
+      body = ''
+        if count $argv > /dev/null
+          if contains -- os $argv or contains -- clean $argv
+            doas ${pkgs.nh}/bin/nh $argv -R
+          else
+            ${pkgs.nh}/bin/nh $argv
+          end
+        else
+            ${pkgs.nh}/bin/nh
+        end
+      '';
+    };
   };
 }
