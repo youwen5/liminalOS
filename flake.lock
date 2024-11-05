@@ -104,6 +104,22 @@
         "type": "github"
       }
     },
+    "bleedingpkgs": {
+      "locked": {
+        "lastModified": 1730781761,
+        "narHash": "sha256-/0gVcFiZaQAROSySTXXblCzGZc6ZvQQzLpxuF40AoJ0=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "aa689c679c90ea9a84c99cfb1ef5a7ab4ddbbf9b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "ref": "master",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "blink-cmp": {
       "inputs": {
         "fenix": "fenix",
@@ -850,6 +866,7 @@
       "inputs": {
         "apple-firmware": "apple-firmware",
         "apple-silicon": "apple-silicon",
+        "bleedingpkgs": "bleedingpkgs",
         "flake-parts": "flake-parts",
         "home-manager": "home-manager",
         "homebrew-cask": "homebrew-cask",
