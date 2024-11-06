@@ -51,6 +51,8 @@
   services.easyeffects.enable = true;
   services.easyeffects.package = pkgs.easyeffects;
 
+  programs.spotify-player.enable = true;
+
   # Notification daemon
   # services.dunst = {
   #   enable = true;

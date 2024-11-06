@@ -2,9 +2,12 @@
 {
   services.spotifyd = {
     enable = true;
-    # settings = {global = 320;};
+    settings = {
+      global = {
+        bitrate = 320;
+        use_mpris = true;
+        device_type = "computer";
+      };
+    };
   };
-  environment.systemPackages = [
-    pkgs.spotify-player
-  ];
 }

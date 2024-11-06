@@ -5,13 +5,13 @@
 }:
 {
   imports =
-    with inputs;
     [
       ./configuration.nix
       ../../modules/linux/audio
       ../../modules/linux/networking
       ../../modules/linux/fonts
       ../../modules/linux/greeter
+      # ../../modules/linux/spotifyd
       ../../modules/linux/core
       ../../modules/linux/desktop-portal
       ../../modules/linux/stylix
