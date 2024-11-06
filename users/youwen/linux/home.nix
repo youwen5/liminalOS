@@ -106,5 +106,6 @@
         end
       '';
     };
+    spt = "${pkgs.spotify-player}/bin/spotify_player";
   };
 }
