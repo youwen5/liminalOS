@@ -6,7 +6,7 @@
     disable_while_typing = true;
     clickfinger_behavior = true;
     tap-to-click = false;
-    scroll_factor = 0.5;
+    scroll_factor = 0.15;
   };
   wayland.windowManager.hyprland.settings.input.sensitivity = lib.mkForce "0.0";
   wayland.windowManager.hyprland.settings.env = [
