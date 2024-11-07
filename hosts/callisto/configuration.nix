@@ -4,6 +4,7 @@
 {
   inputs,
   pkgs,
+  config,
   ...
 }:
 {
@@ -24,20 +25,35 @@
     }
   );
 
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = false;
+  boot = {
+    loader.systemd-boot.enable = true;
+    loader.efi.canTouchEfiVariables = false;
+    plymouth = {
+      enable = true;
+      font = "${config.stylix.fonts.monospace.package}/share/fonts/truetype/NerdFonts/CaskaydiaCoveNerdFontMono-Regular.ttf";
+    };
+    consoleLogLevel = 3;
+    initrd.verbose = false;
+    kernelParams = [
+      "quiet"
+      "splash"
+      "boot.shell_on_fail"
+      "rd.systemd.show_status=false"
+      "rd.udev.log_level=3"
+      "udev.log_priority=3"
+      "apple_dcp.show_notch=1"
+    ];
+    extraModprobeConfig = ''
+      options hid_apple iso_layout=0
+    '';
+    initrd.systemd.enable = true;
+  };
 
   hardware.asahi = {
     peripheralFirmwareDirectory = "${inputs.apple-firmware}/firmware";
     useExperimentalGPUDriver = true;
     experimentalGPUInstallMode = "overlay";
   };
-
-  boot.extraModprobeConfig = ''
-    options hid_apple iso_layout=0
-  '';
-
-  boot.kernelParams = [ "apple_dcp.show_notch=1" ];
 
   networking.hostName = "callisto"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
