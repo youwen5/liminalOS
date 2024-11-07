@@ -15,17 +15,48 @@
   ];
 
   # Bootloader.
-  boot.loader = {
-    efi.canTouchEfiVariables = true;
-    timeout = 15;
-    # Lanzaboote currently replaces the systemd-boot module.
-    # This setting is usually set to true in configuration.nix
-    # generated at installation time. So we force it to false
-    # for now.
-    systemd-boot = {
+
+  boot = {
+    plymouth = {
       enable = true;
-      consoleMode = "auto";
+      # theme = "rings";
+      # themePackages = with pkgs; [
+      #   # By default we would install all themes
+      #   (adi1090x-plymouth-themes.override {
+      #     selected_themes = [ "rings" ];
+      #   })
+      # ];
     };
+
+    # Enable "Silent Boot"
+    consoleLogLevel = 0;
+    initrd.verbose = false;
+    kernelParams = [
+      "quiet"
+      "splash"
+      "boot.shell_on_fail"
+      "loglevel=3"
+      "rd.systemd.show_status=false"
+      "rd.udev.log_level=3"
+      "udev.log_priority=3"
+    ];
+    # Hide the OS choice for bootloaders.
+    # It's still possible to open the bootloader list by pressing any key
+    # It will just not appear on screen unless a key is pressed
+    loader = {
+      efi.canTouchEfiVariables = true;
+      # timeout = 15;
+      # Lanzaboote currently replaces the systemd-boot module.
+      # This setting is usually set to true in configuration.nix
+      # generated at installation time. So we force it to false
+      # for now.
+      # timeout = 0;
+      systemd-boot = {
+        enable = true;
+        consoleMode = "auto";
+      };
+    };
+    initrd.systemd.enable = true;
   };
 
   # boot.lanzaboote = {
