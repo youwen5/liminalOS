@@ -75,7 +75,7 @@
       background: transparent;
       padding: 0;
       margin: 0px;
-      opacity: 0.5;
+      opacity: 0.75;
     }
     .notification-content {
       background: #${config.lib.stylix.colors.base00};
@@ -186,7 +186,7 @@
       background: #${config.lib.stylix.colors.base00};
       border: 2px solid #${config.lib.stylix.colors.base0C};
       border-radius: 5px;
-      opacity: 0.75;
+      opacity: 0.85;
     }
     .control-center-list {
       background: transparent
