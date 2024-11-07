@@ -75,6 +75,7 @@
       background: transparent;
       padding: 0;
       margin: 0px;
+      opacity: 0.5;
     }
     .notification-content {
       background: #${config.lib.stylix.colors.base00};
