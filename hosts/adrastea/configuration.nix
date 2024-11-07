@@ -26,16 +26,16 @@
       #     selected_themes = [ "rings" ];
       #   })
       # ];
+      font = "${config.stylix.fonts.monospace.package}/share/fonts/truetype/NerdFonts/CaskaydiaCoveNerdFontMono-Regular.ttf";
     };
 
     # Enable "Silent Boot"
-    consoleLogLevel = 0;
+    consoleLogLevel = 3;
     initrd.verbose = false;
     kernelParams = [
       "quiet"
       "splash"
       "boot.shell_on_fail"
-      "loglevel=3"
       "rd.systemd.show_status=false"
       "rd.udev.log_level=3"
       "udev.log_priority=3"
