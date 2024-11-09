@@ -29,110 +29,110 @@
       #   "XCURSOR_THEME,Bibata-Modern-Ice"
       #   "XCURSOR_SIZE,26"
       # ];
-      bind =
-        [
-          # Application Keybinds
-          "$mod, T, exec, ${pkgs.kitty}/bin/kitty"
-          "$mod, E, exec, ${pkgs.xfce.thunar}/bin/thunar"
-          "$mod, R, exec, ${pkgs.pavucontrol}/bin/pavucontrol -t 3" # open pavucontrol on 'outputs' tab
-          "$mod, M, exec, ${pkgs.thunderbird}/bin/thunderbird"
-          # "$mod, B, exec, ${pkgs.waypaper}/bin/waypaper"
-          "$mod, A, exec, ${pkgs.neovide}/bin/neovide"
-          "$mod, N, exec, sleep 0.1 && ${pkgs.swaynotificationcenter}/bin/swaync-client -t -sw"
+      bind = [
+        # Application Keybinds
+        "$mod, T, exec, ${pkgs.kitty}/bin/kitty"
+        "$mod, E, exec, ${pkgs.xfce.thunar}/bin/thunar"
+        "$mod, R, exec, ${pkgs.pavucontrol}/bin/pavucontrol -t 3" # open pavucontrol on 'outputs' tab
+        "$mod, M, exec, ${pkgs.thunderbird}/bin/thunderbird"
+        # "$mod, B, exec, ${pkgs.waypaper}/bin/waypaper"
+        "$mod, A, exec, ${pkgs.neovide}/bin/neovide"
+        "$mod, N, exec, sleep 0.1 && ${pkgs.swaynotificationcenter}/bin/swaync-client -t -sw"
 
-          # Window actions
-          "$mod, Q, killactive"
-          "$mod, W, togglefloating"
-          "$mod, V, togglesplit"
-          "$mod, Return, fullscreen"
+        # Window actions
+        "$mod, Q, killactive"
+        "$mod, W, togglefloating"
+        "$mod, V, togglesplit"
+        "$mod, Return, fullscreen"
 
-          # Move around
-          "$mod, $Left, movefocus, l"
-          "$mod, $Right, movefocus, r"
-          "$mod, $Up, movefocus, u"
-          "$mod, $Down, movefocus, d"
+        # Move around
+        "$mod, $Left, movefocus, l"
+        "$mod, $Right, movefocus, r"
+        "$mod, $Up, movefocus, u"
+        "$mod, $Down, movefocus, d"
 
-          "$mod, D, workspace, previous"
+        "$mod, D, workspace, previous"
 
-          "$mod, 1, workspace, 1"
-          "$mod+Ctrl, H, workspace, 1"
-          "$mod, 2, workspace, 2"
-          "$mod+Ctrl, J, workspace, 2"
-          "$mod, 3, workspace, 3"
-          "$mod+Ctrl, K, workspace, 3"
-          "$mod, 4, workspace, 4"
-          "$mod+Ctrl, L, workspace, 4"
-          "$mod, 5, workspace, 5"
-          "$mod+Ctrl, semicolon, workspace, 5"
-          "$mod, 6, workspace, 6"
-          "$mod+Ctrl, apostrophe, workspace, 6"
-          "$mod, 7, workspace, 7"
-          "$mod+Ctrl, U, workspace, 7"
-          "$mod, 8, workspace, 8"
-          "$mod+Ctrl, I, workspace, 8"
-          "$mod, 9, workspace, 9"
-          "$mod+Ctrl, O, workspace, 9"
-          "$mod, 0, workspace, 10"
-          "$mod+Ctrl, P, workspace, 10"
+        "$mod, 1, workspace, 1"
+        "$mod+Ctrl, H, workspace, 1"
+        "$mod, 2, workspace, 2"
+        "$mod+Ctrl, J, workspace, 2"
+        "$mod, 3, workspace, 3"
+        "$mod+Ctrl, K, workspace, 3"
+        "$mod, 4, workspace, 4"
+        "$mod+Ctrl, L, workspace, 4"
+        "$mod, 5, workspace, 5"
+        "$mod+Ctrl, semicolon, workspace, 5"
+        "$mod, 6, workspace, 6"
+        "$mod+Ctrl, apostrophe, workspace, 6"
+        "$mod, 7, workspace, 7"
+        "$mod+Ctrl, U, workspace, 7"
+        "$mod, 8, workspace, 8"
+        "$mod+Ctrl, I, workspace, 8"
+        "$mod, 9, workspace, 9"
+        "$mod+Ctrl, O, workspace, 9"
+        "$mod, 0, workspace, 10"
+        "$mod+Ctrl, P, workspace, 10"
 
-          # Move active window to a workspace with mainMod + SHIFT + [0-9]
-          "$mod+Shift, 1, movetoworkspace, 1"
-          "$mod+Ctrl+Shift, H, movetoworkspace, 1"
-          "$mod+Shift, 2, movetoworkspace, 2"
-          "$mod+Ctrl+Shift, J, movetoworkspace, 2"
-          "$mod+Shift, 3, movetoworkspace, 3"
-          "$mod+Ctrl+Shift, K, movetoworkspace, 3"
-          "$mod+Shift, 4, movetoworkspace, 4"
-          "$mod+Ctrl+Shift, L, movetoworkspace, 4"
-          "$mod+Shift, 5, movetoworkspace, 5"
-          "$mod+Ctrl+Shift, semicolon, movetoworkspace, 5"
-          "$mod+Shift, 6, movetoworkspace, 6"
-          "$mod+Ctrl+Shift, apostrophe, movetoworkspace, 6"
-          "$mod+Shift, 7, movetoworkspace, 7"
-          "$mod+Ctrl+Shift, U, movetoworkspace, 7"
-          "$mod+Shift, 8, movetoworkspace, 8"
-          "$mod+Ctrl+Shift, I, movetoworkspace, 8"
-          "$mod+Shift, 9, movetoworkspace, 9"
-          "$mod+Ctrl+Shift, O, movetoworkspace, 9"
-          "$mod+Shift, 0, movetoworkspace, 10"
-          "$mod+Ctrl+Shift, P, movetoworkspace, 10"
+        # Move active window to a workspace with mainMod + SHIFT + [0-9]
+        "$mod+Shift, 1, movetoworkspace, 1"
+        "$mod+Ctrl+Shift, H, movetoworkspace, 1"
+        "$mod+Shift, 2, movetoworkspace, 2"
+        "$mod+Ctrl+Shift, J, movetoworkspace, 2"
+        "$mod+Shift, 3, movetoworkspace, 3"
+        "$mod+Ctrl+Shift, K, movetoworkspace, 3"
+        "$mod+Shift, 4, movetoworkspace, 4"
+        "$mod+Ctrl+Shift, L, movetoworkspace, 4"
+        "$mod+Shift, 5, movetoworkspace, 5"
+        "$mod+Ctrl+Shift, semicolon, movetoworkspace, 5"
+        "$mod+Shift, 6, movetoworkspace, 6"
+        "$mod+Ctrl+Shift, apostrophe, movetoworkspace, 6"
+        "$mod+Shift, 7, movetoworkspace, 7"
+        "$mod+Ctrl+Shift, U, movetoworkspace, 7"
+        "$mod+Shift, 8, movetoworkspace, 8"
+        "$mod+Ctrl+Shift, I, movetoworkspace, 8"
+        "$mod+Shift, 9, movetoworkspace, 9"
+        "$mod+Ctrl+Shift, O, movetoworkspace, 9"
+        "$mod+Shift, 0, movetoworkspace, 10"
+        "$mod+Ctrl+Shift, P, movetoworkspace, 10"
 
-          # Special workspace
-          "$mod, S, togglespecialworkspace"
-          "$mod+Alt, S, movetoworkspacesilent, special"
+        # Special workspace
+        "$mod, S, togglespecialworkspace"
+        "$mod+Alt, S, movetoworkspacesilent, special"
 
-          # Move windows around
-          "$mod+Shift, $Left, movewindow, l"
-          "$mod+Shift, $Right, movewindow, r"
-          "$mod+Shift, $Up, movewindow, u"
-          "$mod+Shift, $Down, movewindow, d"
+        # Move windows around
+        "$mod+Shift, $Left, movewindow, l"
+        "$mod+Shift, $Right, movewindow, r"
+        "$mod+Shift, $Up, movewindow, u"
+        "$mod+Shift, $Down, movewindow, d"
 
-          "$mod+Ctrl, bracketleft, movetoworkspace, r+1"
-          "$mod+Ctrl, bracketright, movetoworkspace, r-1"
+        "$mod+Ctrl, bracketleft, movetoworkspace, r+1"
+        "$mod+Ctrl, bracketright, movetoworkspace, r-1"
 
-          "$mod, bracketleft, workspace, r+1"
-          "$mod, bracketright, workspace, r-1"
+        "$mod, bracketleft, workspace, r+1"
+        "$mod, bracketright, workspace, r-1"
 
-          # Utilities
-          "$mod, Space, exec, pkill -x rofi || rofi -show drun" # Run rofi application launcher
-          "$mod, G, exec, pkill -x rofi || rofi -show window" # Run rofi window switcher
+        # Utilities
+        "$mod, Space, exec, pkill -x rofi || rofi -show drun" # Run rofi application launcher
+        "$mod, G, exec, pkill -x rofi || rofi -show window" # Run rofi window switcher
 
-          ''$mod, P, exec, ${pkgs.grim}/bin/grim -g "$(${pkgs.slurp}/bin/slurp)" - | ${pkgs.swappy}/bin/swappy -f -'' # Screenshot
-          ''$mod+Shift, P, exec, ${pkgs.grim}/bin/grim - | ${pkgs.swappy}/bin/swappy -f -'' # Screenshot
+        ''$mod, P, exec, ${pkgs.grim}/bin/grim -g "$(${pkgs.slurp}/bin/slurp)" - | ${pkgs.swappy}/bin/swappy -f -'' # Screenshot
+        ''$mod+Shift, P, exec, ${pkgs.grim}/bin/grim - | ${pkgs.swappy}/bin/swappy -f -'' # Screenshot
 
-          "$mod, Backspace, exec, pkill -x wlogout || wlogout" # show logout menu
+        "$mod, Backspace, exec, pkill -x wlogout || wlogout" # show logout menu
 
-          "$mod, Z, exec, hyprlock"
+        "$mod, Z, exec, hyprlock"
 
-          # Media controls
-          ",XF86AudioMute, exec, ${pkgs.pamixer}/bin/pamixer -t"
-          ",XF86AudioPlay, exec, ${pkgs.playerctl}/bin/playerctl --player=%any,firefox play-pause"
-          ",XF86AudioNext, exec, ${pkgs.playerctl}/bin/playerctl --player=%any,firefox next"
-          ",XF86AudioRewind, exec, ${pkgs.playerctl}/bin/playerctl --player=%any,firefox previous"
-        ]
-        ++ (
-          if pkgs.system != "aarch64-linux" then [ "$mod, F, exec, zen" ] else [ "$mod, F, exec, floorp" ]
-        );
+        # Media controls
+        ",XF86AudioMute, exec, ${pkgs.pamixer}/bin/pamixer -t"
+        ",XF86AudioPlay, exec, ${pkgs.playerctl}/bin/playerctl --player=%any,firefox play-pause"
+        ",XF86AudioNext, exec, ${pkgs.playerctl}/bin/playerctl --player=%any,firefox next"
+        ",XF86AudioRewind, exec, ${pkgs.playerctl}/bin/playerctl --player=%any,firefox previous"
+        "$mod, F, exec, zen"
+      ];
+      # ++ (
+      #   if pkgs.system != "aarch64-linux" then [ "$mod, F, exec, zen" ] else [ "$mod, F, exec, floorp" ]
+      # );
       bindm = [
         "$mod, mouse:272, movewindow"
         "$mod, mouse:273, resizewindow"
