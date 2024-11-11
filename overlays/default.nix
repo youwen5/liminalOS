@@ -4,7 +4,7 @@
   ...
 }:
 let
-  bleedingpkgs = inputs.bleedingpkgs.legacyPackages.${pkgs.system};
+  # bleedingpkgs = inputs.bleedingpkgs.legacyPackages.${pkgs.system};
   inherit (pkgs) system;
 in
 # stablepkgs = inputs.stablepkgs.legacyPackages.${pkgs.system};
@@ -12,7 +12,6 @@ in
 {
   nixpkgs.overlays = [
     (self: super: {
-      _7zz = bleedingpkgs._7zz;
       zen-browser =
         if system == "x86_64-linux" then
           inputs.zen-browser.packages.${system}.default
