@@ -25,10 +25,6 @@
   services.gnome.gnome-keyring.enable = true;
 
   nix = {
-    settings.experimental-features = [
-      "nix-command"
-      "flakes"
-    ];
     optimise.automatic = true;
     # gc = {
     #   automatic = true;
@@ -40,6 +36,21 @@
       min-free = ${toString (100 * 1024 * 1024)}
       max-free = ${toString (1024 * 1024 * 1024)}
     '';
+
+    settings = {
+      experimental-features = [
+        "nix-command"
+        "flakes"
+      ];
+      substituters = [
+        "https://cache.nixos.org"
+        "https://zen-browser.cachix.org"
+      ];
+      trusted-public-keys = [
+        "hydra.nixos.org-1:CNHJZBh9K4tP3EKF6FkkgeVYsS3ohTl+oS0Qa8bezVs="
+        "zen-browser.cachix.org-1:z/QLGrEkiBYF/7zoHX1Hpuv0B26QrmbVBSy9yDD2tSs="
+      ];
+    };
   };
 
   programs.nh = {

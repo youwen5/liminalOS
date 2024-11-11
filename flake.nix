@@ -86,6 +86,8 @@
       url = "github:youwen5/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    zen-browser-source.url = "github:youwen5/zen-browser-source-flake";
   };
 
   outputs =
