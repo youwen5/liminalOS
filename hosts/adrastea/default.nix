@@ -17,6 +17,7 @@
       ../../modules/linux/audio-prod
       ../../modules/linux/wine
       ../../modules/linux/stylix
+      ../../modules/linux/distrobox
       ../../overlays
       {
         home-manager.useGlobalPkgs = true;
