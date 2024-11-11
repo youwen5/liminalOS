@@ -39,4 +39,6 @@ pkgs: with pkgs; [
   gcc
 
   hledger
+
+  zen-browser
 ]

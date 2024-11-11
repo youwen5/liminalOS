@@ -10,18 +10,14 @@ in
 {
   home.packages =
     (createCommon pkgs)
-    ++ (
-      with pkgs;
-      [
-        bitwarden-desktop
-        modrinth-app
-        lutris
-        sbctl
-        r2modman
-        zoom-us
-      ]
-      ++ [ zen-browser ]
-    );
+    ++ (with pkgs; [
+      bitwarden-desktop
+      modrinth-app
+      lutris
+      sbctl
+      r2modman
+      zoom-us
+    ]);
 
   home.sessionVariables = {
     DEFAULT_BROWSER = "${zen-browser}/bin/zen";
