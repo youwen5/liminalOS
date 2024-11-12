@@ -4,13 +4,20 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     # stablepkgs.url = "github:nixos/nixpkgs/nixos-24.05";
-    bleedingpkgs.url = "github:nixos/nixpkgs/master";
+    # bleedingpkgs.url = "github:nixos/nixpkgs/master";
     # nixpkgs-unstable-small.url = "github:nixos/nixpkgs/nixos-unstable-small";
 
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    flake-parts = {
+      url = "github:hercules-ci/flake-parts";
+      inputs.nixpkgs-lib.follows = "nixpkgs";
+    };
+
+    flake-utils.url = "github:numtide/flake-utils";
 
     nix-darwin = {
       url = "github:LnL7/nix-darwin";
@@ -35,14 +42,13 @@
     lanzaboote = {
       url = "github:nix-community/lanzaboote/v0.4.1";
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-parts.follows = "flake-parts";
     };
 
     lix-module = {
       url = "https://git.lix.systems/lix-project/nixos-module/archive/2.91.1-1.tar.gz";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    flake-parts.url = "github:hercules-ci/flake-parts";
 
     apple-silicon = {
       # url = "github:tpwrules/nixos-apple-silicon";
@@ -68,6 +74,7 @@
     vesktop-bin = {
       url = "github:youwen5/vesktop-bin-flake";
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-utils.follows = "flake-utils";
     };
 
     stylix.url = "github:danth/stylix";
@@ -88,6 +95,7 @@
     };
 
     zen-browser-source.url = "github:youwen5/zen-browser-source-flake";
+    zen-browser-source.inputs.flake-parts.follows = "flake-parts";
   };
 
   outputs =
