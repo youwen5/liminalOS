@@ -59,6 +59,11 @@
     initrd.systemd.enable = true;
   };
 
+  services.ucodenix = {
+    enable = true;
+    cpuModelId = "00A50F00";
+  };
+
   # boot.lanzaboote = {
   #   enable = false;
   #   pkiBundle = "/etc/secureboot";

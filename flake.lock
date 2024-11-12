@@ -850,6 +850,7 @@
         "nixpkgs": "nixpkgs_2",
         "spicetify": "spicetify",
         "stylix": "stylix",
+        "ucode": "ucode",
         "vesktop-bin": "vesktop-bin",
         "viminal": "viminal",
         "wallpapers": "wallpapers",
@@ -1087,6 +1088,26 @@
       "original": {
         "owner": "tinted-theming",
         "repo": "tinted-tmux",
+        "type": "github"
+      }
+    },
+    "ucode": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1731428847,
+        "narHash": "sha256-x+Q0I+R+aBZoJIEuBFDDJFjFu+todWsZJXrQkAuVh/o=",
+        "owner": "e-tho",
+        "repo": "ucodenix",
+        "rev": "404f4adc330b4a4047cecbc4457d4ae2abe69bed",
+        "type": "github"
+      },
+      "original": {
+        "owner": "e-tho",
+        "repo": "ucodenix",
         "type": "github"
       }
     },

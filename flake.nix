@@ -45,6 +45,11 @@
       inputs.flake-parts.follows = "flake-parts";
     };
 
+    ucode = {
+      url = "github:e-tho/ucodenix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     lix-module = {
       url = "https://git.lix.systems/lix-project/nixos-module/archive/2.91.1-1.tar.gz";
       inputs.nixpkgs.follows = "nixpkgs";
