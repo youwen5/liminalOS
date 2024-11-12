@@ -12,13 +12,7 @@ in
 {
   nixpkgs.overlays = [
     (self: super: {
-      zen-browser =
-        if system == "x86_64-linux" then
-          inputs.zen-browser.packages.${system}.default
-        else if system == "aarch64-linux" then
-          inputs.zen-browser-source.packages.${system}.default
-        else
-          null;
+      zen-browser = inputs.zen-browser.packages.${system}.default;
     })
   ];
 }
