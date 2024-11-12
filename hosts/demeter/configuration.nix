@@ -165,6 +165,8 @@
 
   programs.hyprland.enable = true;
 
+  hardware.cpu.intel.updateMicrocode = true;
+
   programs.zsh.enable = false;
   programs.fish.enable = true;
   users.users.youwen.shell = pkgs.fish;
