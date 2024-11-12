@@ -1140,11 +1140,11 @@
     "wallpapers": {
       "flake": false,
       "locked": {
-        "lastModified": 1728627625,
-        "narHash": "sha256-jUxxF2LFhhL+OpSikTNnxpIIjqMNG6jo0xith81I+t4=",
+        "lastModified": 1731402244,
+        "narHash": "sha256-TbVW6m/gKDA5EBZVFdJ6TpTHYcJQqtQA1fGXF3GqJio=",
         "ref": "refs/heads/main",
-        "rev": "c917d2166977961abdc572020f1dc645c224bb5f",
-        "revCount": 7,
+        "rev": "9f7baf7300645df2f0e1b3e12a930ca88f05ca42",
+        "revCount": 8,
         "type": "git",
         "url": "https://code.youwen.dev/youwen5/wallpapers"
       },
