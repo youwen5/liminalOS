@@ -39,7 +39,7 @@
       "rd.systemd.show_status=false"
       "rd.udev.log_level=3"
       "udev.log_priority=3"
-      "display=HDMI-A-1:2560x1440@144D"
+      # "display=HDMI-A-1:2560x1440@144D"
     ];
     # Hide the OS choice for bootloaders.
     # It's still possible to open the bootloader list by pressing any key
