@@ -14,17 +14,6 @@
     # ./apple-silicon-support
   ];
 
-  systemd.package = pkgs.systemd.overrideAttrs (
-    finalAttrs: prevAttrs: {
-      patches = (prevAttrs.patches or [ ]) ++ [
-        (pkgs.fetchpatch {
-          url = "https://gist.githubusercontent.com/andre4ik3/41c71a56e6d5657f7e2b4110d6f83430/raw/c7ef5842959a68d352a9018c6630019419b08b9e/0001-Revert-boot-Make-initrd_prepare-semantically-equival.patch";
-          hash = "sha256-WvO8wopQVBBV4unCRW406injEY7P8JSnoBRxHACyG08=";
-        })
-      ];
-    }
-  );
-
   boot = {
     loader.systemd-boot.enable = true;
     loader.efi.canTouchEfiVariables = false;
