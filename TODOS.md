@@ -5,11 +5,11 @@
 
 ## P2
 
-- [ ] Move wallpapers to submodule
-- [ ] Move Neovim to submodule
-
+- Implement custom newtab page
 
 ## Done
 
 - [x] Add Nvidia-specific config options for Hyprland (blocked by P1)
 - [x] Massively refactor module system
+- [x] Move wallpapers to submodule
+- [x] Move Neovim to submodule
