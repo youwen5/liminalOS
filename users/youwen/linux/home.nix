@@ -2,6 +2,7 @@
   inputs,
   pkgs,
   osConfig,
+  config,
   ...
 }:
 {
@@ -23,20 +24,20 @@
   #     xxx
   # '';
 
-  home.file.".wallpapers" = {
-    source = inputs.wallpapers;
-    recursive = true;
-  };
+  # home.file.".wallpapers" = {
+  #   source = inputs.wallpapers;
+  #   recursive = true;
+  # };
+  #
+  # home.file.".config/easyeffects/input" = {
+  #   source = ./easyeffects/input;
+  #   recursive = true;
+  # };
 
-  home.file.".config/easyeffects/input" = {
-    source = ./easyeffects/input;
-    recursive = true;
-  };
-
-  home.file.".config/easyeffects/output" = {
-    source = ./easyeffects/output;
-    recursive = true;
-  };
+  # home.file.".config/easyeffects/output" = {
+  #   source = ./easyeffects/output;
+  #   recursive = true;
+  # };
   # This value determines the home Manager release that your
   # configuration is compatible with. This helps avoid breakage
   # when a new home Manager release introduces backwards
@@ -94,6 +95,7 @@
     #   doas nixos-rebuild --flake ~/.config/liminalOS\#${osConfig.networking.hostName} switch &| nom
     # '';
     nh = {
+      # wrapper for nh as it doesn't work with `doas`
       body = ''
         if count $argv > /dev/null
           if contains -- os $argv or contains -- clean $argv
@@ -107,5 +109,17 @@
       '';
     };
     spt = "${pkgs.spotify-player}/bin/spotify_player";
+  };
+
+  home.file = {
+    ".config/vesktop/settings.json".source = config.lib.file.mkOutOfStoreSymlink ./var/settings.json;
+    ".config/easyeffects/output" = {
+      source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.config/liminalOS/users/youwen/linux/var/easyeffects/output";
+      recursive = true;
+    };
+    ".config/easyeffects/input" = {
+      source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.config/liminalOS/users/youwen/linux/var/easyeffects/input";
+      recursive = true;
+    };
   };
 }
