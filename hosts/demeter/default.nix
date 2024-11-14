@@ -19,7 +19,6 @@
     ../../modules/linux/wine
     ../../overlays
 
-    lix-module.nixosModules.default
     lanzaboote.nixosModules.lanzaboote
     home-manager.nixosModules.home-manager
     {

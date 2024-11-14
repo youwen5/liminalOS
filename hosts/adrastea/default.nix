@@ -44,7 +44,6 @@
       }
     ]
     ++ (with inputs; [
-      lix-module.nixosModules.default
       home-manager.nixosModules.home-manager
       ucode.nixosModules.default
     ]);
