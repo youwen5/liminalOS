@@ -88,7 +88,6 @@
 
     zen-browser = {
       url = "github:youwen5/zen-browser-flake";
-      inputs.zen-browser-source.inputs.flake-parts.follows = "flake-parts";
     };
   };
 
