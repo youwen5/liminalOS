@@ -311,9 +311,6 @@
       input = {
         sensitivity = "-0.65";
       };
-      shadow = {
-        enabled = false;
-      };
     };
   };
 
