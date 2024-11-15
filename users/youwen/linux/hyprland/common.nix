@@ -307,6 +307,9 @@
           xray = "false";
           special = true;
         };
+        shadow = {
+          enabled = false;
+        };
       };
       input = {
         sensitivity = "-0.65";
