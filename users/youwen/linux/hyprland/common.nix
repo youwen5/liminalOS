@@ -295,9 +295,12 @@
         hide_on_key_press = true;
       };
 
+      shadow = {
+        enabled = false;
+      };
+
       decoration = {
         rounding = "10";
-        drop_shadow = "false";
         dim_special = "0.3";
         blur = {
           enabled = "yes";
