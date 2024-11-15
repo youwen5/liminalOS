@@ -295,10 +295,6 @@
         hide_on_key_press = true;
       };
 
-      shadow = {
-        enabled = false;
-      };
-
       decoration = {
         rounding = "10";
         dim_special = "0.3";
@@ -314,6 +310,9 @@
       };
       input = {
         sensitivity = "-0.65";
+      };
+      shadow = {
+        enabled = false;
       };
     };
   };

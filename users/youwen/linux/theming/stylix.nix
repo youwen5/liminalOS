@@ -7,5 +7,6 @@
     gnome.enable = true;
     swaync.enable = false;
     hyprlock.enable = false;
+    hyprland.enable = false;
   };
 }
