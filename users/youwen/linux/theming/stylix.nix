@@ -6,5 +6,6 @@
     kde.enable = true;
     gnome.enable = true;
     swaync.enable = false;
+    hyprlock.enable = false;
   };
 }

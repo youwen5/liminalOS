@@ -106,11 +106,11 @@
         "$mod+Shift, $Up, movewindow, u"
         "$mod+Shift, $Down, movewindow, d"
 
-        "$mod+Ctrl, bracketleft, movetoworkspace, r+1"
-        "$mod+Ctrl, bracketright, movetoworkspace, r-1"
+        "$mod+Ctrl, bracketright, movetoworkspace, r+1"
+        "$mod+Ctrl, bracketleft, movetoworkspace, r-1"
 
-        "$mod, bracketleft, workspace, r+1"
-        "$mod, bracketright, workspace, r-1"
+        "$mod, bracketright, workspace, r+1"
+        "$mod, bracketleft, workspace, r-1"
 
         # Utilities
         "$mod, Space, exec, pkill -x rofi || rofi -show drun" # Run rofi application launcher
