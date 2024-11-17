@@ -5,7 +5,6 @@
 }:
 let
   createCommon = import ../common-packages.nix;
-  zen-browser = inputs.zen-browser.packages.${pkgs.system}.specific;
 in
 {
   home.packages =
@@ -20,6 +19,6 @@ in
     ]);
 
   home.sessionVariables = {
-    DEFAULT_BROWSER = "${zen-browser}/bin/zen";
+    DEFAULT_BROWSER = "${pkgs.zen-browser}/bin/zen";
   };
 }

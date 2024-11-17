@@ -8,4 +8,7 @@ in
     ++ [
     ];
 
+  home.sessionVariables = {
+    DEFAULT_BROWSER = "${pkgs.zen-browser}/bin/zen";
+  };
 }
