@@ -6,6 +6,7 @@
 ## P2
 
 - Implement custom newtab page
+- Switch from waybar to eww
 
 ## Done
 
