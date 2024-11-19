@@ -36,7 +36,7 @@
         "$mod, R, exec, ${pkgs.pavucontrol}/bin/pavucontrol -t 3" # open pavucontrol on 'outputs' tab
         "$mod, M, exec, ${pkgs.thunderbird}/bin/thunderbird"
         # "$mod, B, exec, ${pkgs.waypaper}/bin/waypaper"
-        "$mod, A, exec, ${pkgs.neovide}/bin/neovide"
+        # "$mod, A, exec, ${pkgs.neovide}/bin/neovide"
         "$mod, N, exec, sleep 0.1 && ${pkgs.swaynotificationcenter}/bin/swaync-client -t -sw"
 
         # Window actions
