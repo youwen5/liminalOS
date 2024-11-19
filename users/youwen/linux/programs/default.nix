@@ -25,7 +25,7 @@
   };
 
   programs.neovide = {
-    enable = true;
+    enable = false;
     settings = {
       font = {
         normal = [ "CaskaydiaCove Nerd Font" ];
