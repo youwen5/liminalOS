@@ -23,12 +23,14 @@
       "$Right" = "L";
       "$Up" = "K";
       "$Down" = "J";
-      # env = [
-      #   "HYPRCURSOR_THEME,Bibata-Modern-Ice"
-      #   "HYPRCURSOR_SIZE,26"
-      #   "XCURSOR_THEME,Bibata-Modern-Ice"
-      #   "XCURSOR_SIZE,26"
-      # ];
+      env = [
+        #   "HYPRCURSOR_THEME,Bibata-Modern-Ice"
+        #   "HYPRCURSOR_SIZE,26"
+        #   "XCURSOR_THEME,Bibata-Modern-Ice"
+        #   "XCURSOR_SIZE,26"
+        # fix <https://github.com/NixOS/nixpkgs/issues/353990>
+        "GSK_RENDERER,gl"
+      ];
       bind = [
         # Application Keybinds
         "$mod, T, exec, ${pkgs.kitty}/bin/kitty"
