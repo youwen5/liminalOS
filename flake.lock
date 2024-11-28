@@ -1072,11 +1072,11 @@
         "zen-browser-source": "zen-browser-source"
       },
       "locked": {
-        "lastModified": 1731397745,
-        "narHash": "sha256-Dcgf1mW46TVEOc0BxsaGcpnxxWOQLRglguFoRTYy/1c=",
+        "lastModified": 1732756177,
+        "narHash": "sha256-YQCwhl6YFeWBwEyhzs0c4AFZ3zwCWcnDmyYEfkPG/Zw=",
         "owner": "youwen5",
         "repo": "zen-browser-flake",
-        "rev": "5b37eb79b4f909506492f12f5ad0c231023159f6",
+        "rev": "716c2ef3ae1bd06f4f817e3463c4b7a1d84b7cde",
         "type": "github"
       },
       "original": {
