@@ -28,6 +28,26 @@
     };
   };
 
+  boot = {
+    plymouth = {
+      enable = true;
+      font = "${config.stylix.fonts.monospace.package}/share/fonts/truetype/NerdFonts/CaskaydiaCoveNerdFontMono-Regular.ttf";
+    };
+
+    # Enable "Silent Boot"
+    consoleLogLevel = 3;
+    initrd.verbose = false;
+    kernelParams = [
+      "quiet"
+      "splash"
+      "boot.shell_on_fail"
+      "rd.systemd.show_status=false"
+      "rd.udev.log_level=3"
+      "udev.log_priority=3"
+    ];
+    initrd.systemd.enable = true;
+  };
+
   boot.lanzaboote = {
     enable = true;
     pkiBundle = "/etc/secureboot";
@@ -69,6 +89,8 @@
   systemd.services = {
     NetworkManager-wait-online.enable = false;
   };
+
+  hardware.enableAllFirmware = true;
 
   # Enable the X11 windowing system.
   # You can disable this if you're only using the Wayland session.
