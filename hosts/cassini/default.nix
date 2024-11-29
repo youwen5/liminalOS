@@ -24,7 +24,7 @@
               ../../users/youwen/common
               ../../users/youwen/linux/theming
               ../../users/youwen/linux/home.nix
-              ../../users/youwen/common/fastfetch
+              (import ../../users/youwen/common/fastfetch { kitty = false; })
             ]
             ++ (with inputs; [
               nix-index-database.hmModules.nix-index

@@ -31,7 +31,7 @@
               ../../users/youwen/linux/laptop
               ../../users/youwen/linux/packages/x86_64
               ../../users/youwen/linux/programs
-              ../../users/youwen/common/fastfetch
+              (import ../../users/youwen/common/fastfetch { })
               ../../users/youwen/common
               ../../users/youwen/linux/spicetify
               ./home-manager-extras

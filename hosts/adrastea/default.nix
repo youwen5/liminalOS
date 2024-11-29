@@ -34,7 +34,7 @@
               ../../users/youwen/linux/programs
               ../../users/youwen/common
               ../../users/youwen/linux/spicetify
-              ../../users/youwen/common/fastfetch
+              (import ../../users/youwen/common/fastfetch { })
             ]
             ++ (with inputs; [
               nix-index-database.hmModules.nix-index

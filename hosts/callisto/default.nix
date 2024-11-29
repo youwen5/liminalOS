@@ -30,7 +30,7 @@
               ../../users/youwen/common
               ../../users/youwen/linux/laptop
               ../../users/youwen/linux/packages/aarch-64
-              ../../users/youwen/common/fastfetch
+              (import ../../users/youwen/common/fastfetch { })
               ./home-manager-extras
             ]
             ++ (with inputs; [
