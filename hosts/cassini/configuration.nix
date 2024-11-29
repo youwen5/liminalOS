@@ -7,7 +7,7 @@
   ...
 }:
 {
-  networking.hostName = "adrastea"; # Define your hostname.
+  networking.hostName = "cassini"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Set your time zone.
