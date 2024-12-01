@@ -26,7 +26,7 @@
       #     selected_themes = [ "rings" ];
       #   })
       # ];
-      font = "${config.stylix.fonts.monospace.package}/share/fonts/truetype/NerdFonts/CaskaydiaCoveNerdFontMono-Regular.ttf";
+      font = "${config.stylix.fonts.monospace.package}/share/fonts/truetype/NerdFonts/CaskaydiaCove/CaskaydiaCoveNerdFontMono-Regular.ttf";
     };
 
     # Enable "Silent Boot"
