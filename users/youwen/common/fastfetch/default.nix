@@ -12,8 +12,14 @@ in
     settings = (
       fastfetchConfig
       // {
-        logo.type = if kitty == "cassini" then "auto" else "kitty";
-        logo.source = ./nixos-logo.png;
+        logo = {
+          height = 18;
+          padding = {
+            top = 2;
+          };
+          type = if kitty == "cassini" then "auto" else "kitty";
+          source = ./nixos-logo.png;
+        };
       }
     );
   };
