@@ -65,4 +65,6 @@
     nssmdns4 = true;
     openFirewall = true;
   };
+
+  boot.tmp.cleanOnBoot = true;
 }
