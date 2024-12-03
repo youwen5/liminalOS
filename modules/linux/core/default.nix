@@ -44,11 +44,9 @@
       ];
       substituters = [
         "https://cache.nixos.org"
-        "https://zen-browser.cachix.org"
       ];
       trusted-public-keys = [
         "hydra.nixos.org-1:CNHJZBh9K4tP3EKF6FkkgeVYsS3ohTl+oS0Qa8bezVs="
-        "zen-browser.cachix.org-1:z/QLGrEkiBYF/7zoHX1Hpuv0B26QrmbVBSy9yDD2tSs="
       ];
     };
   };
