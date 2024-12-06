@@ -158,9 +158,9 @@
             rightalt = "layer(rightalt)";
           };
           rightalt = {
-            i = "up";
-            j = "left";
-            k = "down";
+            h = "left";
+            j = "down";
+            k = "up";
             l = "right";
           };
         };
