@@ -1040,11 +1040,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1733477263,
-        "narHash": "sha256-7bIjM15TyfZU+/EjTaA2XlBD6XE75/7H2ffJZPd7agQ=",
+        "lastModified": 1733621215,
+        "narHash": "sha256-7fKqaPkD9E0Niu6/Y6zj1aBvr5KUQzV4zw2JYb7abpY=",
         "owner": "youwen5",
         "repo": "zen-browser-flake",
-        "rev": "e2ab636ee8ba1ca8455e5fc37b9ed0148a66be3a",
+        "rev": "b6d3347c4d38e7e1900a5b4dedac1061806dc592",
         "type": "github"
       },
       "original": {

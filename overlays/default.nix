@@ -14,6 +14,7 @@ in
     (import ../pkgs { inherit pkgs; })
     (self: super: {
       zen-browser = inputs.zen-browser.packages.${system}.default;
+      zen-browser-unwrapped = inputs.zen-browser.packages.${system}.zen-browser-unwrapped;
     })
   ];
 }
