@@ -25,15 +25,15 @@
         "rust-overlay": "rust-overlay"
       },
       "locked": {
-        "lastModified": 1731536673,
-        "narHash": "sha256-bEkcE98/AwmKzlipCruFdf3KK3CBmtfzabquHtrKURM=",
-        "owner": "zzywysm",
+        "lastModified": 1733524679,
+        "narHash": "sha256-9T6roXCVb5vJQBtqq4ZNeDOGrDj2ov70FVW+CSnLa98=",
+        "owner": "youwen5",
         "repo": "nixos-asahi",
-        "rev": "09d4e26b7d49323faad37264763cf57988cfd720",
+        "rev": "a15ec33c04b00b44e79ec17688e3b5219a765935",
         "type": "github"
       },
       "original": {
-        "owner": "zzywysm",
+        "owner": "youwen5",
         "repo": "nixos-asahi",
         "type": "github"
       }

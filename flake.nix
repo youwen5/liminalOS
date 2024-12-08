@@ -49,7 +49,8 @@
 
     apple-silicon = {
       # url = "github:tpwrules/nixos-apple-silicon";
-      url = "github:zzywysm/nixos-asahi";
+      # url = "github:zzywysm/nixos-asahi";
+      url = "github:youwen5/nixos-asahi";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
