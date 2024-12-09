@@ -571,11 +571,11 @@
     },
     "nixCats": {
       "locked": {
-        "lastModified": 1733033563,
-        "narHash": "sha256-AnVCeE9yEaMVes3RwsoFSxi2etJ9MhuOHFL+4uDi8IQ=",
+        "lastModified": 1733575662,
+        "narHash": "sha256-kU7utHrn7FpOWflW5z+YCEFySs4ZKFoING9DBN1jMt8=",
         "owner": "BirdeeHub",
         "repo": "nixCats-nvim",
-        "rev": "37d89a3ebe56aa34c06e113302331a347d6d88ed",
+        "rev": "c1507cc417534ea657b03fcdb6859abe6a00c8d5",
         "type": "github"
       },
       "original": {
@@ -1020,11 +1020,11 @@
         "plugins-typst-preview": "plugins-typst-preview"
       },
       "locked": {
-        "lastModified": 1733469194,
-        "narHash": "sha256-4EEAep3OeFwabSck2p1pmFiuLDqOwm34N9SVK9QcwP8=",
+        "lastModified": 1733730753,
+        "narHash": "sha256-Jt3Ct8nx6chQIDOdYpgOJP/sJiyWjPdoyGQuQR3Ey54=",
         "ref": "refs/heads/main",
-        "rev": "7cc21ca45df107b1a5c2024698c8ba6de231665b",
-        "revCount": 63,
+        "rev": "818ecc67217c06b2aee0643c0bff4ecd0fb92e6a",
+        "revCount": 66,
         "type": "git",
         "url": "https://code.youwen.dev/youwen5/viminal2"
       },
