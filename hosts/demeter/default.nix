@@ -17,6 +17,7 @@
       ../../modules/linux/audio-prod
       ../../modules/linux/stylix
       ../../modules/linux/wine
+      ../../modules/linux/flatpak
       ../../overlays
       {
         home-manager.useGlobalPkgs = true;

@@ -126,8 +126,6 @@
 
   services.xserver.videoDrivers = [ "nvidia" ];
 
-  services.flatpak.enable = true;
-
   # services.desktopManager.plasma6.enable = true;
 
   # Configure keymap in X11
