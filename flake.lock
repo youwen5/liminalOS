@@ -998,11 +998,11 @@
         "vesktop-bin-x86_64": "vesktop-bin-x86_64"
       },
       "locked": {
-        "lastModified": 1733891532,
-        "narHash": "sha256-x/8b6MRY3HkmNM7YBjRPT9LPyKQD6OXh0E+EdxqaHY0=",
+        "lastModified": 1733892971,
+        "narHash": "sha256-AWU9HyBNx0hn6UwjVU2eNGR2unuJLYIFkEgszLGtjNc=",
         "owner": "youwen5",
         "repo": "vesktop-bin-flake",
-        "rev": "70a9d9a16dad7b97afc1cf08b7d0e04751dd3fda",
+        "rev": "5c915f8351765657acb632141344f99e3a426f9b",
         "type": "github"
       },
       "original": {
