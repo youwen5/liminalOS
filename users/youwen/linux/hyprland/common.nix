@@ -156,6 +156,7 @@
         "opacity 0.90 0.90,class:^(librewolf)$"
         "opacity 0.90 0.90,class:^(floorp)$"
         "opacity 0.90 0.90,class:^(zen-alpha)$"
+        "opacity 0.90 0.90,class:^(zen-beta)$"
         "opacity 0.90 0.90,class:^(Brave-browser)$"
         "opacity 0.80 0.80,class:^(Steam)$"
         "opacity 0.80 0.80,class:^(steam)$"
