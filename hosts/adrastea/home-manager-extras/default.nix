@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 {
   wayland.windowManager.hyprland.settings.monitor = pkgs.lib.mkForce [
     # "eDP-1,2560x1440@165,0x0,1.6"
@@ -16,4 +16,5 @@
   ];
 
   programs.waybar.settings.mainBar.output = "HDMI-A-1";
+  programs.hyprlock.settings.background.monitor = lib.mkForce "HDMI-A-1";
 }
