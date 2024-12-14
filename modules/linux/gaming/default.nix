@@ -2,6 +2,8 @@
 {
   environment.systemPackages = with pkgs; [
     ryujinx
+    mangohud
+    mangojuice
   ];
   programs.steam = {
     enable = true;
@@ -12,6 +14,22 @@
   };
 
   programs.gamescope.enable = true;
+
+  programs.gamemode = {
+    enable = true;
+    enableRenice = true;
+    settings = {
+      general = {
+        renice = 10;
+      };
+      custom = {
+        start = "${pkgs.libnotify}/bin/notify-send 'GameMode engaged'";
+        end = "${pkgs.libnotify}/bin/notify-send 'GameMode disengaged'";
+      };
+    };
+  };
+
+  users.users.youwen.extraGroups = [ "gamemode" ];
 
   nixpkgs.config.packageOverrides = pkgs: {
     steam = pkgs.steam.override {
