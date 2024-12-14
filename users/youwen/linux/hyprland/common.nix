@@ -1,5 +1,6 @@
 {
   pkgs,
+  config,
   ...
 }:
 {
@@ -123,7 +124,7 @@
 
         "$mod, Backspace, exec, pkill -x wlogout || wlogout" # show logout menu
 
-        "$mod, Z, exec, hyprlock"
+        "$mod, Z, exec, loginctl lock-session"
 
         # Media controls
         ",XF86AudioMute, exec, ${pkgs.pamixer}/bin/pamixer -t"
@@ -332,10 +333,10 @@
       };
       background = {
         monitor = "";
-        path = "screenshot";
+        path = "/tmp/__hyprlock-monitor-screenshot.png";
         blur_passes = 3;
         blur_size = 7;
-        noise = 1.17e-2;
+        noise = 0.0117;
         contrast = 0.8916;
         brightness = 0.8172;
         vibrancy = 0.1696;
@@ -379,7 +380,7 @@
     enable = true;
     settings = {
       general = {
-        lock_cmd = "pidof hyprlock || ${pkgs.hyprlock}/bin/hyprlock"; # avoid starting multiple hyprlock instances.
+        lock_cmd = "pidof hyprlock || ${pkgs.grim}/bin/grim -o ${config.programs.hyprlock.settings.background.monitor} /tmp/__hyprlock-monitor-screenshot.png && ${pkgs.hyprlock}/bin/hyprlock"; # avoid starting multiple hyprlock instances.
         before_sleep_cmd = "loginctl lock-session"; # lock before suspend.
         after_sleep_cmd = "hyprctl dispatch dpms on"; # to avoid having to press a key twice to turn on the display.
       };
