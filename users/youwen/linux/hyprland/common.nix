@@ -179,6 +179,7 @@
         "opacity 0.80 0.80,class:^(kvantummanager)$"
         "opacity 0.80 0.80,class:^(waypaper)$"
         "opacity 0.80 0.80,class:^(org.pulseaudio.pavucontrol)$"
+        "opacity 0.80 0.80,class:^(com.github.wwmm.easyeffects)$"
         "opacity 0.80 0.80,class:^(thunderbird)$"
 
         "opacity 0.90 0.90,class:^(com.github.rafostar.Clapper)$ # Clapper-Gtk"
