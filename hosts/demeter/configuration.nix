@@ -53,7 +53,8 @@
     pkiBundle = "/etc/secureboot";
   };
 
-  boot.initrd.luks.devices."luks-af320a0f-b388-43f5-b5a3-af2b47cfc716".device = "/dev/disk/by-uuid/af320a0f-b388-43f5-b5a3-af2b47cfc716";
+  boot.initrd.luks.devices."luks-af320a0f-b388-43f5-b5a3-af2b47cfc716".device =
+    "/dev/disk/by-uuid/af320a0f-b388-43f5-b5a3-af2b47cfc716";
 
   networking.hostName = "demeter"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -165,13 +166,6 @@
     git
     curl
   ];
-
-  environment.variables = {
-    EDITOR = "nvim";
-  };
-
-  # tells electron apps to use Wayland
-  environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

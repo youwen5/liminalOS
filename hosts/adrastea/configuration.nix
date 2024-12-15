@@ -86,7 +86,8 @@
   #   };
   # };
 
-  boot.initrd.luks.devices."luks-52d1be6d-b32f-41e0-a6d7-2ff52599fe7c".device = "/dev/disk/by-uuid/52d1be6d-b32f-41e0-a6d7-2ff52599fe7c";
+  boot.initrd.luks.devices."luks-52d1be6d-b32f-41e0-a6d7-2ff52599fe7c".device =
+    "/dev/disk/by-uuid/52d1be6d-b32f-41e0-a6d7-2ff52599fe7c";
 
   services.tlp.enable = true;
 
@@ -205,13 +206,6 @@
     git
     curl
   ];
-
-  environment.variables = {
-    EDITOR = "nvim";
-  };
-
-  # tells electron apps to use Wayland
-  environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
