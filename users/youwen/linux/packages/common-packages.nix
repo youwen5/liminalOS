@@ -28,7 +28,6 @@ pkgs: with pkgs; [
 
   # messengers
   signal-desktop
-  vesktop
   iamb
   discordo
 

@@ -6,6 +6,7 @@
     ../programs
     ../hyprland/laptop
     ../waybar/laptop
+    ../vesktop
   ];
 
   # some overrides for laptop specifically

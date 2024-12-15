@@ -5,5 +5,6 @@
     ../programs
     ../hyprland/desktop
     ../waybar/desktop
+    ../vesktop
   ];
 }
