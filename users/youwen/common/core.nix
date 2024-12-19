@@ -1,7 +1,4 @@
 { pkgs, ... }:
-let
-  inherit (builtins) readFile;
-in
 {
   home.file.".essentials" = {
     source = ./essentials;
@@ -77,14 +74,6 @@ in
     extensions = [ pkgs.github-copilot-cli ];
   };
 
-  # programs.oh-my-posh = {
-  #   enable = true;
-  #   # enableZshIntegration = true;
-  #   enableFishIntegration = true;
-  #   enableBashIntegration = true;
-  #   useTheme = "gruvbox";
-  # };
-
   programs.starship = {
     enable = true;
     enableFishIntegration = true;
@@ -92,7 +81,7 @@ in
     enableNushellIntegration = true;
   };
 
-  home.file.".config/starship.toml".text = readFile ./jetpack.toml;
+  home.file.".config/starship.toml".text = builtins.readFile ./jetpack.toml;
 
   programs.direnv = {
     enable = true;
