@@ -14,6 +14,17 @@
     # ./apple-silicon-support
   ];
 
+  liminalOS = {
+    system = {
+      audio.enable = true;
+      networking = {
+        enable = true;
+        firewallPresets.vite = true;
+        cloudflareNameservers.enable = true;
+      };
+    };
+  };
+
   boot = {
     loader.systemd-boot.enable = true;
     loader.efi.canTouchEfiVariables = false;
