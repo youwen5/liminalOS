@@ -27,6 +27,7 @@
     theming = {
       enable = true;
     };
+    desktop.greeter.enable = true;
   };
 
   boot = {
