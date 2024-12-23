@@ -9,14 +9,14 @@
   ...
 }:
 let
-  cfg = config.liminalOS.programs.flatpaks;
+  cfg = config.liminalOS.programs.flatpak;
 in
 {
   imports = [
-    inputs.${cfg.moduleName}.nixosModules.nix-flatpak
+    inputs.nix-flatpak.nixosModules.nix-flatpak
   ];
 
-  options.liminalOS.programs.flatpaks = {
+  options.liminalOS.programs.flatpak = {
     enable = lib.mkOption {
       type = lib.types.bool;
       default = false;

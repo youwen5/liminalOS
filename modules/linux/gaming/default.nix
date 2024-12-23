@@ -15,7 +15,7 @@ in
       gamemode = {
         enable = lib.mkEnableOption "gamemode";
         gamemodeUsers = lib.mkOption {
-          type = lib.types.listOf lib.types.string;
+          type = lib.types.listOf lib.types.str;
           default = [ ];
           description = ''
             List of users to add to the gamemode group. Gamemode will likely not work unless you add your user to the group!
@@ -44,7 +44,7 @@ in
         mangojuice
       ];
 
-      liminalOS.programs.flatpaks.enable = true;
+      liminalOS.programs.flatpak.enable = true;
 
       services.flatpak.packages = lib.mkIf cfg.roblox.enable [
         {
@@ -82,7 +82,7 @@ in
       };
 
       users.users = forAllGamemodeUsers (username: {
-        ${username}.extraGroups = [ "gamemode" ];
+        extraGroups = [ "gamemode" ];
       });
 
       services.logmein-hamachi.enable = cfg.utilities.hamachi.enable;

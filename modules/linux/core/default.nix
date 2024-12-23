@@ -46,8 +46,8 @@ in
       '';
     };
     flakeLocation = lib.mkOption {
-      type = lib.types.str;
-      default = "";
+      type = lib.types.nullOr lib.types.path;
+      default = null;
       description = ''
         Absolute filepath location of the NixOS system configuration flake.
       '';

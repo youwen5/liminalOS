@@ -5,7 +5,7 @@
   ...
 }:
 let
-  cfg = config.liminalOS.system.printing;
+  cfg = config.liminalOS.system;
   inherit (lib) mkIf;
 in
 {
@@ -17,7 +17,13 @@ in
         Whether to set up default options for printing and printer discover on UNIX.
       '';
     };
-    fonts.enable = lib.mkEnableOption "fonts";
+    fonts.enable = lib.mkOption {
+      type = lib.types.bool;
+      default = config.liminalOS.enable;
+      description = ''
+        Whether to set up some nice default fonts, including a Nerd Font, Noto Fonts, and CJK.
+      '';
+    };
     distrobox.enable = lib.mkEnableOption "distrobox and podman";
   };
 
@@ -45,11 +51,11 @@ in
         ]);
     };
 
-    virtualisation.podman = cfg.distrobox.enable {
+    virtualisation.podman = mkIf cfg.distrobox.enable {
       enable = true;
       dockerCompat = true;
     };
 
-    environment.systemPackages = cfg.distrobox.enable [ pkgs.distrobox ];
+    environment.systemPackages = mkIf cfg.distrobox.enable [ pkgs.distrobox ];
   };
 }

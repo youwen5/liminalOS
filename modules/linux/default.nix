@@ -4,16 +4,23 @@
     ./audio
     ./audio-prod
     ./core
-    ./desktop-portal
+    ./desktop-environment
     ./distrobox
     ./flatpak
-    ./fonts
     ./gaming
     ./greeter
+    ./misc
     ./networking
     ./stylix
     ./wine
     ./wsl
-    ./misc
   ];
+
+  options.liminalOS.enable = lib.mkOption {
+    type = lib.types.bool;
+    default = true;
+    description = ''
+      Whether to enable liminalOS's default modules and options for Linux.
+    '';
+  };
 }

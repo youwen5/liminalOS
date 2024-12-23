@@ -5,7 +5,7 @@ in
 {
   options.liminalOS.system.audio.enable = lib.mkOption {
     type = lib.types.bool;
-    default = config.liminalOS.linux.enable;
+    default = config.liminalOS.enable;
     description = ''
       Whether to set up PipeWire and default audio utilities.
     '';

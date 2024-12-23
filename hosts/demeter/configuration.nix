@@ -14,6 +14,28 @@
     ./hardware-configuration.nix
   ];
 
+  liminalOS = {
+    system = {
+      audio.prod.enable = true;
+      networking = {
+        enable = true;
+        firewallPresets.vite = true;
+        cloudflareNameservers.enable = true;
+      };
+    };
+    theming.enable = true;
+    desktop.enable = true;
+    extras.gaming = {
+      enable = true;
+      roblox.enable = true;
+      utilities.gamemode = {
+        enable = true;
+        gamemodeUsers = [ "youwen" ];
+      };
+    };
+    programs.flatpak.enable = true;
+  };
+
   # Bootloader.
   boot.loader = {
     efi.canTouchEfiVariables = true;

@@ -6,18 +6,7 @@
   imports =
     [
       ./configuration.nix
-      ../../modules/linux/gaming
-      ../../modules/linux/audio
-      ../../modules/linux/networking
-      ../../modules/linux/fonts
-      ../../modules/linux/greeter
-      ../../modules/linux/core
-      ../../modules/linux/hamachi
-      ../../modules/linux/desktop-portal
-      ../../modules/linux/audio-prod
-      ../../modules/linux/stylix
-      ../../modules/linux/wine
-      ../../modules/linux/flatpak
+      ../../modules/linux
       ../../overlays
       {
         home-manager.useGlobalPkgs = true;

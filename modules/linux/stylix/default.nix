@@ -11,13 +11,6 @@ in
 {
   options.liminalOS.theming = {
     enable = lib.mkEnableOption "theming";
-    stylixName = lib.mkOption {
-      type = lib.types.str;
-      default = "stylix";
-      description = ''
-        Name of Stylix module defined in `inputs`. Defaults to `stylix`. You must define `inputs.stylix.url` in your `flake.nix` to enable this option
-      '';
-    };
   };
 
   imports = [
@@ -58,11 +51,5 @@ in
         size = 26;
       };
     };
-    assertions = [
-      {
-        assertion = builtins.hasAttr cfg.stylixName inputs;
-        message = ''You enabled theming but did not add a Stylix module to your flake inputs, or did not set `liminalOS.theming.stylixName` to the name of your Stylix input, if it is not `stylix`. Please set `inputs.stylix.url = "github:danth/stylix"` or set the stylixName option to the name of your stylix flake input.'';
-      }
-    ];
   };
 }
