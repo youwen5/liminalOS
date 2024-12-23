@@ -10,7 +10,19 @@ in
 {
   options.liminalOS.extras.gaming = {
     enable = lib.mkEnableOption "gaming";
-    utilities.hamachi.enable = lib.mkEnableOption "hamachi";
+    utilities = {
+      hamachi.enable = lib.mkEnableOption "hamachi";
+      gamemode = {
+        enable = lib.mkEnableOption "gamemode";
+        gamemodeUsers = lib.mkOption {
+          type = lib.types.listOf lib.types.string;
+          default = [ ];
+          description = ''
+            List of users to add to the gamemode group. Gamemode will likely not work unless you add your user to the group!
+          '';
+        };
+      };
+    };
     roblox.enable = lib.mkOption {
       type = lib.types.bool;
       default = config.liminalOS.extras.gaming && cfg.enable;
@@ -19,77 +31,92 @@ in
       '';
     };
   };
-  config = lib.mkIf cfg.enable {
-    environment.systemPackages = with pkgs; [
-      ryujinx
-      lutris
-      heroic
-      mangohud
-      mangojuice
-    ];
+  config = lib.mkIf cfg.enable (
+    let
+      forAllGamemodeUsers = lib.genAttrs cfg.utilities.gamemode.gamemodeUsers;
+    in
+    {
+      environment.systemPackages = with pkgs; [
+        ryujinx
+        lutris
+        heroic
+        mangohud
+        mangojuice
+      ];
 
-    liminalOS.programs.flatpaks.enable = true;
+      liminalOS.programs.flatpaks.enable = true;
 
-    services.flatpak.packages = lib.mkIf cfg.roblox.enable [
-      {
-        flatpakref = "https://sober.vinegarhq.org/sober.flatpakref";
-        sha256 = "sha256:1pj8y1xhiwgbnhrr3yr3ybpfis9slrl73i0b1lc9q89vhip6ym2l";
-      }
-      {
-        appId = "org.vinegarhq.Sober";
-        origin = "sober";
-      }
-    ];
+      services.flatpak.packages = lib.mkIf cfg.roblox.enable [
+        {
+          flatpakref = "https://sober.vinegarhq.org/sober.flatpakref";
+          sha256 = "sha256:1pj8y1xhiwgbnhrr3yr3ybpfis9slrl73i0b1lc9q89vhip6ym2l";
+        }
+        {
+          appId = "org.vinegarhq.Sober";
+          origin = "sober";
+        }
+      ];
 
-    programs.steam = {
-      enable = true;
-      remotePlay.openFirewall = true;
-      dedicatedServer.openFirewall = true;
-      localNetworkGameTransfers.openFirewall = true;
-      gamescopeSession.enable = true;
-    };
+      programs.steam = {
+        enable = true;
+        remotePlay.openFirewall = true;
+        dedicatedServer.openFirewall = true;
+        localNetworkGameTransfers.openFirewall = true;
+        gamescopeSession.enable = true;
+      };
 
-    programs.gamescope.enable = true;
+      programs.gamescope.enable = true;
 
-    programs.gamemode = {
-      enable = true;
-      enableRenice = true;
-      settings = {
-        general = {
-          renice = 10;
-        };
-        custom = {
-          start = "${pkgs.libnotify}/bin/notify-send 'GameMode engaged'";
-          end = "${pkgs.libnotify}/bin/notify-send 'GameMode disengaged'";
+      programs.gamemode = {
+        enable = true;
+        enableRenice = true;
+        settings = {
+          general = {
+            renice = 10;
+          };
+          custom = {
+            start = "${pkgs.libnotify}/bin/notify-send 'GameMode engaged'";
+            end = "${pkgs.libnotify}/bin/notify-send 'GameMode disengaged'";
+          };
         };
       };
-    };
 
-    users.users.${config.liminalOS.username}.extraGroups = [ "gamemode" ];
+      users.users = forAllGamemodeUsers (username: {
+        ${username}.extraGroups = [ "gamemode" ];
+      });
 
-    services.logmein-hamachi.enable = cfg.utilities.hamachi.enable;
-    programs.haguichi.enable = cfg.utilities.hamachi.enable;
+      services.logmein-hamachi.enable = cfg.utilities.hamachi.enable;
+      programs.haguichi.enable = cfg.utilities.hamachi.enable;
 
-    nixpkgs.config.packageOverrides = pkgs: {
-      steam = pkgs.steam.override {
-        extraPkgs =
-          pkgs: with pkgs; [
-            xorg.libXcursor
-            xorg.libXi
-            xorg.libXinerama
-            xorg.libXScrnSaver
-            libpng
-            libpulseaudio
-            libvorbis
-            stdenv.cc.cc.lib
-            libkrb5
-            (writeShellScriptBin "launch-gamescope" ''
-              (sleep 1; pgrep gamescope| xargs renice -n -11 -p)&
-              exec gamescope "$@"
-            '')
-            keyutils
-          ];
+      nixpkgs.config.packageOverrides = pkgs: {
+        steam = pkgs.steam.override {
+          extraPkgs =
+            pkgs: with pkgs; [
+              xorg.libXcursor
+              xorg.libXi
+              xorg.libXinerama
+              xorg.libXScrnSaver
+              libpng
+              libpulseaudio
+              libvorbis
+              stdenv.cc.cc.lib
+              libkrb5
+              (writeShellScriptBin "launch-gamescope" ''
+                (sleep 1; pgrep gamescope| xargs renice -n -11 -p)&
+                exec gamescope "$@"
+              '')
+              keyutils
+            ];
+        };
       };
-    };
-  };
+
+      warnings =
+        if cfg.utilities.gamemode.enable && (builtins.length cfg.utilities.gamemode.gamemodeUsers == 0) then
+          [
+            ''You enabled gamemode without setting any gamemode users in `liminalOS.extras.gaming.utilities.gamemode.gamemodeUsers. Gamemode is unlikely to work unless you add your user to gamemodeUsers.''
+          ]
+        else
+          [ ];
+    }
+  );
 }
