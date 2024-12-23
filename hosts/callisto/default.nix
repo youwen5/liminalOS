@@ -12,7 +12,7 @@
       ../../modules/linux/fonts
       ../../modules/linux/greeter
       ../../modules/linux/core
-      ../../modules/linux/desktop-portal
+      ../../modules/linux/desktop-environment
       ../../modules/linux/stylix
       ../../overlays
       {
