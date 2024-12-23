@@ -10,11 +10,10 @@
     ./fonts
     ./gaming
     ./greeter
-    ./hamachi
     ./networking
-    ./spotifyd
     ./stylix
     ./wine
     ./wsl
+    ./misc
   ];
 }
