@@ -22,6 +22,10 @@
         firewallPresets.vite = true;
         cloudflareNameservers.enable = true;
       };
+      fonts.enable = true;
+    };
+    theming = {
+      enable = true;
     };
   };
 
