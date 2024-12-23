@@ -14,8 +14,6 @@ in
   config = {
     services.playerctld.enable = lib.mkIf cfg.enable true;
     hardware.pulseaudio.enable = lib.mkIf cfg.enable false;
-    # TODO: move to other file
-    security.rtkit.enable = true;
     services.pipewire = lib.mkIf cfg.enable {
       enable = true;
       alsa.enable = true;
