@@ -11,6 +11,13 @@ in
 {
   options.liminalOS.theming = {
     enable = lib.mkEnableOption "theming";
+    plymouth.enable = lib.mkOption {
+      type = lib.types.bool;
+      default = cfg.enable;
+      description = ''
+        Whether to enable plymouth and sane defaults.
+      '';
+    };
   };
 
   imports = [
@@ -51,5 +58,26 @@ in
         size = 26;
       };
     };
+
+    boot = {
+      plymouth = {
+        enable = true;
+        font = "${config.stylix.fonts.monospace.package}/share/fonts/truetype/NerdFonts/CaskaydiaCove/CaskaydiaCoveNerdFontMono-Regular.ttf";
+      };
+
+      # Enable "Silent Boot"
+      consoleLogLevel = 3;
+      initrd.verbose = false;
+      kernelParams = [
+        "quiet"
+        "splash"
+        "boot.shell_on_fail"
+        "rd.systemd.show_status=false"
+        "rd.udev.log_level=3"
+        "udev.log_priority=3"
+      ];
+      initrd.systemd.enable = true;
+    };
+
   };
 }

@@ -14,6 +14,8 @@
     ./hardware-configuration.nix
   ];
 
+  networking.hostName = "demeter"; # Define your hostname.
+
   liminalOS = {
     flakeLocation = "/home/youwen/.config/liminalOS";
     config.allowUnfree = true;
@@ -42,86 +44,34 @@
     programs.flatpak.enable = true;
   };
 
-  # Bootloader.
-  boot.loader = {
-    efi.canTouchEfiVariables = true;
-    timeout = 15;
-    # Lanzaboote currently replaces the systemd-boot module.
-    # This setting is usually set to true in configuration.nix
-    # generated at installation time. So we force it to false
-    # for now.
-    systemd-boot = {
-      enable = false;
-      consoleMode = "auto";
-    };
-  };
-
-  boot = {
-    plymouth = {
-      enable = true;
-      font = "${config.stylix.fonts.monospace.package}/share/fonts/truetype/NerdFonts/CaskaydiaCove/CaskaydiaCoveNerdFontMono-Regular.ttf";
-    };
-
-    # Enable "Silent Boot"
-    consoleLogLevel = 3;
-    initrd.verbose = false;
-    kernelParams = [
-      "quiet"
-      "splash"
-      "boot.shell_on_fail"
-      "rd.systemd.show_status=false"
-      "rd.udev.log_level=3"
-      "udev.log_priority=3"
-    ];
-    initrd.systemd.enable = true;
-  };
-
-  boot.lanzaboote = {
-    enable = true;
-    pkiBundle = "/etc/secureboot";
-  };
-
-  boot.initrd.luks.devices."luks-af320a0f-b388-43f5-b5a3-af2b47cfc716".device =
-    "/dev/disk/by-uuid/af320a0f-b388-43f5-b5a3-af2b47cfc716";
-
-  networking.hostName = "demeter"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-
-  # select kernel
-  boot.kernelPackages = pkgs.linuxPackages_zen;
-
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-
-  # Enable networking
-  networking.networkmanager.enable = true;
-
-  # Set your time zone.
   time.timeZone = "America/Los_Angeles";
 
-  # Select internationalisation properties.
-  i18n.defaultLocale = "en_US.UTF-8";
+  hardware.cpu.intel.updateMicrocode = true;
 
-  i18n.extraLocaleSettings = {
-    LC_ADDRESS = "en_US.UTF-8";
-    LC_IDENTIFICATION = "en_US.UTF-8";
-    LC_MEASUREMENT = "en_US.UTF-8";
-    LC_MONETARY = "en_US.UTF-8";
-    LC_NAME = "en_US.UTF-8";
-    LC_NUMERIC = "en_US.UTF-8";
-    LC_PAPER = "en_US.UTF-8";
-    LC_TELEPHONE = "en_US.UTF-8";
-    LC_TIME = "en_US.UTF-8";
+  # Bootloader.
+  boot = {
+    loader = {
+      efi.canTouchEfiVariables = true;
+      timeout = 15;
+      # Lanzaboote currently replaces the systemd-boot module.
+      # This setting is usually set to true in configuration.nix
+      # generated at installation time. So we force it to false
+      # for now.
+      systemd-boot = {
+        enable = false;
+        consoleMode = "auto";
+      };
+    };
+    lanzaboote = {
+      enable = true;
+      pkiBundle = "/etc/secureboot";
+    };
+
+    kernelPackages = pkgs.linuxPackages_zen;
+
+    initrd.luks.devices."luks-af320a0f-b388-43f5-b5a3-af2b47cfc716".device =
+      "/dev/disk/by-uuid/af320a0f-b388-43f5-b5a3-af2b47cfc716";
   };
-
-  systemd.services = {
-    NetworkManager-wait-online.enable = false;
-  };
-
-  # Enable the X11 windowing system.
-  # You can disable this if you're only using the Wayland session.
-  services.xserver.enable = false;
 
   programs.nix-ld = {
     enable = true;
@@ -131,24 +81,6 @@
       xorg.libXi
     ];
   };
-
-  hardware.bluetooth = {
-    enable = true;
-    powerOnBoot = true;
-  };
-
-  services.blueman.enable = true;
-
-  # services.desktopManager.plasma6.enable = true;
-
-  # Configure keymap in X11
-  services.xserver = {
-    xkb.layout = "us";
-    xkb.variant = "";
-  };
-
-  # Enable touchpad support (enabled default in most desktopManager).
-  # services.xserver.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.youwen = {
@@ -163,32 +95,6 @@
       "youwen"
     ];
   };
-
-  services.udev.extraRules = ''
-    KERNEL=="cpu_dma_latency", GROUP="realtime"
-  '';
-
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
-  environment.systemPackages = with pkgs; [
-    wget
-    git
-    curl
-  ];
-
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
-  programs.gnupg.agent = {
-    enable = true;
-    enableSSHSupport = true;
-  };
-
-  programs.dconf.enable = true;
-
-  programs.hyprland.enable = true;
-
-  hardware.cpu.intel.updateMicrocode = true;
 
   programs.zsh.enable = false;
   programs.fish.enable = true;

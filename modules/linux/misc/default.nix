@@ -45,6 +45,11 @@ in
         Absolute filepath location of the NixOS system configuration flake.
       '';
     };
+    useEnUsLocale = lib.mkOption {
+      type = lib.types.bool;
+      default = true;
+      description = "Whether to use the en_US locale automatically";
+    };
   };
 
   config = {
@@ -80,5 +85,22 @@ in
         ]
       )
     );
+
+    # Select internationalisation properties.
+    i18n = lib.mkIf cfg.useEnUsLocale {
+      defaultLocale = "en_US.UTF-8";
+
+      extraLocaleSettings = {
+        LC_ADDRESS = "en_US.UTF-8";
+        LC_IDENTIFICATION = "en_US.UTF-8";
+        LC_MEASUREMENT = "en_US.UTF-8";
+        LC_MONETARY = "en_US.UTF-8";
+        LC_NAME = "en_US.UTF-8";
+        LC_NUMERIC = "en_US.UTF-8";
+        LC_PAPER = "en_US.UTF-8";
+        LC_TELEPHONE = "en_US.UTF-8";
+        LC_TIME = "en_US.UTF-8";
+      };
+    };
   };
 }

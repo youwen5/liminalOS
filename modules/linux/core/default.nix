@@ -46,12 +46,43 @@ in
       '';
     };
     suppressWarnings = lib.mkEnableOption "suppress warnings";
+    networking = {
+      enable = lib.mkOption {
+        type = lib.types.bool;
+        default = true;
+        description = ''Whether to set up and enable networking daemons.'';
+      };
+      backend = lib.mkOption {
+        type = lib.types.enum [
+          "wpa_supplicant"
+          "iwd"
+        ];
+        default = "wpa_supplicant";
+        description = ''
+          Which backend to use for networking. Default is wpa_supplicant with NetworkManager as a frontend. With iwd, iwctl is the frontend.
+        '';
+      };
+    };
+    bluetooth.enable = lib.mkOption {
+      type = lib.types.bool;
+      default = true;
+      description = ''
+        Whether to enable bluetooth and blueman.
+      '';
+    };
   };
 
   config = lib.mkIf cfg.enable {
-    environment.systemPackages = [
-      inputs.viminal.packages.${pkgs.system}.default
-    ];
+    environment.systemPackages =
+      with pkgs;
+      [
+        wget
+        git
+        curl
+      ]
+      ++ [
+        inputs.viminal.packages.${pkgs.system}.default
+      ];
 
     environment.variables = {
       EDITOR = "nvim";
@@ -123,6 +154,33 @@ in
     boot.tmp.cleanOnBoot = true;
 
     hardware.enableRedistributableFirmware = true;
+
+    networking.networkmanager.enable = lib.mkIf (
+      cfg.networking.enable && cfg.networking.backend == "wpa_supplicant"
+    ) true;
+
+    systemd.services.NetworkManager-wait-online.enable = lib.mkIf (
+      cfg.networking.enable && cfg.networking.backend == "wpa_supplicant"
+    ) false;
+
+    networking.wireless.iwd = lib.mkIf (cfg.networking.enable && cfg.networking.backend == "iwd") {
+      enable = true;
+      settings.General.EnableNetworkConfiguration = true;
+    };
+
+    programs.gnupg.agent = {
+      enable = true;
+      enableSSHSupport = true;
+    };
+
+    programs.dconf.enable = true;
+
+    hardware.bluetooth = lib.mkIf cfg.bluetooth.enable {
+      enable = true;
+      powerOnBoot = true;
+    };
+
+    services.blueman.enable = lib.mkIf cfg.bluetooth.enable true;
 
     warnings =
       if !cfg.suppressWarnings && cfg.useNh && config.liminalOS.flakeLocation == "" then

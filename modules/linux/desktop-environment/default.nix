@@ -26,5 +26,12 @@ in
     };
 
     programs.hyprland.enable = cfg.hyprland.enable;
+
+    services.xserver.enable = false;
+
+    services.xserver = {
+      xkb.layout = "us";
+      xkb.variant = "";
+    };
   };
 }
