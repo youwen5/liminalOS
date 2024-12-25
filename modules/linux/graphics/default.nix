@@ -46,6 +46,24 @@ in
       powerManagement.finegrained = false;
       open = true;
       package = config.boot.kernelPackages.nvidiaPackages.beta;
+      nvidiaSettings = true;
     };
+
+    services.xserver.videoDrivers = lib.mkIf cfg.nvidia.enable [ "nvidia" ];
+
+    liminalOS.config.extraUnfreePackages = lib.mkIf cfg.nvidia.enable [
+      "nvidia-x11"
+      "nvidia-settings"
+    ];
+
+    assertions = [
+      {
+        assertion =
+          !cfg.nvidia.enable
+          || (config.liminalOS.config.allowUnfree && cfg.nvidia.enable)
+          || cfg.nvidia.suppressUnfreeWarning;
+        message = "You enabled Nvidia proprietary driver installation but did not allow unfree packages to be installed! Consider setting liminalOS.config.allowUnfree = true or nixpkgs.config.allowUnfree = true. If you are using an allowUnfreePredicate to whitelist these packages manually, you can set liminalOS.system.graphics.nvidia.suppressUnfreeWarning = true";
+      }
+    ];
   };
 }
