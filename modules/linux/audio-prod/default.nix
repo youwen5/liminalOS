@@ -21,5 +21,9 @@ in
       yabridge
       yabridgectl
     ];
+
+    liminalOS.config.extraUnfreePackages = lib.mkIf config.liminalOS.config.allowUnfree [
+      "reaper"
+    ];
   };
 }

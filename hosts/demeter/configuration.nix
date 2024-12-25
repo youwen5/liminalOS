@@ -15,12 +15,18 @@
   ];
 
   liminalOS = {
+    flakeLocation = "/home/youwen/.config/liminalOS";
+    config.allowUnfree = true;
     system = {
       audio.prod.enable = true;
       networking = {
         enable = true;
         firewallPresets.vite = true;
         cloudflareNameservers.enable = true;
+      };
+      graphics = {
+        enable = true;
+        nvidia.enable = true;
       };
     };
     theming.enable = true;
@@ -113,8 +119,6 @@
     NetworkManager-wait-online.enable = false;
   };
 
-  hardware.enableAllFirmware = true;
-
   # Enable the X11 windowing system.
   # You can disable this if you're only using the Wayland session.
   services.xserver.enable = false;
@@ -128,26 +132,12 @@
     ];
   };
 
-  hardware.nvidia = {
-    modesetting.enable = true;
-    powerManagement.enable = true;
-    powerManagement.finegrained = false;
-    open = false;
-    nvidiaSettings = true;
-  };
-
   hardware.bluetooth = {
     enable = true;
     powerOnBoot = true;
   };
 
   services.blueman.enable = true;
-
-  hardware.graphics.enable = true;
-
-  hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.beta;
-
-  services.xserver.videoDrivers = [ "nvidia" ];
 
   # services.desktopManager.plasma6.enable = true;
 
@@ -177,9 +167,6 @@
   services.udev.extraRules = ''
     KERNEL=="cpu_dma_latency", GROUP="realtime"
   '';
-
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget

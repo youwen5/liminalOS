@@ -5,38 +5,58 @@
   ...
 }:
 let
-  cfg = config.liminalOS.system;
+  cfg = config.liminalOS;
   inherit (lib) mkIf;
 in
 {
-  options.liminalOS.system = {
-    printing.enable = lib.mkOption {
+  options.liminalOS = {
+    system.printing.enable = lib.mkOption {
       type = lib.types.bool;
       default = config.liminalOS.enable;
       description = ''
         Whether to set up default options for printing and printer discover on UNIX.
       '';
     };
-    fonts.enable = lib.mkOption {
+    system.fonts.enable = lib.mkOption {
       type = lib.types.bool;
       default = config.liminalOS.enable;
       description = ''
         Whether to set up some nice default fonts, including a Nerd Font, Noto Fonts, and CJK.
       '';
     };
-    distrobox.enable = lib.mkEnableOption "distrobox and podman";
+    config.allowUnfree = lib.mkOption {
+      type = lib.types.bool;
+      default = false;
+      description = ''
+        Whether to enable some proprietary packages required by certain liminalOS modules. This does not set allowUnfree for the whole system, it merely allows the installation of a few proprietary packages such as Nvidia drivers, etc. You should still set this option even if you already set nixpkgs.config.allowUnfree for the whole system since it tells liminalOS it can enable certain options that require  proprietary packages.
+      '';
+    };
+    config.extraUnfreePackages = lib.mkOption {
+      type = lib.types.listOf lib.types.str;
+      default = [ ];
+      description = ''
+        Packages to enable in allowUnfreePredicate
+      '';
+    };
+    flakeLocation = lib.mkOption {
+      type = lib.types.nullOr lib.types.path;
+      default = null;
+      description = ''
+        Absolute filepath location of the NixOS system configuration flake.
+      '';
+    };
   };
 
   config = {
-    services.printing.enable = mkIf cfg.printing.enable true;
+    services.printing.enable = mkIf cfg.system.printing.enable true;
 
-    services.avahi = mkIf cfg.printing.enable {
+    services.avahi = mkIf cfg.system.printing.enable {
       enable = true;
       nssmdns4 = true;
       openFirewall = true;
     };
 
-    fonts = mkIf cfg.fonts.enable {
+    fonts = mkIf cfg.system.fonts.enable {
       enableDefaultPackages = true;
       packages =
         with pkgs;
@@ -51,11 +71,14 @@ in
         ]);
     };
 
-    virtualisation.podman = mkIf cfg.distrobox.enable {
-      enable = true;
-      dockerCompat = true;
-    };
-
-    environment.systemPackages = mkIf cfg.distrobox.enable [ pkgs.distrobox ];
+    nixpkgs.config.allowUnfreePredicate = lib.mkIf config.liminalOS.config.allowUnfree (
+      pkg:
+      builtins.elem (pkgs.lib.getName pkg) (
+        config.liminalOS.config.extraUnfreePackages
+        ++ [
+          "spotify"
+        ]
+      )
+    );
   };
 }

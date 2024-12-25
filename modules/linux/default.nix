@@ -14,6 +14,7 @@
     ./stylix
     ./wine
     ./wsl
+    ./graphics
   ];
 
   options.liminalOS.enable = lib.mkOption {

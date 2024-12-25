@@ -45,13 +45,6 @@ in
         Whether to enable the `nh` cli (yet another Nix helper), a reimplementation of some core NixOS utilities like nix-collect-garbage and nixos-rebuild. If enabled, automatic garbage collection will use `nh` instead of `nix-collect-garbage` and will be able to garbage collect `result` symlinks.
       '';
     };
-    flakeLocation = lib.mkOption {
-      type = lib.types.nullOr lib.types.path;
-      default = null;
-      description = ''
-        Absolute filepath location of the NixOS system configuration flake.
-      '';
-    };
     suppressWarnings = lib.mkEnableOption "suppress warnings";
   };
 
@@ -124,15 +117,17 @@ in
         enable = true;
         extraArgs = "--keep-since 4d --keep 3";
       };
-      flake = cfg.flakeLocation;
+      flake = config.liminalOS.flakeLocation;
     };
 
     boot.tmp.cleanOnBoot = true;
 
+    hardware.enableRedistributableFirmware = true;
+
     warnings =
-      if !cfg.suppressWarnings && cfg.useNh && cfg.flakeLocation == "" then
+      if !cfg.suppressWarnings && cfg.useNh && config.liminalOS.flakeLocation == "" then
         [
-          ''The `nh` CLI is enabled but `liminalOS.system.core.flakeLocation` is not set. It is recommended that you set this option so that `nh` can work without specifying the flake path every time. You can disable this warning by setting `liminalOS.system.core.suppressWarnings`.''
+          ''The `nh` CLI is enabled but `liminalOS.flakeLocation` is not set. It is recommended that you set this option to the absolute file path of your configuration flake so that `nh` can work without specifying the flake path every time. You can disable this warning by setting `liminalOS.system.core.suppressWarnings`.''
         ]
       else
         [ ];

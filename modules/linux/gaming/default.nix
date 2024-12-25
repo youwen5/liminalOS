@@ -42,6 +42,8 @@ in
         heroic
         mangohud
         mangojuice
+        r2modman
+        modrinth-app
       ];
 
       liminalOS.programs.flatpak.enable = true;
@@ -80,6 +82,13 @@ in
           };
         };
       };
+
+      liminalOS.config.extraUnfreePackages = lib.mkIf config.liminalOS.config.allowUnfree [
+        "modrinth-app"
+        "modrinth-app-unwrapped"
+        "steam"
+        "steam-unwrapped"
+      ];
 
       users.users = forAllGamemodeUsers (username: {
         extraGroups = [ "gamemode" ];

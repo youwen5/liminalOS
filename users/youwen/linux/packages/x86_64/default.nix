@@ -11,10 +11,7 @@ in
     (createCommon pkgs)
     ++ (with pkgs; [
       bitwarden-desktop
-      modrinth-app
       sbctl
-      r2modman
-      zoom-us
     ]);
 
   home.sessionVariables = {
