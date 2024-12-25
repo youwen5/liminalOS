@@ -84,10 +84,6 @@ in
         inputs.viminal.packages.${pkgs.system}.default
       ];
 
-    environment.variables = {
-      EDITOR = "nvim";
-    };
-
     # tells electron apps to use Wayland
     environment.sessionVariables = lib.mkIf cfg.waylandFixes {
       NIXOS_OZONE_WL = "1";

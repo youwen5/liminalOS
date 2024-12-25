@@ -50,6 +50,11 @@ in
       default = true;
       description = "Whether to use the en_US locale automatically";
     };
+    defaultEditor = lib.mkOption {
+      type = lib.types.nullOr lib.types.package;
+      default = pkgs.neovim;
+      description = "Default text editor that will be installed and set as $EDITOR. Set to null to disable setting and installing default text editor.";
+    };
   };
 
   config = {
@@ -85,6 +90,12 @@ in
         ]
       )
     );
+
+    environment.variables.EDITOR = lib.mkIf (
+      cfg.defaultEditor != null
+    ) cfg.defaultEditor.meta.mainProgram;
+
+    environment.systemPackages = lib.mkIf (cfg.defaultEditor != null) [ cfg.defaultEditor ];
 
     # Select internationalisation properties.
     i18n = lib.mkIf cfg.useEnUsLocale {

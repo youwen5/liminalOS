@@ -19,6 +19,7 @@
   liminalOS = {
     flakeLocation = "/home/youwen/.config/liminalOS";
     config.allowUnfree = true;
+    defaultEditor = inputs.viminal.packages.${pkgs.system}.default;
     system = {
       audio.prod.enable = true;
       networking = {
