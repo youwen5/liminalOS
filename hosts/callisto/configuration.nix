@@ -68,14 +68,10 @@
     settings.General.EnableNetworkConfiguration = true;
   };
 
-  nixpkgs.overlays =
-    let
-      stablepkgs = inputs.stablepkgs.legacyPackages.${pkgs.system};
-    in
-    [
-      inputs.apple-silicon.overlays.apple-silicon-overlay
-      inputs.vesktop-bin.overlays.default
-    ];
+  nixpkgs.overlays = [
+    inputs.apple-silicon.overlays.apple-silicon-overlay
+    inputs.vesktop-bin.overlays.default
+  ];
 
   programs.light.enable = true;
 
@@ -150,11 +146,6 @@
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.systemPackages = with pkgs; [
-    wget
-    git
-    curl
-  ];
 
   services.keyd = {
     enable = true;
