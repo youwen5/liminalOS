@@ -1,6 +1,6 @@
 {
   pkgs,
-  inputs,
+  liminalHomeManagerModules,
   config,
   lib,
   ...
@@ -85,11 +85,11 @@ in
     };
 
     home.packages = lib.mkIf cfg.zen.enable [
-      inputs.zen-browser.packages.${pkgs.system}.default
+      liminalHomeManagerModules.zen-browser.packages.${pkgs.system}.default
     ];
 
     home.sessionVariables.DEFAULT_BROWSER = lib.mkIf cfg.zen.enable "${
-      inputs.zen-browser.packages.${pkgs.system}.default
+      liminalHomeManagerModules.zen-browser.packages.${pkgs.system}.default
     }/bin/zen";
   };
 }

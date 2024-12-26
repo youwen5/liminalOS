@@ -1,5 +1,5 @@
 {
-  inputs,
+  liminalHomeManagerModules,
   pkgs,
   config,
   osConfig,
@@ -7,11 +7,11 @@
   ...
 }:
 let
-  spicepkgs = inputs.spicetify.legacyPackages.${pkgs.system};
+  spicepkgs = liminalHomeManagerModules.spicetify.legacyPackages.${pkgs.system};
 in
 {
   imports = [
-    inputs.spicetify.homeManagerModules.default
+    liminalHomeManagerModules.spicetify.homeManagerModules.default
   ];
 
   config = lib.mkIf (config.liminalOS.programs.enable && osConfig.liminalOS.config.allowUnfree) {

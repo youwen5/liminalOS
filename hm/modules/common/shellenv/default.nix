@@ -1,7 +1,7 @@
 {
   config,
   lib,
-  inputs,
+  liminalHomeManagerModules,
   pkgs,
   osConfig,
   ...
@@ -11,7 +11,7 @@ let
 in
 {
   imports = [
-    inputs.nix-index-database.hmModules.nix-index
+    liminalHomeManagerModules.nix-index-database.hmModules.nix-index
     ./fastfetch
   ];
 

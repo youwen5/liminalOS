@@ -3,7 +3,7 @@
 # persist between generations. This is not ideal, but at least it is a better
 # situation than imperative installation
 {
-  inputs,
+  liminalSystemModules,
   config,
   lib,
   ...
@@ -13,7 +13,7 @@ let
 in
 {
   imports = [
-    inputs.nix-flatpak.nixosModules.nix-flatpak
+    liminalSystemModules.nix-flatpak.nixosModules.nix-flatpak
   ];
 
   options.liminalOS.programs.flatpak = {

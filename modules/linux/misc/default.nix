@@ -103,6 +103,9 @@ in
       )
     );
 
+    services.tlp.enable = lib.mkIf (cfg.formFactor == "laptop") true;
+    programs.light.enable = lib.mkIf (cfg.formFactor == "laptop") true;
+
     environment.variables.EDITOR = lib.mkIf (
       cfg.defaultEditor != null
     ) cfg.defaultEditor.meta.mainProgram;

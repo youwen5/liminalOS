@@ -1,5 +1,6 @@
 {
-  inputs,
+  liminalHomeManagerModules,
+  liminalSystemModules,
   config,
   lib,
   ...
@@ -9,7 +10,7 @@ let
 in
 {
   imports = [
-    inputs.home-manager.nixosModules.home-manager
+    liminalSystemModules.home-manager.nixosModules.home-manager
   ];
 
   options.liminalOS.integrateHomeManager = lib.mkOption {
@@ -24,6 +25,6 @@ in
     useGlobalPkgs = true;
     useUserPackages = true;
     backupFileExtension = "backup";
-    extraSpecialArgs = { inherit inputs; };
+    extraSpecialArgs = { inherit liminalHomeManagerModules; };
   };
 }
