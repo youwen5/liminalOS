@@ -160,6 +160,7 @@
               inputs.nixos-wsl.nixosModules.default
               inputs.stylix.nixosModules.stylix
               ./modules/default.nix
+              ./overlays
               (
                 { pkgs, ... }:
                 {
