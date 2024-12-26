@@ -25,16 +25,16 @@
         "rust-overlay": "rust-overlay"
       },
       "locked": {
-        "lastModified": 1733524679,
-        "narHash": "sha256-9T6roXCVb5vJQBtqq4ZNeDOGrDj2ov70FVW+CSnLa98=",
-        "owner": "youwen5",
-        "repo": "nixos-asahi",
-        "rev": "a15ec33c04b00b44e79ec17688e3b5219a765935",
+        "lastModified": 1735172763,
+        "narHash": "sha256-a6n8RsiAolz6p24Fsr/gTndx9xr9USpKqKK6kzBeXQc=",
+        "owner": "tpwrules",
+        "repo": "nixos-apple-silicon",
+        "rev": "3daf0637409689d7a1304cedc50d20542bc47905",
         "type": "github"
       },
       "original": {
-        "owner": "youwen5",
-        "repo": "nixos-asahi",
+        "owner": "tpwrules",
+        "repo": "nixos-apple-silicon",
         "type": "github"
       }
     },
@@ -312,27 +312,6 @@
         "type": "github"
       }
     },
-    "flake-utils_4": {
-      "inputs": {
-        "systems": [
-          "stylix",
-          "systems"
-        ]
-      },
-      "locked": {
-        "lastModified": 1731533236,
-        "narHash": "sha256-l0KFg5HjrsfsO/JpG+r7fRrqm12kzFHyUHqHCVpMMbI=",
-        "owner": "numtide",
-        "repo": "flake-utils",
-        "rev": "11707dc2f618dd54ca8739b309ec4fc024de578b",
-        "type": "github"
-      },
-      "original": {
-        "owner": "numtide",
-        "repo": "flake-utils",
-        "type": "github"
-      }
-    },
     "fromYaml": {
       "flake": false,
       "locked": {
@@ -432,11 +411,11 @@
     "homebrew-cask": {
       "flake": false,
       "locked": {
-        "lastModified": 1735197978,
-        "narHash": "sha256-IyRULXbkFFVGhOmds9m+C9mDA//S2RkI4X0bWAsStJs=",
+        "lastModified": 1735200865,
+        "narHash": "sha256-CouKp4gLNcyjq5x9OwLYBdWfRkY+c5Aup1tlLcLHso8=",
         "owner": "homebrew",
         "repo": "homebrew-cask",
-        "rev": "d09f0821745ef07e44475831752463736fa1ff0d",
+        "rev": "b898a79c127d44208c79249349c59aba9bed1e28",
         "type": "github"
       },
       "original": {
@@ -448,11 +427,11 @@
     "homebrew-core": {
       "flake": false,
       "locked": {
-        "lastModified": 1735199084,
-        "narHash": "sha256-aJkGLhmz5ucc1BFfAbIWANzd8fiLoCu0aOrnMoLypSQ=",
+        "lastModified": 1735201609,
+        "narHash": "sha256-ZxmvjMbXMYro84uwvoNcuN+1PbNOi/HC6umA/r3SMks=",
         "owner": "homebrew",
         "repo": "homebrew-core",
-        "rev": "b477cfe34c1dcae78eb43b7ecd0d89b854719f1e",
+        "rev": "42940127c475ee0c877de1693ecd5c204b6e43ca",
         "type": "github"
       },
       "original": {
@@ -670,22 +649,6 @@
         "type": "github"
       }
     },
-    "nixpkgs_3": {
-      "locked": {
-        "lastModified": 1732238832,
-        "narHash": "sha256-sQxuJm8rHY20xq6Ah+GwIUkF95tWjGRd1X8xF+Pkk38=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "8edf06bea5bcbee082df1b7369ff973b91618b8d",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NixOS",
-        "ref": "nixpkgs-unstable",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
     "plugins-live-share": {
       "flake": false,
       "locked": {
@@ -855,10 +818,14 @@
         "base16-helix": "base16-helix",
         "base16-vim": "base16-vim",
         "flake-compat": "flake-compat_5",
-        "flake-utils": "flake-utils_4",
+        "flake-utils": [
+          "flake-utils"
+        ],
         "gnome-shell": "gnome-shell",
         "home-manager": "home-manager_2",
-        "nixpkgs": "nixpkgs_3",
+        "nixpkgs": [
+          "nixpkgs"
+        ],
         "systems": "systems_4",
         "tinted-foot": "tinted-foot",
         "tinted-kitty": "tinted-kitty",
