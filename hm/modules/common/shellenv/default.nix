@@ -49,9 +49,9 @@ in
       maintenance.enable = true;
       extraConfig = {
         init.defaultBranch = "main";
-        safe.directory = [
-          osConfig.liminalOS.flakeLocation
-        ];
+        safe.directory = lib.mkIf (
+          osConfig.liminalOS.flakeLocation != null
+        ) osConfig.liminalOS.flakeLocation;
       };
     };
 
