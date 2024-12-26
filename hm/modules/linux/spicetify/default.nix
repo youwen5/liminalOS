@@ -1,19 +1,11 @@
 {
-  inputs,
-  pkgs,
+  spicepkgs,
   config,
   osConfig,
   lib,
   ...
 }:
-let
-  spicepkgs = inputs.spicetify.legacyPackages.${pkgs.system};
-in
 {
-  imports = [
-    inputs.spicetify.homeManagerModules.default
-  ];
-
   config = lib.mkIf (config.liminalOS.programs.enable && osConfig.liminalOS.config.allowUnfree) {
     programs.spicetify = {
       enable = true;

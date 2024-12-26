@@ -183,8 +183,8 @@ in
 
     programs.fish.enable = true;
 
-    services.tlp.enable = lib.mkIf (cfg.formFactor == "laptop") true;
-    programs.light.enable = lib.mkIf (cfg.formFactor == "laptop") true;
+    services.tlp.enable = lib.mkIf (config.liminalOS.formFactor == "laptop") true;
+    programs.light.enable = lib.mkIf (config.liminalOS.formFactor == "laptop") true;
 
     hardware.bluetooth = lib.mkIf cfg.bluetooth.enable {
       enable = true;

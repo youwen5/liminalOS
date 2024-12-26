@@ -1,13 +1,13 @@
 {
   inputs,
+  self,
   ...
 }:
 {
   imports =
     [
       ./configuration.nix
-      ../../../modules/linux
-      ../../../hm
+      self.nixosModules.liminalOS
       ../../../overlays
       {
         home-manager.users.youwen = {

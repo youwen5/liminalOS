@@ -12,10 +12,6 @@ let
   cfg = config.liminalOS.programs.flatpak;
 in
 {
-  imports = [
-    inputs.nix-flatpak.nixosModules.nix-flatpak
-  ];
-
   options.liminalOS.programs.flatpak = {
     enable = lib.mkOption {
       type = lib.types.bool;

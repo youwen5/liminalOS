@@ -1,6 +1,7 @@
+{ self, ... }:
 {
   imports = [
-    ../../../hm/modules
+    self.homeManagerModules.liminalOS
   ];
 
   home = {

@@ -106,6 +106,7 @@
       nixpkgs,
       nix-darwin,
       flake-parts,
+      self,
       ...
     }:
     let
@@ -120,9 +121,13 @@
       ];
       flake = {
         nixosConfigurations = {
-          demeter = buildLiminalOS {
-            inherit inputs nixpkgs;
-            systemModule = ./reference/hosts/demeter;
+          demeter = nixpkgs.lib.nixosSystem {
+            specialArgs = {
+              inherit inputs self;
+            };
+            modules = [
+              ./reference/hosts/demeter
+            ];
           };
           callisto = buildLiminalOS {
             inherit nixpkgs inputs;
@@ -144,6 +149,39 @@
           modules = [
             ./hosts/phobos
           ];
+        };
+
+        nixosModules = rec {
+          default = liminalOS;
+          liminalOS = {
+            imports = [
+              inputs.nix-flatpak.nixosModules.nix-flatpak
+              inputs.home-manager.nixosModules.home-manager
+              inputs.nixos-wsl.nixosModules.default
+              inputs.stylix.nixosModules.stylix
+              ./modules/default.nix
+              (
+                { pkgs, ... }:
+                {
+                  home-manager.extraSpecialArgs = {
+                    spicepkgs = inputs.spicetify.legacyPackages.${pkgs.system};
+                    inherit inputs self;
+                  };
+                }
+              )
+            ];
+          };
+        };
+
+        homeManagerModules = rec {
+          default = liminalOS;
+          liminalOS = {
+            imports = [
+              inputs.nix-index-database.hmModules.nix-index
+              inputs.spicetify.homeManagerModules.default
+              ./hm/modules/default.nix
+            ];
+          };
         };
       };
       perSystem =
@@ -169,16 +207,6 @@
               ++ [
                 inputs.viminal.packages.${system}.default
               ];
-          };
-
-          nixosModules = {
-            default = config.nixosModules.liminalOS;
-            liminalOS = ./modules/default.nix;
-          };
-
-          homeManagerModules = {
-            default = config.homeManagerModules.liminalOS;
-            liminalOS = ./hm/modules/default.nix;
           };
         };
     };

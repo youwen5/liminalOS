@@ -10,6 +10,7 @@ in
 {
   imports = [
     ./linux
+    ../hm
   ];
   options.liminalOS = {
     darwin.enable = lib.mkOption {

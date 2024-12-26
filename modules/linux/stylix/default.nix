@@ -26,10 +26,6 @@ in
     };
   };
 
-  imports = [
-    inputs.stylix.nixosModules.stylix
-  ];
-
   config = lib.mkIf cfg.enable {
     stylix = {
       enable = true;

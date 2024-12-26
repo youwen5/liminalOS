@@ -1,7 +1,6 @@
 {
   config,
   lib,
-  inputs,
   pkgs,
   osConfig,
   ...
@@ -11,7 +10,6 @@ let
 in
 {
   imports = [
-    inputs.nix-index-database.hmModules.nix-index
     ./fastfetch
   ];
 

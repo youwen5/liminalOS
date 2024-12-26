@@ -8,10 +8,6 @@ let
   cfg = config.liminalOS.wsl;
 in
 {
-  imports = [
-    inputs.nixos-wsl.nixosModules.default
-  ];
-
   options.liminalOS.wsl = {
     enable = lib.mkEnableOption "WSL";
   };

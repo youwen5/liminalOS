@@ -8,10 +8,6 @@ let
   cfg = config.liminalOS;
 in
 {
-  imports = [
-    inputs.home-manager.nixosModules.home-manager
-  ];
-
   options.liminalOS.integrateHomeManager = lib.mkOption {
     type = lib.types.bool;
     default = cfg.enable;
