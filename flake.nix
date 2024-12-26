@@ -167,6 +167,11 @@
                     spicepkgs = inputs.spicetify.legacyPackages.${pkgs.system};
                     inherit inputs self;
                   };
+                  nixpkgs.overlays = [
+                    (final: prev: {
+                      zen-browser = inputs.zen-browser.packages.${pkgs.system}.default;
+                    })
+                  ];
                 }
               )
             ];
