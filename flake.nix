@@ -80,7 +80,7 @@
     stylix.url = "github:danth/stylix";
 
     nix-index-database = {
-      url = "github:nix-community/nix-index-database";
+      url = "github:marienz/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -159,7 +159,6 @@
               inputs.home-manager.nixosModules.home-manager
               inputs.nixos-wsl.nixosModules.default
               inputs.stylix.nixosModules.stylix
-              inputs.nix-index-database.nixosModules.nix-index
               ./modules/default.nix
               (
                 { pkgs, ... }:
