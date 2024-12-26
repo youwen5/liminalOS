@@ -133,6 +133,7 @@ in
         trusted-public-keys = [
           "hydra.nixos.org-1:CNHJZBh9K4tP3EKF6FkkgeVYsS3ohTl+oS0Qa8bezVs="
         ];
+        trusted-users = [ "@wheel" ];
       };
 
       channel.enable = false;
@@ -145,6 +146,15 @@ in
         extraArgs = "--keep-since 4d --keep 3";
       };
       flake = config.liminalOS.flakeLocation;
+    };
+
+    programs.nix-ld = {
+      enable = true;
+      libraries = with pkgs; [
+        icu
+        xorg.libXtst
+        xorg.libXi
+      ];
     };
 
     boot.tmp.cleanOnBoot = true;
@@ -170,6 +180,8 @@ in
     };
 
     programs.dconf.enable = true;
+
+    programs.fish.enable = true;
 
     hardware.bluetooth = lib.mkIf cfg.bluetooth.enable {
       enable = true;
