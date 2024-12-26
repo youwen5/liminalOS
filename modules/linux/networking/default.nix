@@ -31,6 +31,16 @@ in
       vite = lib.mkEnableOption "firewall ports for Vite";
     };
     cloudflareNameservers.enable = lib.mkEnableOption "Cloudflare DNS servers";
+    backend = lib.mkOption {
+      type = lib.types.enum [
+        "wpa_supplicant"
+        "iwd"
+      ];
+      default = "wpa_supplicant";
+      description = ''
+        Which backend to use for networking. Default is wpa_supplicant with NetworkManager as a frontend. With iwd, iwctl is the frontend.
+      '';
+    };
   };
 
   config = lib.mkIf cfg.enable {
@@ -55,5 +65,17 @@ in
       "1.1.1.1"
       "1.0.0.1"
     ];
+
+    networking.networkmanager.enable = lib.mkIf (cfg.enable && cfg.backend == "wpa_supplicant") true;
+
+    systemd.services.NetworkManager-wait-online.enable = lib.mkIf (
+      cfg.enable && cfg.backend == "wpa_supplicant"
+    ) false;
+
+    networking.wireless.iwd = lib.mkIf (cfg.enable && cfg.backend == "iwd") {
+      enable = true;
+      settings.General.EnableNetworkConfiguration = true;
+    };
+
   };
 }

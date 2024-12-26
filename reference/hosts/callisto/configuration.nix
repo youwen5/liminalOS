@@ -28,6 +28,7 @@
       networking = {
         firewallPresets.vite = true;
         cloudflareNameservers.enable = true;
+        backend = "iwd";
       };
     };
   };
