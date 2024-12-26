@@ -1,12 +1,20 @@
-{ inputs, ... }:
 {
-  imports = [
-    inputs.nixos-wsl.nixosModules.default
-  ];
+  inputs,
+  config,
+  lib,
+  ...
+}:
+let
+  cfg = config.liminalOS.wsl;
+in
+{
+  options.liminalOS.wsl = {
+    enable = lib.mkEnableOption "WSL";
+  };
 
-  wsl = {
+  config.wsl = lib.mkIf cfg.enable {
     enable = true;
-    defaultUser = "youwen";
+    defaultUser = config.liminalOS.username;
     useWindowsDriver = true;
   };
 }

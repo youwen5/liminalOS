@@ -6,15 +6,27 @@ based on [NixOS](https://nixos.org/).
 Time wasted writing Nix code:
 ![](https://wakatime.com/badge/user/018dc5b8-ba5a-4572-a38a-b526d1b28240/project/c59b3d5e-0c9c-4bd5-a752-e75522ab0cdc.svg) + [![wakatime](https://wakatime.com/badge/user/018dc5b8-ba5a-4572-a38a-b526d1b28240/project/de5e82f8-8a09-42cb-ae45-9c80f2ab5a41.svg)](https://wakatime.com/badge/user/018dc5b8-ba5a-4572-a38a-b526d1b28240/project/de5e82f8-8a09-42cb-ae45-9c80f2ab5a41)
 
-These are essentially just my NixOS configuration files. I use flakes,
-home-manager, `agenix`, all the buzzwords. But it sounds cool to have your own
-OS! (and NixOS is essentially a purpose-built language and ecosystem to allow
-you to build your own immutable operating system anyways.)
+This repository exposes a NixOS module that declares the entire liminalOS
+operating system. It aims to be an easy way to both set up a brand new system
+with my opinionated configurations, and also inject into an existing NixOS
+configuration.
+
+Reference implementations of liminalOS on actual working systems is in
+[./reference](./reference).
+
+liminalOS is currently in a heavily experimental state, but it is used in
+production every day!
+
+You can try it with `nix flake init -t github:youwen5/liminalOS#liminalOS`,
+which will create a sample configuration flake along with corresponding files.
 
 Many have written at length about the virtues of NixOS and _declarative
 configuration_ and _immutability_ and such. I doubt what I have to say is
 particularly novel, but I'll leave a few thoughts about Nix and NixOS and why
-they do things better anyways. In particular, instead of immediately evangelizing about the virtues of Nix, I'll first motivate the reasons for why I chose a tool with exactly its properties, based on my use case (but not to worry, the evangelizing will come later).
+they do things better anyways. In particular, instead of immediately
+evangelizing about the virtues of Nix, I'll first motivate the reasons for why
+I chose a tool with exactly its properties, based on my use case (but not to
+worry, the evangelizing will come later).
 
 Essentially: allow me to introduce you to the
 origins of [NixOS God
@@ -83,13 +95,15 @@ configurations and applications seems incredibly unwieldy, through our usual
 conception of how we interact with our operating systems.
 
 The more obsessive system tweakers might try a dotfile manager like `chezmoi`
-or GNU Stow. I have not tried these so I make no judgements on their utility for their intended purpose,
-but generally these solutions miss a key feature: they provide the
-configuration, but don't install the software. But the software and the
-configuration are fundamentally tied together; these are not concerns to be
-separated. If the software is installed, it almost always needs to be
-configured anyways. If the configuration exists, the software should be
-installed. These solutions may work well for managing configuration, but they have the same issue as before: you also need to install the software you're configuring!
+or GNU Stow. I have not tried these so I make no judgements on their utility
+for their intended purpose, but generally these solutions miss a key feature:
+they provide the configuration, but don't install the software. But the
+software and the configuration are fundamentally tied together; these are not
+concerns to be separated. If the software is installed, it almost always needs
+to be configured anyways. If the configuration exists, the software should be
+installed. These solutions may work well for managing configuration, but they
+have the same issue as before: you also need to install the software you're
+configuring!
 
 So, *nix hackers reach for things like [Ansible](https://www.ansible.com/), that
 promise automatic configuration of entire systems. Though Ansible was designed
@@ -102,7 +116,10 @@ which aren't expected to be as ephemeral as servers).
 If you agree with the premises I've laid out up to this point,  you might come
 to the conclusion that I've made: to solve this issue, we need a solution that
 does _all of it_. A unified tool for deploying software and managing systems.
-And it must necessarily be declarative and reproducible, because that is the only way to sanely manage a system. Imagine working on a programming project where recompiling with the same source code would non-deterministically produce different results based on the environment!
+And it must necessarily be declarative and reproducible, because that is the
+only way to sanely manage a system. Imagine working on a programming project
+where recompiling with the same source code would non-deterministically produce
+different results based on the environment!
 
 Well, [Nix](https://nixos.org/) is the _purely functional_ package manager
 (i.e. declarative, reproducible), and NixOS is a Linux distribution that is
@@ -159,8 +176,8 @@ versioning (via `git`), and rollbacks _for free_.
 
 ## Installation guide
 
-TBD. May use `deploy-rs` or the in-house
-[dartgun](https://github.com/youwen5/dartgun) tool for easy deployment.
+Currently there is no streamlined installer. Please see [the reference
+implementations](./reference) for an idea on how to set up a liminalOS system.
 
 ## FAQ
 
@@ -180,9 +197,7 @@ Therefore, liminalOS is a Linux distribution. QED.[^2]
 
 ### Should I actually install this?
 
-No. You should instead use the modules as configuration examples if you need
-them as they are heavily customized for my needs, which are not the same as
-yours.
+Sure.
 
 ## Hosts
 
@@ -211,25 +226,25 @@ The [flake.nix](/flake.nix) currently contains my configuration for four hosts:
     although this is not actually how the converse works, the rigor-hungry
     mathematicians reading can cry about it.
 
-## Keybinds
-
-Non-exhaustive.
-
-| Shortcut                                                                                                 | Action                           |
-| -------------------------------------------------------------------------------------------------------- | -------------------------------- |
-| <kbd>Super</kbd> + <kbd>W</kbd>                                                                          | Toggle floating                  |
-| <kbd>Super</kbd> + <kbd>K</kbd>                                                                          | Toggle layout                    |
-| <kbd>Super</kbd> + <kbd>E</kbd>                                                                          | Open Dolphin                     |
-| <kbd>Super</kbd> + <kbd>T</kbd>                                                                          | Open kitty                       |
-| <kbd>Super</kbd> + <kbd>F</kbd>                                                                          | Open librewolf                   |
-| <kbd>Super</kbd> + <kbd>R</kbd>                                                                          | Open pavucontrol                 |
-| <kbd>Super</kbd> + <kbd>Space</kbd>                                                                      | Open rofi                        |
-| <kbd>Super</kbd> + <kbd>Backspace</kbd>                                                                  | Open logout menu                 |
-| <kbd>Super</kbd> + <kbd>L</kbd>                                                                          | Screenshot region                |
-| <kbd>Super</kbd> + <kbd>H</kbd><kbd>J</kbd><kbd>K</kbd><kbd>L</kbd>                                      | Move around                      |
-| <kbd>Super</kbd> + <kbd>Ctrl</kbd> + <kbd>H</kbd><kbd>L</kbd>                                            | Move workspaces                  |
-| <kbd>Super</kbd> + <kbd>Alt</kbd> + <kbd>Ctrl</kbd> + <kbd>H</kbd><kbd>J</kbd><kbd>K</kbd><kbd>L</kbd>   | Move windows around workspaces   |
-| <kbd>Super</kbd> + <kbd>Shift</kbd> + <kbd>Ctrl</kbd> + <kbd>H</kbd><kbd>J</kbd><kbd>K</kbd><kbd>L</kbd> | Move windows around              |
-| <kbd>Super</kbd> + <kbd>S</kbd>                                                                          | Open Special Workspace           |
-| <kbd>Super</kbd> + <kbd>Enter</kbd>                                                                      | Fullscreen Window                |
-| <kbd>Super</kbd> + <kbd>Alt</kbd> + <kbd>S</kbd>                                                         | Move Window to Special Workspace |
+<!--## Keybinds-->
+<!---->
+<!--Non-exhaustive.-->
+<!---->
+<!--| Shortcut                                                                                                 | Action                           |-->
+<!--| -------------------------------------------------------------------------------------------------------- | -------------------------------- |-->
+<!--| <kbd>Super</kbd> + <kbd>W</kbd>                                                                          | Toggle floating                  |-->
+<!--| <kbd>Super</kbd> + <kbd>K</kbd>                                                                          | Toggle layout                    |-->
+<!--| <kbd>Super</kbd> + <kbd>E</kbd>                                                                          | Open Dolphin                     |-->
+<!--| <kbd>Super</kbd> + <kbd>T</kbd>                                                                          | Open kitty                       |-->
+<!--| <kbd>Super</kbd> + <kbd>F</kbd>                                                                          | Open librewolf                   |-->
+<!--| <kbd>Super</kbd> + <kbd>R</kbd>                                                                          | Open pavucontrol                 |-->
+<!--| <kbd>Super</kbd> + <kbd>Space</kbd>                                                                      | Open rofi                        |-->
+<!--| <kbd>Super</kbd> + <kbd>Backspace</kbd>                                                                  | Open logout menu                 |-->
+<!--| <kbd>Super</kbd> + <kbd>L</kbd>                                                                          | Screenshot region                |-->
+<!--| <kbd>Super</kbd> + <kbd>H</kbd><kbd>J</kbd><kbd>K</kbd><kbd>L</kbd>                                      | Move around                      |-->
+<!--| <kbd>Super</kbd> + <kbd>Ctrl</kbd> + <kbd>H</kbd><kbd>L</kbd>                                            | Move workspaces                  |-->
+<!--| <kbd>Super</kbd> + <kbd>Alt</kbd> + <kbd>Ctrl</kbd> + <kbd>H</kbd><kbd>J</kbd><kbd>K</kbd><kbd>L</kbd>   | Move windows around workspaces   |-->
+<!--| <kbd>Super</kbd> + <kbd>Shift</kbd> + <kbd>Ctrl</kbd> + <kbd>H</kbd><kbd>J</kbd><kbd>K</kbd><kbd>L</kbd> | Move windows around              |-->
+<!--| <kbd>Super</kbd> + <kbd>S</kbd>                                                                          | Open Special Workspace           |-->
+<!--| <kbd>Super</kbd> + <kbd>Enter</kbd>                                                                      | Fullscreen Window                |-->
+<!--| <kbd>Super</kbd> + <kbd>Alt</kbd> + <kbd>S</kbd>                                                         | Move Window to Special Workspace |-->

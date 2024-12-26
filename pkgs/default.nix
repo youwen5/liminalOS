@@ -4,4 +4,5 @@ let
 in
 final: prev: {
   modrinth-app = callPackage ./by-name/modrinth-app { };
+  hyprland-qtutils = callPackage ./by-name/hyprland-qtutils { };
 }

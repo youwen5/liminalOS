@@ -80,7 +80,7 @@
     stylix.url = "github:danth/stylix";
 
     nix-index-database = {
-      url = "github:nix-community/nix-index-database";
+      url = "github:marienz/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -106,6 +106,7 @@
       nixpkgs,
       nix-darwin,
       flake-parts,
+      self,
       ...
     }:
     let
@@ -115,25 +116,30 @@
       systems = [
         "x86_64-linux"
         "aarch64-linux"
-        "aarch64-darwin"
+        # "aarch64-darwin"
+        # aarch64-darwin is currently disabled due to lack of maintenance
       ];
       flake = {
         nixosConfigurations = {
-          demeter = buildLiminalOS {
-            inherit inputs nixpkgs;
-            systemModule = ./hosts/demeter;
+          demeter = nixpkgs.lib.nixosSystem {
+            specialArgs = {
+              inherit inputs self;
+            };
+            modules = [
+              ./reference/hosts/demeter
+            ];
           };
           callisto = buildLiminalOS {
             inherit nixpkgs inputs;
-            systemModule = ./hosts/callisto;
+            systemModule = ./reference/hosts/callisto;
           };
           adrastea = buildLiminalOS {
             inherit inputs nixpkgs;
-            systemModule = ./hosts/adrastea;
+            systemModule = ./reference/hosts/adrastea;
           };
           cassini = buildLiminalOS {
             inherit inputs nixpkgs;
-            systemModule = ./hosts/cassini;
+            systemModule = ./reference/hosts/cassini;
           };
         };
         darwinConfigurations.phobos = nix-darwin.lib.darwinSystem {
@@ -144,9 +150,60 @@
             ./hosts/phobos
           ];
         };
+
+        nixosModules = rec {
+          default = liminalOS;
+          liminalOS = {
+            imports = [
+              inputs.nix-flatpak.nixosModules.nix-flatpak
+              inputs.home-manager.nixosModules.home-manager
+              inputs.nixos-wsl.nixosModules.default
+              inputs.stylix.nixosModules.stylix
+              ./modules/default.nix
+              ./overlays
+              (
+                { pkgs, ... }:
+                {
+                  home-manager.extraSpecialArgs = {
+                    spicepkgs = inputs.spicetify.legacyPackages.${pkgs.system};
+                    inherit inputs self;
+                  };
+                  nixpkgs.overlays = [
+                    (final: prev: {
+                      zen-browser = inputs.zen-browser.packages.${pkgs.system}.default;
+                    })
+                  ];
+                }
+              )
+            ];
+          };
+        };
+
+        homeManagerModules = rec {
+          default = liminalOS;
+          liminalOS = {
+            imports = [
+              inputs.nix-index-database.hmModules.nix-index
+              inputs.spicetify.homeManagerModules.default
+              ./hm/modules/default.nix
+            ];
+          };
+        };
+
+        templates = rec {
+          liminalOS = {
+            path = ./templates/liminalOS;
+            description = "Barebones configuration of liminalOS";
+          };
+          default = liminalOS;
+        };
       };
       perSystem =
-        { pkgs, system, ... }:
+        {
+          pkgs,
+          system,
+          ...
+        }:
         {
           formatter = pkgs.nixfmt-rfc-style;
 

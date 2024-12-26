@@ -2,44 +2,50 @@
 # versioned. Therefore, they are not included in generational rollbacks and
 # persist between generations. This is not ideal, but at least it is a better
 # situation than imperative installation
-{ inputs, ... }:
 {
-  imports = [
-    inputs.nix-flatpak.nixosModules.nix-flatpak
-  ];
+  inputs,
+  config,
+  lib,
+  ...
+}:
+let
+  cfg = config.liminalOS.programs.flatpak;
+in
+{
+  options.liminalOS.programs.flatpak = {
+    enable = lib.mkOption {
+      type = lib.types.bool;
+      default = false;
+      description = ''
+        Whether to enable Nix flatpak support with some fixes as well as declarative flatpak management.
+      '';
+    };
+  };
 
-  services.flatpak = {
-    enable = true;
+  config = lib.mkIf cfg.enable {
+    xdg.portal.enable = true;
+    services.flatpak = {
+      enable = true;
 
-    overrides = {
-      global = {
-        Context.sockets = [
-          "wayland"
-          "!x11"
-          "!fallback-x11"
-        ];
+      overrides = {
+        global = {
+          Context.sockets = [
+            "wayland"
+            "!x11"
+            "!fallback-x11"
+          ];
 
-        Environment = {
-          # Fix un-themed cursor in some Wayland apps
-          XCURSOR_PATH = "/run/host/user-share/icons:/run/host/share/icons";
+          Environment = {
+            # Fix un-themed cursor in some Wayland apps
+            XCURSOR_PATH = "/run/host/user-share/icons:/run/host/share/icons";
+          };
         };
       };
-    };
 
-    update.auto = {
-      enable = true;
-      onCalendar = "weekly";
+      update.auto = {
+        enable = true;
+        onCalendar = "weekly";
+      };
     };
-
-    packages = [
-      {
-        flatpakref = "https://sober.vinegarhq.org/sober.flatpakref";
-        sha256 = "sha256:1pj8y1xhiwgbnhrr3yr3ybpfis9slrl73i0b1lc9q89vhip6ym2l";
-      }
-      {
-        appId = "org.vinegarhq.Sober";
-        origin = "sober";
-      }
-    ];
   };
 }
