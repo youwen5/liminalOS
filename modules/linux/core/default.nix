@@ -81,7 +81,7 @@ in
         curl
       ]
       ++ [
-        inputs.viminal.packages.${pkgs.system}.default
+        config.liminalOS.defaultEditor
       ];
 
     # tells electron apps to use Wayland
