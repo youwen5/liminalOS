@@ -49,6 +49,7 @@ in
         libsForQt5.qt5ct
         papirus-icon-theme
         libsForQt5.qt5ct
+        hyprland-qtutils
       ]
       ++ (lib.optionals (!osConfig.liminalOS.theming.enable) [
         pkgs.bibata-cursors
