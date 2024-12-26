@@ -193,7 +193,6 @@
         {
           pkgs,
           system,
-          config,
           ...
         }:
         {
