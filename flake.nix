@@ -205,25 +205,19 @@
       perSystem =
         {
           pkgs,
-          system,
           ...
         }:
         {
           formatter = pkgs.nixfmt-rfc-style;
 
           devShells.default = pkgs.mkShell {
-            buildInputs =
-              with pkgs;
-              [
-                nixd
-                nixfmt-rfc-style
-                prettierd
-                taplo
-                marksman
-              ]
-              ++ [
-                inputs.viminal.packages.${system}.default
-              ];
+            buildInputs = with pkgs; [
+              nixd
+              nixfmt-rfc-style
+              prettierd
+              taplo
+              marksman
+            ];
           };
         };
     };
