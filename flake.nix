@@ -50,9 +50,7 @@
     ucode.url = "github:e-tho/ucodenix";
 
     apple-silicon = {
-      # url = "github:tpwrules/nixos-apple-silicon";
-      # url = "github:zzywysm/nixos-asahi";
-      url = "github:youwen5/nixos-asahi";
+      url = "github:tpwrules/nixos-apple-silicon";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
