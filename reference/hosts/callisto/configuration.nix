@@ -14,13 +14,29 @@
 
   liminalOS = {
     flakeLocation = "/home/youwen/.config/liminalOS";
+    config.allowUnfree = false;
+    defaultEditor = inputs.viminal.packages.${pkgs.system}.default;
     formFactor = "laptop";
+    theming = {
+      wallpaper = "${inputs.wallpapers}/aesthetic/afterglow_city_skyline_at_night.png";
+      # if you don't manually set polarity when using manual colorscheme, GTK
+      # apps won't respect colorscheme
+      base16Scheme = "${pkgs.base16-schemes}/share/themes/rose-pine.yaml";
+      polarity = "dark";
+    };
     system = {
       networking = {
         firewallPresets.vite = true;
         cloudflareNameservers.enable = true;
       };
     };
+  };
+
+  users.users.youwen = {
+    isNormalUser = true;
+    description = "Youwen Wu";
+    extraGroups = [ "wheel" ];
+    shell = pkgs.fish;
   };
 
   boot = {
@@ -42,13 +58,6 @@
     inputs.apple-silicon.overlays.apple-silicon-overlay
     inputs.vesktop-bin.overlays.default
   ];
-
-  users.users.youwen = {
-    isNormalUser = true;
-    description = "Youwen Wu";
-    extraGroups = [ "wheel" ];
-    shell = pkgs.fish;
-  };
 
   nix.settings = {
     trusted-users = [

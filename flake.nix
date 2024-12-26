@@ -133,9 +133,13 @@
               ./reference/hosts/demeter
             ];
           };
-          callisto = buildLiminalOS {
-            inherit nixpkgs inputs;
-            systemModule = ./reference/hosts/callisto;
+          callisto = nixpkgs.lib.nixosSystem {
+            specialArgs = {
+              inherit inputs self;
+            };
+            modules = [
+              ./reference/hosts/callisto
+            ];
           };
           adrastea = buildLiminalOS {
             inherit inputs nixpkgs;
