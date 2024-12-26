@@ -8,17 +8,20 @@
 }:
 {
   imports = [
-    # Include the results of the hardware scan.
     ./hardware-configuration.nix
   ];
 
-  networking.hostName = "demeter"; # Define your hostname.
+  networking.hostName = "demeter";
 
   liminalOS = {
     flakeLocation = "/home/youwen/.config/liminalOS";
     config.allowUnfree = true;
     defaultEditor = inputs.viminal.packages.${pkgs.system}.default;
     formFactor = "desktop";
+    theming = {
+      wallpaper = "${inputs.wallpapers}/aesthetic/afterglow_city_skyline_at_night.png";
+      base16Scheme = "${pkgs.base16-schemes}/share/themes/rose-pine.yaml";
+    };
     system = {
       audio.prod.enable = true;
       networking = {
