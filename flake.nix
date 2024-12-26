@@ -77,7 +77,11 @@
       inputs.flake-parts.follows = "flake-parts";
     };
 
-    stylix.url = "github:danth/stylix";
+    stylix = {
+      url = "github:danth/stylix";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-utils.follows = "flake-utils";
+    };
 
     nix-index-database = {
       url = "github:marienz/nix-index-database";
