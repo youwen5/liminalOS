@@ -11,12 +11,5 @@
       hyprlock.enable = false;
       hyprland.enable = false;
     };
-
-    gtk = {
-      enable = true;
-      iconTheme = {
-        name = "Papirus-Dark";
-      };
-    };
   };
 }
