@@ -3,7 +3,8 @@
 ## P1
 
 - [ ] Massively refactor module system
-- [ ] Disable allowUnfree and atomically control everything using allowUnfreePredicate
+- [x] Disable allowUnfree and atomically control everything using allowUnfreePredicate
+- [ ] Decide what to do with easyeffects
 
 ## P2
 
