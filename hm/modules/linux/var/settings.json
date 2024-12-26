@@ -59,7 +59,7 @@
       "enabled": false
     },
     "WebRichPresence (arRPC)": {
-      "enabled": false
+      "enabled": true
     },
     "AutomodContext": {
       "enabled": false
@@ -170,7 +170,7 @@
       "enabled": false
     },
     "FakeNitro": {
-      "enabled": false
+      "enabled": true
     },
     "FakeProfileThemes": {
       "enabled": false
@@ -185,7 +185,7 @@
       "enabled": false
     },
     "FixSpotifyEmbeds": {
-      "enabled": false
+      "enabled": true
     },
     "FixYoutubeEmbeds": {
       "enabled": false
@@ -197,7 +197,7 @@
       "enabled": false
     },
     "FriendsSince": {
-      "enabled": false
+      "enabled": true
     },
     "GameActivityToggle": {
       "enabled": false
@@ -608,4 +608,3 @@
     "settingsSyncVersion": 1731210778467
   }
 }
-
