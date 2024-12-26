@@ -6,17 +6,19 @@ based on [NixOS](https://nixos.org/).
 Time wasted writing Nix code:
 ![](https://wakatime.com/badge/user/018dc5b8-ba5a-4572-a38a-b526d1b28240/project/c59b3d5e-0c9c-4bd5-a752-e75522ab0cdc.svg) + [![wakatime](https://wakatime.com/badge/user/018dc5b8-ba5a-4572-a38a-b526d1b28240/project/de5e82f8-8a09-42cb-ae45-9c80f2ab5a41.svg)](https://wakatime.com/badge/user/018dc5b8-ba5a-4572-a38a-b526d1b28240/project/de5e82f8-8a09-42cb-ae45-9c80f2ab5a41)
 
-This repository implements a NixOS module that declares the entire liminalOS
+This repository exposes a NixOS module that declares the entire liminalOS
 operating system. It aims to be an easy way to both set up a brand new system
 with my opinionated configurations, and also inject into an existing NixOS
 configuration.
 
-A reference implementation of liminalOS on actual working systems is in
+Reference implementations of liminalOS on actual working systems is in
 [./reference](./reference).
 
-liminalOS is currently in a heavily experimental state, and cannot be consumed
-directly without much prior work. Development is ongoing to create a fully
-self-contained module.
+liminalOS is currently in a heavily experimental state, but it is used in
+production every day!
+
+You can try it with `nix flake init -t github:youwen5/liminalOS#liminalOS`,
+which will create a sample configuration flake along with corresponding files.
 
 Many have written at length about the virtues of NixOS and _declarative
 configuration_ and _immutability_ and such. I doubt what I have to say is

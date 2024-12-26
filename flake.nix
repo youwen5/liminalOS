@@ -189,6 +189,14 @@
             ];
           };
         };
+
+        templates = rec {
+          liminalOS = {
+            path = ./templates/liminalOS;
+            description = "Barebones configuration of liminalOS";
+          };
+          default = liminalOS;
+        };
       };
       perSystem =
         {
