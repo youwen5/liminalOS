@@ -74,32 +74,16 @@
       "/dev/disk/by-uuid/af320a0f-b388-43f5-b5a3-af2b47cfc716";
   };
 
-  programs.nix-ld = {
-    enable = true;
-    libraries = with pkgs; [
-      icu
-      xorg.libXtst
-      xorg.libXi
-    ];
-  };
-
-  # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.youwen = {
     isNormalUser = true;
     description = "Youwen Wu";
-    extraGroups = [ "networkmanager" ];
-  };
-
-  nix.settings = {
-    trusted-users = [
-      "root"
-      "youwen"
+    extraGroups = [
+      "networkmanager"
+      "wheel"
     ];
+    shell = pkgs.fish;
   };
 
-  programs.zsh.enable = false;
-  programs.fish.enable = true;
-  users.users.youwen.shell = pkgs.fish;
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
   # on your system were taken. It‘s perfectly fine and recommended to leave
