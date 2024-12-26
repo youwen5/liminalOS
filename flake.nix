@@ -159,6 +159,7 @@
               inputs.home-manager.nixosModules.home-manager
               inputs.nixos-wsl.nixosModules.default
               inputs.stylix.nixosModules.stylix
+              inputs.nix-index-database.nixosModules.nix-index
               ./modules/default.nix
               (
                 { pkgs, ... }:
