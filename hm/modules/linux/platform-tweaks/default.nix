@@ -1,4 +1,5 @@
 {
+  inputs,
   lib,
   config,
   osConfig,
@@ -24,6 +25,8 @@ in
   };
 
   config = {
+    services.tlp.enable = lib.mkIf (cfg.formFactor == "laptop") true;
+    programs.light.enable = lib.mkIf (cfg.formFactor == "laptop") true;
     assertions = [
       {
         assertion = cfg.formFactor != null;

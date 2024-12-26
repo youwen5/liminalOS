@@ -1,5 +1,5 @@
 {
-  liminalSystemModules,
+  inputs,
   config,
   lib,
   ...
@@ -9,7 +9,7 @@ let
 in
 {
   imports = [
-    liminalSystemModules.nixos-wsl.nixosModules.default
+    inputs.nixos-wsl.nixosModules.default
   ];
 
   options.liminalOS.wsl = {

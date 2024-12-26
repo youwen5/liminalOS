@@ -118,17 +118,11 @@
         # "aarch64-darwin"
         # aarch64-darwin is currently disabled due to lack of maintenance
       ];
-      flake = rec {
+      flake = {
         nixosConfigurations = {
-          demeter = nixpkgs.lib.nixosSystem {
-            specialArgs = {
-              liminalSystemModules = nixosModules;
-              liminalHomeManagerModules = homeManagerModules;
-              inherit inputs;
-            };
-            modules = [
-              ./reference/hosts/demeter
-            ];
+          demeter = buildLiminalOS {
+            inherit inputs nixpkgs;
+            systemModule = ./reference/hosts/demeter;
           };
           callisto = buildLiminalOS {
             inherit nixpkgs inputs;
@@ -151,33 +145,12 @@
             ./hosts/phobos
           ];
         };
-
-        nixosModules = rec {
-          inherit (inputs)
-            home-manager
-            nixos-wsl
-            stylix
-            nix-flatpak
-            ;
-          default = liminalOS;
-          liminalOS = ./modules/default.nix;
-        };
-
-        homeManagerModules = rec {
-          inherit (inputs)
-            spicetify
-            stylix
-            nix-index-database
-            zen-browser
-            ;
-          default = liminalOS;
-          liminalOS = ./hm/modules/default.nix;
-        };
       };
       perSystem =
         {
           pkgs,
           system,
+          config,
           ...
         }:
         {
@@ -198,6 +171,15 @@
               ];
           };
 
+          nixosModules = {
+            default = config.nixosModules.liminalOS;
+            liminalOS = ./modules/default.nix;
+          };
+
+          homeManagerModules = {
+            default = config.homeManagerModules.liminalOS;
+            liminalOS = ./hm/modules/default.nix;
+          };
         };
     };
 }

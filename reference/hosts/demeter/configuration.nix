@@ -19,10 +19,6 @@
     config.allowUnfree = true;
     defaultEditor = inputs.viminal.packages.${pkgs.system}.default;
     formFactor = "desktop";
-    theming = {
-      wallpaper = "${inputs.wallpapers}/aesthetic/afterglow_city_skyline_at_night.png";
-      base16Scheme = "${pkgs.base16-schemes}/share/themes/rose-pine.yaml";
-    };
     system = {
       audio.prod.enable = true;
       networking = {

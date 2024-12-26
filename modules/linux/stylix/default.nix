@@ -1,5 +1,5 @@
 {
-  liminalSystemModules,
+  inputs,
   pkgs,
   config,
   lib,
@@ -24,45 +24,20 @@ in
         Whether to enable plymouth and sane defaults.
       '';
     };
-    wallpaper = lib.mkOption {
-      type = lib.types.path;
-      default = "../../../hm/modules/common/shellenv/fastfetch/nixos-logo.png";
-      description = ''
-        Path to wallpaper to set as background and generate system colorscehme from.
-      '';
-    };
-    polarity = lib.mkOption {
-      type = lib.types.nullOr (
-        lib.types.enum [
-          "light"
-          "dark"
-        ]
-      );
-      default = null;
-      description = ''
-        Whether to force colorscheme to be generated as light or dark theme. Set to null to automatically determine.
-      '';
-    };
-    base16Scheme = lib.mkOption {
-      type = lib.types.nullOr lib.types.path;
-      default = null;
-      description = ''
-        Base 16 colorscheme from base16-schemes to override wallpaper generated colorscheme with. Set to null to use wallpaper generated scheme.
-        Example: ''${pkgs.base16-schemes}/share/themes/rose-pine.yaml
-      '';
-    };
   };
 
   imports = [
-    liminalSystemModules.stylix.nixosModules.stylix
+    inputs.stylix.nixosModules.stylix
   ];
 
   config = lib.mkIf cfg.enable {
     stylix = {
       enable = true;
-      image = lib.mkIf (cfg.wallpaper != null) cfg.wallpaper;
-      base16Scheme = lib.mkIf (cfg.base16Scheme != null) cfg.base16Scheme;
-      polarity = lib.mkIf (cfg.polarity != null) cfg.polarity;
+      image = "${inputs.wallpapers}/aesthetic/afterglow_city_skyline_at_night.png";
+      # image = "${inputs.wallpapers}/aesthetic/red_deadly_sun.jpg";
+      # image = "${inputs.wallpapers}/aesthetic/afterglow_sand_dunes.jpg";
+      base16Scheme = "${pkgs.base16-schemes}/share/themes/rose-pine.yaml";
+      polarity = "dark";
 
       fonts = {
         serif = {
