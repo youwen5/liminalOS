@@ -33,6 +33,8 @@ in
   };
 
   config = lib.mkIf cfg.enable {
+    services.arrpc.enable = cfg.instantMessaging.enable;
+
     home.packages =
       lib.optionals cfg.archiveTools.enable (
         with pkgs;
