@@ -19,7 +19,13 @@ let
 in
 {
   options.liminalOS.system.networking = {
-    enable = lib.mkEnableOption "networking";
+    enable = lib.mkOption {
+      type = lib.types.bool;
+      default = config.liminalOS.enable;
+      description = ''
+        Whether to enable networking features.
+      '';
+    };
     firewallPresets = {
       grimDawn = lib.mkEnableOption "firewall ports for Grim Dawn";
       vite = lib.mkEnableOption "firewall ports for Vite";

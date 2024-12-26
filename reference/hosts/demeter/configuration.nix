@@ -2,10 +2,8 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 {
-  config,
   inputs,
   pkgs,
-  lib,
   ...
 }:
 {
@@ -20,20 +18,15 @@
     flakeLocation = "/home/youwen/.config/liminalOS";
     config.allowUnfree = true;
     defaultEditor = inputs.viminal.packages.${pkgs.system}.default;
+    formFactor = "desktop";
     system = {
       audio.prod.enable = true;
       networking = {
-        enable = true;
         firewallPresets.vite = true;
         cloudflareNameservers.enable = true;
       };
-      graphics = {
-        enable = true;
-        nvidia.enable = true;
-      };
+      graphics.nvidia.enable = true;
     };
-    theming.enable = true;
-    desktop.enable = true;
     extras.gaming = {
       enable = true;
       roblox.enable = true;
@@ -42,7 +35,6 @@
         gamemodeUsers = [ "youwen" ];
       };
     };
-    programs.flatpak.enable = true;
   };
 
   time.timeZone = "America/Los_Angeles";

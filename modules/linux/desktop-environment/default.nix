@@ -9,7 +9,13 @@ let
 in
 {
   options.liminalOS.desktop = {
-    enable = lib.mkEnableOption "liminalOS desktop environment with Hyprland and other utilities";
+    enable = lib.mkOption {
+      type = lib.types.bool;
+      default = config.liminalOS.enable;
+      description = ''
+        Whether to enable the liminalOS desktop environment.
+      '';
+    };
     hyprland.enable = lib.mkOption {
       type = lib.types.bool;
       default = cfg.enable;

@@ -115,25 +115,26 @@
       systems = [
         "x86_64-linux"
         "aarch64-linux"
-        "aarch64-darwin"
+        # "aarch64-darwin"
+        # aarch64-darwin is currently disabled due to lack of maintenance
       ];
       flake = {
         nixosConfigurations = {
           demeter = buildLiminalOS {
             inherit inputs nixpkgs;
-            systemModule = ./hosts/demeter;
+            systemModule = ./reference/hosts/demeter;
           };
           callisto = buildLiminalOS {
             inherit nixpkgs inputs;
-            systemModule = ./hosts/callisto;
+            systemModule = ./reference/hosts/callisto;
           };
           adrastea = buildLiminalOS {
             inherit inputs nixpkgs;
-            systemModule = ./hosts/adrastea;
+            systemModule = ./reference/hosts/adrastea;
           };
           cassini = buildLiminalOS {
             inherit inputs nixpkgs;
-            systemModule = ./hosts/cassini;
+            systemModule = ./reference/hosts/cassini;
           };
         };
         darwinConfigurations.phobos = nix-darwin.lib.darwinSystem {
@@ -146,7 +147,12 @@
         };
       };
       perSystem =
-        { pkgs, system, ... }:
+        {
+          pkgs,
+          system,
+          config,
+          ...
+        }:
         {
           formatter = pkgs.nixfmt-rfc-style;
 
@@ -163,6 +169,16 @@
               ++ [
                 inputs.viminal.packages.${system}.default
               ];
+          };
+
+          nixosModules = {
+            default = config.nixosModules.liminalOS;
+            liminalOS = ./modules/default.nix;
+          };
+
+          homeManagerModules = {
+            default = config.homeManagerModules.liminalOS;
+            liminalOS = ./hm/modules/default.nix;
           };
         };
     };

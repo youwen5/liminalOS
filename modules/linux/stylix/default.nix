@@ -10,7 +10,13 @@ let
 in
 {
   options.liminalOS.theming = {
-    enable = lib.mkEnableOption "theming";
+    enable = lib.mkOption {
+      type = lib.types.bool;
+      default = config.liminalOS.enable;
+      description = ''
+        Whether to uniformly theme the entire system using Stylix.
+      '';
+    };
     plymouth.enable = lib.mkOption {
       type = lib.types.bool;
       default = cfg.enable;

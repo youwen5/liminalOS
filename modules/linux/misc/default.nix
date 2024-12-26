@@ -55,9 +55,21 @@ in
       default = pkgs.neovim;
       description = "Default text editor that will be installed and set as $EDITOR. Set to null to disable setting and installing default text editor.";
     };
+    formFactor = lib.mkOption {
+      type = lib.types.nullOr (
+        lib.types.enum [
+          "laptop"
+          "desktop"
+        ]
+      );
+      default = null;
+      description = ''
+        Form factor of the machine. Adjusts some UI settings.
+      '';
+    };
   };
 
-  config = {
+  config = lib.mkIf cfg.enable {
     services.printing.enable = mkIf cfg.system.printing.enable true;
 
     services.avahi = mkIf cfg.system.printing.enable {
@@ -113,5 +125,14 @@ in
         LC_TIME = "en_US.UTF-8";
       };
     };
+
+    assertions = [
+      {
+        assertion = cfg.formFactor != null;
+        message = ''
+          You must set `liminalOS.formFactor` to either "laptop" or "desktop"!
+        '';
+      }
+    ];
   };
 }
