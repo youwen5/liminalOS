@@ -25,7 +25,7 @@ in
     };
     roblox.enable = lib.mkOption {
       type = lib.types.bool;
-      default = config.liminalOS.extras.gaming && cfg.enable;
+      default = config.liminalOS.extras.gaming && cfg.enable && config.liminalOS.config.allowUnfree;
       description = ''
         Whether to install the Roblox Sober flatpak automatically. Note that this will enable the nix-flatpak service and automatic flatpak updates.`
       '';
@@ -126,6 +126,15 @@ in
           ]
         else
           [ ];
+
+      assertions = [
+        {
+          assertion = !cfg.roblox.enable || (config.liminalOS.config.allowUnfree && cfg.roblox.enable);
+          message = ''
+            You enabled Roblox but did not allow unfree software in liminalOS! Roblox is installed using the Sober Flatpak <sober.vinegarhq.org>, which is a proprietary unfree package! You must set liminalOS.config.allowUnfree to enable Roblox.
+          '';
+        }
+      ];
     }
   );
 }
