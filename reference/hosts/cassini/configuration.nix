@@ -3,37 +3,31 @@
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 {
   pkgs,
-  lib,
+  inputs,
   ...
 }:
 {
   networking.hostName = "cassini"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+
+  liminalOS = {
+    flakeLocation = "/home/youwen/.config/liminalOS";
+    defaultEditor = inputs.viminal.packages.${pkgs.system}.default;
+    formFactor = "desktop";
+    theming = {
+      wallpaper = "${inputs.wallpapers}/aesthetic/afterglow_city_skyline_at_night.png";
+      # if you don't manually set polarity when using manual colorscheme, GTK
+      # apps won't respect colorscheme
+      base16Scheme = "${pkgs.base16-schemes}/share/themes/rose-pine.yaml";
+      polarity = "dark";
+    };
+    system = {
+      networking.enable = false;
+    };
+    wsl.enable = true;
+  };
 
   # Set your time zone.
   time.timeZone = "America/Los_Angeles";
-
-  # Select internationalisation properties.
-  i18n.defaultLocale = "en_US.UTF-8";
-
-  i18n.extraLocaleSettings = {
-    LC_ADDRESS = "en_US.UTF-8";
-    LC_IDENTIFICATION = "en_US.UTF-8";
-    LC_MEASUREMENT = "en_US.UTF-8";
-    LC_MONETARY = "en_US.UTF-8";
-    LC_NAME = "en_US.UTF-8";
-    LC_NUMERIC = "en_US.UTF-8";
-    LC_PAPER = "en_US.UTF-8";
-    LC_TELEPHONE = "en_US.UTF-8";
-    LC_TIME = "en_US.UTF-8";
-  };
-
-  # Configure keymap in X11
-  services.xserver = {
-    xkb.layout = "us";
-    xkb.variant = "";
-  };
-
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.youwen = {
     isNormalUser = true;
@@ -47,31 +41,7 @@
     ];
   };
 
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
-
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
-  environment.systemPackages = with pkgs; [
-    wget
-    git
-    curl
-  ];
-
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
-  programs.gnupg.agent = {
-    enable = true;
-    enableSSHSupport = true;
-  };
-
-  programs.dconf.enable = true;
-
-  programs.fish.enable = true;
-  users.users.youwen.shell = pkgs.fish;
-
-  nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
+  nixpkgs.hostPlatform = "x86_64-linux";
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
