@@ -72,6 +72,7 @@ in
           vesktop
           signal-desktop
           iamb
+          neomutt
         ]
         ++ lib.optionals cfg.desktopApps.enable (
           with pkgs;
