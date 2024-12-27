@@ -10,7 +10,10 @@
       self.nixosModules.liminalOS
       {
         home-manager.users.youwen = {
-          imports = [ ./home.nix ];
+          imports = [
+            ./home.nix
+            self.homeManagerModules.default
+          ];
         };
       }
     ]

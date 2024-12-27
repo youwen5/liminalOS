@@ -1,9 +1,4 @@
-{ self, ... }:
 {
-  imports = [
-    self.homeManagerModules.liminalOS
-  ];
-
   home = {
     username = "youwen";
     homeDirectory = "/home/youwen";

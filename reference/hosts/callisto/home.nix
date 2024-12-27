@@ -1,6 +1,5 @@
 {
   imports = [
-    ../../../hm/modules
     ../../users/youwen
   ];
 
