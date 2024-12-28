@@ -24,5 +24,12 @@
       group = "users";
       mode = "600";
     };
+    github_cli_secret_config = {
+      file = ./github_cli_secret_config.age;
+      owner = "youwen";
+      group = "users";
+      mode = "600";
+      path = "/home/youwen/.config/gh/hosts.yml";
+    };
   };
 }
