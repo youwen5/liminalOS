@@ -22,6 +22,12 @@ in
 
       macro index,pager \cs "<pipe-message> ${pkgs.urlscan}/bin/urlscan<Enter>" "call urlscan to extract URLs out of a message"
       macro attach,compose \cs "<pipe-entry> ${pkgs.urlscan}/bin/urlscan<Enter>" "call urlscan to extract URLs out of a message"
+
+      auto_view text/html
+      alternative_order text/enriched text/plain text/html text
+
+      bind index,pager V  noop        ## Unbinds V from version
+      macro index,pager V "<view-attachments><search>html<enter><view-mailcap><exit>"
     '';
   };
 
@@ -99,4 +105,10 @@ in
         --client-secret "''$(cat ${secrets.youwen_ucsb_client_secret.path})"
     '')
   ];
+
+  # text/html;      ~/.mutt/view_attachment.sh %s html;     test=test -n "$DISPLAY"
+  home.file.".mailcap".text = ''
+    text/html;      ${pkgs.w3m}/bin/w3m %s;     nametemplate=%s.html;       needsterminal
+    text/html;      ${pkgs.w3m}/bin/w3m -v -F -T text/html -dump %s;        copiousoutput
+  '';
 }

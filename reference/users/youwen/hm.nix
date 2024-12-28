@@ -1,4 +1,4 @@
-{ config, ... }:
+{ config, pkgs, ... }:
 {
 
   imports = [
@@ -44,4 +44,10 @@
     };
     addKeysToAgent = "yes";
   };
+
+  # text/html;      ~/.mutt/view_attachment.sh %s html;     test=test -n "$DISPLAY"
+  home.file.".mailcap".text = ''
+    text/html;      ${pkgs.w3m}/bin/w3m %s;     nametemplate=%s.html;       needsterminal
+    text/html;      ${pkgs.w3m}/bin/w3m -v -F -T text/html -dump %s;        copiousoutput
+  '';
 }
