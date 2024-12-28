@@ -11,5 +11,5 @@ in
   "youwen_ucsb_client_secret.age".publicKeys = users ++ systems;
   "tincan_app_password.age".publicKeys = users ++ systems;
   "github_cli_secret_config.age".publicKeys = users ++ systems;
-  "nix_config_github_pat.age".publicKeys = users ++ systems;
+  "github_ssh_priv_key.age".publicKeys = users ++ systems;
 }
