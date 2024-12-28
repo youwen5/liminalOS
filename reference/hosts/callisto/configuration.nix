@@ -33,13 +33,6 @@
     };
   };
 
-  users.users.youwen = {
-    isNormalUser = true;
-    description = "Youwen Wu";
-    extraGroups = [ "wheel" ];
-    shell = pkgs.fish;
-  };
-
   boot = {
     loader.systemd-boot.enable = true;
     loader.efi.canTouchEfiVariables = false;
@@ -59,12 +52,6 @@
     inputs.apple-silicon.overlays.apple-silicon-overlay
     inputs.vesktop-bin.overlays.default
   ];
-
-  nix.settings = {
-    trusted-users = [
-      "youwen"
-    ];
-  };
 
   services.udev.extraRules = ''
     KERNEL=="macsmc-battery", SUBSYSTEM=="power_supply", ATTR{charge_control_end_threshold}="90", ATTR{charge_control_start_threshold}="85"
