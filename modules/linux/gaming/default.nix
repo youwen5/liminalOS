@@ -39,7 +39,7 @@ in
       environment.systemPackages = with pkgs; [
         ryujinx
         lutris
-        heroic
+        # heroic
         mangohud
         mangojuice
         r2modman
