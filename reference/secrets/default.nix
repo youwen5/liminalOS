@@ -31,5 +31,11 @@
       mode = "600";
       path = "/home/youwen/.config/gh/hosts.yml";
     };
+    nix_config_github_pat = {
+      file = ./nix_config_github_pat.age;
+      owner = "youwen";
+      group = "users";
+      mode = "0440";
+    };
   };
 }
