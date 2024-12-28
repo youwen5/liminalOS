@@ -24,6 +24,7 @@
     };
   };
 
+  # must set identitiesOnly since we are adding a ton of SSH keys to ssh-agent and it tries all of them
   programs.ssh = {
     enable = true;
     matchBlocks = {
@@ -31,19 +32,23 @@
         host = "code.youwen.dev";
         # port = 222;
         identityFile = config.age.secrets.youwen_dev_ssh_priv_key.path;
+        identitiesOnly = true;
       };
       "github" = {
         host = "github.com";
         identityFile = config.age.secrets.github_ssh_priv_key.path;
+        identitiesOnly = true;
       };
       "gallium" = {
         host = "gallium";
         port = 222;
         identityFile = config.age.secrets.gallium_server_ssh.path;
+        identitiesOnly = true;
       };
       "truth.youwen.dev" = {
         host = "truth.youwen.dev";
         port = 222;
+        identitiesOnly = true;
         identityFile = config.age.secrets.gallium_server_ssh.path;
       };
     };
