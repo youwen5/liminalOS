@@ -1,4 +1,4 @@
-{ config, osConfig, ... }:
+{ config, ... }:
 {
 
   imports = [
@@ -29,12 +29,17 @@
     matchBlocks = {
       "code.youwen.dev" = {
         host = "code.youwen.dev";
-        port = 222;
+        # port = 222;
         identityFile = config.age.secrets.youwen_dev_ssh_priv_key.path;
       };
       "github" = {
         host = "github.com";
         identityFile = config.age.secrets.github_ssh_priv_key.path;
+      };
+      "gallium" = {
+        host = "gallium";
+        port = 222;
+        identityFile = config.age.secrets.gallium_server_ssh.path;
       };
     };
   };

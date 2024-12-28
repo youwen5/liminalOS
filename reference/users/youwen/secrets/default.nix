@@ -30,5 +30,9 @@
       file = ./youwen_dev_ssh_priv_key.age;
       mode = "600";
     };
+    gallium_server_ssh = {
+      file = ./gallium_server_ssh.age;
+      mode = "600";
+    };
   };
 }

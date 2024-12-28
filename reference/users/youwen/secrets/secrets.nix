@@ -10,4 +10,5 @@ in
   "github_cli_secret_config.age".publicKeys = users;
   "github_ssh_priv_key.age".publicKeys = users;
   "youwen_dev_ssh_priv_key.age".publicKeys = users;
+  "gallium_server_ssh.age".publicKeys = users;
 }
