@@ -86,6 +86,13 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    agenix = {
+      url = "github:ryantm/agenix";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "home-manager";
+      inputs.darwin.follows = "nix-darwin";
+    };
+
     wallpapers = {
       url = "git+https://code.youwen.dev/youwen5/wallpapers";
       flake = false;
@@ -165,6 +172,7 @@
               inputs.home-manager.nixosModules.home-manager
               inputs.nixos-wsl.nixosModules.default
               inputs.stylix.nixosModules.stylix
+              inputs.agenix.nixosModules.age
               ./modules/default.nix
               ./overlays
               (
@@ -179,6 +187,7 @@
                       zen-browser = inputs.zen-browser.packages.${pkgs.system}.default;
                     })
                   ];
+                  environment.systemPackages = [ inputs.agenix.packages.${pkgs.system}.default ];
                 }
               )
             ];
@@ -191,6 +200,7 @@
             imports = [
               inputs.nix-index-database.hmModules.nix-index
               inputs.spicetify.homeManagerModules.default
+              inputs.agenix.homeManagerModules.age
               ./hm/modules/default.nix
             ];
           };

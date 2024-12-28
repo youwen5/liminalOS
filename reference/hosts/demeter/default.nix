@@ -7,6 +7,7 @@
   imports =
     [
       ./configuration.nix
+      ../../secrets
       self.nixosModules.liminalOS
       {
         home-manager.users.youwen = {
