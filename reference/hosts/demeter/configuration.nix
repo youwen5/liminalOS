@@ -72,16 +72,6 @@
       "/dev/disk/by-uuid/af320a0f-b388-43f5-b5a3-af2b47cfc716";
   };
 
-  users.users.youwen = {
-    isNormalUser = true;
-    description = "Youwen Wu";
-    extraGroups = [
-      "networkmanager"
-      "wheel"
-    ];
-    shell = pkgs.fish;
-  };
-
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
   # on your system were taken. It‘s perfectly fine and recommended to leave

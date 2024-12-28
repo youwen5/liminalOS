@@ -1,7 +1,7 @@
 { lib, ... }:
 {
   imports = [
-    ../../users/youwen
+    ../../users/youwen/hm.nix
   ];
 
   home.stateVersion = "24.05";
