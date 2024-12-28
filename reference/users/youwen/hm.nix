@@ -41,6 +41,11 @@
         port = 222;
         identityFile = config.age.secrets.gallium_server_ssh.path;
       };
+      "truth.youwen.dev" = {
+        host = "truth.youwen.dev";
+        port = 222;
+        identityFile = config.age.secrets.gallium_server_ssh.path;
+      };
     };
     addKeysToAgent = "yes";
   };
