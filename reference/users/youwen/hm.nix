@@ -42,5 +42,6 @@
         identityFile = config.age.secrets.gallium_server_ssh.path;
       };
     };
+    addKeysToAgent = "yes";
   };
 }
