@@ -34,5 +34,10 @@
       file = ./gallium_server_ssh.age;
       mode = "600";
     };
+    wakatime_cfg = {
+      file = ./wakatime_cfg.age;
+      mode = "600";
+      path = "${config.home.homeDirectory}/.wakatime.cfg";
+    };
   };
 }

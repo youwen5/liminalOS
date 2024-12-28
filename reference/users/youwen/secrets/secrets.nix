@@ -11,4 +11,5 @@ in
   "github_ssh_priv_key.age".publicKeys = users;
   "youwen_dev_ssh_priv_key.age".publicKeys = users;
   "gallium_server_ssh.age".publicKeys = users;
+  "wakatime_cfg.age".publicKeys = users;
 }
