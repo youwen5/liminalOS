@@ -111,4 +111,18 @@ in
     text/html;      ${pkgs.w3m}/bin/w3m %s;     nametemplate=%s.html;       needsterminal
     text/html;      ${pkgs.w3m}/bin/w3m -v -F -T text/html -dump %s;        copiousoutput
   '';
+
+  home.file.".w3m/config".text = ''
+    inline_img_protocol 4
+    imgdisplay kitty
+    display_link_number 1
+  '';
+
+  home.file.".w3m/keymap".text =
+    (builtins.readFile ./vimkeys.w3m)
+    + ''
+      keymap R COMMAND "READ_SHELL '${pkgs.rdrview}/bin/rdrview $W3M_URL -H 2> /dev/null 1> /tmp/readable.html' ; LOAD /tmp/readable.html"
+      keymap f COMMAND "RESHAPE ; LINK_BEGIN ; GOTO_LINK"
+      keymap F COMMAND "RESHAPE ; LINK_BEGIN ; TAB_LINK"
+    '';
 }
