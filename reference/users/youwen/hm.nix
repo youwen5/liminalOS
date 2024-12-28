@@ -30,6 +30,7 @@
       "code.youwen.dev" = {
         host = "code.youwen.dev";
         port = 222;
+        identityFile = config.age.secrets.youwen_dev_ssh_priv_key.path;
       };
       "github" = {
         host = "github.com";

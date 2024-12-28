@@ -12,4 +12,5 @@ in
   "tincan_app_password.age".publicKeys = users ++ systems;
   "github_cli_secret_config.age".publicKeys = users ++ systems;
   "github_ssh_priv_key.age".publicKeys = users ++ systems;
+  "youwen_dev_ssh_priv_key.age".publicKeys = users ++ systems;
 }

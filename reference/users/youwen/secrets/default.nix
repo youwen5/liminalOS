@@ -26,5 +26,9 @@
       file = ./github_ssh_priv_key.age;
       mode = "600";
     };
+    youwen_dev_ssh_priv_key = {
+      file = ./youwen_dev_ssh_priv_key.age;
+      mode = "600";
+    };
   };
 }
