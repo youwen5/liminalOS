@@ -1044,11 +1044,11 @@
         "plugins-blink-ripgrep": "plugins-blink-ripgrep"
       },
       "locked": {
-        "lastModified": 1735458945,
-        "narHash": "sha256-kTZC4TaxwxFnyv1NHfl3u/f9BGCq9tlqvR7B9hCvcYA=",
+        "lastModified": 1735461074,
+        "narHash": "sha256-uYdjKKknXLnFPdsGa3vkkxNjYf9sAE/XsoY3xiBfDmk=",
         "ref": "refs/heads/main",
-        "rev": "fa20c7760741deee9a76bbf61ae20e9b19d42f35",
-        "revCount": 81,
+        "rev": "aeadb0a9d33c004739071c6b19cd1f559fe2ba7f",
+        "revCount": 82,
         "type": "git",
         "url": "https://code.youwen.dev/youwen5/viminal2"
       },
