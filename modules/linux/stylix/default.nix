@@ -24,7 +24,7 @@ in
       '';
     };
     wallpaper = lib.mkOption {
-      type = lib.types.path;
+      type = lib.types.anything;
       default = "../../../hm/modules/common/shellenv/fastfetch/nixos-logo.png";
       description = ''
         Path to wallpaper to set as background and generate system colorscehme from.
