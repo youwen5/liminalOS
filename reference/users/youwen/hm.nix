@@ -75,7 +75,7 @@
           cd $HOME/Documents/vaults
           git clone git@code.youwen.dev:youwen5/vault.git
           cd $vault_dir
-          vim
+          nvim -c "Telescope find_files"
       end
     '';
 
@@ -92,7 +92,7 @@
           cd $HOME/Documents
           git clone git@code.youwen.dev:youwen5/alexandria.git
           cd $vault_dir
-          vim
+          nvim -c "Telescope find_files"
       end
     '';
   };
