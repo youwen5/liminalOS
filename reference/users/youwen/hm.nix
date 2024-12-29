@@ -60,4 +60,23 @@
     text/html;      ${pkgs.w3m}/bin/w3m %s;     nametemplate=%s.html;       needsterminal
     text/html;      ${pkgs.w3m}/bin/w3m -v -F -T text/html -dump %s;        copiousoutput
   '';
+
+  programs.fish.functions = {
+    vault = ''
+      set vault_dir $HOME/Documents/vaults/vault
+
+      if test -d $vault_dir
+          cd $vault_dir
+          git pull
+          vim
+      else
+          echo "Vault is not yet cloned. Cloning repository now."
+          mkdir -p $HOME/Documents/vaults
+          cd $HOME/Documents/vaults
+          git clone git@code.youwen.dev:youwen5/vault.git
+          cd $vault_dir
+          vim
+      end
+    '';
+  };
 }
