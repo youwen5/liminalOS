@@ -676,51 +676,19 @@
         "type": "github"
       }
     },
-    "plugins-live-share": {
+    "plugins-blink-ripgrep": {
       "flake": false,
       "locked": {
-        "lastModified": 1729253766,
-        "narHash": "sha256-fUYFdeP+T+KwGpvm0eh5GcAS35ZU5f0N9A/JsqBgHGA=",
-        "owner": "azratul",
-        "repo": "live-share.nvim",
-        "rev": "bf5e8e087c368aae0325a09d1ea43f2a08f5e9aa",
+        "lastModified": 1735411615,
+        "narHash": "sha256-V3Tf8bPpO7KjP/AwcgYjMZdTejydvBx/t33H3+wsNLo=",
+        "owner": "mikavilpas",
+        "repo": "blink-ripgrep.nvim",
+        "rev": "f4d9460a3552c735c7835a545ce32125610c1ce5",
         "type": "github"
       },
       "original": {
-        "owner": "azratul",
-        "repo": "live-share.nvim",
-        "type": "github"
-      }
-    },
-    "plugins-lsp-progress": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1734338835,
-        "narHash": "sha256-WLBNiUzylljTof52+bZgiMIPjzEFeCEq3eSamdo467M=",
-        "owner": "linrongbin16",
-        "repo": "lsp-progress.nvim",
-        "rev": "f3df1df8f5ea33d082db047b5d2d2b83cc01cd8a",
-        "type": "github"
-      },
-      "original": {
-        "owner": "linrongbin16",
-        "repo": "lsp-progress.nvim",
-        "type": "github"
-      }
-    },
-    "plugins-typst-preview": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1734839452,
-        "narHash": "sha256-d6Tv7xZRghYYDfABk/p2e9qTm4qnWHM+ejKDCcR0TfY=",
-        "owner": "chomosuke",
-        "repo": "typst-preview.nvim",
-        "rev": "c1100e8788baabe8ca8f8cd7fd63d3d479e49e36",
-        "type": "github"
-      },
-      "original": {
-        "owner": "chomosuke",
-        "repo": "typst-preview.nvim",
+        "owner": "mikavilpas",
+        "repo": "blink-ripgrep.nvim",
         "type": "github"
       }
     },
@@ -1073,16 +1041,14 @@
         "nixpkgs": [
           "nixpkgs"
         ],
-        "plugins-live-share": "plugins-live-share",
-        "plugins-lsp-progress": "plugins-lsp-progress",
-        "plugins-typst-preview": "plugins-typst-preview"
+        "plugins-blink-ripgrep": "plugins-blink-ripgrep"
       },
       "locked": {
-        "lastModified": 1735443322,
-        "narHash": "sha256-IpZIx94KDl4Hf78NGhEZEG51ao5/VrswcXx/4061KkU=",
+        "lastModified": 1735457332,
+        "narHash": "sha256-9qOrgG3Oy+MmjBpLYo+d1kCdeO7AZFTjIq5UUeKn9p0=",
         "ref": "refs/heads/main",
-        "rev": "19c4d0c7fc8eb2405d62bca8560f3c77c9d3aaba",
-        "revCount": 72,
+        "rev": "893839a52e65b201782267c6c8f7379d0e1f12a9",
+        "revCount": 80,
         "type": "git",
         "url": "https://code.youwen.dev/youwen5/viminal2"
       },
