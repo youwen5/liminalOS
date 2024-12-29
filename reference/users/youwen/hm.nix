@@ -78,5 +78,22 @@
           vim
       end
     '';
+
+    alexa = ''
+      set vault_dir $HOME/Documents/alexandria/content
+
+      if test -d $vault_dir
+          cd $vault_dir
+          git pull
+          vim
+      else
+          echo "Vault is not yet cloned. Cloning repository now."
+          mkdir -p $HOME/Documents
+          cd $HOME/Documents
+          git clone git@code.youwen.dev:youwen5/alexandria.git
+          cd $vault_dir
+          vim
+      end
+    '';
   };
 }
