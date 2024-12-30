@@ -251,20 +251,15 @@ in
 
           "hyprland/workspaces" = {
             show-special = true;
-            # persistent-workspaces = {
-            #   "*" = [
-            #     1
-            #     2
-            #     3
-            #     4
-            #     5
-            #     6
-            #     7
-            #     8
-            #     9
-            #     10
-            #   ];
-            # };
+            persistent-workspaces = {
+              "*" = [
+                3
+                4
+                5
+                6
+                7
+              ];
+            };
             format = "{icon}";
             on-click = "activate";
             format-icons = {
