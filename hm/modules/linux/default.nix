@@ -26,11 +26,12 @@
       # wrapper for nh as it doesn't work with `doas`
       body = ''
         if count $argv > /dev/null
-          if contains -- os $argv or contains -- clean $argv
-            doas ${pkgs.nh}/bin/nh $argv -R
-          else
-            ${pkgs.nh}/bin/nh $argv
-          end
+            set subcommand (string join " " $argv)
+            if contains -- $subcommand "os switch" "os test" "os boot" "clean all"
+                doas ${pkgs.nh}/bin/nh $argv -R
+            else
+                ${pkgs.nh}/bin/nh $argv
+            end
         else
             ${pkgs.nh}/bin/nh
         end
