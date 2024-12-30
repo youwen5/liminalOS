@@ -692,6 +692,22 @@
         "type": "github"
       }
     },
+    "plugins-pomo-nvim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1722376269,
+        "narHash": "sha256-tJ2TrypKnCnQm+6FDjX0KDr+UNoBBVvGIm+uWJtpNLc=",
+        "owner": "epwalsh",
+        "repo": "pomo.nvim",
+        "rev": "aa8decc421d89be0f10b1fc6a602cdd269f350ff",
+        "type": "github"
+      },
+      "original": {
+        "owner": "epwalsh",
+        "repo": "pomo.nvim",
+        "type": "github"
+      }
+    },
     "pre-commit-hooks-nix": {
       "inputs": {
         "flake-compat": [
@@ -1041,14 +1057,15 @@
         "nixpkgs": [
           "nixpkgs"
         ],
-        "plugins-blink-ripgrep": "plugins-blink-ripgrep"
+        "plugins-blink-ripgrep": "plugins-blink-ripgrep",
+        "plugins-pomo-nvim": "plugins-pomo-nvim"
       },
       "locked": {
-        "lastModified": 1735471426,
-        "narHash": "sha256-wBvgCbHn50te7gWd1Ub5LhNM9PSuOb/vuxq7ZvI5hdQ=",
+        "lastModified": 1735518781,
+        "narHash": "sha256-Qyq8K6ASKgftz/zXIQWjU6pt1b/MFucpSIu5/LghO1g=",
         "ref": "refs/heads/main",
-        "rev": "b9441f350f749ff2b4d48acb3c50aef7f17eb20d",
-        "revCount": 83,
+        "rev": "87973cbd7b507e3307b40805025a093aac7faad5",
+        "revCount": 94,
         "type": "git",
         "url": "https://code.youwen.dev/youwen5/viminal2"
       },
