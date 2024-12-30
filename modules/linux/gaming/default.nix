@@ -44,6 +44,12 @@ in
         mangojuice
         r2modman
         modrinth-app
+
+        (wine-discord-ipc-bridge.overrideAttrs (
+          final: prev: {
+            meta.platforms = prev.meta.platforms ++ [ "x86_64-linux" ];
+          }
+        ))
       ];
 
       liminalOS.programs.flatpak.enable = true;
@@ -62,6 +68,9 @@ in
         dedicatedServer.openFirewall = true;
         localNetworkGameTransfers.openFirewall = true;
         gamescopeSession.enable = true;
+        extraCompatPackages = with pkgs; [
+          proton-ge-bin
+        ];
       };
 
       programs.gamescope.enable = true;
