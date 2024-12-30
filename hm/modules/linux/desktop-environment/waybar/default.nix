@@ -59,7 +59,7 @@ in
           } */
 
           #workspaces {
-              background-color: rgba(0,0,0,0.5);
+              background-color: #${colors.base00};
               border-radius: 0.5rem;
               padding: 0 2px 0 2px;
           }
@@ -72,7 +72,7 @@ in
           }
 
           #window {
-              background-color: rgba(0,0,0,0.5);
+              background-color: #${colors.base00};
               border-radius: 0.5rem;
               padding: 2px 5px;
           }
