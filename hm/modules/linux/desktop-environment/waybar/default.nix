@@ -37,7 +37,8 @@ in
 
           .modules-left {
               opacity: 1;
-              background: linear-gradient(45deg, #${colors.base0B}, #${colors.base0A});
+              /* background: linear-gradient(45deg, #${colors.base0B}, #${colors.base0A}); */
+              background: #${colors.base01};
               border-radius: 0.5rem;
               padding: 2px;
           }
@@ -60,14 +61,14 @@ in
           #workspaces {
               background-color: rgba(0,0,0,0.5);
               border-radius: 0.5rem;
-              padding: 0 2px;
+              padding: 0 2px 0 2px;
           }
 
           #workspaces button {
-              font-size: 0.6rem;
-              padding: 0 0.3rem 0 0;
-              border: #cccccc;
-              color: #cccccc;
+              font-size: 0.75rem;
+              padding: 0 0.2rem 0 0.2rem;
+              border: #${colors.base05};
+              color: #${colors.base05};
           }
 
           #window {
@@ -119,7 +120,7 @@ in
           "margin" = "5px 10px 0px 10px";
           "spacing" = 10;
 
-          "mode" = "top";
+          # "mode" = "top";
 
           reload_style_on_change = true;
 
@@ -250,28 +251,40 @@ in
 
           "hyprland/workspaces" = {
             show-special = true;
-            persistent-workspaces = {
-              "*" = [
-                1
-                2
-                3
-                4
-                5
-                6
-                7
-                8
-                9
-                10
-              ];
-            };
+            # persistent-workspaces = {
+            #   "*" = [
+            #     1
+            #     2
+            #     3
+            #     4
+            #     5
+            #     6
+            #     7
+            #     8
+            #     9
+            #     10
+            #   ];
+            # };
             format = "{icon}";
+            on-click = "activate";
             format-icons = {
+              "1" = "";
+              "2" = "";
+              "3" = "󰰊";
+              "4" = "󰰍";
+              "5" = "";
+              "6" = "";
+              "7" = "󰰨";
+              "8" = "";
+              "9" = "";
+              "10" = "";
               active = "";
               empty = "";
               default = "";
               urgent = "";
               special = "󰠱";
             };
+            sort-by-number = true;
           };
 
           "hyprland/window" = {
