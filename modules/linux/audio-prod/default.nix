@@ -20,6 +20,7 @@ in
       reaper
       yabridge
       yabridgectl
+      alsa-scarlett-gui
     ];
 
     liminalOS.config.extraUnfreePackages = lib.mkIf config.liminalOS.config.allowUnfree [
