@@ -229,29 +229,37 @@ in
             "winOut, 0.3, -0.3, 0, 1"
             "liner, 1, 1, 1, 1"
           ];
-          animation = [
-            "windows, 1, 6, wind, slide"
-            "windowsIn, 1, 6, winIn, slide"
-            "windowsOut, 1, 5, winOut, slide"
-            "windowsMove, 1, 5, wind, slide"
-            # "border, 1, 1, liner"
-            # "borderangle, 1, 30, liner, loop"
-            "fade, 1, 10, default"
-            "workspaces, 1, 5, wind"
-            # "layers, 1, 8, default, slide"
-          ];
+          animation =
+            [
+              "windows, 1, 6, wind, slide"
+              "windowsIn, 1, 6, winIn, slide"
+              "windowsOut, 1, 5, winOut, slide"
+              "windowsMove, 1, 5, wind, slide"
+              "fade, 1, 10, default"
+              "workspaces, 1, 5, wind"
+              # "layers, 1, 8, default, slide"
+            ]
+            ++ (lib.optionals (!osConfig.liminalOS.powersave) [
+              "border, 1, 1, liner"
+              "borderangle, 1, 30, liner, loop"
+            ]);
         };
 
-        general = {
-          gaps_in = "3";
-          gaps_out = "8";
-          border_size = "2";
-          # the dot is a hyprland name, not nix syntax, so we escape it
-          "col.active_border" = pkgs.lib.mkForce "rgba(ca9ee6ff) rgba(f2d5cfff) 45deg";
-          "col.inactive_border" = pkgs.lib.mkForce "rgba(b4befecc) rgba(6c7086cc) 45deg";
-          layout = "dwindle";
-          resize_on_border = "true";
-        };
+        general =
+          let
+            inherit (config.lib.stylix) colors;
+          in
+          {
+            gaps_in = "3";
+            gaps_out = "8";
+            border_size = "2";
+            # "col.active_border" = pkgs.lib.mkForce "rgba(ca9ee6ff) rgba(f2d5cfff) 45deg";
+            # "col.inactive_border" = pkgs.lib.mkForce "rgba(b4befecc) rgba(6c7086cc) 45deg";
+            "col.active_border" = "rgba(${colors.base0A}ff) rgba(${colors.base09}ff) 45deg";
+            "col.inactive_border" = "rgba(${colors.base01}cc) rgba(${colors.base02}cc) 45deg";
+            layout = "dwindle";
+            resize_on_border = "true";
+          };
 
         misc = {
           disable_hyprland_logo = true;

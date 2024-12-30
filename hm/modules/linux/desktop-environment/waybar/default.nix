@@ -22,7 +22,90 @@ in
   config = {
     programs.waybar = lib.mkIf cfg.enable {
       enable = true;
-      style = ./style.css;
+      style =
+        let
+          inherit (config.lib.stylix) colors;
+        in
+        ''
+          window#waybar {
+              font-family: ${config.stylix.fonts.monospace.name};
+              background-color: rgba(0,0,0,0);
+              font-size: 0.8rem;
+              border-radius: 0.5rem;
+              color: #${colors.base05};
+          }
+
+          .modules-left {
+              opacity: 1;
+              background: linear-gradient(45deg, #${colors.base0B}, #${colors.base0A});
+              border-radius: 0.5rem;
+              padding: 2px;
+          }
+
+          .modules-center {
+              opacity: 0;
+          }
+
+          .modules-right {
+              opacity: 1;
+              background-color: #${colors.base00};
+              border-radius: 0.5rem;
+              padding: 2px 2px 2px 10px
+          }
+
+          /* label.module {
+              margin-left: -1px;
+          } */
+
+          #workspaces {
+              background-color: rgba(0,0,0,0.5);
+              border-radius: 0.5rem;
+              padding: 0 2px;
+          }
+
+          #workspaces button {
+              font-size: 0.6rem;
+              padding: 0 0.3rem 0 0;
+              border: #cccccc;
+              color: #cccccc;
+          }
+
+          #window {
+              background-color: rgba(0,0,0,0.5);
+              border-radius: 0.5rem;
+              padding: 2px 5px;
+          }
+
+          #clock {
+              font-weight: bolder;
+              border-radius: 0.5rem;
+              padding: 0 3px 0 0;
+          }
+
+          #battery {
+              color: #${colors.base08};
+          }
+
+          #memory {
+              color: #${colors.base09};
+          }
+
+          #disk {
+              color: #${colors.base0A};
+          }
+
+          #cpu {
+              color: #${colors.base0B};
+          }
+
+          #temperature {
+              color: #${colors.base0C};
+          }
+
+          #network {
+              color: #${colors.base0D};
+          }
+        '';
       systemd.enable = true;
       settings = {
         mainBar = {

@@ -67,6 +67,13 @@ in
         Form factor of the machine. Adjusts some UI settings.
       '';
     };
+    powersave = lib.mkOption {
+      type = lib.types.bool;
+      default = cfg.formFactor == "laptop";
+      description = ''
+        Whether to set some options to reduce power consumption (mostly Hyprland).
+      '';
+    };
   };
 
   config = lib.mkIf cfg.enable {
