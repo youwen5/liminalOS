@@ -89,8 +89,6 @@
     agenix = {
       url = "github:yaxitech/ragenix";
       inputs.nixpkgs.follows = "nixpkgs";
-      inputs.home-manager.follows = "home-manager";
-      inputs.darwin.follows = "nix-darwin";
       inputs.flake-utils.follows = "flake-utils";
     };
 
