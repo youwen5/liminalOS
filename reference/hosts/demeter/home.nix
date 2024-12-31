@@ -11,5 +11,5 @@
     "HDMI-A-1,1920x1080@60,0x0,1"
   ];
 
-  programs.hyprlock.settings.background.monitor = lib.mkForce "DP-1";
+  liminalOS.desktop.hyprland.screenlocker.monitor = "DP-1";
 }

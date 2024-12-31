@@ -33,9 +33,23 @@ in
     };
     screenlocker.enable = lib.mkOption {
       type = lib.types.bool;
-      default = cfg.enable;
+      default = cfg.enable && cfg.idleDaemon.enable;
       description = ''
         Whether to set up Hyprlock for screen locking.
+      '';
+    };
+    screenlocker.useNvidiaCrashFix = lib.mkOption {
+      type = lib.types.bool;
+      default = osConfig.liminalOS.system.graphics.nvidia.enable;
+      description = ''
+        Whether to use a workaround for Hyprlock background blur not working on Nvidia-based machines. Before locking, a screenshot will be taken and placed at `/tmp/__hyprlock-monitor-screenshot.png`.
+      '';
+    };
+    screenlocker.monitor = lib.mkOption {
+      type = lib.types.nullOr lib.types.string;
+      default = null;
+      description = ''
+        Monitor to use for screen locker. Use `hyprctl monitors` to determine.
       '';
     };
   };
@@ -330,8 +344,8 @@ in
           grace = 1;
         };
         background = {
-          monitor = "";
-          path = "/tmp/__hyprlock-monitor-screenshot.png";
+          monitor = cfg.screenlocker.monitor;
+          path = lib.mkIf cfg.screenlocker.useNvidiaCrashFix "/tmp/__hyprlock-monitor-screenshot.png";
           blur_passes = 3;
           blur_size = 7;
           noise = 0.0117;
@@ -378,7 +392,11 @@ in
       enable = true;
       settings = {
         general = {
-          lock_cmd = "pidof hyprlock || ${pkgs.grim}/bin/grim -o ${config.programs.hyprlock.settings.background.monitor} /tmp/__hyprlock-monitor-screenshot.png && ${pkgs.hyprlock}/bin/hyprlock"; # avoid starting multiple hyprlock instances.
+          lock_cmd =
+            if cfg.screenlocker.useNvidiaCrashFix then
+              "pidof hyprlock || ${pkgs.grim}/bin/grim -o ${config.programs.hyprlock.settings.background.monitor} /tmp/__hyprlock-monitor-screenshot.png && ${pkgs.hyprlock}/bin/hyprlock"
+            else
+              "pidof hyprlock || hyprlock";
           before_sleep_cmd = "loginctl lock-session"; # lock before suspend.
           after_sleep_cmd = "hyprctl dispatch dpms on"; # to avoid having to press a key twice to turn on the display.
         };
@@ -399,5 +417,13 @@ in
         ];
       };
     };
+    assertions = [
+      {
+        assertion =
+          !cfg.screenlocker.useNvidiaCrashFix
+          || (cfg.screenlocker.useNvidiaCrashFix && cfg.screenlocker.monitor != null);
+        message = "To use the Nvidia crash fix, you must set screenlocker.monitor to the monitor you want to use as the lock screen that blurs! Use `hyprctl monitors` to determine the monitor codes (should be something like DP-1, HDMI-A-1, etc).";
+      }
+    ];
   };
 }
