@@ -341,7 +341,7 @@ in
       settings = {
         general = {
           hide_cursor = true;
-          grace = 1;
+          grace = 0;
         };
         background = {
           monitor = cfg.screenlocker.monitor;
