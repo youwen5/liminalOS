@@ -190,11 +190,11 @@
     },
     "crane": {
       "locked": {
-        "lastModified": 1734808813,
-        "narHash": "sha256-3aH/0Y6ajIlfy7j52FGZ+s4icVX0oHhqBzRdlOeztqg=",
+        "lastModified": 1725409566,
+        "narHash": "sha256-PrtLmqhM6UtJP7v7IGyzjBFhbG4eOAHT6LPYOFmYfbk=",
         "owner": "ipetkov",
         "repo": "crane",
-        "rev": "72e2d02dbac80c8c86bf6bf3e785536acf8ee926",
+        "rev": "7e4586bad4e3f8f97a9271def747cf58c4b68f3c",
         "type": "github"
       },
       "original": {
@@ -521,11 +521,11 @@
     "homebrew-cask": {
       "flake": false,
       "locked": {
-        "lastModified": 1735595043,
-        "narHash": "sha256-j7RHPkUYv95Z+fab8qQ9AoSnWEnuikFLQiIfaDiVjx8=",
+        "lastModified": 1735621293,
+        "narHash": "sha256-VjoUHegId5FaY7vvjFpvmcIs5cDit7xIy33W8hQEWNA=",
         "owner": "homebrew",
         "repo": "homebrew-cask",
-        "rev": "3197b31a2a37f858e7105480dede4c27abc25ec0",
+        "rev": "0a747d6c1d6d1221ae4afa0adee7756a59c3ce8a",
         "type": "github"
       },
       "original": {
@@ -537,11 +537,11 @@
     "homebrew-core": {
       "flake": false,
       "locked": {
-        "lastModified": 1735591533,
-        "narHash": "sha256-j9Y5S3KA6eRB87+aYrxxdZY1RdFX/cJImJqWS5aShl0=",
+        "lastModified": 1735622950,
+        "narHash": "sha256-NlSZW9TA4xzWoJFdOPnSVnySfMh67xOVo4unpZ4Ml90=",
         "owner": "homebrew",
         "repo": "homebrew-core",
-        "rev": "6c6d0ea613f57bcef5d167e6d6a91b9b4862610e",
+        "rev": "06c5a3b8359fab9e83f7e71aeba76e35553458b5",
         "type": "github"
       },
       "original": {
@@ -759,6 +759,22 @@
         "type": "github"
       }
     },
+    "nixpkgs_3": {
+      "locked": {
+        "lastModified": 1735268880,
+        "narHash": "sha256-7QEFnKkzD13SPxs+UFR5bUFN2fRw+GlL0am72ZjNre4=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "7cc0bff31a3a705d3ac4fdceb030a17239412210",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "ref": "nixpkgs-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "plugins-blink-ripgrep": {
       "flake": false,
       "locked": {
@@ -851,11 +867,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1735525800,
-        "narHash": "sha256-pcN8LAL021zdC99a9F7iEiFCI1wmrE4DpIYUgKpB/jY=",
+        "lastModified": 1725675754,
+        "narHash": "sha256-hXW3csqePOcF2e/PYnpXj72KEYyNj2HzTrVNmS/F7Ug=",
         "owner": "oxalica",
         "repo": "rust-overlay",
-        "rev": "10faa81b4c0135a04716cbd1649260d82b2890cd",
+        "rev": "8cc45e678e914a16c8e224c3237fb07cf21e5e54",
         "type": "github"
       },
       "original": {
@@ -913,11 +929,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1735532154,
-        "narHash": "sha256-b+Yz6cOqcDmWYt8BIifTrY1n8q5zTJEHuEh/16nhS7k=",
+        "lastModified": 1735618543,
+        "narHash": "sha256-Aqhp0PcsoEn4FRWZYJZHbHeB+FOJDQcbsaEsXv0iA9k=",
         "owner": "Gerg-L",
         "repo": "spicetify-nix",
-        "rev": "52c3363e4a6896c263657491e8177ee8b63af3b4",
+        "rev": "2da20133b52ac69a1f348c08dc801c8638261548",
         "type": "github"
       },
       "original": {
@@ -1157,9 +1173,7 @@
     "viminal": {
       "inputs": {
         "nixCats": "nixCats",
-        "nixpkgs": [
-          "nixpkgs"
-        ],
+        "nixpkgs": "nixpkgs_3",
         "plugins-blink-ripgrep": "plugins-blink-ripgrep",
         "plugins-pomo-nvim": "plugins-pomo-nvim"
       },
@@ -1184,11 +1198,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1735446997,
-        "narHash": "sha256-Er9Jftp09FPMya0qpb2H+PKBkVgTbGSayNes2sQd9hQ=",
+        "lastModified": 1735617939,
+        "narHash": "sha256-5kaPvKkWx5okEePzI3KvDpBYn9CGJ/1QUhIX44R5Ny0=",
         "owner": "youwen5",
         "repo": "zen-browser-flake",
-        "rev": "12bba4871d25e1f51d0ccb1967a49ade45811849",
+        "rev": "48130c8dd35a0f65c6b2eac5b54889ebf58cb9eb",
         "type": "github"
       },
       "original": {
