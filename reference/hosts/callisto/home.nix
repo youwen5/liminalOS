@@ -6,5 +6,5 @@
 
   home.stateVersion = "24.05";
 
-  programs.hyprlock.settings.background.monitor = lib.mkForce "eDP-1";
+  liminalOS.desktop.hyprland.screenlocker.monitor = "eDP-1";
 }
