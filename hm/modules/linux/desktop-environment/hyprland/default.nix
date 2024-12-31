@@ -46,7 +46,7 @@ in
       '';
     };
     screenlocker.monitor = lib.mkOption {
-      type = lib.types.nullOr lib.types.string;
+      type = lib.types.nullOr lib.types.str;
       default = null;
       description = ''
         Monitor to use for screen locker. Use `hyprctl monitors` to determine.
