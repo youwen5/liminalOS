@@ -840,7 +840,6 @@
         "ucode": "ucode",
         "vesktop-bin": "vesktop-bin",
         "viminal": "viminal",
-        "wallpapers": "wallpapers",
         "zen-browser": "zen-browser"
       }
     },
@@ -1176,22 +1175,6 @@
       "original": {
         "type": "git",
         "url": "https://code.youwen.dev/youwen5/viminal2"
-      }
-    },
-    "wallpapers": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1731402244,
-        "narHash": "sha256-TbVW6m/gKDA5EBZVFdJ6TpTHYcJQqtQA1fGXF3GqJio=",
-        "ref": "refs/heads/main",
-        "rev": "9f7baf7300645df2f0e1b3e12a930ca88f05ca42",
-        "revCount": 8,
-        "type": "git",
-        "url": "https://code.youwen.dev/youwen5/wallpapers"
-      },
-      "original": {
-        "type": "git",
-        "url": "https://code.youwen.dev/youwen5/wallpapers"
       }
     },
     "zen-browser": {

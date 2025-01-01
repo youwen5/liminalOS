@@ -92,11 +92,6 @@
       inputs.flake-utils.follows = "flake-utils";
     };
 
-    wallpapers = {
-      url = "git+https://code.youwen.dev/youwen5/wallpapers";
-      flake = false;
-    };
-
     zen-browser = {
       url = "github:youwen5/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
