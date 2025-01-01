@@ -50,15 +50,15 @@
     };
     extras.gaming = {
       # Enable gaming utilities, like Heroic, Lutris, Steam
-      enable = true;
+      enable = false;
       # Installs Roblox using Sober, as a flatpak. Note that this will enable
       # the impure flatpak service that automatically updates flatpaks every
       # week upon nixos-rebuild switch
-      roblox.enable = true;
+      roblox.enable = false;
 
       utilities.gamemode = {
         # enable the gamemoderun binary to maximize gaming performance
-        enable = true;
+        enable = false;
         # don't forget to update this if you change your username!
         gamemodeUsers = [ "default-user" ];
       };
