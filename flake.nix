@@ -225,6 +225,8 @@
               marksman
             ];
           };
+
+          packages.docs = pkgs.callPackage ./docs { };
         };
     };
 }
