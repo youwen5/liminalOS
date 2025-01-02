@@ -25,7 +25,7 @@ in
     };
     roblox.enable = lib.mkOption {
       type = lib.types.bool;
-      default = config.liminalOS.extras.gaming && cfg.enable && config.liminalOS.config.allowUnfree;
+      default = false;
       description = ''
         Whether to install the Roblox Sober flatpak automatically. Note that this will enable the nix-flatpak service and automatic flatpak updates.`
       '';
