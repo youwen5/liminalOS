@@ -202,7 +202,7 @@
 
         templates = rec {
           liminalOS = {
-            path = ./templates/liminalOS;
+            path = ./templates/minimal;
             description = "Barebones configuration of liminalOS";
           };
           default = liminalOS;
