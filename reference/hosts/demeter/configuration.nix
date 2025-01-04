@@ -34,6 +34,7 @@
         gamemodeUsers = [ "youwen" ];
       };
     };
+    extras.distrobox.enable = true;
   };
 
   time.timeZone = "America/Los_Angeles";
