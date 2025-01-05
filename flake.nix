@@ -2,7 +2,7 @@
   description = "System configuration flake.";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/b74a56e2acce8fe88a575287a20ac196d8d01938";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     # stablepkgs.url = "github:nixos/nixpkgs/nixos-24.05";
     # bleedingpkgs.url = "github:nixos/nixpkgs/master";
     # nixpkgs-unstable-small.url = "github:nixos/nixpkgs/nixos-unstable-small";
@@ -66,6 +66,7 @@
 
     viminal = {
       url = "git+https://code.youwen.dev/youwen5/viminal2";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     vesktop-bin = {
