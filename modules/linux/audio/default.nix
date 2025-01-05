@@ -11,10 +11,9 @@ in
     '';
   };
 
-  config = {
-    services.playerctld.enable = lib.mkIf cfg.enable true;
-    services.pulseaudio.enable = lib.mkIf cfg.enable false;
-    services.pipewire = lib.mkIf cfg.enable {
+  config = lib.mkIf cfg.enable {
+    services.playerctld.enable = true;
+    services.pipewire = {
       enable = true;
       alsa.enable = true;
       alsa.support32Bit = true;
