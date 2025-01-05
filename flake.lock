@@ -71,20 +71,19 @@
         "flake-compat": "flake-compat",
         "nixpkgs": [
           "nixpkgs"
-        ],
-        "rust-overlay": "rust-overlay_2"
+        ]
       },
       "locked": {
-        "lastModified": 1735172763,
-        "narHash": "sha256-a6n8RsiAolz6p24Fsr/gTndx9xr9USpKqKK6kzBeXQc=",
-        "owner": "tpwrules",
-        "repo": "nixos-apple-silicon",
-        "rev": "3daf0637409689d7a1304cedc50d20542bc47905",
+        "lastModified": 1735528724,
+        "narHash": "sha256-SGiClFwaEBidAOksU9YCFhwto6CTd9o34Qto3Qv5Iro=",
+        "owner": "zzywysm",
+        "repo": "nixos-asahi",
+        "rev": "a801d9cbbe75915041985918c0953bfa753add89",
         "type": "github"
       },
       "original": {
-        "owner": "tpwrules",
-        "repo": "nixos-apple-silicon",
+        "owner": "zzywysm",
+        "repo": "nixos-asahi",
         "type": "github"
       }
     },
@@ -597,7 +596,7 @@
           "nixpkgs"
         ],
         "pre-commit-hooks-nix": "pre-commit-hooks-nix",
-        "rust-overlay": "rust-overlay_3"
+        "rust-overlay": "rust-overlay_2"
       },
       "locked": {
         "lastModified": 1718178907,
@@ -899,22 +898,6 @@
       }
     },
     "rust-overlay_2": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1686795910,
-        "narHash": "sha256-jDa40qRZ0GRQtP9EMZdf+uCbvzuLnJglTUI2JoHfWDc=",
-        "owner": "oxalica",
-        "repo": "rust-overlay",
-        "rev": "5c2b97c0a9bc5217fc3dfb1555aae0fb756d99f9",
-        "type": "github"
-      },
-      "original": {
-        "owner": "oxalica",
-        "repo": "rust-overlay",
-        "type": "github"
-      }
-    },
-    "rust-overlay_3": {
       "inputs": {
         "flake-utils": [
           "lanzaboote",
