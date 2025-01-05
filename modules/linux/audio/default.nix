@@ -13,7 +13,7 @@ in
 
   config = {
     services.playerctld.enable = lib.mkIf cfg.enable true;
-    hardware.pulseaudio.enable = lib.mkIf cfg.enable false;
+    services.pulseaudio.enable = lib.mkIf cfg.enable false;
     services.pipewire = lib.mkIf cfg.enable {
       enable = true;
       alsa.enable = true;
