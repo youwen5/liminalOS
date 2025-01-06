@@ -1,6 +1,12 @@
-{ pkgs, lib, ... }:
+{ lib, ... }:
 {
-  wayland.windowManager.hyprland.settings.monitor = pkgs.lib.mkForce [
+  imports = [
+    ../../users/youwen/hm.nix
+  ];
+
+  home.stateVersion = "24.05";
+
+  wayland.windowManager.hyprland.settings.monitor = lib.mkForce [
     # "eDP-1,2560x1440@165,0x0,1.6"
     "eDP-1, disable"
     "HDMI-A-1,2560x1440@144,0x0,1.0"
@@ -16,5 +22,6 @@
   ];
 
   programs.waybar.settings.mainBar.output = "HDMI-A-1";
-  programs.hyprlock.settings.background.monitor = lib.mkForce "HDMI-A-1";
+
+  liminalOS.desktop.hyprland.screenlocker.monitor = "DP-1";
 }

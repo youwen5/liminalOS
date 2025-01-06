@@ -141,9 +141,13 @@
               ./reference/hosts/callisto
             ];
           };
-          adrastea = buildLiminalOS {
-            inherit inputs nixpkgs;
-            systemModule = ./reference/hosts/adrastea;
+          adrastea = nixpkgs.lib.nixosSystem {
+            specialArgs = {
+              inherit inputs self;
+            };
+            modules = [
+              ./reference/hosts/adrastea
+            ];
           };
           cassini = buildLiminalOS {
             inherit inputs nixpkgs;
