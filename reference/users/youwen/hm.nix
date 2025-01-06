@@ -81,7 +81,7 @@
       end
     '';
 
-    alexa = ''
+    ale = ''
       set vault_dir $HOME/Documents/alexandria/content
 
       if test -d $vault_dir
