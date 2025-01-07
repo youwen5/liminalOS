@@ -31,7 +31,7 @@ in
       settings = {
         default_session = {
           command = ''
-            ${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd Hyprland --remember --greeting "Welcome, generation $(readlink /nix/var/nix/profiles/system | grep -o '[0-9]*'). Access is restricted to authorized personnel only."
+            ${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd Hyprland --remember --asterisks --greeting "Welcome, generation $(readlink /nix/var/nix/profiles/system | grep -o '[0-9]*'). Access is restricted to authorized personnel only."
           '';
           user = "greeter";
         };
