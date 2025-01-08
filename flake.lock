@@ -792,6 +792,22 @@
         "type": "github"
       }
     },
+    "nixpkgs_3": {
+      "locked": {
+        "lastModified": 1736042175,
+        "narHash": "sha256-jdd5UWtLVrNEW8K6u5sy5upNAFmF3S4Y+OIeToqJ1X8=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "bf689c40d035239a489de5997a4da5352434632e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "ref": "nixpkgs-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "plugins-blink-ripgrep": {
       "flake": false,
       "locked": {
@@ -1160,9 +1176,7 @@
     "viminal": {
       "inputs": {
         "nixCats": "nixCats",
-        "nixpkgs": [
-          "nixpkgs"
-        ],
+        "nixpkgs": "nixpkgs_3",
         "plugins-blink-ripgrep": "plugins-blink-ripgrep",
         "plugins-pomo-nvim": "plugins-pomo-nvim"
       },
