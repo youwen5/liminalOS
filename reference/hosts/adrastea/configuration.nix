@@ -5,6 +5,7 @@
   config,
   pkgs,
   inputs,
+  lib,
   ...
 }:
 {
@@ -54,7 +55,7 @@
     cpuModelId = "00A50F00";
   };
 
-  services.tlp.enable = true;
+  services.tlp.enable = lib.mkForce false;
 
   powerManagement.cpuFreqGovernor = "performance";
 
