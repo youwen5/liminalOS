@@ -6,22 +6,7 @@ computing environment, ever. Imagine having to `vim` into source code and
 recompile an entire operating system to change a font. Yes, I use this on a
 daily basis.
 
-This repository exposes a NixOS module that declares the entire liminalOS
-operating system. It aims to be an easy way to both set up a brand new system
-with my opinionated configurations, and also inject into an existing NixOS
-configuration.
-
-My reference implementations of liminalOS on actual working systems are
-available [here](./reference).
-
-liminalOS is currently in a heavily experimental state, but it is used in
-production every day!
-
-You can try it with `nix flake init -t github:youwen5/liminalOS`, which will
-create a sample configuration flake along with corresponding files. Keep in
-mind you'll have to do a little bit of work in these files to get a working
-system configuration. Some Nix knowledge is expected, but comments are there to
-help!
+A flowchart of the system is provided below:
 
 ```mermaid
 flowchart TB
@@ -124,6 +109,25 @@ flowchart TB
     classDef host fill:#a8f0d1,stroke:#333;
     classDef build fill:#f0f0a8,stroke:#333;
 ```
+
+This repository exposes a NixOS module that declares the entire liminalOS
+operating system. It aims to be an easy way to both set up a brand new system
+with my opinionated configurations, and also inject into an existing NixOS
+configuration.
+
+My reference implementations of liminalOS on actual working systems are
+available [here](./reference).
+
+liminalOS is currently in a heavily experimental state, but it is used in
+production every day!
+
+You can try it with `nix flake init -t github:youwen5/liminalOS`, which will
+create a sample configuration flake along with corresponding files. Keep in
+mind you'll have to do a little bit of work in these files to get a working
+system configuration. Some Nix knowledge is expected, but comments are there to
+help!
+
+
 
 ## Hosts
 
