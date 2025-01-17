@@ -61,6 +61,9 @@ in
 
         "$mod, C, scroller:setmode, c"
         "$mod, V, scroller:setmode, r"
+
+        "$mod, G, scroller:jump"
+        "$mod+Ctrl, G, scroller:toggleoverview"
       ])
       ++ [
         # Window actions
