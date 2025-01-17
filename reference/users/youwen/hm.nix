@@ -14,7 +14,7 @@
   liminalOS = {
     utils.easyeffects.enable = true;
     desktop.hyprland.screenlocker.useNvidiaCrashFix = true;
-    desktop.hyprland.useAdvancedBindings = true;
+    desktop.hyprland.useAdvancedBindings = false;
   };
 
   programs.git = {

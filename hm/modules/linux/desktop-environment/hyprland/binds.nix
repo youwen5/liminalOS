@@ -10,18 +10,63 @@ in
 {
   wayland.windowManager.hyprland.settings = lib.mkIf cfg.enable {
     bind =
-      [
+      (
+        if cfg.hyprscroller.enable then
+          [
+            "$mod+Shift, $Left, scroller:movewindow, l"
+            "$mod+Shift, $Right, scroller:movewindow, r"
+            "$mod+Shift, $Up, scroller:movewindow, u"
+            "$mod+Shift, $Down, scroller:movewindow, d"
+
+            # Move around
+            "$mod, $Left, scroller:movefocus, l"
+            "$mod, $Right, scroller:movefocus, r"
+            "$mod, $Up, scroller:movefocus, u"
+            "$mod, $Down, scroller:movefocus, d"
+          ]
+        else
+          # Move windows around
+          [
+            "$mod+Shift, $Left, movewindow, l"
+            "$mod+Shift, $Right, movewindow, r"
+            "$mod+Shift, $Up, movewindow, u"
+            "$mod+Shift, $Down, movewindow, d"
+
+            # Move around
+            "$mod, $Left, movefocus, l"
+            "$mod, $Right, movefocus, r"
+            "$mod, $Up, movefocus, u"
+            "$mod, $Down, movefocus, d"
+
+            "$mod, V, togglesplit"
+          ]
+      )
+      ++ (lib.optionals cfg.hyprscroller.enable [
+        "$mod, comma, scroller:admitwindow"
+        "$mod, period, scroller:expelwindow"
+        "$mod, F, scroller:fitsize, active"
+        "$mod, Y, scroller:fitsize, all"
+        "$mod, semicolon, scroller:cyclesize, next"
+        "$mod, apostrophe, scroller:cyclesize, previous"
+
+        "$mod+Shift, U, movetoworkspace, r+1"
+        "$mod+Shift, I, movetoworkspace, r-1"
+
+        "$mod, U, workspace, r+1"
+        "$mod, I, workspace, r-1"
+
+        # harder to reach number keys
+        "$mod, A, workspace, 1"
+        "$mod, D, workspace, 2"
+
+        "$mod, C, scroller:setmode, c"
+        "$mod, V, scroller:setmode, r"
+      ])
+      ++ [
         # Window actions
         "$mod, Q, killactive"
         "$mod, W, togglefloating"
-        "$mod, V, togglesplit"
         "$mod, Return, fullscreen"
-
-        # Move around
-        "$mod, $Left, movefocus, l"
-        "$mod, $Right, movefocus, r"
-        "$mod, $Up, movefocus, u"
-        "$mod, $Down, movefocus, d"
 
         "$mod, 1, workspace, 1"
         "$mod, 2, workspace, 2"
@@ -33,12 +78,6 @@ in
         "$mod, 8, workspace, 8"
         "$mod, 9, workspace, 9"
         "$mod, 0, workspace, 10"
-
-        # Move windows around
-        "$mod+Shift, $Left, movewindow, l"
-        "$mod+Shift, $Right, movewindow, r"
-        "$mod+Shift, $Up, movewindow, u"
-        "$mod+Shift, $Down, movewindow, d"
 
         "$mod+Ctrl, bracketright, movetoworkspace, r+1"
         "$mod+Ctrl, bracketleft, movetoworkspace, r-1"

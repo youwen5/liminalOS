@@ -23,6 +23,13 @@ in
         Whether to enable and rice Hyprland as well as some basic desktop utilities.
       '';
     };
+    hyprscroller.enable = lib.mkOption {
+      type = lib.types.bool;
+      default = cfg.enable;
+      description = ''
+        Whether to enable the hyprscroller scrolling layout.
+      '';
+    };
     useAdvancedBindings = lib.mkEnableOption "advanced keybinds";
     applyGtkFix = lib.mkOption {
       type = lib.types.bool;
@@ -78,6 +85,7 @@ in
 
     wayland.windowManager.hyprland = {
       enable = true;
+      plugins = lib.mkIf cfg.hyprscroller.enable [ pkgs.hyprlandPlugins.hyprscroller ];
       settings = {
         "$mod" = "SUPER";
         "$Left" = "H";
@@ -126,6 +134,7 @@ in
             "winIn, 0.1, 1.1, 0.1, 1.1"
             "winOut, 0.3, -0.3, 0, 1"
             "liner, 1, 1, 1, 1"
+            "windup, 0.05, 0.9, 0.1, 1.05"
           ];
           animation =
             [
@@ -134,9 +143,18 @@ in
               "windowsOut, 1, 5, winOut, slide"
               "windowsMove, 1, 5, wind, slide"
               "fade, 1, 10, default"
-              "workspaces, 1, 5, wind"
               # "layers, 1, 8, default, slide"
             ]
+            ++ (
+              if cfg.hyprscroller.enable then
+                [
+                  "workspaces, 1, 5, wind, slidevert"
+                ]
+              else
+                [
+                  "workspaces, 1, 5, wind"
+                ]
+            )
             ++ (lib.optionals (!osConfig.liminalOS.powersave) [
               "border, 1, 1, liner"
               "borderangle, 1, 30, liner, loop"
@@ -155,7 +173,7 @@ in
             # "col.inactive_border" = pkgs.lib.mkForce "rgba(b4befecc) rgba(6c7086cc) 45deg";
             "col.active_border" = "rgba(${colors.base0A}ff) rgba(${colors.base09}ff) 45deg";
             "col.inactive_border" = "rgba(${colors.base01}cc) rgba(${colors.base02}cc) 45deg";
-            layout = "dwindle";
+            layout = if cfg.hyprscroller.enable then "scroller" else "dwindle";
             resize_on_border = "true";
           };
 
@@ -186,6 +204,10 @@ in
         };
         input = {
           sensitivity = if config.liminalOS.formFactor == "laptop" then "0.0" else "-0.65";
+        };
+        plugin.scroller = lib.mkIf cfg.hyprscroller.enable {
+          column_widths = "onethird onehalf twothirds one";
+          column_heights = "onethird onehalf twothirds one";
         };
       };
     };
