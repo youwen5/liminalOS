@@ -110,6 +110,8 @@ flowchart TB
     classDef build fill:#f0f0a8,stroke:#333;
 ```
 
+Documentation is [available](https://garden.youwen.dev/Hacks/liminalOS-docs).
+
 This repository exposes a NixOS module that declares the entire liminalOS
 operating system. It aims to be an easy way to both set up a brand new system
 with my opinionated configurations, and also inject into an existing NixOS
