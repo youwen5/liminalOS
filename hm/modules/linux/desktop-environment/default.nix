@@ -6,6 +6,7 @@
 {
   imports = [
     ./hyprland
+    ./niri
     ./waybar
     ./swaync.nix
   ];

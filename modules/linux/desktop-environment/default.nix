@@ -23,6 +23,7 @@ in
         Whether to enable Hyprland. Sets up a default configuration at the system and user level, and installs xdg-desktop-portal-gtk.
       '';
     };
+    niri.enable = lib.mkEnableOption "Niri compositor";
   };
 
   config = lib.mkIf cfg.enable {
@@ -32,6 +33,10 @@ in
     };
 
     programs.hyprland.enable = cfg.hyprland.enable;
+
+    programs.niri.enable = cfg.niri.enable;
+
+    programs.xwayland.enable = lib.mkIf cfg.niri.enable (lib.mkForce true);
 
     services.xserver.enable = false;
 
