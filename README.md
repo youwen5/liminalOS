@@ -23,7 +23,7 @@ mind you'll have to do a little bit of work in these files to get a working
 system configuration. Some Nix knowledge is expected, but comments are there to
 help!
 
-```
+```mermaid
 flowchart TB
     subgraph "Core System Layer"
         NixOS["NixOS/Darwin Base"]
