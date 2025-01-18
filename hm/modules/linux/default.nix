@@ -27,8 +27,10 @@
       body = ''
         if count $argv > /dev/null
             set subcommand (string join " " $argv)
-            if contains -- $subcommand "os switch" "os test" "os boot" "clean all"
+            if contains -- $subcommand "os switch" "os test" "os boot"
                 doas ${pkgs.nh}/bin/nh $argv -R
+            else if contains -- $subcommand "clean all"
+                doas ${pkgs.nh}/bin/nh $argv
             else
                 ${pkgs.nh}/bin/nh $argv
             end
