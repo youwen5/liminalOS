@@ -1,10 +1,18 @@
-{ config, pkgs, ... }:
+{
+  config,
+  pkgs,
+  inputs,
+  ...
+}:
 {
 
   imports = [
     ./secrets
     ./neomutt.nix
+    inputs.zenTyp.homeManagerModules.default
   ];
+
+  zenTyp.enable = true;
 
   home = {
     username = "youwen";

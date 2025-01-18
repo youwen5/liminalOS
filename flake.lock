@@ -897,7 +897,8 @@
         "ucode": "ucode",
         "vesktop-bin": "vesktop-bin",
         "viminal": "viminal",
-        "zen-browser": "zen-browser"
+        "zen-browser": "zen-browser",
+        "zenTyp": "zenTyp"
       }
     },
     "rust-overlay": {
@@ -1237,6 +1238,21 @@
       "original": {
         "owner": "youwen5",
         "repo": "zen-browser-flake",
+        "type": "github"
+      }
+    },
+    "zenTyp": {
+      "locked": {
+        "lastModified": 1737175604,
+        "narHash": "sha256-NdXhPEmfpBa1cKplQzko760RR5daaQpUREQgDunm9eU=",
+        "owner": "youwen5",
+        "repo": "zen.typ",
+        "rev": "b97ce5a06016f053355f609669d2239b185f856e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "youwen5",
+        "repo": "zen.typ",
         "type": "github"
       }
     }

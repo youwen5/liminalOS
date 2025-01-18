@@ -99,6 +99,8 @@
       url = "github:nix-community/NixOS-WSL";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    zenTyp.url = "github:youwen5/zen.typ";
   };
 
   outputs =
