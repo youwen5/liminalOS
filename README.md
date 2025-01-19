@@ -129,7 +129,7 @@ mind you'll have to do a little bit of work in these files to get a working
 system configuration. Some Nix knowledge is expected, but comments are there to
 help!
 
-
+![liminalos system graph](https://github.com/youwen5/youwen5/blob/main/assets/systemgraph.png?raw=true)
 
 ## Hosts
 
