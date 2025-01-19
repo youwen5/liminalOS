@@ -1208,11 +1208,11 @@
         "plugins-pomo-nvim": "plugins-pomo-nvim"
       },
       "locked": {
-        "lastModified": 1737241007,
-        "narHash": "sha256-JEDAsdp5ZwGT1sF3eCstTLyW7rojGnc92mEkk87XaGw=",
+        "lastModified": 1737264077,
+        "narHash": "sha256-50uTrw9FiNpMRxvQt85IOdimxFzrF0vpw+InffpGHUU=",
         "ref": "refs/heads/main",
-        "rev": "b720dd5b85a47a757d5e8e7909af410809068ba1",
-        "revCount": 111,
+        "rev": "1df8956e4bd8aee8259e192adef39b35b70c53dd",
+        "revCount": 112,
         "type": "git",
         "url": "https://code.youwen.dev/youwen5/viminal2"
       },
