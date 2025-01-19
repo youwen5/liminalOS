@@ -129,6 +129,10 @@ mind you'll have to do a little bit of work in these files to get a working
 system configuration. Some Nix knowledge is expected, but comments are there to
 help!
 
+Here's a snapshot of the entire _dependency graph_ of the system, a directed
+acyclic graph (DAG) representing the relationships between every single piece
+of software installed, represented as nodes, all branching out from `xgcc`.
+
 ![liminalos system graph](https://github.com/youwen5/youwen5/blob/main/assets/systemgraph.png?raw=true)
 
 ## Hosts
