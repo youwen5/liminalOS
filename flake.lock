@@ -74,15 +74,15 @@
         ]
       },
       "locked": {
-        "lastModified": 1735528724,
-        "narHash": "sha256-SGiClFwaEBidAOksU9YCFhwto6CTd9o34Qto3Qv5Iro=",
-        "owner": "zzywysm",
+        "lastModified": 1737408716,
+        "narHash": "sha256-Y3KpFq4DrkYlMHW6HaPKrTZEHGbsXQRs3Mq+Yhy2K20=",
+        "owner": "youwen5",
         "repo": "nixos-asahi",
-        "rev": "a801d9cbbe75915041985918c0953bfa753add89",
+        "rev": "7892377c12cd6b72f62aee53391cfad7000e94a4",
         "type": "github"
       },
       "original": {
-        "owner": "zzywysm",
+        "owner": "youwen5",
         "repo": "nixos-asahi",
         "type": "github"
       }
