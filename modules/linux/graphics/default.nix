@@ -49,6 +49,13 @@ in
       nvidiaSettings = true;
     };
 
+    hardware.graphics = {
+      enable = true;
+      extraPackages = with pkgs; [
+        libva-vdpau-driver
+      ];
+    };
+
     services.xserver.videoDrivers = lib.mkIf cfg.nvidia.enable [ "nvidia" ];
 
     liminalOS.config.extraUnfreePackages = lib.mkIf cfg.nvidia.enable [
