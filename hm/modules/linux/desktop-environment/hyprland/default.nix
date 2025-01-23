@@ -31,9 +31,9 @@ in
       '';
     };
     useAdvancedBindings = lib.mkEnableOption "advanced keybinds";
-    applyGtkFix = lib.mkOption {
+    gtkUseOpenGL = lib.mkOption {
       type = lib.types.bool;
-      default = cfg.enable;
+      default = false;
       description = ''
         Whether to set GSK_RENDERER environment variable to stop GTK apps from crashing.
       '';
@@ -93,8 +93,8 @@ in
         "$Up" = "K";
         "$Down" = "J";
         env =
-          (lib.optionals cfg.applyGtkFix [
-            "GSK_RENDERER,gl"
+          (lib.optionals cfg.gtkUseOpenGL [
+            "GSK_RENDERER,ngl"
           ])
           ++ (lib.optionals (config.liminalOS.formFactor == "laptop" && !osConfig.liminalOS.theming.enable) [
             "HYPRCURSOR_THEME,Bibata-Modern-Ice"
