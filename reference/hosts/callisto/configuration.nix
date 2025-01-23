@@ -38,17 +38,11 @@
   hardware.asahi = {
     peripheralFirmwareDirectory = "${inputs.apple-firmware}/firmware";
     useExperimentalGPUDriver = true;
-    # experimentalGPUInstallMode = "overlay";
   };
 
   nixpkgs.overlays = [
     inputs.apple-silicon.overlays.apple-silicon-overlay
     inputs.vesktop-bin.overlays.default
-    # (final: prev: {
-    #   hyprland = prev.hyprland.override {
-    #     libgbm = prev.mesa;
-    #   };
-    # })
   ];
 
   services.udev.extraRules = ''
