@@ -108,7 +108,7 @@ in
         "steam-unwrapped"
       ];
 
-      users.users = forAllGamemodeUsers (username: {
+      users.users = forAllGamemodeUsers (_: {
         extraGroups = [ "gamemode" ];
       });
 
