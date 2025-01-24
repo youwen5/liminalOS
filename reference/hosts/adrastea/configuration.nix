@@ -20,6 +20,7 @@
     formFactor = "desktop";
     system = {
       audio.prod.enable = true;
+      audio.prod.realtimeAudioUsers = [ "youwen" ];
       networking = {
         firewallPresets.vite = true;
         cloudflareNameservers.enable = true;

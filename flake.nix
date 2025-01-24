@@ -102,6 +102,11 @@
     };
 
     zenTyp.url = "github:youwen5/zen.typ";
+
+    musnix = {
+      url = "github:musnix/musnix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -171,6 +176,7 @@
               inputs.nixos-wsl.nixosModules.default
               inputs.stylix.nixosModules.stylix
               inputs.agenix.nixosModules.age
+              inputs.musnix.nixosModules.musnix
               ./modules/default.nix
               ./overlays
               (
