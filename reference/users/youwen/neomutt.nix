@@ -119,7 +119,7 @@ in
   '';
 
   home.file.".w3m/keymap".text =
-    (builtins.readFile ./vimkeys.w3m)
+    (builtins.readFile ./config/vimkeys.w3m)
     + ''
       keymap R COMMAND "READ_SHELL '${pkgs.rdrview}/bin/rdrview $W3M_URL -H 2> /dev/null 1> /tmp/readable.html' ; LOAD /tmp/readable.html"
       keymap f COMMAND "RESHAPE ; LINK_BEGIN ; GOTO_LINK"

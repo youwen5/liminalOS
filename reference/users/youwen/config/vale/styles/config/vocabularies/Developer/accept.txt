@@ -1,0 +1,16 @@
+[Nn]eovim
+(?i)formatter[s]
+LSP[s]
+(?i)distro[s]
+(?i)nixvim
+(?i)vim
+(?i)nixcats
+(?i)luarocks
+(?i)config
+(?i)keybind[s]
+(?i)spicetify
+(?i)stylix
+(?i)hyprland
+(?i)wayland
+(?i)nvidia
+[Ll]inux
