@@ -20,6 +20,11 @@ in
       pulse.enable = true;
       jack.enable = true;
       wireplumber.enable = true;
+      extraConfig.pipewire = {
+        bluez = {
+          bluez5.a2dp.latency.msec = 150;
+        };
+      };
     };
   };
 }
