@@ -22,7 +22,7 @@ in
       wireplumber.enable = true;
       extraConfig.pipewire = {
         bluez = {
-          bluez5.a2dp.latency.msec = 150;
+          bluez5.a2dp.latency.msec = 200;
         };
       };
     };
