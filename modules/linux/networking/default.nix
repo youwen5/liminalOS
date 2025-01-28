@@ -75,6 +75,7 @@ in
     networking.wireless.iwd = lib.mkIf (cfg.enable && cfg.backend == "iwd") {
       enable = true;
       settings.General.EnableNetworkConfiguration = true;
+      settings.Rank.BandModifier5GHz = 2.0;
     };
 
   };
