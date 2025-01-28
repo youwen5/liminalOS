@@ -80,6 +80,7 @@ in
             thunderbird
             xfce.thunar
             nicotine-plus # soulseek client
+            gapless # music player
           ]
           ++ lib.optionals pkgs.stdenv.targetPlatform.isx86_64 [
             bitwarden-desktop
