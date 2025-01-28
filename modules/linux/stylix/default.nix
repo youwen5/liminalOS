@@ -81,7 +81,7 @@ in
       cursor = {
         package = pkgs.bibata-cursors;
         name = "Bibata-Modern-Ice";
-        size = 26;
+        size = if config.liminalOS.formFactor == "laptop" then 24 else 26;
       };
     };
 
