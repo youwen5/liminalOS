@@ -13,12 +13,12 @@ in
     (import ../pkgs { inherit pkgs; })
     (final: prev: {
       hyprlandPlugins.hyprscroller = prev.hyprlandPlugins.hyprscroller.overrideAttrs {
-        version = "0-unstable-2025-01-16";
+        version = "0-unstable-2025-01-30";
         src = prev.fetchFromGitHub {
           owner = "dawsers";
           repo = "hyprscroller";
-          rev = "e250f38bde9659ee8459c05a173bcc5c2655418f";
-          hash = "sha256-rqDfY/wPG2F5NfHx6yEWMRybapNwmjjawQ7tWe6gDaw=";
+          rev = "e4b13544ef3cc235eb9ce51e0856ba47eb36e8ac";
+          hash = "sha256-OYCcIsE25HqVBp8z76Tk1v+SuYR7W1nemk9mDS9GHM8=";
         };
       };
     })
