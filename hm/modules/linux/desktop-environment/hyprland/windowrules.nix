@@ -64,7 +64,7 @@
         "float,class:^(zen-alpha)$,title:^(Library)$"
         "float,class:^(zen-beta)$,title:^(Library)$"
         "float,class:^(zen)$,title:^(Library)$"
-        "float,title:^(Extension: (Bitwarden Password Manager))$"
+        ''float,class:^(zen)$,title:^(.*Extension: \(Bitwarden Password Manager\).*)$''
         "float,class:^(vlc)$"
         "float,class:^(kvantummanager)$"
         "float,class:^(qt5ct)$"
@@ -87,6 +87,7 @@
         "opacity 0.80 0.80,class:^(org.freedesktop.impl.portal.desktop.gtk)$"
         "opacity 0.80 0.80,class:^(org.freedesktop.impl.portal.desktop.hyprland)$"
 
+        ''size 70% 70%,class:^(zen)$,title:^(.*Extension: \(Bitwarden Password Manager\).*)$''
         "size 50% 50%,class:^(org.pulseaudio.pavucontrol)"
 
         "stayfocused, class:^(pinentry-)" # fix pinentry losing focus
