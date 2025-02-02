@@ -17,7 +17,7 @@
 
   nix.settings.trusted-users = [ "youwen" ];
 
-  liminalOS.theming = lib.mkDefault {
+  liminalOS.theming = {
     # wallpaper = "${inputs.wallpapers}/aesthetic/afterglow_city_skyline_at_night.png";
     # wallpaper = "${
     #   pkgs.fetchFromGitHub {
@@ -28,15 +28,15 @@
     #     sparseCheckout = [ "radium" ];
     #   }
     # }/radium/a_mountain_range_at_night.png";
-    wallpaper = pkgs.fetchurl {
-      url = "https://code.youwen.dev/youwen5/wallpapers/raw/branch/main/anime-with-people/eternal-blue.jpg";
-      hash = "sha256-PCyWyFgMxVYgDjPMtFbQoMTzN61zdUtiP6Lmgc3dRfk=";
-    };
 
-    # if you don't manually set polarity when using manual colorscheme, GTK
-    # apps won't respect colorscheme
-    # base16Scheme = "${pkgs.base16-schemes}/share/themes/rose-pine.yaml";
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/oxocarbon-dark.yaml";
-    polarity = "dark";
+    wallpaper = lib.mkDefault (
+      pkgs.fetchurl {
+        url = "https://code.youwen.dev/youwen5/wallpapers/raw/branch/main/anime-with-people/eternal-blue.jpg";
+        hash = "sha256-PCyWyFgMxVYgDjPMtFbQoMTzN61zdUtiP6Lmgc3dRfk=";
+      }
+    );
+
+    base16Scheme = lib.mkDefault "${pkgs.base16-schemes}/share/themes/oxocarbon-dark.yaml";
+    polarity = lib.mkDefault "dark";
   };
 }

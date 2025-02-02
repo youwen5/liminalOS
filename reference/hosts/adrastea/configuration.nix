@@ -94,4 +94,22 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "24.05"; # Did you read the comment?
+
+  specialisation = {
+    dawn.configuration = {
+      environment.etc."specialisation".text = "dawn";
+      liminalOS.theming = {
+        wallpaper = pkgs.fetchurl {
+          url = "https://w.wallhaven.cc/full/kx/wallhaven-kxoqx6.jpg";
+          hash = "sha256-1cYbDcWutMHaNgvgRZiXFJpxkCZdilrKbjRD3/y25Yc=";
+        };
+        # base16Scheme = "${pkgs.base16-schemes}/share/themes/oxocarbon-dark.yaml";
+        base16Scheme = null;
+        polarity = "light";
+      };
+    };
+    dusk.configuration = {
+      environment.etc."specialisation".text = "dusk";
+    };
+  };
 }
