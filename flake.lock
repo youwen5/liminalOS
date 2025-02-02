@@ -74,16 +74,16 @@
         ]
       },
       "locked": {
-        "lastModified": 1737623554,
-        "narHash": "sha256-aO1cdK1kp/WC6mSoX9WGiGcYKgXjM7xh3f4SoJOCjjU=",
+        "lastModified": 1738477579,
+        "narHash": "sha256-MfCQoXl3EAuNwAyLv9q6wUF11hoNxD9+SaTPDrnYNJs=",
         "owner": "youwen5",
         "repo": "nixos-asahi",
-        "rev": "8c659769c774b62a4ab57a817e713339f9d14021",
+        "rev": "b7c806b9d600dbc006123d4aeb641ecb3eb4a08d",
         "type": "github"
       },
       "original": {
         "owner": "youwen5",
-        "ref": "unstable",
+        "ref": "fix-lsp-plugins",
         "repo": "nixos-asahi",
         "type": "github"
       }

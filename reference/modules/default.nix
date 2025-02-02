@@ -39,4 +39,22 @@
     base16Scheme = lib.mkDefault "${pkgs.base16-schemes}/share/themes/oxocarbon-dark.yaml";
     polarity = lib.mkDefault "dark";
   };
+
+  specialisation = {
+    dawn.configuration = {
+      environment.etc."specialisation".text = "dawn";
+      liminalOS.theming = {
+        wallpaper = pkgs.fetchurl {
+          url = "https://w.wallhaven.cc/full/kx/wallhaven-kxoqx6.jpg";
+          hash = "sha256-1cYbDcWutMHaNgvgRZiXFJpxkCZdilrKbjRD3/y25Yc=";
+        };
+        # base16Scheme = "${pkgs.base16-schemes}/share/themes/oxocarbon-dark.yaml";
+        base16Scheme = null;
+        polarity = "light";
+      };
+    };
+    dusk.configuration = {
+      environment.etc."specialisation".text = "dusk";
+    };
+  };
 }
