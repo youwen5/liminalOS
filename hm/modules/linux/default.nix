@@ -22,23 +22,6 @@
     #   nix flake update --commit-lock-file
     #   doas nixos-rebuild --flake ~/.config/liminalOS\#${osConfig.networking.hostName} switch &| nom
     # '';
-    nh = {
-      # wrapper for nh as it doesn't work with `doas`
-      body = ''
-        if count $argv > /dev/null
-            set subcommand (string join " " $argv)
-            if contains -- $subcommand "os switch" "os test" "os boot"
-                doas ${pkgs.nh}/bin/nh $argv -R
-            else if contains -- $subcommand "clean all"
-                doas ${pkgs.nh}/bin/nh $argv
-            else
-                ${pkgs.nh}/bin/nh $argv
-            end
-        else
-            ${pkgs.nh}/bin/nh
-        end
-      '';
-    };
     spt = "${pkgs.spotify-player}/bin/spotify_player";
   };
 

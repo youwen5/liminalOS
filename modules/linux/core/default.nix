@@ -129,6 +129,11 @@ in
         extraArgs = "--keep-since 4d --keep 3";
       };
       flake = config.liminalOS.flakeLocation;
+      package = lib.mkIf config.security.doas.enable inputs.nh-doas.packages.${pkgs.system}.default;
+    };
+
+    environment.variables = lib.mkIf (cfg.useNh && config.security.doas.enable) {
+      NH_FLAKE = config.programs.nh.flake;
     };
 
     programs.nix-ld = {
