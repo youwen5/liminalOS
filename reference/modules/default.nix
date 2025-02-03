@@ -11,11 +11,90 @@
     ../users/youwen/nixos.nix
   ];
 
+  # systemd.services.suntheme = {
+  #   wantedBy = [ "default.target" ];
+  #   after = [
+  #     "network.target"
+  #     "atd.service"
+  #   ];
+  #   wants = [ "atd.service" ];
+  #   description = "Run suntheme to set daemons";
+  #   serviceConfig = {
+  #     Type = "oneshot";
+  #     RemainAfterExit = "yes";
+  #     ExecStart = ''${inputs.suntheme.packages.${pkgs.system}.default}/bin/suntheme'';
+  #   };
+  # };
+  #
+  # environment.systemPackages = [
+  #   (pkgs.writeShellScriptBin "light.sh" ''
+  #     /nix/var/nix/profiles/system/specialisation/dawn/bin/switch-to-configuration test
+  #   '')
+  #   (pkgs.writeShellScriptBin "dark.sh" ''
+  #     /nix/var/nix/profiles/nix/system/bin/switch-to-configuration test
+  #   '')
+  # ];
+
+  systemd.services = {
+    colorscheme-dawn = {
+      description = "Set system colorscheme to dawn";
+      unitConfig = {
+        ConditionPathExists = [
+          "/etc/polarity"
+          "/nix/var/nix/profiles/system/specialisation/dawn/bin/switch-to-configuration"
+        ];
+      };
+      serviceConfig = {
+        Type = "oneshot";
+        User = "root";
+        PermissionsStartOnly = true;
+        ExecStart = "/nix/var/nix/profiles/system/specialisation/dawn/bin/switch-to-configuration test";
+      };
+    };
+    colorscheme-dusk = {
+      description = "Set system colorscheme to dusk";
+      unitConfig = {
+        ConditionPathExists = [
+          "/etc/polarity"
+          "/nix/var/nix/profiles/system/bin/switch-to-configuration"
+        ];
+      };
+      serviceConfig = {
+        Type = "oneshot";
+        User = "root";
+        PermissionsStartOnly = true;
+        ExecStart = "/nix/var/nix/profiles/system/bin/switch-to-configuration test";
+      };
+    };
+  };
+  systemd.timers = {
+    colorscheme-dawn = {
+      wantedBy = [ "timers.target" ];
+      description = "Schedule system colorscheme change to dawn at 7 AM";
+      timerConfig = {
+        OnCalendar = "*-*-* 07:00:00";
+        Persistent = true;
+        Unit = "colorscheme-dawn.service";
+      };
+    };
+    colorscheme-dusk = {
+      wantedBy = [ "timers.target" ];
+      description = "Schedule system colorscheme change to dusk at 7 PM";
+      timerConfig = {
+        OnCalendar = "*-*-* 19:00:00";
+        Persistent = true;
+        Unit = "colorscheme-dusk.service";
+      };
+    };
+  };
+
   nix.extraOptions = ''
     !include ${config.age.secrets.nix_config_github_pat.path}
   '';
 
   nix.settings.trusted-users = [ "youwen" ];
+
+  services.atd.enable = true;
 
   liminalOS.theming = {
     # wallpaper = "${inputs.wallpapers}/aesthetic/afterglow_city_skyline_at_night.png";
@@ -40,9 +119,12 @@
     polarity = lib.mkDefault "dark";
   };
 
+  environment.etc.polarity.text = "dusk";
+
   specialisation = {
     dawn.configuration = {
       environment.etc."specialisation".text = "dawn";
+      environment.etc.polarity.text = "dawn";
       liminalOS.theming = {
         wallpaper = pkgs.fetchurl {
           url = "https://w.wallhaven.cc/full/kx/wallhaven-kxoqx6.jpg";
@@ -52,9 +134,6 @@
         base16Scheme = null;
         polarity = "light";
       };
-    };
-    dusk.configuration = {
-      environment.etc."specialisation".text = "dusk";
     };
   };
 }
