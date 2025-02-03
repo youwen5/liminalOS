@@ -56,6 +56,10 @@
     cpuModelId = "00A50F00";
   };
 
+  services.udev.extraRules = ''
+    ACTION=="add" SUBSYSTEM=="pci" ATTR{vendor}=="0x1022" ATTR{device}=="0x1639" ATTR{power/wakeup}="disabled"
+  '';
+
   services.tlp.enable = lib.mkForce false;
 
   powerManagement.cpuFreqGovernor = "performance";
