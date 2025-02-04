@@ -85,7 +85,17 @@ in
 
     wayland.windowManager.hyprland = {
       enable = true;
-      plugins = lib.mkIf cfg.hyprscroller.enable [ pkgs.hyprlandPlugins.hyprscroller ];
+      plugins = lib.mkIf cfg.hyprscroller.enable [
+        (pkgs.hyprlandPlugins.hyprscroller.overrideAttrs {
+          version = "0.47.2";
+          src = pkgs.fetchFromGitHub {
+            owner = "dawsers";
+            repo = "hyprscroller";
+            rev = "ce7503685297d88e0bb0961343ed3fbed21c559c";
+            hash = "sha256-3pGIe4H1LUOJw0ULfVwZ7Ph7r/AyEipx7jbWP7zz3MU=";
+          };
+        })
+      ];
       settings = {
         "$mod" = "SUPER";
         "$Left" = "H";
