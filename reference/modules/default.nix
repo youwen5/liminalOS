@@ -94,8 +94,6 @@
 
   nix.settings.trusted-users = [ "youwen" ];
 
-  services.atd.enable = true;
-
   liminalOS.theming = {
     # wallpaper = "${inputs.wallpapers}/aesthetic/afterglow_city_skyline_at_night.png";
     # wallpaper = "${
