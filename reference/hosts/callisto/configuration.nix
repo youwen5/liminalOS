@@ -42,7 +42,6 @@
 
   nixpkgs.overlays = [
     inputs.apple-silicon.overlays.apple-silicon-overlay
-    inputs.vesktop-bin.overlays.default
   ];
 
   services.udev.extraRules = ''
