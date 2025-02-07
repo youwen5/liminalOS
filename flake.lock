@@ -327,22 +327,6 @@
         "type": "github"
       }
     },
-    "flake-compat_5": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1733328505,
-        "narHash": "sha256-NeCCThCEP3eCl2l/+27kNNK7QrwZB1IJCrXfrbv5oqU=",
-        "owner": "edolstra",
-        "repo": "flake-compat",
-        "rev": "ff81ac966bb2cae68946d5ed5fc4994f96d0ffec",
-        "type": "github"
-      },
-      "original": {
-        "owner": "edolstra",
-        "repo": "flake-compat",
-        "type": "github"
-      }
-    },
     "flake-parts": {
       "inputs": {
         "nixpkgs-lib": [
@@ -531,11 +515,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1738709900,
-        "narHash": "sha256-8Bo5xFlCH5q72ExvAnH7TzStMlLZldKOSLMClRSfmTc=",
+        "lastModified": 1738878603,
+        "narHash": "sha256-fmhq8B3MvQLawLbMO+LWLcdC2ftLMmwSk+P29icJ3tE=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "f2d32e46fac9d51da6912948ae1156044c71774b",
+        "rev": "433799271274c9f2ab520a49527ebfe2992dcfbd",
         "type": "github"
       },
       "original": {
@@ -568,11 +552,11 @@
     "homebrew-cask": {
       "flake": false,
       "locked": {
-        "lastModified": 1738711570,
-        "narHash": "sha256-7tMxUeD/C95bdsV1CjfFo3uZQdGKokeKWztf+l7DZ7E=",
+        "lastModified": 1738906270,
+        "narHash": "sha256-eZRCLkE4x/CFXvwYqGT/TJkSs91btc1thRRQbUjWbMo=",
         "owner": "homebrew",
         "repo": "homebrew-cask",
-        "rev": "cc234a041f404914379ee599a4b9913fab17cbb2",
+        "rev": "a8f8cc67f9dce704bed92dbf67608a570437677d",
         "type": "github"
       },
       "original": {
@@ -584,11 +568,11 @@
     "homebrew-core": {
       "flake": false,
       "locked": {
-        "lastModified": 1738715137,
-        "narHash": "sha256-g36bdDvf6b34xuzuDamo9qevfbtUG1STYoVK2mOmf1Q=",
+        "lastModified": 1738906144,
+        "narHash": "sha256-+bLtNZ1ZXrtwOe2q/3SGrRB8FBSEOeKK+RGcyVKKMeQ=",
         "owner": "homebrew",
         "repo": "homebrew-core",
-        "rev": "dba668f322dce92af0c0e9430edcd501def3d506",
+        "rev": "61b135c927c0935c6b3accb7e43d959792af85ea",
         "type": "github"
       },
       "original": {
@@ -673,11 +657,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1738277753,
-        "narHash": "sha256-iyFcCOk0mmDiv4ut9mBEuMxMZIym3++0qN1rQBg8FW0=",
+        "lastModified": 1738743987,
+        "narHash": "sha256-O3bnAfsObto6l2tQOmQlrO6Z2kD6yKwOWfs7pA0CpOc=",
         "owner": "LnL7",
         "repo": "nix-darwin",
-        "rev": "49b807fa7c37568d7fbe2aeaafb9255c185412f9",
+        "rev": "ae406c04577ff9a64087018c79b4fdc02468c87c",
         "type": "github"
       },
       "original": {
@@ -993,18 +977,17 @@
     },
     "spicetify": {
       "inputs": {
-        "flake-compat": "flake-compat_4",
         "nixpkgs": [
           "nixpkgs"
         ],
         "systems": "systems_4"
       },
       "locked": {
-        "lastModified": 1738671423,
-        "narHash": "sha256-V8pD27b6YmU4zN9kurtBCQ9SfkYaVDq0Z2tm8JQyCGc=",
+        "lastModified": 1738871202,
+        "narHash": "sha256-L6I6Qpqcqz15mc2Une9YUC5bI9Ih815aTKY08seEFMA=",
         "owner": "Gerg-L",
         "repo": "spicetify-nix",
-        "rev": "ac59ecec59685225698100b06d0b742a6415eb9a",
+        "rev": "68de149c022e04d85d4b79db265fd3a01890127d",
         "type": "github"
       },
       "original": {
@@ -1020,7 +1003,7 @@
         "base16-helix": "base16-helix",
         "base16-vim": "base16-vim",
         "firefox-gnome-theme": "firefox-gnome-theme",
-        "flake-compat": "flake-compat_5",
+        "flake-compat": "flake-compat_4",
         "flake-utils": [
           "flake-utils"
         ],
@@ -1211,53 +1194,22 @@
     },
     "vesktop-bin": {
       "inputs": {
-        "flake-parts": [
-          "flake-parts"
-        ],
         "nixpkgs": [
           "nixpkgs"
-        ],
-        "vesktop-bin-aarch64": "vesktop-bin-aarch64",
-        "vesktop-bin-x86_64": "vesktop-bin-x86_64"
+        ]
       },
       "locked": {
-        "lastModified": 1734171864,
-        "narHash": "sha256-4N+s5WFVmKA4LaL4uvHWZLl38TiRI0Aj5yJZn7GdTpE=",
+        "lastModified": 1738867962,
+        "narHash": "sha256-dUaddSW5mGEtheFQtCyp20F5aOOYWw55AzzawixwAIY=",
         "owner": "youwen5",
         "repo": "vesktop-bin-flake",
-        "rev": "9b9c3a8ffa34ee6f6f2d9fcce757bd5668af60a9",
+        "rev": "b1f180f5fd5cd48b1ed1c0c813f27a20d930c1c3",
         "type": "github"
       },
       "original": {
         "owner": "youwen5",
         "repo": "vesktop-bin-flake",
         "type": "github"
-      }
-    },
-    "vesktop-bin-aarch64": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1733428233,
-        "narHash": "sha256-1rBeTydPb+3cvB0Ex2kF7WiEznOB8spcK3aacsZnvHI=",
-        "type": "tarball",
-        "url": "https://github.com/Vencord/Vesktop/releases/download/v1.5.4/vesktop-1.5.4-arm64.tar.gz"
-      },
-      "original": {
-        "type": "tarball",
-        "url": "https://github.com/Vencord/Vesktop/releases/download/v1.5.4/vesktop-1.5.4-arm64.tar.gz"
-      }
-    },
-    "vesktop-bin-x86_64": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1733428227,
-        "narHash": "sha256-En1+KqdHgO5+uKTBB4WNJpUZypA4iNZYKUCafSjFM9Y=",
-        "type": "tarball",
-        "url": "https://github.com/Vencord/Vesktop/releases/download/v1.5.4/vesktop-1.5.4.tar.gz"
-      },
-      "original": {
-        "type": "tarball",
-        "url": "https://github.com/Vencord/Vesktop/releases/download/v1.5.4/vesktop-1.5.4.tar.gz"
       }
     },
     "viminal": {
@@ -1268,11 +1220,11 @@
         "plugins-pomo-nvim": "plugins-pomo-nvim"
       },
       "locked": {
-        "lastModified": 1738450896,
-        "narHash": "sha256-E0v/r5lqUG1KLPwLaHCZzIzqYU9oofcnXqaol/h2gPE=",
+        "lastModified": 1738899750,
+        "narHash": "sha256-QblIcHhZcjE/sfClpKud2BNRJH+V4/sHC8/OLJ70o7o=",
         "ref": "refs/heads/main",
-        "rev": "68f9f880a4302801ac3410db1db20d6355216853",
-        "revCount": 147,
+        "rev": "15867a54744fced1491087cf4a8ab28a4ee2ced8",
+        "revCount": 148,
         "type": "git",
         "url": "https://code.youwen.dev/youwen5/viminal2"
       },
@@ -1288,11 +1240,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1738469108,
-        "narHash": "sha256-AS4akOUGZP2ELHQKj1IiXuuzU9bpK20ks4dGaCrwOEk=",
+        "lastModified": 1738728325,
+        "narHash": "sha256-ogMOMVHDXykqP1qCjh7K3TyHzIy5lmohvofYAbn+IT8=",
         "owner": "youwen5",
         "repo": "zen-browser-flake",
-        "rev": "f95fa7b1560b0f2ed8989e6f12f2c7e7e7ee9433",
+        "rev": "38264719b0a20323f3d16a94db5d4cb2860681a5",
         "type": "github"
       },
       "original": {
