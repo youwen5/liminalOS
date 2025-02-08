@@ -42,7 +42,11 @@
 
   nixpkgs.overlays = [
     inputs.apple-silicon.overlays.apple-silicon-overlay
-    inputs.vesktop-bin.overlays.default
+    (final: prev: {
+      vesktop = inputs.vesktop-bin.packages.${prev.system}.default.override {
+        libgbm = prev.mesa;
+      };
+    })
   ];
 
   services.udev.extraRules = ''
