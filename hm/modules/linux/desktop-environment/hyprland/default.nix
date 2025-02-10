@@ -219,6 +219,7 @@ in
           column_widths = "onethird onehalf twothirds one";
           column_heights = "onethird onehalf twothirds one";
         };
+        experimental.xx_color_management_v4 = true;
       };
     };
 
