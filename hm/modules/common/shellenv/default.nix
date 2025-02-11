@@ -96,15 +96,22 @@ in
         then
           pkgs.zoxide
         else
-          pkgs.zoxide.overrideAttrs (finalAttrs: {
-            version = "0.9.7";
-            src = pkgs.fetchFromGitHub {
-              owner = "ajeetdsouza";
-              repo = "zoxide";
-              rev = "v${finalAttrs.version}";
-              hash = "sha256-3XC5K4OlituoFMPN9yJkYi+tkH6M0KK5jVAGdr/GLd0=";
-            };
-          });
+          pkgs.zoxide.overrideAttrs (
+            finalAttrs: prevAttrs: {
+              version = "0.9.7";
+              src = pkgs.fetchFromGitHub {
+                owner = "ajeetdsouza";
+                repo = "zoxide";
+                rev = "v${finalAttrs.version}";
+                hash = "sha256-+QZpLMlHOZdbKLFYOUOIRZHvIsbMDdstj9oGzyEGVxk=";
+              };
+
+              cargoDeps = pkgs.rustPlatform.fetchCargoVendor {
+                inherit (finalAttrs) src;
+                hash = "sha256-uqIL8KTrgWzzzyoPR9gctyh0Rf7WQpTGqXow2/xFvCU=";
+              };
+            }
+          );
     };
 
     programs.gh = {
