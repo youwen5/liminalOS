@@ -1,7 +1,12 @@
 let fish_completer = {|spans|
-    fish --command $'complete "--do-complete=($spans | str join " ")"'
-    | from tsv --flexible --noheaders --no-infer
-    | rename value description
+    fish --command $'complete --escape "--do-complete=($spans | str join " ")"'
+    | $"value(char tab)description(char newline)" + $in
+    | from tsv --flexible --no-infer
+    | each {|i|
+        if '\' in $i.value {
+            $i | merge {'value': $"\"($i.value | str replace -a '\' '')\""}
+        } else {$i}
+    }
 }
 
 let zoxide_completer = {|spans|
