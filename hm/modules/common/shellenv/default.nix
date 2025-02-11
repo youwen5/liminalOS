@@ -29,12 +29,20 @@ in
 
     programs.nushell = {
       enable = true;
-      configFile.text = ''
-        $env.config = {
-          edit_mode: vi,
-          show_banner: false
-        }
-      '';
+      configFile.source = ./config.nu;
+      settings = {
+        show_banner = false;
+        completions.external = {
+          enable = true;
+          max_results = 200;
+        };
+        edit_mode = "vi";
+        cursor_shape = {
+          emacs = "line";
+          vi_insert = "line";
+          vi_normal = "block";
+        };
+      };
     };
 
     programs.fzf = {
@@ -78,7 +86,8 @@ in
 
     programs.zoxide = {
       enable = true;
-      enableFishIntegration = true;
+      # we have our own fish completion plugin for zoxide
+      enableFishIntegration = false;
       enableNushellIntegration = true;
       enableBashIntegration = true;
     };
@@ -112,44 +121,36 @@ in
         fish_vi_key_bindings
         set -g fish_greeting
       '';
-      plugins = [
-        {
-          name = "autopair";
-          src = pkgs.fetchFromGitHub {
-            owner = "jorgebucaran";
-            repo = "autopair.fish";
-            rev = "4d1752ff5b39819ab58d7337c69220342e9de0e2";
-            hash = "sha256-qt3t1iKRRNuiLWiVoiAYOu+9E7jsyECyIqZJ/oRIT1A=";
-          };
-        }
-        {
-          name = "fzf";
-          src = pkgs.fetchFromGitHub {
-            owner = "PatrickF1";
-            repo = "fzf.fish";
-            rev = "8920367cf85eee5218cc25a11e209d46e2591e7a";
-            hash = "sha256-T8KYLA/r/gOKvAivKRoeqIwE2pINlxFQtZJHpOy9GMM=";
-          };
-        }
-        {
-          name = "sponge";
-          src = pkgs.fetchFromGitHub {
-            owner = "meaningful-ooo";
-            repo = "sponge";
-            rev = "384299545104d5256648cee9d8b117aaa9a6d7be";
-            hash = "sha256-MdcZUDRtNJdiyo2l9o5ma7nAX84xEJbGFhAVhK+Zm1w=";
-          };
-        }
-        {
-          name = "done";
-          src = pkgs.fetchFromGitHub {
-            owner = "franciscolourenco";
-            repo = "done";
-            rev = "eb32ade85c0f2c68cbfcff3036756bbf27a4f366";
-            hash = "sha256-DMIRKRAVOn7YEnuAtz4hIxrU93ULxNoQhW6juxCoh4o=";
-          };
-        }
-      ];
+      plugins =
+        [
+          {
+            name = "autopair";
+            src = pkgs.fishPlugins.autopair.src;
+          }
+          {
+            name = "fzf";
+            src = pkgs.fishPlugins.fzf.src;
+          }
+          {
+            name = "done";
+            src = pkgs.fishPlugins.done.src;
+          }
+          {
+            name = "sponge";
+            src = pkgs.fishPlugins.sponge.src;
+          }
+        ]
+        ++ lib.optionals config.programs.zoxide.enable [
+          {
+            name = "zoxide.fish";
+            src = pkgs.fetchFromGitHub {
+              owner = "icezyclon";
+              repo = "zoxide.fish";
+              rev = "a6dabb16dd2de570a2005617ea4510f0beb6dc53";
+              hash = "sha256-aGajwgFdB+wtjyryD/EQXSQ3SCFKwDJFjaZjLiJHt3E=";
+            };
+          }
+        ];
     };
 
     programs.nix-index = {
@@ -174,6 +175,7 @@ in
       enable = true;
       enableFishIntegration = true;
       enableBashIntegration = true;
+      enableNushellIntegration = false;
       git = true;
     };
 
