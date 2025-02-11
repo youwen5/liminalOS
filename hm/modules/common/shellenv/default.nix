@@ -45,6 +45,7 @@ in
       };
       plugins = with pkgs.nushellPlugins; [
         units
+        gstat
       ];
     };
 
