@@ -43,6 +43,9 @@ in
           vi_normal = "block";
         };
       };
+      plugins = with pkgs.nushellPlugins; [
+        units
+      ];
     };
 
     programs.fzf = {
