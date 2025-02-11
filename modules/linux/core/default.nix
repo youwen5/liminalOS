@@ -65,7 +65,8 @@ in
       ]
       ++ [
         config.liminalOS.defaultEditor
-      ];
+      ]
+      ++ lib.optionals cfg.replaceSudoWithDoas [ doas-sudo-shim ];
 
     # tells electron apps to use Wayland
     environment.sessionVariables = lib.mkIf cfg.waylandFixes {
@@ -129,12 +130,11 @@ in
         extraArgs = "--keep-since 4d --keep 3";
       };
       flake = config.liminalOS.flakeLocation;
-      package = lib.mkIf config.security.doas.enable inputs.nh-doas.packages.${pkgs.system}.default;
     };
 
-    environment.variables = lib.mkIf (cfg.useNh && config.security.doas.enable) {
-      NH_FLAKE = config.programs.nh.flake;
-    };
+    # environment.variables = lib.mkIf (cfg.useNh && config.security.doas.enable) {
+    #   NH_FLAKE = config.programs.nh.flake;
+    # };
 
     programs.nix-ld = {
       enable = true;

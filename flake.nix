@@ -106,11 +106,6 @@
       url = "github:musnix/musnix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    nh-doas = {
-      url = "github:youwen5/nh";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
   outputs =

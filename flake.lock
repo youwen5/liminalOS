@@ -648,26 +648,6 @@
         "type": "github"
       }
     },
-    "nh-doas": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1738564910,
-        "narHash": "sha256-rd1pnAiRYolXH1R1Zbs6UQFjW1b5DdEJeyq2udUnjCo=",
-        "owner": "youwen5",
-        "repo": "nh",
-        "rev": "f4d93dfda62f034bbc08dc3bfea78213ec99b3be",
-        "type": "github"
-      },
-      "original": {
-        "owner": "youwen5",
-        "repo": "nh",
-        "type": "github"
-      }
-    },
     "nix-darwin": {
       "inputs": {
         "nixpkgs": [
@@ -943,7 +923,6 @@
         "homebrew-core": "homebrew-core",
         "lanzaboote": "lanzaboote",
         "musnix": "musnix",
-        "nh-doas": "nh-doas",
         "nix-darwin": "nix-darwin",
         "nix-flatpak": "nix-flatpak",
         "nix-homebrew": "nix-homebrew",
