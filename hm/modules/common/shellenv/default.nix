@@ -90,6 +90,21 @@ in
       enableFishIntegration = false;
       enableNushellIntegration = true;
       enableBashIntegration = true;
+      package =
+        if
+          (lib.versionAtLeast pkgs.zoxide.version "0.9.7" || lib.versionOlder pkgs.nushell.version "0.102.0")
+        then
+          pkgs.zoxide
+        else
+          pkgs.zoxide.overrideAttrs (finalAttrs: {
+            version = "0.9.7";
+            src = pkgs.fetchFromGitHub {
+              owner = "ajeetdsouza";
+              repo = "zoxide";
+              rev = "v${finalAttrs.version}";
+              hash = "sha256-3XC5K4OlituoFMPN9yJkYi+tkH6M0KK5jVAGdr/GLd0=";
+            };
+          });
     };
 
     programs.gh = {
