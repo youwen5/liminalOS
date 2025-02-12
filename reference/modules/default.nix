@@ -79,9 +79,9 @@
     };
     colorscheme-dusk = {
       wantedBy = [ "timers.target" ];
-      description = "Schedule system colorscheme change to dusk at 7 PM";
+      description = "Schedule system colorscheme change to dusk at 6 PM";
       timerConfig = {
-        OnCalendar = "*-*-* 19:00:00";
+        OnCalendar = "*-*-* 18:00:00";
         Persistent = true;
         Unit = "colorscheme-dusk.service";
       };
