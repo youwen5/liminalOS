@@ -13,15 +13,6 @@ in
   nixpkgs.overlays = [
     (import ../pkgs { inherit pkgs; })
     (final: prev: {
-      hyprlandPlugins.hyprscroller = prev.hyprlandPlugins.hyprscroller.overrideAttrs {
-        version = "0.47.2";
-        src = prev.fetchFromGitHub {
-          owner = "dawsers";
-          repo = "hyprscroller";
-          rev = "ce7503685297d88e0bb0961343ed3fbed21c559c";
-          hash = "";
-        };
-      };
     })
   ];
 }
