@@ -23,14 +23,6 @@ in
         Whether to enable and rice Hyprland as well as some basic desktop utilities.
       '';
     };
-    hyprscroller.enable = lib.mkOption {
-      type = lib.types.bool;
-      default = cfg.enable;
-      description = ''
-        Whether to enable the hyprscroller scrolling layout.
-      '';
-    };
-    useAdvancedBindings = lib.mkEnableOption "advanced keybinds";
     gtkUseOpenGL = lib.mkOption {
       type = lib.types.bool;
       default = false;
@@ -85,17 +77,7 @@ in
 
     wayland.windowManager.hyprland = {
       enable = true;
-      plugins = lib.mkIf cfg.hyprscroller.enable [
-        (pkgs.hyprlandPlugins.hyprscroller.overrideAttrs {
-          version = "0.47.2";
-          src = pkgs.fetchFromGitHub {
-            owner = "dawsers";
-            repo = "hyprscroller";
-            rev = "ce7503685297d88e0bb0961343ed3fbed21c559c";
-            hash = "sha256-3pGIe4H1LUOJw0ULfVwZ7Ph7r/AyEipx7jbWP7zz3MU=";
-          };
-        })
-      ];
+      plugins = [ pkgs.hyprlandPlugins.hyprscroller ];
       settings = {
         "$mod" = "SUPER";
         "$Left" = "H";
@@ -154,17 +136,8 @@ in
               "windowsMove, 1, 5, wind, slide"
               "fade, 1, 10, default"
               # "layers, 1, 8, default, slide"
+              "workspaces, 1, 5, wind, slidevert"
             ]
-            ++ (
-              if cfg.hyprscroller.enable then
-                [
-                  "workspaces, 1, 5, wind, slidevert"
-                ]
-              else
-                [
-                  "workspaces, 1, 5, wind"
-                ]
-            )
             ++ (lib.optionals (!osConfig.liminalOS.powersave) [
               "border, 1, 1, liner"
               "borderangle, 1, 30, liner, loop"
@@ -183,7 +156,7 @@ in
             # "col.inactive_border" = pkgs.lib.mkForce "rgba(b4befecc) rgba(6c7086cc) 45deg";
             "col.active_border" = "rgba(${colors.base0A}ff) rgba(${colors.base09}ff) 45deg";
             "col.inactive_border" = "rgba(${colors.base01}cc) rgba(${colors.base02}cc) 45deg";
-            layout = if cfg.hyprscroller.enable then "scroller" else "dwindle";
+            layout = "scroller";
             resize_on_border = "true";
           };
 
@@ -215,7 +188,7 @@ in
         input = {
           sensitivity = if config.liminalOS.formFactor == "laptop" then "0.0" else "-0.65";
         };
-        plugin.scroller = lib.mkIf cfg.hyprscroller.enable {
+        plugin.scroller = {
           column_widths = "onethird onehalf twothirds one";
           column_heights = "onethird onehalf twothirds one";
         };

@@ -610,5 +610,9 @@
         "settingsSyncVersion": 1731210778467
     },
     "splashColor": "rgb(242, 244, 248)",
-    "splashBackground": "rgb(22, 22, 22)"
+    "splashBackground": "rgb(22, 22, 22)",
+    "spellCheckLanguages": [
+        "en-US",
+        "en"
+    ]
 }
