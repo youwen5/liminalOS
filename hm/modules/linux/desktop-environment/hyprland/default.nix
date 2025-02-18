@@ -79,6 +79,9 @@ in
       enable = true;
       plugins = [ pkgs.hyprlandPlugins.hyprscroller ];
       settings = {
+        exec-once = [
+          "hyprctl dispatch workspace 100000"
+        ];
         "$mod" = "SUPER";
         "$Left" = "H";
         "$Right" = "L";
