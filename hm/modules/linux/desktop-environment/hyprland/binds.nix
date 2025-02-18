@@ -6,7 +6,7 @@
 }:
 let
   cfg = config.liminalOS.desktop.hyprland;
-  hyprnome = "${pkgs.hyprnome}/bin/hyprnome --no-empty-before";
+  hyprnome = "${pkgs.hyprnome}/bin/hyprnome";
 in
 {
   wayland.windowManager.hyprland.settings = lib.mkIf cfg.enable {
