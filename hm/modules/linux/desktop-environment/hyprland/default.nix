@@ -139,7 +139,7 @@ in
               "windowsMove, 1, 5, wind, slide"
               "fade, 1, 10, default"
               # "layers, 1, 8, default, slide"
-              "workspaces, 1, 5, wind, slidevert"
+              "workspaces, 1, 5, wind, slidefadevert"
             ]
             ++ (lib.optionals (!osConfig.liminalOS.powersave) [
               "border, 1, 1, liner"
