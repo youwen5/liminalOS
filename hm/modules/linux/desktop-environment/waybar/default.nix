@@ -254,9 +254,11 @@ in
             format = "{icon}";
             on-click = "activate";
             format-icons = {
-              active = "";
-              empty = "";
-              default = "";
+              # active = "";
+              # empty = "";
+              # default = "";
+              active = "";
+              default = "";
               urgent = "";
               special = "󰠱";
             };
