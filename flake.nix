@@ -69,7 +69,7 @@
     viminal.url = "git+https://code.youwen.dev/youwen5/viminal2";
 
     vesktop-bin = {
-      url = "github:youwen5/vesktop-bin-flake/9b9c3a8ffa34ee6f6f2d9fcce757bd5668af60a9";
+      url = "github:youwen5/vesktop-bin-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
