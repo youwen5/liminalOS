@@ -88,6 +88,16 @@
     };
   };
 
+  nixpkgs.overlays = [
+    (final: prev: {
+      signal-desktop =
+        if pkgs.stdenv.targetPlatform.isAarch then
+          inputs.signal-desktop.packages.${pkgs.system}.default.override { electronPageSizeFix = true; }
+        else
+          pkgs.signal-desktop;
+    })
+  ];
+
   nix.extraOptions = ''
     !include ${config.age.secrets.nix_config_github_pat.path}
   '';

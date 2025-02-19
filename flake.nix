@@ -106,6 +106,11 @@
       url = "github:musnix/musnix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    signal-desktop = {
+      url = "github:youwen5/signal-desktop-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
