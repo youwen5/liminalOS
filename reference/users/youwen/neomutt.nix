@@ -8,7 +8,7 @@ let
 in
 {
   programs.neomutt = {
-    enable = true;
+    enable = false;
     editor = "nvim";
     sidebar.enable = true;
     sort = "reverse-date-received";
