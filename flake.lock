@@ -1006,11 +1006,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1740441565,
-        "narHash": "sha256-ijjkH7ocjjw5b78Eakr2SS7lG14Dq9mlMzee5ehKsjk=",
+        "lastModified": 1741231843,
+        "narHash": "sha256-ZPaM7yNZ5GdkCw0QIOt3i9lDjl6OPfTg+XZC4delSE0=",
         "owner": "youwen5",
         "repo": "signal-desktop-flake",
-        "rev": "00811bcb7ec38db7dc37613736f0c0978dab4988",
+        "rev": "6009db6eb62934b1bcac10ad029ca6eb37c285e7",
         "type": "github"
       },
       "original": {
