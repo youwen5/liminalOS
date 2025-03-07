@@ -65,7 +65,7 @@
   };
 
   xdg.configFile."harper-ls" = {
-    source = ./config/harper-ls;
+    source = config.lib.file.mkOutOfStoreSymlink "${osConfig.liminalOS.flakeLocation}/reference/users/youwen/config/harper-ls";
     recursive = true;
   };
 
