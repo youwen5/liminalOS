@@ -1339,11 +1339,11 @@
     },
     "zenTyp": {
       "locked": {
-        "lastModified": 1740095364,
-        "narHash": "sha256-czzheiWIwJeze1aAzLmOgh+y9RoG8Qyzeicn1fd0ESY=",
+        "lastModified": 1741324439,
+        "narHash": "sha256-eDibWQL7c7Z2ePxPz7gDAYMK/TC0v1vbCU6kYhUGwFU=",
         "owner": "youwen5",
         "repo": "zen.typ",
-        "rev": "d761990a004ad8dee8fc642a03fd4f11348a5fe2",
+        "rev": "e69eeaf72f655cbd2682934e0dd6999db034fc80",
         "type": "github"
       },
       "original": {
