@@ -64,24 +64,6 @@
     addKeysToAgent = "yes";
   };
 
-  xdg.configFile."vale" = {
-    source = ./config/vale;
-    recursive = true;
-  };
-
-  home.file.".local/share/vale/styles/proselint" = {
-    source = "${
-      pkgs.fetchFromGitHub {
-        owner = "errata-ai";
-        repo = "proselint";
-        rev = "v0.3.4";
-        hash = "sha256-iujKf+xc/RDqw4eC/nzpMsHWvwey6U5sjD2yHSiQxP4=";
-        sparseCheckout = [ "proselint" ];
-      }
-    }/proselint";
-    recursive = true;
-  };
-
   # text/html;      ~/.mutt/view_attachment.sh %s html;     test=test -n "$DISPLAY"
   home.file.".mailcap".text = ''
     text/html;      ${pkgs.w3m}/bin/w3m %s;     nametemplate=%s.html;       needsterminal
