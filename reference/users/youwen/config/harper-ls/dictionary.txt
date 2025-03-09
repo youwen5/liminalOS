@@ -18,5 +18,7 @@ transpiles
 Gradescope
 bijections
 disjunction
+denumerable
 biconditional
 hyperextensible
+diagonalization
