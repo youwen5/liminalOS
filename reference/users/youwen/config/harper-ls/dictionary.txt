@@ -18,7 +18,9 @@ transpiles
 Gradescope
 bijections
 disjunction
+<<<<<<< HEAD
 denumerable
+Multinomial
 biconditional
 hyperextensible
 diagonalization
