@@ -195,7 +195,9 @@
                       zen-browser = inputs.zen-browser.packages.${pkgs.system}.default;
                     })
                   ];
-                  environment.systemPackages = [ inputs.agenix.packages.${pkgs.system}.default ];
+                  # instead of using ragenix from agenix which builds from
+                  # source, use ragenix packaged in nixpkgs
+                  environment.systemPackages = [ pkgs.ragenix ];
                 }
               )
             ];
