@@ -43,10 +43,12 @@ in
           vi_normal = "block";
         };
       };
-      # plugins = with pkgs.nushellPlugins; [
-      #   units
-      #   gstat
-      # ];
+      plugins = with pkgs.nushellPlugins; [
+        gstat
+        polars
+        highlight
+        gstat
+      ];
     };
 
     programs.fzf = {
