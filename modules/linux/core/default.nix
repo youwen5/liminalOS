@@ -1,5 +1,4 @@
 {
-  inputs,
   pkgs,
   config,
   lib,
@@ -53,20 +52,29 @@ in
         Whether to enable bluetooth and blueman.
       '';
     };
+    uutils.enable = lib.mkOption {
+      type = lib.types.bool;
+      default = true;
+      description = ''
+        Whether to replace GNU coreutils with Rust uutils
+      '';
+    };
   };
 
   config = lib.mkIf cfg.enable {
     environment.systemPackages =
-      with pkgs;
-      [
+      (with pkgs; [
         wget
         git
         curl
-      ]
+      ])
       ++ [
         config.liminalOS.defaultEditor
       ]
-      ++ lib.optionals cfg.replaceSudoWithDoas [ doas-sudo-shim ];
+      ++ lib.optionals cfg.replaceSudoWithDoas [ pkgs.doas-sudo-shim ]
+      ++ lib.optionals cfg.uutils.enable [
+        (lib.hiPrio pkgs.uutils-coreutils-noprefix)
+      ];
 
     # tells electron apps to use Wayland
     environment.sessionVariables = lib.mkIf cfg.waylandFixes {
