@@ -18,10 +18,5 @@ in
         wine
       ]
     );
-    nixpkgs.overlays = [
-      (self: super: {
-        wine = super.wineWowPackages.stable;
-      })
-    ];
   };
 }

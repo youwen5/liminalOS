@@ -7,6 +7,12 @@
 let
   cfg = config.liminalOS.system.audio.prod;
   forAllUsers = lib.genAttrs cfg.realtimeAudioUsers;
+  wine = pkgs.wineWowPackages.full;
+  overrideWine =
+    package:
+    (package.override {
+      inherit wine;
+    });
 in
 {
   options.liminalOS.system.audio.prod = {
@@ -31,8 +37,8 @@ in
 
     environment.systemPackages = lib.mkIf cfg.enable (
       (with pkgs; [
-        yabridge
-        yabridgectl
+        (overrideWine yabridge)
+        (overrideWine yabridgectl)
         alsa-scarlett-gui
       ])
       ++ (lib.optionals config.liminalOS.config.allowUnfree (
