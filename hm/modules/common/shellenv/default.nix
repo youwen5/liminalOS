@@ -43,12 +43,7 @@ in
           vi_normal = "block";
         };
       };
-      plugins = with pkgs.nushellPlugins; [
-        gstat
-        polars
-        highlight
-        gstat
-      ];
+      plugins = with pkgs.nushellPlugins; [ polars ];
     };
 
     programs.fzf = {
