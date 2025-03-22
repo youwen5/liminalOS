@@ -125,11 +125,11 @@
       environment.etc.polarity.text = "dawn";
       liminalOS.theming = {
         wallpaper = pkgs.fetchurl {
-          url = "https://code.youwen.dev/youwen5/wallpapers/raw/branch/main/aesthetic/inky-colors-light.png";
-          hash = "sha256-f0esElx8oYYpvewbCrtjI4UN2Ck52X/1CEkWFydNVEI=";
+          url = "https://code.youwen.dev/youwen5/wallpapers/raw/branch/main/aesthetic/afterglow_city_skyline_at_night.png";
+          hash = "sha256-fYMzoY3un4qGOSR4DMqVUAFmGGil+wUze31rLLrjcAc=";
         };
-        # base16Scheme = "${pkgs.base16-schemes}/share/themes/oxocarbon-light.yaml";
-        base16Scheme = null;
+        base16Scheme = "${pkgs.base16-schemes}/share/themes/rose-pine-dawn.yaml";
+        # base16Scheme = null;
         polarity = "light";
       };
     };
