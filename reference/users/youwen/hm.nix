@@ -22,7 +22,6 @@
 
   liminalOS = {
     utils.easyeffects.enable = true;
-    desktop.hyprland.screenlocker.useNvidiaCrashFix = true;
   };
 
   programs.git = {

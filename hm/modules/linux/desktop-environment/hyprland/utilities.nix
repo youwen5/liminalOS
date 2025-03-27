@@ -38,7 +38,11 @@ in
         };
         background = {
           monitor = cfg.screenlocker.monitor;
-          path = lib.mkIf cfg.screenlocker.useNvidiaCrashFix "/tmp/__hyprlock-monitor-screenshot.png";
+          path =
+            if cfg.screenlocker.useNvidiaCrashFix then
+              "/tmp/__hyprlock-monitor-screenshot.png"
+            else
+              "screenshot";
           blur_passes = 3;
           blur_size = 7;
           noise = 0.0117;

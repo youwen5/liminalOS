@@ -46,7 +46,7 @@ in
     };
     screenlocker.useNvidiaCrashFix = lib.mkOption {
       type = lib.types.bool;
-      default = osConfig.liminalOS.system.graphics.nvidia.enable;
+      default = false;
       description = ''
         Whether to use a workaround for Hyprlock background blur not working on Nvidia-based machines. Before locking, a screenshot will be taken and placed at `/tmp/__hyprlock-monitor-screenshot.png`.
       '';
