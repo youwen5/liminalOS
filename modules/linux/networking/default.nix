@@ -14,6 +14,9 @@ let
     ++ (lib.optionals cfg.firewallPresets.vite [
       5173 # vite test server
       4173 # vite test server
+    ])
+    ++ (lib.optionals cfg.firewallPresets.terraria [
+      7777
     ]);
   universalAllowedRanges = [ ];
 in
@@ -29,6 +32,7 @@ in
     firewallPresets = {
       grimDawn = lib.mkEnableOption "firewall ports for Grim Dawn";
       vite = lib.mkEnableOption "firewall ports for Vite";
+      terraria = lib.mkEnableOption "firewall ports for Terraria";
     };
     cloudflareNameservers.enable = lib.mkEnableOption "Cloudflare DNS servers";
     backend = lib.mkOption {
