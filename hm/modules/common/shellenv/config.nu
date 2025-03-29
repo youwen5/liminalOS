@@ -1,11 +1,9 @@
 let fish_completer = {|spans|
-    fish --command $'complete --escape "--do-complete=($spans | str join " ")"'
-    | $"value(char tab)description(char newline)" + $in
-    | from tsv --flexible --no-infer
-    | each {|i|
-        if '\' in $i.value {
-            $i | merge {'value': $"\"($i.value | str replace -a '\' '')\""}
-        } else {$i}
+    fish --command $'complete "--do-complete=($spans | str join " ")"'
+    | from tsv --flexible --noheaders --no-infer
+    | rename value description
+    | update value {
+        if ($in | path exists) {$'"($in | str replace "\"" "\\\"" )"'} else {$in}
     }
 }
 
@@ -29,7 +27,7 @@ let external_completer = {|spans|
 
     match $spans.0 {
         # use zoxide completions for zoxide commands
-        __zoxide_z | __zoxide_zi => $zoxide_completer
+        z | zi => $zoxide_completer
         _ => $fish_completer
     } | do $in $spans
 }
