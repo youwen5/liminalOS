@@ -7,10 +7,6 @@ let fish_completer = {|spans|
     }
 }
 
-let zoxide_completer = {|spans|
-    $spans | skip 1 | zoxide query -l ...$in | lines | where {|x| $x != $env.PWD}
-}
-
 # This completer will use fish by default
 let external_completer = {|spans|
     let expanded_alias = scope aliases
@@ -27,9 +23,25 @@ let external_completer = {|spans|
 
     match $spans.0 {
         # use zoxide completions for zoxide commands
-        z | zi => $zoxide_completer
         _ => $fish_completer
     } | do $in $spans
 }
 
 $env.config.completions.external.completer = $external_completer
+
+def "nu-complete zoxide path" [context: string] {
+  let parts = $context | split row " " | skip 1
+  {
+    options: {
+      sort: false
+      completion_algorithm: prefix
+      positional: false
+      case_sensitive: false
+    }
+    completions: (zoxide query --list --exclude $env.PWD -- ...$parts | lines)
+  }
+}
+
+def --env --wrapped z [...rest: string@"nu-complete zoxide path"] {
+  __zoxide_z ...$rest
+}
