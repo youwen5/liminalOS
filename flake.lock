@@ -1228,15 +1228,15 @@
       "locked": {
         "lastModified": 1742673787,
         "narHash": "sha256-uXavuYuMGlAD6lhO4ieycCW432QuHUPdTXZe/kbzmLU=",
-        "ref": "refs/heads/main",
+        "owner": "youwen5",
+        "repo": "viminal2",
         "rev": "c51109d6aa499d1fe5a82df24025ddc822b6c936",
-        "revCount": 159,
-        "type": "git",
-        "url": "https://code.youwen.dev/youwen5/viminal2"
+        "type": "github"
       },
       "original": {
-        "type": "git",
-        "url": "https://code.youwen.dev/youwen5/viminal2"
+        "owner": "youwen5",
+        "repo": "viminal2",
+        "type": "github"
       }
     },
     "zen-browser": {

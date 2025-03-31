@@ -108,8 +108,10 @@
 
     wallpaper = lib.mkDefault (
       pkgs.fetchurl {
-        url = "https://code.youwen.dev/youwen5/wallpapers/raw/branch/main/anime-with-people/eternal-blue.jpg";
-        hash = "sha256-PCyWyFgMxVYgDjPMtFbQoMTzN61zdUtiP6Lmgc3dRfk=";
+        # url = "https://code.youwen.dev/youwen5/wallpapers/raw/branch/main/anime-with-people/eternal-blue.jpg";
+        url = "https://w.wallhaven.cc/full/rr/wallhaven-rrv23j.jpg";
+        # hash = "sha256-PCyWyFgMxVYgDjPMtFbQoMTzN61zdUtiP6Lmgc3dRfk=";
+        hash = "sha256-PcE9TR82IupRl/zqAZ028GMuARAk2CQaU0XUNfw4gkI=";
       }
     );
 
@@ -125,8 +127,10 @@
       environment.etc.polarity.text = "dawn";
       liminalOS.theming = {
         wallpaper = pkgs.fetchurl {
-          url = "https://code.youwen.dev/youwen5/wallpapers/raw/branch/main/aesthetic/afterglow_city_skyline_at_night.png";
-          hash = "sha256-fYMzoY3un4qGOSR4DMqVUAFmGGil+wUze31rLLrjcAc=";
+          # url = "https://code.youwen.dev/youwen5/wallpapers/raw/branch/main/aesthetic/afterglow_city_skyline_at_night.png";
+          # hash = "sha256-fYMzoY3un4qGOSR4DMqVUAFmGGil+wUze31rLLrjcAc=";
+          url = "https://w.wallhaven.cc/full/vq/wallhaven-vq72xm.png";
+          hash = "sha256-K3Kej2COII8dmcZb8/PaDx2vxAvVVE3OtZORJbsCIc0=";
         };
         base16Scheme = "${pkgs.base16-schemes}/share/themes/rose-pine-dawn.yaml";
         # base16Scheme = null;
