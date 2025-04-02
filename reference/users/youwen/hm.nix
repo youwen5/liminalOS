@@ -14,6 +14,7 @@
   ];
 
   zenTyp.enable = true;
+  zenTyp.compat = true;
 
   home = {
     username = "youwen";
