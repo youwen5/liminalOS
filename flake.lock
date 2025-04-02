@@ -1261,11 +1261,11 @@
     },
     "zenTyp": {
       "locked": {
-        "lastModified": 1741938977,
-        "narHash": "sha256-SCE28/FXr06zW2Ip5ov7q9lackUm9FTLp5Y3+ZYvX3g=",
+        "lastModified": 1743636035,
+        "narHash": "sha256-oyfLwdzzvAojFkVcqSYI8Z/fz0O3n+jCtkeD4tzjszk=",
         "owner": "youwen5",
         "repo": "zen.typ",
-        "rev": "37b2d0410e8018f5ddc05948ae3793e2fd943fc5",
+        "rev": "7ea91323877ff3f6bae3aad6d28891fce1884f4c",
         "type": "github"
       },
       "original": {
