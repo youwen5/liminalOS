@@ -53,11 +53,11 @@
     "apple-firmware": {
       "flake": false,
       "locked": {
-        "lastModified": 1743749636,
-        "narHash": "sha256-NUHs2ESFSSDOgq6chHFmAHOkuYIoA0FBb35BQZGFr/Q=",
+        "lastModified": 1743755657,
+        "narHash": "sha256-0dLRi5QFuCLVedJgHT6eO5lJ7r8gJjR7a9F/t11UItE=",
         "owner": "youwen5",
         "repo": "apple-firmware",
-        "rev": "b9d0814a1d7dbe07da13123046650557fb92b96a",
+        "rev": "da57d34f99f2789368e2def65b832239346dcbee",
         "type": "github"
       },
       "original": {
@@ -75,16 +75,17 @@
         "rust-overlay": "rust-overlay_2"
       },
       "locked": {
-        "lastModified": 1742098834,
-        "narHash": "sha256-l98XVpNXW6hr0AsxCeQZbdf6EGT8OpHdkWBi7sdel4s=",
-        "owner": "marcin-serwin",
-        "repo": "nixos-apple-silicon",
-        "rev": "8457960249bcfd34c22838e20eaa7d8261428688",
+        "lastModified": 1743758699,
+        "narHash": "sha256-M9NvTpL/Fl75vnuK041kQxpDsCj4LfMaxhdSlMSGH6Y=",
+        "owner": "youwen5",
+        "repo": "nixos-asahi",
+        "rev": "3d78fccfcc5ed0528ac4d2fb89412d2193b00809",
         "type": "github"
       },
       "original": {
-        "owner": "marcin-serwin",
-        "repo": "nixos-apple-silicon",
+        "owner": "youwen5",
+        "ref": "unstable",
+        "repo": "nixos-asahi",
         "type": "github"
       }
     },
