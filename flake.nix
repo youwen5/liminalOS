@@ -52,12 +52,13 @@
     apple-silicon = {
       # url = "github:tpwrules/nixos-apple-silicon";
       # url = "github:zzywysm/nixos-asahi";
-      url = "github:youwen5/nixos-asahi/unstable";
+      # url = "github:youwen5/nixos-asahi/unstable";
+      url = "github:marcin-serwin/nixos-apple-silicon";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
     apple-firmware = {
-      url = "git+https://code.youwen.dev/youwen5/apple-firmware";
+      url = "github:youwen5/apple-firmware";
       flake = false;
     };
 

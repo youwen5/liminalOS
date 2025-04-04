@@ -55,15 +55,15 @@
       "locked": {
         "lastModified": 1743749636,
         "narHash": "sha256-NUHs2ESFSSDOgq6chHFmAHOkuYIoA0FBb35BQZGFr/Q=",
-        "ref": "refs/heads/main",
+        "owner": "youwen5",
+        "repo": "apple-firmware",
         "rev": "b9d0814a1d7dbe07da13123046650557fb92b96a",
-        "revCount": 1,
-        "type": "git",
-        "url": "ssh://git@github.com/youwen5/apple-firmware"
+        "type": "github"
       },
       "original": {
-        "type": "git",
-        "url": "ssh://git@github.com/youwen5/apple-firmware"
+        "owner": "youwen5",
+        "repo": "apple-firmware",
+        "type": "github"
       }
     },
     "apple-silicon": {
