@@ -4,6 +4,7 @@
 {
   inputs,
   pkgs,
+  lib,
   ...
 }:
 {
@@ -29,7 +30,23 @@
   boot = {
     loader.systemd-boot.enable = true;
     loader.efi.canTouchEfiVariables = false;
-    kernelParams = [ "apple_dcp.show_notch=1" ];
+    kernelParams = lib.mkForce [
+      "earlycon"
+      "console=tty0"
+      "boot.shell_on_fail"
+      "nvme_apple.flush_interval=0"
+      "quiet"
+      "splash"
+      "boot.shell_on_fail"
+      "loglevel=3"
+      "rd.systemd.show_status=false"
+      "rd.udev.log_level=3"
+      "udev.log_priority=3"
+      "apple_dcp.show_notch=1"
+      "root=fstab"
+      "splash"
+      "loglevel=0"
+    ];
     extraModprobeConfig = ''
       options hid_apple iso_layout=0
     '';
