@@ -609,8 +609,8 @@
         "settingsSync": false,
         "settingsSyncVersion": 1731210778467
     },
-    "splashColor": "rgb(202, 211, 245)",
-    "splashBackground": "rgb(36, 39, 58)",
+    "splashColor": "rgb(242, 244, 248)",
+    "splashBackground": "rgb(22, 22, 22)",
     "spellCheckLanguages": [
         "en-US",
         "en"
