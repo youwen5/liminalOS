@@ -58,6 +58,13 @@ in
         Monitor to use for screen locker. Use `hyprctl monitors` to determine.
       '';
     };
+    bluelight.enable = lib.mkOption {
+      type = lib.types.bool;
+      default = true;
+      description = ''
+        Whether to enable `hyprsunset` as a daemon.
+      '';
+    };
   };
 
   config = lib.mkIf cfg.enable {

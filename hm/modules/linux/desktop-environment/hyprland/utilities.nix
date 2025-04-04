@@ -9,6 +9,25 @@ let
 in
 {
   config = lib.mkIf cfg.enable {
+    systemd.user.services = lib.mkIf cfg.bluelight.enable {
+      hyprsunset = {
+        Unit = {
+          Description = "Start the hyprsunset daemon";
+          PartOf = "hyprland-session.target";
+          After = "hyprland-session.target";
+        };
+        Service = {
+          Type = "simple";
+          ExecStart = "${pkgs.hyprsunset}/bin/hyprsunset";
+          Restart = "on-failure";
+          RestartSec = 3;
+        };
+        Install = {
+          WantedBy = [ "hyprland-session.target" ];
+        };
+      };
+    };
+
     services.hyprpaper.enable = true;
 
     programs.wlogout.enable = true;
