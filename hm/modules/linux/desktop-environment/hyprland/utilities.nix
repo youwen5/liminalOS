@@ -58,10 +58,7 @@ in
         background = {
           monitor = cfg.screenlocker.monitor;
           path =
-            if cfg.screenlocker.useNvidiaCrashFix then
-              "/tmp/__hyprlock-monitor-screenshot.png"
-            else
-              "screenshot";
+            if cfg.screenlocker.useCrashFix then "/tmp/__hyprlock-monitor-screenshot.png" else "screenshot";
           blur_passes = 3;
           blur_size = 7;
           noise = 0.0117;
@@ -109,7 +106,7 @@ in
       settings = {
         general = {
           lock_cmd =
-            if cfg.screenlocker.useNvidiaCrashFix then
+            if cfg.screenlocker.useCrashFix then
               "pidof hyprlock || ${pkgs.grim}/bin/grim -o ${config.programs.hyprlock.settings.background.monitor} /tmp/__hyprlock-monitor-screenshot.png && ${pkgs.hyprlock}/bin/hyprlock"
             else
               "pidof hyprlock || hyprlock";

@@ -44,11 +44,11 @@ in
         Whether to set up Hyprlock for screen locking.
       '';
     };
-    screenlocker.useNvidiaCrashFix = lib.mkOption {
+    screenlocker.useCrashFix = lib.mkOption {
       type = lib.types.bool;
       default = false;
       description = ''
-        Whether to use a workaround for Hyprlock background blur not working on Nvidia-based machines. Before locking, a screenshot will be taken and placed at `/tmp/__hyprlock-monitor-screenshot.png`.
+        Whether to use a workaround for Hyprlock background blur not working on some machines. Before locking, a screenshot will be taken and placed at `/tmp/__hyprlock-monitor-screenshot.png`.
       '';
     };
     screenlocker.monitor = lib.mkOption {
@@ -229,8 +229,7 @@ in
     assertions = [
       {
         assertion =
-          !cfg.screenlocker.useNvidiaCrashFix
-          || (cfg.screenlocker.useNvidiaCrashFix && cfg.screenlocker.monitor != null);
+          !cfg.screenlocker.useCrashFix || (cfg.screenlocker.useCrashFix && cfg.screenlocker.monitor != null);
         message = "To use the Nvidia crash fix, you must set screenlocker.monitor to the monitor you want to use as the lock screen that blurs! Use `hyprctl monitors` to determine the monitor codes (should be something like DP-1, HDMI-A-1, etc).";
       }
     ];
