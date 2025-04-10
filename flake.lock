@@ -887,7 +887,6 @@
         "nix-index-database": "nix-index-database",
         "nixos-wsl": "nixos-wsl",
         "nixpkgs": "nixpkgs_2",
-        "signal-desktop": "signal-desktop",
         "spicetify": "spicetify",
         "stylix": "stylix",
         "ucode": "ucode",
@@ -952,26 +951,6 @@
       "original": {
         "owner": "oxalica",
         "repo": "rust-overlay",
-        "type": "github"
-      }
-    },
-    "signal-desktop": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1742243404,
-        "narHash": "sha256-j3jdXEU+c6xPa4zdzN2PYNsRkdlgldb1q0aBY50+AdM=",
-        "owner": "youwen5",
-        "repo": "signal-desktop-flake",
-        "rev": "226d1cbe55bd07d9f66bf801619a7495189e102d",
-        "type": "github"
-      },
-      "original": {
-        "owner": "youwen5",
-        "repo": "signal-desktop-flake",
         "type": "github"
       }
     },

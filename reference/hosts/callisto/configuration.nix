@@ -47,9 +47,6 @@
       vesktop = inputs.vesktop-bin.packages.${pkgs.system}.default.override {
         electronPageSizeFix = true;
       };
-      signal-desktop = inputs.signal-desktop.packages.${pkgs.system}.default.override {
-        electronPageSizeFix = true;
-      };
     })
   ];
 
