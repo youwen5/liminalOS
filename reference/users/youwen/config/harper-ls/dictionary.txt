@@ -5,6 +5,7 @@ NixOS
 Youwen
 Vimming
 distros
+abelian
 Luarocks
 keybinds
 preimage
@@ -13,10 +14,12 @@ bijective
 bijection
 Pigenhole
 bjiection
+subspaces
 formatters
 transpiles
 Gradescope
 bijections
+additively
 disjunction
 denumerable
 Multinomial
