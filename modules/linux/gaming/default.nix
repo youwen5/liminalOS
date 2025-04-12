@@ -44,7 +44,7 @@ in
         mangojuice
         r2modman
 
-        modrinth-app-bin
+        modrinth-app
         # (modrinth-app.overrideAttrs (oldAttrs: {
         #   buildCommand =
         #     ''
