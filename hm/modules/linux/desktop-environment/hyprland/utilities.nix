@@ -48,6 +48,8 @@ in
       };
     };
 
+    services.swayosd.enable = true;
+
     programs.hyprlock = lib.mkIf cfg.screenlocker.enable {
       enable = true;
       settings = {
