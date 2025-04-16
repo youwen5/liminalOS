@@ -27,24 +27,55 @@ in
 
     programs.bash.enable = true;
 
-    programs.nushell = {
-      enable = true;
-      configFile.source = ./config.nu;
-      settings = {
-        show_banner = false;
-        completions.external = {
-          enable = true;
-          max_results = 200;
+    programs.nushell =
+      let
+        zoxideInit = pkgs.stdenvNoCC.mkDerivation {
+          inherit (pkgs.zoxide) version;
+          pname = "zoxide-init";
+          nativeBuildInputs = [ pkgs.zoxide ];
+          phases = [ "installPhase" ];
+          installPhase = ''
+            zoxide init nushell >> $out
+          '';
         };
-        edit_mode = "vi";
-        cursor_shape = {
-          emacs = "line";
-          vi_insert = "line";
-          vi_normal = "block";
+      in
+      {
+        enable = true;
+        configFile.source = ./config.nu;
+        settings = {
+          show_banner = false;
+          completions.external = {
+            enable = true;
+            max_results = 200;
+          };
+          edit_mode = "vi";
+          cursor_shape = {
+            emacs = "line";
+            vi_insert = "line";
+            vi_normal = "block";
+          };
         };
+        extraConfig = lib.mkIf config.programs.zoxide.enable ''
+          source "${zoxideInit}"
+          def "nu-complete zoxide path" [context: string] {
+            let parts = $context | split row " " | skip 1
+            {
+              options: {
+                sort: false
+                completion_algorithm: prefix
+                positional: false
+                case_sensitive: false
+              }
+              completions: (zoxide query --list --exclude $env.PWD -- ...$parts | lines)
+            }
+          }
+
+          def --env --wrapped z [...rest: string@"nu-complete zoxide path"] {
+            __zoxide_z ...$rest
+          }
+        '';
+        plugins = with pkgs.nushellPlugins; [ polars ];
       };
-      plugins = with pkgs.nushellPlugins; [ polars ];
-    };
 
     programs.fzf = {
       enable = true;
@@ -89,7 +120,8 @@ in
       enable = true;
       # we have our own fish completion plugin for zoxide
       enableFishIntegration = false;
-      enableNushellIntegration = true;
+      # we have our own nushell completion plugin for zoxide
+      enableNushellIntegration = false;
       enableBashIntegration = true;
       package =
         if
