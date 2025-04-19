@@ -11,6 +11,7 @@
       hyprlock.enable = false;
       hyprland.enable = false;
       starship.enable = false;
+      rofi.enable = false;
     };
   };
 }
