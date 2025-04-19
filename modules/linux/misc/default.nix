@@ -97,7 +97,7 @@ in
               "Inter"
             ];
           })
-
+          nerd-fonts.geist-mono
         ]
         ++ (lib.optionals (!config.liminalOS.theming.enable) [
           noto-fonts

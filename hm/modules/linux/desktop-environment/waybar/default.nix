@@ -1,12 +1,13 @@
 {
   pkgs,
-  osConfig,
   config,
   lib,
   ...
 }:
 let
   cfg = config.liminalOS.desktop.waybar;
+  theme = config.lib.stylix;
+  palette = theme.colors;
 in
 {
   options.liminalOS.desktop.waybar = {
@@ -18,265 +19,341 @@ in
       '';
     };
   };
-
-  config = {
-    programs.waybar = lib.mkIf cfg.enable {
+  config = lib.mkIf cfg.enable {
+    home.packages = with pkgs; [ playerctl ];
+    programs.waybar = {
       enable = true;
-      style =
-        let
-          inherit (config.lib.stylix) colors;
-        in
-        ''
-          window#waybar {
-              font-family: ${config.stylix.fonts.monospace.name};
-              background-color: rgba(0,0,0,0);
-              font-size: 0.8rem;
-              border-radius: 0.5rem;
-              color: #${colors.base05};
-          }
-
-          .modules-left {
-              opacity: 1;
-              /* background: linear-gradient(45deg, #${colors.base0B}, #${colors.base0A}); */
-              background: #${colors.base01};
-              border-radius: 0.5rem;
-              padding: 2px;
-          }
-
-          .modules-center {
-              opacity: 0;
-          }
-
-          .modules-right {
-              opacity: 1;
-              background-color: #${colors.base00};
-              border-radius: 0.5rem;
-              padding: 2px 2px 2px 10px
-          }
-
-          /* label.module {
-              margin-left: -1px;
-          } */
-
-          #workspaces {
-              background-color: #${colors.base00};
-              border-radius: 0.5rem;
-              padding: 0 2px 0 2px;
-          }
-
-          #workspaces button {
-              font-size: 0.75rem;
-              padding: 0 0.2rem 0 0.2rem;
-              border: #${colors.base05};
-              color: #${colors.base05};
-          }
-
-          #window {
-              background-color: #${colors.base00};
-              border-radius: 0.5rem;
-              padding: 2px 5px;
-          }
-
-          #clock {
-              font-weight: bolder;
-              border-radius: 0.5rem;
-              padding: 0 3px 0 0;
-          }
-
-          #battery {
-              color: #${colors.base08};
-          }
-
-          #memory {
-              color: #${colors.base09};
-          }
-
-          #disk {
-              color: #${colors.base0A};
-          }
-
-          #cpu {
-              color: #${colors.base0B};
-          }
-
-          #temperature {
-              color: #${colors.base0C};
-          }
-
-          #network {
-              color: #${colors.base0D};
-          }
-        '';
-      systemd.enable = true;
-      settings = {
-        mainBar = {
-          name = "bar0";
-
-          layer = "top";
-          position = "top";
-
-          height = 28;
-
-          "margin" = "5px 10px 0px 10px";
-          "spacing" = 10;
-
-          # "mode" = "top";
-
-          reload_style_on_change = true;
-
-          modules-left = [
-            "hyprland/workspaces"
-            "hyprland/window"
+      package = pkgs.waybar.overrideAttrs (oldAttrs: {
+        mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
+      });
+      settings.mainBar = {
+        position = "top";
+        layer = "top";
+        height = 35;
+        margin-top = 0;
+        margin-bottom = 0;
+        margin-left = 0;
+        margin-right = 0;
+        modules-left = [
+          "custom/launcher"
+          "custom/playerctl#backward"
+          "custom/playerctl#play"
+          "custom/playerctl#foward"
+          "custom/playerlabel"
+        ];
+        modules-center = [
+          "cava#left"
+          "hyprland/workspaces"
+          "cava#right"
+        ];
+        modules-right = [
+          "tray"
+          "battery"
+          "pulseaudio"
+          "network"
+          "clock"
+        ];
+        clock = {
+          format = " {:%a, %d %b, %I:%M %p}";
+          tooltip = "true";
+          tooltip-format = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
+          format-alt = " {:%d/%m}";
+        };
+        "hyprland/workspaces" = {
+          active-only = false;
+          all-outputs = false;
+          disable-scroll = false;
+          on-scroll-up = "${pkgs.hyprnome}/bin/hyprnome --move";
+          on-scroll-down = "${pkgs.hyprnome}/bin/hyprnome --move --previous";
+          format = "{icon}";
+          on-click = "activate";
+          format-icons = {
+            active = "";
+            default = "";
+            urgent = "";
+            special = "󰠱";
+          };
+          sort-by-number = true;
+        };
+        "cava#left" = {
+          framerate = 60;
+          autosens = 1;
+          bars = 18;
+          lower_cutoff_freq = 50;
+          higher_cutoff_freq = 10000;
+          method = "pipewire";
+          source = "auto";
+          stereo = true;
+          reverse = false;
+          bar_delimiter = 0;
+          monstercat = false;
+          waves = false;
+          input_delay = 2;
+          format-icons = [
+            "<span foreground='#${palette.base08}'>▁</span>"
+            "<span foreground='#${palette.base08}'>▂</span>"
+            "<span foreground='#${palette.base08}'>▃</span>"
+            "<span foreground='#${palette.base08}'>▄</span>"
+            "<span foreground='#${palette.base0A}'>▅</span>"
+            "<span foreground='#${palette.base0A}'>▆</span>"
+            "<span foreground='#${palette.base0A}'>▇</span>"
+            "<span foreground='#${palette.base0A}'>█</span>"
           ];
-          modules-right = [
-            "tray"
-            "idle_inhibitor"
-            "backlight"
-            "wireplumber"
-            "network"
-            "battery"
-            "disk"
-            "memory"
-            "cpu"
-            "temperature"
-            "clock"
-            "custom/notification"
+        };
+        "cava#right" = {
+          framerate = 60;
+          autosens = 1;
+          bars = 18;
+          lower_cutoff_freq = 50;
+          higher_cutoff_freq = 10000;
+          method = "pipewire";
+          source = "auto";
+          stereo = true;
+          reverse = false;
+          bar_delimiter = 0;
+          monstercat = false;
+          waves = false;
+          input_delay = 2;
+          format-icons = [
+            "<span foreground='#${palette.base08}'>▁</span>"
+            "<span foreground='#${palette.base08}'>▂</span>"
+            "<span foreground='#${palette.base08}'>▃</span>"
+            "<span foreground='#${palette.base08}'>▄</span>"
+            "<span foreground='#${palette.base0A}'>▅</span>"
+            "<span foreground='#${palette.base0A}'>▆</span>"
+            "<span foreground='#${palette.base0A}'>▇</span>"
+            "<span foreground='#${palette.base0A}'>█</span>"
           ];
-
-          idle_inhibitor = {
-            format = "{icon}";
-            format-icons = {
-              activated = "󰛊 ";
-              deactivated = "󰾫 ";
-            };
-          };
-
-          network = {
-            format = "{ifname}";
-            format-wifi = "{icon}{essid}";
-            format-ethernet = " {essid}";
-            format-disconnected = "󰤯 Disconnected";
-            format-icons = [
-              "󰤟 "
-              "󰤢 "
-              "󰤨 "
-            ];
-            tooltip-format = "  {bandwidthUpBits} |   {bandwidthDownBits}";
-            tooltip-format-wifi = "   {bandwidthUpBits} |    {bandwidthDownBits} | 󱄙   {signalStrength}";
-          };
-
-          backlight = {
-            interval = 2;
-            format = "󰖨 {percent}%";
-            on-scroll-up = "${pkgs.brightnessctl}/bin/brightnessctl set +4";
-            on-scroll-down = "${pkgs.brightnessctl}/bin/brightnessctl set 4-";
-          };
-
-          wireplumber = {
-            format = "{icon} {volume}%";
-            format-muted = "󰝟 ";
-            on-click = "pamixer -t";
-            on-scroll-up = "${pkgs.pamixer}/bin/pamixer set 5%+";
-            on-scroll-down = "${pkgs.pamixer}/bin/pamixer set 5%-";
-            format-icons = [
-              ""
-              ""
-              ""
-              ""
-              ""
-            ];
-          };
-
-          battery = {
-            interval = 10;
-            format = "{icon} {capacity}%";
-            format-icons = [
-              "󰂎"
-              "󰁺"
-              "󰁻"
-              "󰁼"
-              "󰁽"
-              "󰁾"
-              "󰁿"
-              "󰂀"
-              "󰂁"
-              "󰂂"
-              "󰁹"
-            ];
-            tooltip = true;
-            tooltip-format = "{timeTo}";
-          };
-
-          disk = {
-            intervel = 30;
-            format = "󰋊 {percentage_used}%";
-            tooltip-format = "{used} used out of {total} on \"{path}\" ({percentage_used}%)";
-          };
-
-          memory = {
-            interval = 10;
-            format = " {used}";
-            tooltip-format = "{used}GiB used of {total}GiB ({percentage}%)";
-          };
-
-          cpu = {
-            interval = 10;
-            format = " {usage}%";
-          };
-
-          temperature = {
-            interval = 10;
-          };
-
-          clock = {
-            interval = 1;
-            format = "{:%H:%M:%S}";
-          };
-
-          "custom/notification" = lib.mkIf config.liminalOS.desktop.swaync.enable {
-            tooltip = false;
-            format = "{icon}";
-            format-icons = {
-              notification = "<span foreground='red'><small><sup>⬤</sup></small></span>";
-              none = " ";
-              dnd-notification = "<span foreground='red'><small><sup>⬤</sup></small></span>";
-              dnd-none = " ";
-            };
-            return-type = "json";
-            exec = "${pkgs.swaynotificationcenter}/bin/swaync-client -swb";
-            on-click = "sleep 0.1 && ${pkgs.swaynotificationcenter}/bin/swaync-client -t -sw";
-            on-click-right = "sleep 0.1 && ${pkgs.swaynotificationcenter}/bin/swaync-client -d -sw";
-            escape = true;
-          };
-
-          "hyprland/workspaces" = {
-            show-special = true;
-            format = "{icon}";
-            on-click = "activate";
-            format-icons = {
-              # active = "";
-              # empty = "";
-              # default = "";
-              active = "";
-              default = "";
-              urgent = "";
-              special = "󰠱";
-            };
-            sort-by-number = true;
-          };
-
-          "hyprland/window" = {
-            icon = true;
-            icon-size = 20;
-            max-length = 50;
-            rewrite = {
-              "(.*) — LibreWolf" = "$1";
-              "(.*) — Zen Browser" = "$1";
-              "^$" = "👾";
-            };
+        };
+        "custom/playerctl#backward" = {
+          format = "󰙣 ";
+          on-click = "playerctl previous";
+          on-scroll-up = "playerctl volume .05+";
+          on-scroll-down = "playerctl volume .05-";
+        };
+        "custom/playerctl#play" = {
+          format = "{icon}";
+          return-type = "json";
+          exec = "playerctl -a metadata --format '{\"text\": \"{{artist}} - {{markup_escape(title)}}\", \"tooltip\": \"{{playerName}} : {{markup_escape(title)}}\", \"alt\": \"{{status}}\", \"class\": \"{{status}}\"}' -F";
+          on-click = "playerctl play-pause";
+          on-scroll-up = "playerctl volume .05+";
+          on-scroll-down = "playerctl volume .05-";
+          format-icons = {
+            Playing = "<span>󰏥 </span>";
+            Paused = "<span> </span>";
+            Stopped = "<span> </span>";
           };
         };
+        "custom/playerctl#foward" = {
+          format = "󰙡 ";
+          on-click = "playerctl next";
+          on-scroll-up = "playerctl volume .05+";
+          on-scroll-down = "playerctl volume .05-";
+        };
+        "custom/playerlabel" = {
+          format = "<span>󰎈 {} 󰎈</span>";
+          return-type = "json";
+          max-length = 40;
+          exec = "playerctl -a metadata --format '{\"text\": \"{{artist}} - {{markup_escape(title)}}\", \"tooltip\": \"{{playerName}} : {{markup_escape(title)}}\", \"alt\": \"{{status}}\", \"class\": \"{{status}}\"}' -F";
+          on-click = "";
+        };
+        battery = {
+          states = {
+            good = 95;
+            warning = 30;
+            critical = 15;
+          };
+          format = "{icon}  {capacity}%";
+          format-charging = "  {capacity}%";
+          format-plugged = " {capacity}% ";
+          format-alt = "{icon} {time}";
+          format-icons = [
+            ""
+            ""
+            ""
+            ""
+            ""
+          ];
+        };
+
+        memory = {
+          format = "󰍛 {}%";
+          format-alt = "󰍛 {used}/{total} GiB";
+          interval = 5;
+        };
+        cpu = {
+          format = "󰻠 {usage}%";
+          format-alt = "󰻠 {avg_frequency} GHz";
+          interval = 5;
+        };
+        network = {
+          format-wifi = "  {signalStrength}%";
+          format-ethernet = "󰈀 100% ";
+          tooltip-format = "Connected to {essid} {ifname} via {gwaddr}";
+          format-linked = "{ifname} (No IP)";
+          format-disconnected = "󰖪 0% ";
+        };
+        tray = {
+          icon-size = 20;
+          spacing = 8;
+        };
+        pulseaudio = {
+          format = "{icon} {volume}%";
+          format-muted = "󰝟";
+          format-icons = {
+            default = [
+              "󰕿"
+              "󰖀"
+              "󰕾"
+            ];
+          };
+          # on-scroll-up= "bash ~/.scripts/volume up";
+          # on-scroll-down= "bash ~/.scripts/volume down";
+          scroll-step = 5;
+          on-click = "${pkgs.pavucontrol}/bin/pavucontrol";
+        };
+        "custom/randwall" = {
+          format = "󰏘";
+          # on-click= "bash $HOME/.config/hypr/randwall.sh";
+          # on-click-right= "bash $HOME/.config/hypr/wall.sh";
+        };
+        "custom/launcher" = {
+          format = "";
+          # on-click= "bash $HOME/.config/rofi/launcher.sh";
+          # on-click-right= "bash $HOME/.config/rofi/run.sh";
+          tooltip = "false";
+        };
       };
+      style = ''
+        * {
+            border: none;
+            border-radius: 0px;
+            font-family: GeistMono Nerd Font;
+            font-size: 14px;
+            min-height: 0;
+        }
+
+        window#waybar {
+            background: #${palette.base01};
+        }
+
+        #cava.left, #cava.right {
+            background: #${palette.base00};
+            margin: 5px; 
+            padding: 8px 16px;
+            color: #${palette.base00};
+        }
+        #cava.left {
+            border-radius: 24px 10px 24px 10px;
+        }
+        #cava.right {
+            border-radius: 10px 24px 10px 24px;
+        }
+        #workspaces {
+            background: #${palette.base00};
+            margin: 5px 5px;
+            padding: 8px 5px;
+            border-radius: 16px;
+            color: #${palette.base00}
+        }
+        #workspaces button {
+            padding: 0px 5px;
+            margin: 0px 3px;
+            border-radius: 16px;
+            color: transparent;
+            background: #${palette.base01};
+            transition: all 0.3s ease-in-out;
+        }
+
+        #workspaces button.active {
+            background-color: #${palette.base0A};
+            color: #${palette.base01};
+            border-radius: 16px;
+            min-width: 50px;
+            background-size: 400% 400%;
+            transition: all 0.3s ease-in-out;
+        }
+
+        #workspaces button:hover {
+            background-color: #${palette.base05};
+            color: #${palette.base01};
+            border-radius: 16px;
+            min-width: 50px;
+            background-size: 400% 400%;
+        }
+
+        #tray, #pulseaudio, #network, #battery,
+        #custom-playerctl.backward, #custom-playerctl.play, #custom-playerctl.foward{
+            background: #${palette.base00};
+            font-weight: bold;
+            margin: 5px 0px;
+        }
+        #tray, #pulseaudio, #network, #battery{
+            color: #${palette.base05};
+            border-radius: 10px 24px 10px 24px;
+            padding: 0 20px;
+            margin-left: 7px;
+        }
+        #clock {
+            color: #${palette.base05};
+            background: #${palette.base00};
+            border-radius: 0px 0px 0px 40px;
+            padding: 10px 10px 15px 25px;
+            margin-left: 7px;
+            font-weight: bold;
+            font-size: 16px;
+        }
+        #custom-launcher {
+            color: #${palette.base0A};
+            background: #${palette.base00};
+            border-radius: 0px 0px 40px 0px;
+            margin: 0px;
+            padding: 0px 35px 0px 15px;
+            font-size: 28px;
+        }
+
+        #custom-playerctl.backward, #custom-playerctl.play, #custom-playerctl.foward {
+            background: #${palette.base00};
+            font-size: 22px;
+        }
+        #custom-playerctl.backward:hover, #custom-playerctl.play:hover, #custom-playerctl.foward:hover{
+            color: #${palette.base05};
+        }
+        #custom-playerctl.backward {
+            color: #${palette.base08};
+            border-radius: 24px 0px 0px 10px;
+            padding-left: 16px;
+            margin-left: 7px;
+        }
+        #custom-playerctl.play {
+            color: #${palette.base0A};
+            padding: 0 5px;
+        }
+        #custom-playerctl.foward {
+            color: #${palette.base08};
+            border-radius: 0px 10px 24px 0px;
+            padding-right: 12px;
+            margin-right: 7px
+        }
+        #custom-playerlabel {
+            background: #${palette.base00};
+            color: #${palette.base05};
+            padding: 0 20px;
+            border-radius: 24px 10px 24px 10px;
+            margin: 5px 0;
+            font-weight: bold;
+        }
+        #window{
+            background: #${palette.base00};
+            padding-left: 15px;
+            padding-right: 15px;
+            border-radius: 16px;
+            margin-top: 5px;
+            margin-bottom: 5px;
+            font-weight: normal;
+            font-style: normal;
+        }
+      '';
     };
   };
 }
