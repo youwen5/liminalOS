@@ -95,7 +95,7 @@ in
   home.packages = [
     # a script to automatically refresh oauth token for gsuite
     (pkgs.writeShellScriptBin "activate-neomutt-oauth" ''
-      ${pkgs.python39}/bin/python ${oauth} youwen@ucsb.edu.tokens \
+      ${pkgs.python3}/bin/python ${oauth} youwen@ucsb.edu.tokens \
         --provider google \
         --verbose \
         --test \
