@@ -88,6 +88,23 @@
     };
   };
 
+  security.polkit.extraConfig = ''
+        polkit.addRule(function(action, subject) {
+        if (action.id == "org.freedesktop.systemd1.manage-units") {
+            var unit = action.lookup("unit");
+
+            if (unit == "colorscheme-dawn.service" || unit == "colorscheme-dusk.service") {
+                if (subject.active && subject.local) {
+                    return polkit.Result.YES;
+                } else {
+                    return polkit.Result.AUTH_ADMIN_KEEP;
+                }
+            }
+        }
+        return polkit.Result.NOT_HANDLED;
+    });
+  '';
+
   nix.extraOptions = ''
     !include ${config.age.secrets.nix_config_github_pat.path}
   '';
@@ -119,7 +136,7 @@
     polarity = lib.mkDefault "dark";
   };
 
-  environment.etc.polarity.text = "dusk";
+  environment.etc.polarity.text = lib.mkDefault "dusk";
 
   specialisation = {
     dawn.configuration = {

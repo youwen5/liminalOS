@@ -209,24 +209,76 @@ in
           scroll-step = 5;
           on-click = "${pkgs.pavucontrol}/bin/pavucontrol";
         };
+        "custom/launcher" =
+          let
+            toggle-colorscheme = pkgs.writeShellScriptBin "toggle-colorscheme.sh" ''
+              POLARITY_FILE="/etc/polarity"
+
+              if [[ ! -f "$POLARITY_FILE" ]]; then
+                exit 0
+              elif [[ ! -r "$POLARITY_FILE" ]]; then
+                echo "Error: Cannot read $POLARITY_FILE. Check permissions." >&2
+                exit 1
+              fi
+
+              current_scheme=$(cat "$POLARITY_FILE")
+              if [[ $? -ne 0 ]]; then
+                  echo "Error: Failed to read content from $POLARITY_FILE." >&2
+                  exit 1
+              fi
+
+              current_scheme=$(echo "$current_scheme" | xargs)
+
+              target_service=""
+              case "$current_scheme" in
+                dawn)
+                  target_service="colorscheme-dusk.service"
+                  ;;
+                dusk)
+                  target_service="colorscheme-dawn.service"
+                  ;;
+                *)
+                  echo "Error: Invalid content '$current_scheme' found in $POLARITY_FILE. Expected 'dawn' or 'dusk'." >&2
+                  exit 1
+                  ;;
+              esac
+
+              echo "Current scheme: '$current_scheme'. Attempting to start '$target_service'..."
+              systemctl start "$target_service"
+
+              if [[ $? -ne 0 ]]; then
+                echo "Error: Failed to execute 'systemctl start $target_service'. Check systemctl logs or permissions." >&2
+                exit 1
+              else
+                echo "Command 'systemctl start $target_service' executed successfully."
+              fi
+
+              exit 0
+            '';
+          in
+          {
+            format = "";
+            on-click = "pkill -9 rofi || rofi -show drun";
+            on-click-right = "${toggle-colorscheme}/bin/toggle-colorscheme.sh";
+            tooltip = "false";
+          };
       };
       style = ''
         * {
-            border: none;
-            border-radius: 0px;
-            font-family: GeistMono Nerd Font;
-            font-size: 14px;
-            min-height: 0;
+          border: none;
+          border-radius: 0px;
+          font-family: GeistMono Nerd Font;
+          font-size: 13px; /* Reduced font size */
+          min-height: 0;
         }
-
         window#waybar {
-            background: #${palette.base01};
+          background: #${palette.base01};
         }
 
         #cava.left, #cava.right {
             background: #${palette.base00};
-            margin: 5px; 
-            padding: 8px 16px;
+            margin: 4px; /* Reduced margin */
+            padding: 6px 16px; /* Reduced vertical padding */
             color: #${palette.base00};
         }
         #cava.left {
@@ -237,8 +289,8 @@ in
         }
         #workspaces {
             background: #${palette.base00};
-            margin: 5px 5px;
-            padding: 8px 5px;
+            margin: 4px 5px; /* Reduced vertical margin */
+            padding: 6px 5px; /* Reduced vertical padding */
             border-radius: 16px;
             color: #${palette.base00}
         }
@@ -272,7 +324,7 @@ in
         #custom-playerctl.backward, #custom-playerctl.play, #custom-playerctl.foward{
             background: #${palette.base00};
             font-weight: bold;
-            margin: 5px 0px;
+            margin: 4px 0px; /* Reduced vertical margin */
         }
         #tray, #pulseaudio, #network, #battery{
             color: #${palette.base05};
@@ -284,10 +336,10 @@ in
             color: #${palette.base05};
             background: #${palette.base00};
             border-radius: 0px 0px 0px 40px;
-            padding: 10px 10px 15px 25px;
+            padding: 8px 10px 8px 25px; /* Reduced vertical padding */
             margin-left: 7px;
             font-weight: bold;
-            font-size: 16px;
+            font-size: 14px; /* Reduced font size */
         }
         #custom-launcher {
             color: #${palette.base0A};
@@ -295,12 +347,12 @@ in
             border-radius: 0px 0px 40px 0px;
             margin: 0px;
             padding: 0px 35px 0px 15px;
-            font-size: 28px;
+            font-size: 24px; /* Reduced font size */
         }
 
         #custom-playerctl.backward, #custom-playerctl.play, #custom-playerctl.foward {
             background: #${palette.base00};
-            font-size: 22px;
+            font-size: 20px; /* Reduced font size */
         }
         #custom-playerctl.backward:hover, #custom-playerctl.play:hover, #custom-playerctl.foward:hover{
             color: #${palette.base05};
@@ -326,7 +378,7 @@ in
             color: #${palette.base05};
             padding: 0 20px;
             border-radius: 24px 10px 24px 10px;
-            margin: 5px 0;
+            margin: 4px 0; /* Reduced vertical margin */
             font-weight: bold;
         }
         #window{
@@ -334,8 +386,8 @@ in
             padding-left: 15px;
             padding-right: 15px;
             border-radius: 16px;
-            margin-top: 5px;
-            margin-bottom: 5px;
+            margin-top: 4px; /* Reduced margin */
+            margin-bottom: 4px; /* Reduced margin */
             font-weight: normal;
             font-style: normal;
         }
