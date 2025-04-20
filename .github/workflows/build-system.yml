@@ -16,7 +16,9 @@ jobs:
       - name: Check Nix flake Nixpkgs inputs
         uses: DeterminateSystems/flake-checker-action@main
       - uses: DeterminateSystems/nix-installer-action@main
-      - name: Build select system configurations.
+        with:
+          github-token: ${{ secrets.GH_TOKEN_FOR_UPDATES }}
+      - name: Build demeter
         run: |
           # nix flake check --all-systems
           nix build .#nixosConfigurations.demeter.config.system.build.toplevel
@@ -32,7 +34,9 @@ jobs:
       - name: Check Nix flake Nixpkgs inputs
         uses: DeterminateSystems/flake-checker-action@main
       - uses: DeterminateSystems/nix-installer-action@main
-      - name: Build select system configurations.
+        with:
+          github-token: ${{ secrets.GH_TOKEN_FOR_UPDATES }}
+      - name: Build callisto
         run: |
           # nix flake check --all-systems
           nix build .#nixosConfigurations.callisto.config.system.build.toplevel
