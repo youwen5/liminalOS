@@ -21,4 +21,5 @@ jobs:
             lock
           pr-assignees: youwen5
           nix-options:
-            --option access-tokens "github.com=${{GH_TOKEN_FOR_UPDATES}}"
+            --option access-tokens
+            "github.com=${{secrets.GH_TOKEN_FOR_UPDATES}}"
