@@ -29,10 +29,14 @@ in
       in
       {
         enable = true;
+        systemd.enable = true;
+        systemd.target = lib.mkIf config.liminalOS.desktop.hyprland.enable "hyprland-session.target";
         settings.mainBar = {
+          name = "bar0";
+          reload_style_on_change = true;
           position = "top";
           layer = "top";
-          height = 35;
+          height = 37;
           margin-top = 0;
           margin-bottom = 0;
           margin-left = 0;
@@ -72,11 +76,9 @@ in
             format-alt = " {:%d/%m}";
           };
           "hyprland/workspaces" = {
-            active-only = false;
-            all-outputs = false;
             disable-scroll = false;
-            on-scroll-up = "${pkgs.hyprnome}/bin/hyprnome --move";
-            on-scroll-down = "${pkgs.hyprnome}/bin/hyprnome --move --previous";
+            on-scroll-down = "${pkgs.hyprnome}/bin/hyprnome";
+            on-scroll-up = "${pkgs.hyprnome}/bin/hyprnome --previous";
             format = "{icon}";
             on-click = "activate";
             format-icons = {
