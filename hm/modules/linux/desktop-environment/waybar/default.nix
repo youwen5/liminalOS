@@ -23,9 +23,6 @@ in
     home.packages = with pkgs; [ playerctl ];
     programs.waybar = {
       enable = true;
-      package = pkgs.waybar.overrideAttrs (oldAttrs: {
-        mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
-      });
       settings.mainBar = {
         position = "top";
         layer = "top";
@@ -211,17 +208,6 @@ in
           # on-scroll-down= "bash ~/.scripts/volume down";
           scroll-step = 5;
           on-click = "${pkgs.pavucontrol}/bin/pavucontrol";
-        };
-        "custom/randwall" = {
-          format = "󰏘";
-          # on-click= "bash $HOME/.config/hypr/randwall.sh";
-          # on-click-right= "bash $HOME/.config/hypr/wall.sh";
-        };
-        "custom/launcher" = {
-          format = "";
-          # on-click= "bash $HOME/.config/rofi/launcher.sh";
-          # on-click-right= "bash $HOME/.config/rofi/run.sh";
-          tooltip = "false";
         };
       };
       style = ''
