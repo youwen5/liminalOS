@@ -5,13 +5,13 @@ on:
 
 jobs:
   build-x86_64-demeter:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
     permissions:
       contents: read
       id-token: write
     steps:
       - name: Free Disk Space (Ubuntu)
-        uses: jlumbroso/free-disk-space@v1.3.1
+        uses: jlumbroso/free-disk-space@latest
       - uses: actions/checkout@v4
       - name: Check Nix flake Nixpkgs inputs
         uses: DeterminateSystems/flake-checker-action@main
@@ -21,13 +21,13 @@ jobs:
           # nix flake check --all-systems
           nix build .#nixosConfigurations.demeter.config.system.build.toplevel
   build-aarch64-callisto:
-    runs-on: ubuntu-24.04-arm
+    runs-on: ubuntu-latest-arm
     permissions:
       contents: read
       id-token: write
     steps:
       - name: Free Disk Space (Ubuntu)
-        uses: jlumbroso/free-disk-space@v1.3.1
+        uses: jlumbroso/free-disk-space@latest
       - uses: actions/checkout@v4
       - name: Check Nix flake Nixpkgs inputs
         uses: DeterminateSystems/flake-checker-action@main
