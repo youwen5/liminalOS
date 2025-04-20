@@ -11,7 +11,7 @@ jobs:
       id-token: write
     steps:
       - name: Free Disk Space (Ubuntu)
-        uses: jlumbroso/free-disk-space@latest
+        uses: Jayllyz/free-disk-space@perf/use-rmz
       - uses: actions/checkout@v4
       - name: Check Nix flake Nixpkgs inputs
         uses: DeterminateSystems/flake-checker-action@main
@@ -29,7 +29,7 @@ jobs:
       id-token: write
     steps:
       - name: Free Disk Space (Ubuntu)
-        uses: jlumbroso/free-disk-space@latest
+        uses: Jayllyz/free-disk-space@perf/use-rmz
       - uses: actions/checkout@v4
       - name: Check Nix flake Nixpkgs inputs
         uses: DeterminateSystems/flake-checker-action@main
