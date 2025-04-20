@@ -40,13 +40,17 @@ in
           modules-left =
             [
               "custom/launcher"
+            ]
+            ++ (lib.optionals isDesktop [
+
               "custom/playerctl#backward"
               "custom/playerctl#play"
               "custom/playerctl#foward"
+            ])
+            ++ [
               "custom/playerlabel"
             ]
             ++ (lib.optionals isLaptop [
-              "cava#left"
               "hyprland/workspaces"
             ]);
           modules-center = lib.mkIf isDesktop [
@@ -71,8 +75,8 @@ in
             active-only = false;
             all-outputs = false;
             disable-scroll = false;
-            on-scroll-down = "${pkgs.hyprnome}/bin/hyprnome --move";
-            on-scroll-up = "${pkgs.hyprnome}/bin/hyprnome --move --previous";
+            on-scroll-up = "${pkgs.hyprnome}/bin/hyprnome --move";
+            on-scroll-down = "${pkgs.hyprnome}/bin/hyprnome --move --previous";
             format = "{icon}";
             on-click = "activate";
             format-icons = {
@@ -215,8 +219,6 @@ in
                 "󰕾"
               ];
             };
-            # on-scroll-up= "bash ~/.scripts/volume up";
-            # on-scroll-down= "bash ~/.scripts/volume down";
             scroll-step = 5;
             on-click = "${pkgs.pavucontrol}/bin/pavucontrol";
           };
