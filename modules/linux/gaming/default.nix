@@ -66,11 +66,7 @@ in
       liminalOS.programs.flatpak.enable = true;
 
       services.flatpak.packages = lib.mkIf cfg.roblox.enable [
-        {
-          # Sober blocks github actions so we have to use the archive.org link
-          flatpakref = "https://web.archive.org/web/20241219115038if_/https://sober.vinegarhq.org/sober.flatpakref";
-          sha256 = "sha256:1pj8y1xhiwgbnhrr3yr3ybpfis9slrl73i0b1lc9q89vhip6ym2l";
-        }
+        "org.vinegarhq.Sober"
       ];
 
       programs.steam = {
