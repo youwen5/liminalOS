@@ -51,12 +51,12 @@ in
               "custom/playerctl#play"
               "custom/playerctl#foward"
             ])
-            ++ [
-              "custom/playerlabel"
-            ]
             ++ (lib.optionals isLaptop [
               "hyprland/workspaces"
-            ]);
+            ])
+            ++ [
+              "custom/playerlabel"
+            ];
           modules-center = lib.mkIf isDesktop [
             "cava#left"
             "hyprland/workspaces"
