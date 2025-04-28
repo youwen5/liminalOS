@@ -890,7 +890,6 @@
         "spicetify": "spicetify",
         "stylix": "stylix",
         "ucode": "ucode",
-        "vesktop-bin": "vesktop-bin",
         "viminal": "viminal",
         "zen-browser": "zen-browser",
         "zenTyp": "zenTyp"
@@ -1193,26 +1192,6 @@
       "original": {
         "owner": "e-tho",
         "repo": "ucodenix",
-        "type": "github"
-      }
-    },
-    "vesktop-bin": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1744603575,
-        "narHash": "sha256-QfVDd43i5WtVfmNOpjXfVDrIi45x4lKgXUQFY3FaqkM=",
-        "owner": "youwen5",
-        "repo": "vesktop-bin-flake",
-        "rev": "ef740fe44319e425b04e4de1ad1829938a053eb5",
-        "type": "github"
-      },
-      "original": {
-        "owner": "youwen5",
-        "repo": "vesktop-bin-flake",
         "type": "github"
       }
     },

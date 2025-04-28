@@ -43,11 +43,6 @@
 
   nixpkgs.overlays = [
     inputs.apple-silicon.overlays.apple-silicon-overlay
-    (final: prev: {
-      vesktop = inputs.vesktop-bin.packages.${pkgs.system}.default.override {
-        electronPageSizeFix = true;
-      };
-    })
   ];
 
   services.udev.extraRules = ''
