@@ -35,6 +35,8 @@ in
   config = lib.mkIf cfg.enable {
     services.arrpc.enable = cfg.instantMessaging.enable;
 
+    programs.vesktop.enable = lib.mkIf cfg.instantMessaging.enable true;
+
     home.packages =
       lib.optionals cfg.archiveTools.enable (
         with pkgs;
@@ -69,7 +71,6 @@ in
       ++ lib.optionals cfg.instantMessaging.enable (
         with pkgs;
         [
-          vesktop
           signal-desktop
           iamb
         ]
