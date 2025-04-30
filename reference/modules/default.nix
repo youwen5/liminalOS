@@ -148,8 +148,8 @@
         wallpaper = pkgs.fetchurl {
           # url = "https://code.youwen.dev/youwen5/wallpapers/raw/branch/main/aesthetic/afterglow_city_skyline_at_night.png";
           # hash = "sha256-fYMzoY3un4qGOSR4DMqVUAFmGGil+wUze31rLLrjcAc=";
-          url = "https://w.wallhaven.cc/full/vq/wallhaven-vq72xm.png";
-          hash = "sha256-K3Kej2COII8dmcZb8/PaDx2vxAvVVE3OtZORJbsCIc0=";
+          url = "https://i.redd.it/ouo0vm6gn9f91.png";
+          hash = "sha256-5t8HyqZhOw9Zy2LYWhLurBDWi+1KYjsPzU+6RsTaGqk=";
         };
         base16Scheme = "${pkgs.base16-schemes}/share/themes/rose-pine-dawn.yaml";
         # base16Scheme = null;
