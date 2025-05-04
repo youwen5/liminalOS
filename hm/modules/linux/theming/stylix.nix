@@ -12,6 +12,7 @@
       hyprland.enable = false;
       starship.enable = false;
       rofi.enable = false;
+      mako.enable = false;
     };
   };
 }
