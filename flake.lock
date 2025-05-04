@@ -75,11 +75,11 @@
         "rust-overlay": "rust-overlay_2"
       },
       "locked": {
-        "lastModified": 1743758699,
-        "narHash": "sha256-M9NvTpL/Fl75vnuK041kQxpDsCj4LfMaxhdSlMSGH6Y=",
+        "lastModified": 1746396533,
+        "narHash": "sha256-trooGK3A4kfp2xqH/nUs3gS9aVbxDa8iMNRUFugW1wA=",
         "owner": "youwen5",
         "repo": "nixos-asahi",
-        "rev": "3d78fccfcc5ed0528ac4d2fb89412d2193b00809",
+        "rev": "109f196341152e7655e4f470fb6c32f3a5a5b882",
         "type": "github"
       },
       "original": {
