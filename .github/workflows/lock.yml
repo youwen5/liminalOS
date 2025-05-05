@@ -20,5 +20,5 @@ jobs:
           token: ${{ secrets.GH_TOKEN_FOR_UPDATES }}
           pr-title: "build(lock): update"
           pr-labels: |
-            lock
+            dependencies,auto-merge
           pr-assignees: youwen5
