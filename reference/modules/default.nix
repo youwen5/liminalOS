@@ -66,6 +66,22 @@
         ExecStart = "/nix/var/nix/profiles/system/bin/switch-to-configuration test";
       };
     };
+    refresh = let 
+      flakeLocation = "/home/youwen/.config/liminalOS";
+    in {
+      description = "Automatically update liminalOS";
+      after = [ "network-online.target" ];
+      requires = [ "network-online.target" ];
+      script = ''
+        cd ${flakeLocation}
+        ${pkgs.git}/bin/git config --global --add safe.directory ${flakeLocation}
+        ${pkgs.git}/bin/git pull
+      '';
+      serviceConfig = {
+        Environment = "HOME=/root";
+      };
+      wantedBy = [ ];
+    };
   };
   systemd.timers = {
     colorscheme-dawn = {
@@ -84,6 +100,15 @@
         OnCalendar = "*-*-* 18:00:00";
         Persistent = true;
         Unit = "colorscheme-dusk.service";
+      };
+    };
+    refresh = {
+      description = "Schedule daily system updates";
+      wantedBy = [ "timers.target" ];
+      timerConfig = {
+        OnCalendar = "daily";
+        Persistent = true;
+        Unit = "refresh.service";
       };
     };
   };
