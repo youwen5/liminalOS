@@ -18,7 +18,7 @@ jobs:
         uses: DeterminateSystems/update-flake-lock@main
         with:
           token: ${{ secrets.GH_TOKEN_FOR_UPDATES }}
-          pr-title: "build(lock): update"
+          pr-title: "deps(flake.lock): update"
           pr-labels: |
             dependencies,auto-merge
           pr-assignees: youwen5
