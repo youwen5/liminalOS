@@ -111,6 +111,10 @@
 
   nix.settings.trusted-users = [ "youwen" ];
 
+  fonts.packages = [
+    inputs.valkyrie.packages.${pkgs.system}.default
+  ];
+
   liminalOS.theming = {
     # wallpaper = "${inputs.wallpapers}/aesthetic/afterglow_city_skyline_at_night.png";
     # wallpaper = "${

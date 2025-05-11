@@ -102,6 +102,11 @@
       url = "github:musnix/musnix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    valkyrie = {
+      url = "github:youwen5/valkyrie";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =

@@ -890,6 +890,7 @@
         "spicetify": "spicetify",
         "stylix": "stylix",
         "ucode": "ucode",
+        "valkyrie": "valkyrie",
         "viminal": "viminal",
         "zen-browser": "zen-browser",
         "zenTyp": "zenTyp"
@@ -1192,6 +1193,26 @@
       "original": {
         "owner": "e-tho",
         "repo": "ucodenix",
+        "type": "github"
+      }
+    },
+    "valkyrie": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1746945657,
+        "narHash": "sha256-PNWew5LOhud3DizSgRvCWZCaarkU5y296+L7HN49vfI=",
+        "owner": "youwen5",
+        "repo": "valkyrie",
+        "rev": "64d2fcd9719079312cea2970ba0504be3a7904fb",
+        "type": "github"
+      },
+      "original": {
+        "owner": "youwen5",
+        "repo": "valkyrie",
         "type": "github"
       }
     },
