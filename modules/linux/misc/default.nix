@@ -95,6 +95,7 @@ in
             fonts = [
               "Lora"
               "Inter"
+              "Source Sans 3"
             ];
           })
           nerd-fonts.geist-mono
