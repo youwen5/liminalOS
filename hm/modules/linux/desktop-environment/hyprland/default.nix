@@ -88,10 +88,10 @@ in
         (pkgs.hyprlandPlugins.hyprscroller.overrideAttrs {
           version = "0-unstable-2025-03-28";
           src = pkgs.fetchFromGitHub {
-            owner = "dawsers";
+            owner = "cpiber";
             repo = "hyprscroller";
-            rev = "3f86916f3e9a583154b1be0af4e8a1ef1f7435b2";
-            hash = "sha256-mgYq3vc4JtIzVuAKTWdALOynImYyNZEXh7tiVPvMZg4=";
+            rev = "de97924b6d1086d84939b6f6688637f7b21d8d80";
+            hash = "sha256-m9689UH+w8Z/qP/DKYtzQfIGfiE4jgBAfO+uH34cfNs=";
           };
         })
       ];
