@@ -84,17 +84,7 @@ in
 
     wayland.windowManager.hyprland = {
       enable = true;
-      plugins = [
-        (pkgs.hyprlandPlugins.hyprscroller.overrideAttrs {
-          version = "0-unstable-2025-03-28";
-          src = pkgs.fetchFromGitHub {
-            owner = "cpiber";
-            repo = "hyprscroller";
-            rev = "de97924b6d1086d84939b6f6688637f7b21d8d80";
-            hash = "sha256-m9689UH+w8Z/qP/DKYtzQfIGfiE4jgBAfO+uH34cfNs=";
-          };
-        })
-      ];
+      plugins = [ pkgs.hyprlandPlugins.hyprscroller ];
       settings = {
         exec-once = [
           "hyprctl dispatch workspace 100000"
