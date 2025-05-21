@@ -46,11 +46,13 @@ in
               "custom/launcher"
             ]
             ++ (lib.optionals isDesktop [
-
               "custom/playerctl#backward"
               "custom/playerctl#play"
-              "custom/playerctl#foward"
+              "custom/playerctl#forward"
             ])
+            ++ [
+              "idle_inhibitor"
+            ]
             ++ (lib.optionals isLaptop [
               "hyprland/workspaces"
             ])
@@ -69,6 +71,13 @@ in
             "network"
             "clock"
           ];
+          idle_inhibitor = {
+            format = "{icon}";
+            format-icons = {
+              activated = "󰛊 ";
+              deactivated = "󰾫 ";
+            };
+          };
           clock = {
             format = " {:%a, %d %b, %I:%M %p}";
             tooltip = "true";
@@ -158,7 +167,7 @@ in
               Stopped = "<span> </span>";
             };
           };
-          "custom/playerctl#foward" = {
+          "custom/playerctl#forward" = {
             format = "󰙡 ";
             on-click = "playerctl next";
             on-scroll-up = "playerctl volume .05+";
@@ -334,7 +343,7 @@ in
             }
 
             #tray, #pulseaudio, #network, #battery,
-            #custom-playerctl.backward, #custom-playerctl.play, #custom-playerctl.foward{
+            #custom-playerctl.backward, #custom-playerctl.play, #custom-playerctl.forward{
                 background: #${palette.base00};
                 font-weight: bold;
                 margin: 4px 0px;
@@ -363,11 +372,11 @@ in
                 font-size: 24px;
             }
 
-            #custom-playerctl.backward, #custom-playerctl.play, #custom-playerctl.foward {
+            #custom-playerctl.backward, #custom-playerctl.play, #custom-playerctl.forward {
                 background: #${palette.base00};
                 font-size: 20px;
             }
-            #custom-playerctl.backward:hover, #custom-playerctl.play:hover, #custom-playerctl.foward:hover{
+            #custom-playerctl.backward:hover, #custom-playerctl.play:hover, #custom-playerctl.forward:hover{
                 color: #${palette.base05};
             }
             #custom-playerctl.backward {
@@ -380,7 +389,7 @@ in
                 color: #${palette.base0A};
                 padding: 0 5px;
             }
-            #custom-playerctl.foward {
+            #custom-playerctl.forward {
                 color: #${palette.base08};
                 border-radius: 0px 10px 24px 0px;
                 padding-right: 12px;
@@ -392,6 +401,14 @@ in
                 padding: 0 20px;
                 border-radius: 24px 10px 24px 10px;
                 margin: 4px 0;
+                font-weight: bold;
+            }
+            #idle_inhibitor {
+                background: #${palette.base00};
+                color: #${palette.base05};
+                padding: 0 10px 0 15px;
+                border-radius: 24px 10px 24px 10px;
+                margin: 4px 7px 4px 0;
                 font-weight: bold;
             }
             #window{
