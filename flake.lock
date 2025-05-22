@@ -1203,11 +1203,11 @@
         "nixpkgs": "nixpkgs_3"
       },
       "locked": {
-        "lastModified": 1747532234,
-        "narHash": "sha256-IR1xh/bTDWntQO3CwpnSnZPhXwA+guN/atFaZcmctsU=",
+        "lastModified": 1747872282,
+        "narHash": "sha256-If8q5zA6Kx3UB+qfh69OKouOU3yCuxSMh/DQ25QsWEk=",
         "owner": "youwen5",
         "repo": "viminal2",
-        "rev": "0d130239953340103c492b4330c523a5dc6e403c",
+        "rev": "c20d59e75daddaf79358570b48e97e66949ad4aa",
         "type": "github"
       },
       "original": {
