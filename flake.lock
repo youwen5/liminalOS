@@ -74,16 +74,17 @@
         ]
       },
       "locked": {
-        "lastModified": 1747514947,
-        "narHash": "sha256-irRDuerdVu495nBgkhCUjCi2mRpPig0F6cKMoIOfScA=",
-        "owner": "tpwrules",
-        "repo": "nixos-apple-silicon",
-        "rev": "db46177593e24f68e802455875850cdeaf49eb1c",
+        "lastModified": 1748200138,
+        "narHash": "sha256-sa08OvoyH8LTbUaZzcC6MXECdwpJaB0xKTPj3Eipr94=",
+        "owner": "youwen5",
+        "repo": "nixos-asahi",
+        "rev": "4bdd339038db47af5251e09071f645ebc970f502",
         "type": "github"
       },
       "original": {
-        "owner": "tpwrules",
-        "repo": "nixos-apple-silicon",
+        "owner": "youwen5",
+        "ref": "unstable",
+        "repo": "nixos-asahi",
         "type": "github"
       }
     },
