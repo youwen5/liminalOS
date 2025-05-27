@@ -149,10 +149,7 @@
       environment.etc."specialisation".text = "dawn";
       environment.etc.polarity.text = "dawn";
       liminalOS.theming = {
-        wallpaper = pkgs.fetchurl {
-          url = "https://w.wallhaven.cc/full/2y/wallhaven-2y7x7x.jpg";
-          hash = "sha256-C1MdokXeiEPXeTnestKJjpKBDTdXED9Bx9JpDifAg0g=";
-        };
+        wallpaper = "${inputs.wallpapers}/d2/Etheric-Strands.jpg";
         base16Scheme = "${pkgs.base16-schemes}/share/themes/oxocarbon-light.yaml";
         polarity = "light";
       };

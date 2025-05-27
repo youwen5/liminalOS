@@ -872,6 +872,7 @@
         "ucode": "ucode",
         "valkyrie": "valkyrie",
         "viminal": "viminal",
+        "wallpapers": "wallpapers",
         "zen-browser": "zen-browser",
         "zenTyp": "zenTyp"
       }
@@ -1195,6 +1196,22 @@
       "original": {
         "owner": "youwen5",
         "repo": "viminal2",
+        "type": "github"
+      }
+    },
+    "wallpapers": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1748382155,
+        "narHash": "sha256-90oLSTRdATyBd5xNZJZSIVy+BmVe8GX+YZs4IwE2UKs=",
+        "owner": "youwen5",
+        "repo": "wallpapers",
+        "rev": "e7f3fbf486f7ac3540a0e2f5847b796b81525669",
+        "type": "github"
+      },
+      "original": {
+        "owner": "youwen5",
+        "repo": "wallpapers",
         "type": "github"
       }
     },

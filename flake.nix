@@ -107,6 +107,11 @@
       url = "github:youwen5/valkyrie";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    wallpapers = {
+      url = "github:youwen5/wallpapers";
+      flake = false;
+    };
   };
 
   outputs =
