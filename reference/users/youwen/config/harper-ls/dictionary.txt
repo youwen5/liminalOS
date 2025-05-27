@@ -18,7 +18,6 @@ biconditional
 bijection
 bijections
 bijective
-bjiection
 darwin
 denumerable
 diagonalization
