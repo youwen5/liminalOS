@@ -5,6 +5,7 @@
   pkg-config,
   cmake,
   unstableGitUpdater,
+  ...
 }:
 let
   mkHyprlandPlugin =
