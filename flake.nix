@@ -26,10 +26,7 @@
 
     nix-flatpak.url = "github:gmodena/nix-flatpak";
 
-    nix-homebrew = {
-      url = "github:zhaofengli-wip/nix-homebrew";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew";
 
     homebrew-core = {
       url = "github:homebrew/homebrew-core";
@@ -50,9 +47,8 @@
     ucode.url = "github:e-tho/ucodenix";
 
     apple-silicon = {
-      # url = "github:tpwrules/nixos-apple-silicon";
       # url = "github:zzywysm/nixos-asahi";
-      url = "github:youwen5/nixos-asahi/unstable";
+      url = "github:nix-community/nixos-apple-silicon";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
