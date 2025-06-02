@@ -38,7 +38,6 @@
 
   hardware.asahi = {
     peripheralFirmwareDirectory = "${inputs.apple-firmware}/firmware";
-    useExperimentalGPUDriver = true;
   };
 
   nixpkgs.overlays = [
