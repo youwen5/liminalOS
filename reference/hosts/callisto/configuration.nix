@@ -49,6 +49,17 @@
     KERNEL=="macsmc-battery", SUBSYSTEM=="power_supply", ATTR{charge_control_end_threshold}="90", ATTR{charge_control_start_threshold}="85"
   '';
 
+  swapDevices =
+    let
+      gb = x: x * 1024;
+    in
+    [
+      {
+        device = "/var/lib/swapfile";
+        size = gb 4;
+      }
+    ];
+
   services.keyd = {
     enable = true;
     keyboards = {
