@@ -23,7 +23,7 @@
     #   nix flake update --commit-lock-file
     #   doas nixos-rebuild --flake ~/.config/liminalOS\#${osConfig.networking.hostName} switch &| nom
     # '';
-    spt = "${pkgs.spotify-player}/bin/spotify_player";
+    spt = "${lib.getExe pkgs.spotify-player}";
   };
 
   home.file = lib.mkIf config.liminalOS.programs.enable {

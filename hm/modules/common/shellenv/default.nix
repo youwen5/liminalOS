@@ -170,7 +170,6 @@ in
       enable = true;
       shellAliases = {
         ls = "eza -l --icons=auto";
-        neofetch = "${pkgs.fastfetch}/bin/fastfetch";
       };
       interactiveShellInit = ''
         fish_vi_key_bindings

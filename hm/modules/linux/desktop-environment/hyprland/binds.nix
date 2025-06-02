@@ -6,7 +6,7 @@
 }:
 let
   cfg = config.liminalOS.desktop.hyprland;
-  hyprnome = "${pkgs.hyprnome}/bin/hyprnome";
+  hyprnome = "${lib.getExe pkgs.hyprnome}";
 in
 {
   wayland.windowManager.hyprland.settings = lib.mkIf cfg.enable {
@@ -54,16 +54,16 @@ in
         "$mod, Z, exec, loginctl lock-session"
 
         # Media controls
-        ",XF86AudioMute, exec, ${pkgs.pamixer}/bin/pamixer -t"
-        ",XF86AudioPlay, exec, ${pkgs.playerctl}/bin/playerctl --player=%any,firefox play-pause"
-        ",XF86AudioNext, exec, ${pkgs.playerctl}/bin/playerctl --player=%any,firefox next"
-        ",XF86AudioRewind, exec, ${pkgs.playerctl}/bin/playerctl --player=%any,firefox previous"
+        ",XF86AudioMute, exec, ${lib.getExe pkgs.pamixer} -t"
+        ",XF86AudioPlay, exec, ${lib.getExe pkgs.playerctl} --player=%any,firefox play-pause"
+        ",XF86AudioNext, exec, ${lib.getExe pkgs.playerctl} --player=%any,firefox next"
+        ",XF86AudioRewind, exec, ${lib.getExe pkgs.playerctl} --player=%any,firefox previous"
 
         "$mod, S, togglespecialworkspace"
         "$mod+Alt, S, movetoworkspacesilent, special"
         "$mod, Tab, workspace, previous"
-        ''$mod+Shift, P, exec, ${pkgs.grim}/bin/grim - | ${pkgs.swappy}/bin/swappy -f -'' # Screenshot full screen
-        ''$mod, P, exec, ${pkgs.grim}/bin/grim -g "$(${pkgs.slurp}/bin/slurp)" - | ${pkgs.swappy}/bin/swappy -f -'' # Screenshot
+        ''$mod+Shift, P, exec, ${lib.getExe pkgs.grim} - | ${lib.getExe pkgs.swappy} -f -'' # Screenshot full screen
+        ''$mod, P, exec, ${lib.getExe pkgs.grim} -g "$(${lib.getExe pkgs.slurp})" - | ${lib.getExe pkgs.swappy} -f -'' # Screenshot
       ]
       ++ (lib.optionals config.liminalOS.programs.zen.enable [
         "$mod, B, exec, zen"
@@ -73,10 +73,10 @@ in
       ])
       ++ (lib.optionals config.liminalOS.programs.enable [
         # Application Keybinds
-        "$mod, R, exec, ${pkgs.pavucontrol}/bin/pavucontrol -t 3" # open pavucontrol on 'outputs' tab
-        "$mod, T, exec, ${pkgs.kitty}/bin/kitty"
+        "$mod, R, exec, ${lib.getExe pkgs.pavucontrol} -t 3" # open pavucontrol on 'outputs' tab
+        "$mod, T, exec, ${lib.getExe pkgs.kitty}"
         "$mod, E, exec, ${lib.getExe pkgs.nautilus}"
-        "$mod, M, exec, ${pkgs.thunderbird}/bin/thunderbird"
+        "$mod, M, exec, ${lib.getExe pkgs.thunderbird}"
       ]);
 
     bindm = [
@@ -84,10 +84,10 @@ in
       "$mod, mouse:273, resizewindow"
     ];
     bindel = [
-      ",XF86MonBrightnessDown, exec, ${pkgs.brightnessctl}/bin/brightnessctl set 5%-"
-      ",XF86MonBrightnessUp, exec, ${pkgs.brightnessctl}/bin/brightnessctl set 5%+"
-      ",XF86AudioRaiseVolume, exec, ${pkgs.pamixer}/bin/pamixer -i 5"
-      ",XF86AudioLowerVolume, exec, ${pkgs.pamixer}/bin/pamixer -d 5"
+      ",XF86MonBrightnessDown, exec, ${lib.getExe pkgs.brightnessctl} set 5%-"
+      ",XF86MonBrightnessUp, exec, ${lib.getExe pkgs.brightnessctl} set 5%+"
+      ",XF86AudioRaiseVolume, exec, ${lib.getExe pkgs.pamixer} -i 5"
+      ",XF86AudioLowerVolume, exec, ${lib.getExe pkgs.pamixer} -d 5"
     ];
     binde = [
       # Resize windows

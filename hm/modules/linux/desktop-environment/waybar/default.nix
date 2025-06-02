@@ -86,8 +86,8 @@ in
           };
           "hyprland/workspaces" = {
             disable-scroll = false;
-            on-scroll-down = "${pkgs.hyprnome}/bin/hyprnome";
-            on-scroll-up = "${pkgs.hyprnome}/bin/hyprnome --previous";
+            on-scroll-down = "${lib.getExe pkgs.hyprnome}";
+            on-scroll-up = "${lib.getExe pkgs.hyprnome} --previous";
             format = "{icon}";
             on-click = "activate";
             format-icons = {
@@ -231,7 +231,7 @@ in
               ];
             };
             scroll-step = 5;
-            on-click = "${pkgs.pavucontrol}/bin/pavucontrol";
+            on-click = "${lib.getExe pkgs.pavucontrol}";
           };
           "custom/launcher" =
             let
@@ -283,7 +283,7 @@ in
             {
               format = "";
               on-click = "pkill -9 rofi || rofi -show drun";
-              on-click-right = "${toggle-colorscheme}/bin/toggle-colorscheme.sh";
+              on-click-right = "${lib.getExe toggle-colorscheme}";
               tooltip = "false";
             };
         };

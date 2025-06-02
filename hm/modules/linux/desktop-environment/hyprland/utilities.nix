@@ -18,7 +18,7 @@ in
         };
         Service = {
           Type = "simple";
-          ExecStart = "${pkgs.hyprsunset}/bin/hyprsunset";
+          ExecStart = "${lib.getExe pkgs.hyprsunset}";
           Restart = "on-failure";
           RestartSec = 3;
         };
@@ -35,7 +35,7 @@ in
     programs.rofi = {
       enable = true;
       package = pkgs.rofi-wayland;
-      terminal = "${pkgs.kitty}/bin/kitty";
+      terminal = "${lib.getExe pkgs.kitty}";
       theme =
         let
           inherit (config.lib.formats.rasi) mkLiteral;
@@ -156,7 +156,7 @@ in
         general = {
           lock_cmd =
             if cfg.screenlocker.useCrashFix then
-              "pidof hyprlock || ${pkgs.grim}/bin/grim -o ${config.programs.hyprlock.settings.background.monitor} /tmp/__hyprlock-monitor-screenshot.png && ${pkgs.hyprlock}/bin/hyprlock"
+              "pidof hyprlock || ${lib.getExe pkgs.grim} -o ${config.programs.hyprlock.settings.background.monitor} /tmp/__hyprlock-monitor-screenshot.png && ${lib.getExe pkgs.hyprlock}"
             else
               "pidof hyprlock || hyprlock";
           before_sleep_cmd = "loginctl lock-session"; # lock before suspend.

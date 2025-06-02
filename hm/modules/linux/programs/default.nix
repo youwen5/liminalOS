@@ -88,6 +88,6 @@ in
       pkgs.zen-browser
     ];
 
-    home.sessionVariables.DEFAULT_BROWSER = lib.mkIf cfg.zen.enable "${pkgs.zen-browser}/bin/zen";
+    home.sessionVariables.DEFAULT_BROWSER = lib.mkIf cfg.zen.enable "${lib.getExe pkgs.zen-browser}";
   };
 }
