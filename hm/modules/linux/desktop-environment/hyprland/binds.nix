@@ -75,7 +75,7 @@ in
         # Application Keybinds
         "$mod, R, exec, ${pkgs.pavucontrol}/bin/pavucontrol -t 3" # open pavucontrol on 'outputs' tab
         "$mod, T, exec, ${pkgs.kitty}/bin/kitty"
-        "$mod, E, exec, ${pkgs.xfce.thunar}/bin/thunar"
+        "$mod, E, exec, ${lib.getExe pkgs.nautilus}"
         "$mod, M, exec, ${pkgs.thunderbird}/bin/thunderbird"
       ]);
 

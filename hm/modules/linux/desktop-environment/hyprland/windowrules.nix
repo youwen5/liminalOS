@@ -22,7 +22,7 @@
         "opacity 0.80 0.80,class:^(kitty)$"
         "opacity 0.80 0.80,class:^(neovide)$"
         "opacity 0.80 0.80,class:^(org.kde.dolphin)$"
-        "opacity 0.80 0.80,class:^(thunar)$"
+        "opacity 0.80 0.80,class:^(org.gnome.Nautilus)$"
         "opacity 0.80 0.80,class:^(org.kde.ark)$"
         "opacity 0.80 0.80,class:^(nwg-look)$"
         "opacity 0.80 0.80,class:^(qt5ct)$"
