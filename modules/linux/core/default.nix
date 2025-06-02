@@ -47,16 +47,23 @@ in
     suppressWarnings = lib.mkEnableOption "suppress warnings";
     bluetooth.enable = lib.mkOption {
       type = lib.types.bool;
-      default = true;
+      default = cfg.enable;
       description = ''
         Whether to enable bluetooth and blueman.
       '';
     };
     uutils.enable = lib.mkOption {
       type = lib.types.bool;
-      default = true;
+      default = cfg.enable;
       description = ''
         Whether to replace GNU coreutils with Rust uutils
+      '';
+    };
+    useGvfs.enable = lib.mkOption {
+      type = lib.types.bool;
+      default = cfg.enable;
+      description = ''
+        Whether to enable the GVFS and alias `rm` to send files to trash instead.
       '';
     };
   };
@@ -175,6 +182,8 @@ in
     };
 
     services.blueman.enable = lib.mkIf cfg.bluetooth.enable true;
+
+    services.gvfs.enable = lib.mkIf cfg.useGvfs.enable true;
 
     warnings =
       if !cfg.suppressWarnings && cfg.useNh && config.liminalOS.flakeLocation == "" then
