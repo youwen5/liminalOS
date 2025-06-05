@@ -34,6 +34,11 @@
     };
   };
 
+  programs.iamb = {
+    enable = true;
+    settings.profiles."matrix.org".user_id = "@youwen:matrix.org";
+  };
+
   # must set identitiesOnly since we are adding a ton of SSH keys to ssh-agent and it tries all of them
   programs.ssh = {
     enable = true;

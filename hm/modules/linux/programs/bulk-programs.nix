@@ -89,7 +89,6 @@ in
         with pkgs;
         [
           signal-desktop
-          iamb
         ]
         ++ lib.optionals cfg.desktopApps.enable (
           with pkgs;
