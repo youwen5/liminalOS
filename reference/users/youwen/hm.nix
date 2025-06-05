@@ -36,7 +36,14 @@
 
   programs.iamb = {
     enable = true;
-    settings.profiles."matrix.org".user_id = "@youwen:matrix.org";
+    package = inputs.iamb.packages.${pkgs.stdenv.targetPlatform.system}.default;
+    settings = {
+      profiles."matrix.org".user_id = "@youwen:matrix.org";
+      settings = {
+        image_preview = { };
+        notifications.enabled = true;
+      };
+    };
   };
 
   # must set identitiesOnly since we are adding a ton of SSH keys to ssh-agent and it tries all of them

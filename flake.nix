@@ -108,6 +108,12 @@
       url = "github:youwen5/wallpapers";
       flake = false;
     };
+
+    iamb = {
+      url = "github:ulyssa/iamb";
+      inputs.flake-utils.follows = "flake-utils";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
