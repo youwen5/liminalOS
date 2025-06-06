@@ -50,6 +50,7 @@
         "gr" = ":rooms<Enter>";
         "gs" = ":spaces<Enter>";
         "gd" = ":dms<Enter>";
+        "gu" = ":unreads<Enter>";
         "ZZ" = ":qa<Enter>";
       };
     };
