@@ -45,6 +45,13 @@
       };
       layout.style = "restore";
       dirs.downloads = "/tmp";
+      macros.normal = {
+        "gc" = ":chats<Enter>";
+        "gr" = ":rooms<Enter>";
+        "gs" = ":spaces<Enter>";
+        "gd" = ":dms<Enter>";
+        "ZZ" = ":qa<Enter>";
+      };
     };
   };
 
