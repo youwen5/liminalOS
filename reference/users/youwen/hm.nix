@@ -43,6 +43,8 @@
         image_preview = { };
         notifications.enabled = true;
       };
+      layout.style = "restore";
+      dirs.downloads = "/tmp";
     };
   };
 
