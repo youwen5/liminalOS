@@ -37,6 +37,8 @@ in
 
     programs.vesktop.enable = lib.mkIf cfg.instantMessaging.enable true;
 
+    programs.element-desktop.enable = lib.mkIf cfg.instantMessaging.enable true;
+
     nixpkgs.overlays = [
       (self: super: {
         gnome = super.gnome.overrideScope' (
