@@ -99,6 +99,7 @@ in
             nautilus
             nicotine-plus # soulseek client
             gapless # music player
+            loupe # image viewer
           ]
           ++ lib.optionals pkgs.stdenv.targetPlatform.isx86_64 [
             bitwarden-desktop
