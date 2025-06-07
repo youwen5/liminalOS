@@ -42,6 +42,9 @@
       settings = {
         image_preview = { };
         notifications.enabled = true;
+        users = {
+          "@ananthv:matrix.mit.edu".color = "magenta";
+        };
       };
       layout.style = "restore";
       dirs.downloads = "/tmp";
