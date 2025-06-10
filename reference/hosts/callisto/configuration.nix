@@ -7,7 +7,7 @@
   lib,
   ...
 }:
-{
+rec {
   imports = [ ./hardware-configuration.nix ];
 
   networking.hostName = "callisto";
@@ -86,5 +86,17 @@
     };
   };
 
-  system.stateVersion = "24.11";
+  system = {
+    stateVersion = "24.11";
+    
+    # Automatically rebuild system daily
+    autoUpgrade = {
+      enable = true;
+      flake = liminalOS.flakeLocation;
+      flags = [
+        "-L" # print build logs
+      ];
+      dates = "daily";
+    };
+  };
 }
