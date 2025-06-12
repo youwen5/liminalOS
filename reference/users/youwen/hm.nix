@@ -38,7 +38,15 @@
     enable = true;
     package = inputs.iamb.packages.${pkgs.stdenv.targetPlatform.system}.default;
     settings = {
-      profiles."matrix.org".user_id = "@youwen:matrix.org";
+      default_profile = "functor.systems";
+      profiles = {
+        "functor.systems" = {
+          user_id = "@youwen:functor.systems";
+          url = "https://matrix.functor.systems";
+        };
+        "matrix.org".user_id = "@youwen:matrix.org";
+        "nixos.dev".user_id = "@youwen5:nixos.dev";
+      };
       settings = {
         image_preview = { };
         notifications.enabled = true;
