@@ -110,7 +110,7 @@
     };
 
     iamb = {
-      url = "github:ulyssa/iamb";
+      url = "github:youwen5/iamb";
       inputs.flake-utils.follows = "flake-utils";
       inputs.nixpkgs.follows = "nixpkgs";
     };

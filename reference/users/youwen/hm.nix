@@ -53,6 +53,8 @@
         users = {
           "@ananthv:matrix.mit.edu".color = "magenta";
         };
+        username_display = "regex";
+        username_display_regex = "discord_";
       };
       layout.style = "restore";
       dirs.downloads = "/tmp";
