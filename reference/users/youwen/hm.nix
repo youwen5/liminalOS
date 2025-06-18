@@ -79,6 +79,12 @@
         identityFile = config.age.secrets.youwen_dev_ssh_priv_key.path;
         identitiesOnly = true;
       };
+      "provenance.kaitotlex.systems" = {
+        host = "code.functor.systems";
+        port = 26;
+        # identityFile = config.age.secrets.youwen_dev_ssh_priv_key.path;
+        # identitiesOnly = true;
+      };
       "github" = {
         host = "github.com";
         identityFile = config.age.secrets.github_ssh_priv_key.path;
