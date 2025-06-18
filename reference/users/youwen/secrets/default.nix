@@ -39,5 +39,9 @@
       mode = "600";
       path = "${config.home.homeDirectory}/.wakatime.cfg";
     };
+    code_functor_systems_key = {
+      file = ./code_functor_systems_key.age;
+      mode = "600";
+    };
   };
 }
