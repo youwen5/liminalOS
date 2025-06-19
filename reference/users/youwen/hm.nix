@@ -40,10 +40,7 @@
     settings = {
       default_profile = "functor.systems";
       profiles = {
-        "functor.systems" = {
-          user_id = "@youwen:functor.systems";
-          url = "https://matrix.functor.systems";
-        };
+        "functor.systems".user_id = "@youwen:functor.systems";
         "matrix.org".user_id = "@youwen:matrix.org";
         "nixos.dev".user_id = "@youwen5:nixos.dev";
       };
