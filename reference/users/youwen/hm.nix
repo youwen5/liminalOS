@@ -59,7 +59,7 @@
     useLegacyExtensions = false;
     config = {
       background = {
-        color = "#${config.lib.stylix.colors.base00}";
+        color = "#${config.lib.stylix.colors.base01}";
       };
       border = {
         color = "#${config.lib.stylix.colors.base0B}";
