@@ -111,6 +111,8 @@
 
   nix.settings.trusted-users = [ "youwen" ];
 
+  programs.firefox.nativeMessagingHosts.tridactyl = true;
+
   fonts.packages = [
     inputs.valkyrie.packages.${pkgs.system}.default
   ];

@@ -64,10 +64,10 @@ in
         "$mod, Tab, workspace, previous"
         ''$mod+Shift, P, exec, ${lib.getExe pkgs.grim} - | ${lib.getExe pkgs.swappy} -f -'' # Screenshot full screen
         ''$mod, P, exec, ${lib.getExe pkgs.grim} -g "$(${lib.getExe pkgs.slurp})" - | ${lib.getExe pkgs.swappy} -f -'' # Screenshot
+
+        # browser
+        "$mod, B, exec, ${lib.getExe config.liminalOS.programs.defaultBrowser}"
       ]
-      ++ (lib.optionals config.liminalOS.programs.zen.enable [
-        "$mod, B, exec, zen"
-      ])
       ++ (lib.optionals config.liminalOS.desktop.swaync.enable [
         "$mod, N, exec, sleep 0.1 && ${pkgs.swaynotificationcenter}/bin/swaync-client -t -sw"
       ])

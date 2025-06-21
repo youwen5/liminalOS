@@ -13,6 +13,13 @@
       starship.enable = false;
       rofi.enable = false;
       mako.enable = false;
+      firefox = {
+        enable = true;
+        profileNames = [
+          "youwen"
+        ];
+        colorTheme.enable = true;
+      };
     };
   };
 }

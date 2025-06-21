@@ -23,6 +23,8 @@
 
   liminalOS = {
     utils.easyeffects.enable = true;
+    programs.defaultBrowser = pkgs.firefox;
+    programs.browserDesktopFile = "firefox.desktop";
   };
 
   programs.git = {
@@ -31,6 +33,56 @@
     signing = {
       signByDefault = true;
       key = "8F5E6C1AF90976CA7102917A865658ED1FE61EC3";
+    };
+  };
+
+  programs.firefox = {
+    # package = pkgs.;
+    profiles.youwen = {
+      extensions.force = true;
+      extensions.packages = with pkgs.nur.repos.rycee.firefox-addons; [
+        tridactyl
+        ublock-origin
+        bitwarden
+        refined-github
+      ];
+    };
+  };
+
+  home.packages = with pkgs; [
+    tridactyl-native
+  ];
+
+  textfox = {
+    enable = true;
+    profile = "youwen";
+    useLegacyExtensions = false;
+    config = {
+      background = {
+        color = "#${config.lib.stylix.colors.base00}";
+      };
+      border = {
+        color = "#${config.lib.stylix.colors.base0B}";
+        width = "3px";
+        transition = "1.0s ease";
+        radius = "0px";
+      };
+      displayHorizontalTabs = false;
+      displayWindowControls = false;
+      displayNavButtons = true;
+      displayUrlbarIcons = true;
+      displaySidebarTools = false;
+      displayTitles = true;
+      newtabLogo = "   __            __  ____          \A   / /____  _  __/ /_/ __/___  _  __\A  / __/ _ \\| |/_/ __/ /_/ __ \\| |/_/\A / /_/  __/>  </ /_/ __/ /_/ />  <  \A \\__/\\___/_/|_|\\__/_/  \\____/_/|_|  ";
+      font = {
+        family = "CaskaydiaCove Nerd Font";
+        size = "15px";
+        accent = "#${config.lib.stylix.colors.base0B}";
+      };
+      tabs.vertical = {
+        margin = "1.0rem";
+      };
+      tabs.horizontal.enable = false;
     };
   };
 

@@ -21,18 +21,25 @@ in
         Whether to set up many default desktop programs.
       '';
     };
+    defaultBrowser = lib.mkOption {
+      type = lib.types.package;
+      default = pkgs.zen-browser;
+      description = ''
+        Default browser for the system.
+      '';
+    };
+    browserDesktopFile = lib.mkOption {
+      type = lib.types.str;
+      default = "zen.desktop";
+      description = ''
+        Name of desktop file of browser.
+      '';
+    };
     terminal.enable = lib.mkOption {
       type = lib.types.bool;
       default = cfg.enable;
       description = ''
         Whether to set up kitty terminal.
-      '';
-    };
-    zen.enable = lib.mkOption {
-      type = lib.types.bool;
-      default = cfg.enable;
-      description = ''
-        Whether to install Zen Browser and set it as the default browser.
       '';
     };
   };
@@ -73,21 +80,23 @@ in
       };
     };
 
-    xdg.mimeApps = lib.mkIf cfg.zen.enable {
+    xdg.mimeApps = {
       enable = true;
-      defaultApplications = {
-        "text/html" = [ "zen.desktop" ];
-        "x-scheme-handler/http" = [ "zen.desktop" ];
-        "x-scheme-handler/https" = [ "zen.desktop" ];
-        "x-scheme-handler/about" = [ "zen.desktop" ];
-        "x-scheme-handler/unknown" = [ "zen.desktop" ];
-      };
+      defaultApplications =
+        let
+          desktopFile = cfg.browserDesktopFile;
+        in
+        {
+          "text/html" = [ desktopFile ];
+          "x-scheme-handler/http" = [ desktopFile ];
+          "x-scheme-handler/https" = [ desktopFile ];
+          "x-scheme-handler/about" = [ desktopFile ];
+          "x-scheme-handler/unknown" = [ desktopFile ];
+        };
     };
 
-    home.packages = lib.mkIf cfg.zen.enable [
-      pkgs.zen-browser
-    ];
+    home.packages = [ cfg.defaultBrowser ];
 
-    home.sessionVariables.DEFAULT_BROWSER = lib.mkIf cfg.zen.enable "${lib.getExe pkgs.zen-browser}";
+    home.sessionVariables.DEFAULT_BROWSER = lib.getExe cfg.defaultBrowser;
   };
 }
