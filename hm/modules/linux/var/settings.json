@@ -614,5 +614,6 @@
     "spellCheckLanguages": [
         "en-US",
         "en"
-    ]
+    ],
+    "arRPC": true
 }

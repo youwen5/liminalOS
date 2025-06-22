@@ -113,6 +113,8 @@ in
         config.liminalOS.config.extraUnfreePackages
         ++ [
           "spotify"
+          "tidal-hifi"
+          "castlabs-electron"
         ]
       )
     );
