@@ -63,9 +63,6 @@
       };
       border = {
         color = "#${config.lib.stylix.colors.base0B}";
-        width = "3px";
-        transition = "1.0s ease";
-        radius = "0px";
       };
       displayHorizontalTabs = false;
       displayWindowControls = false;
@@ -73,10 +70,8 @@
       displayUrlbarIcons = true;
       displaySidebarTools = false;
       displayTitles = true;
-      newtabLogo = "   __            __  ____          \A   / /____  _  __/ /_/ __/___  _  __\A  / __/ _ \\| |/_/ __/ /_/ __ \\| |/_/\A / /_/  __/>  </ /_/ __/ /_/ />  <  \A \\__/\\___/_/|_|\\__/_/  \\____/_/|_|  ";
       font = {
-        family = "CaskaydiaCove Nerd Font";
-        size = "15px";
+        family = config.stylix.fonts.monospace.name;
         accent = "#${config.lib.stylix.colors.base0B}";
       };
       tabs.vertical = {
