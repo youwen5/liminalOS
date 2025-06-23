@@ -5,6 +5,7 @@
       [
         "opacity 0.90 0.90,class:^(librewolf)$"
         "opacity 0.90 0.90,class:^(floorp)$"
+        "opacity 0.90 0.90,class:^(firefox)$"
         "opacity 0.90 0.90,class:^(zen-alpha)$"
         "opacity 0.90 0.90,class:^(zen-beta)$"
         "opacity 0.90 0.90,class:^(zen)$"
