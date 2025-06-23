@@ -107,7 +107,6 @@ in
             sbctl
           ]
           ++ lib.optionals pkgs.stdenv.targetPlatform.isAarch64 [ ]
-          ++ lib.optionals osConfig.liminalOS.config.allowUnfree [ tidal-hifi ]
         )
       );
   };

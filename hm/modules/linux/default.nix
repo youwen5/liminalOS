@@ -13,6 +13,7 @@
     ./desktop-environment
     ./theming
     ./platform-tweaks
+    ./tidal-hifi
   ];
 
   programs.fish.functions = lib.mkIf config.liminalOS.programs.enable {
