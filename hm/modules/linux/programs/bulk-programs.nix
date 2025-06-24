@@ -35,8 +35,53 @@ in
 
   config = lib.mkIf cfg.enable {
     services.arrpc.enable = cfg.instantMessaging.enable;
-
-    programs.vesktop.enable = lib.mkIf cfg.instantMessaging.enable true;
+    programs.vesktop = lib.mkIf cfg.instantMessaging.enable {
+      enable = true;
+      settings = {
+        arRPC = false;
+        checkUpdates = false;
+        customTitlebar = false;
+        disableMinSize = true;
+        minimizeToTray = true;
+        tray = true;
+        splashTheming = true;
+        splashBackground = "#${config.lib.stylix.colors.base01}";
+        splashColor = "#${config.lib.stylix.colors.base05}";
+        hardwareAcceleration = true;
+        discordBranch = "stable";
+      };
+      vencord.settings = {
+        autoUpdate = false;
+        autoUpdateNotification = false;
+        notifyAboutUpdates = false;
+        useQuickCss = true;
+        disableMinSize = true;
+        useSystem = true;
+        plugins = {
+          FakeNitro.enabled = true;
+          YoutubeAdblock.enabled = true;
+          WhoReacted.enabled = true;
+          LastFMRichPresence = {
+            enabled = true;
+            hideWithActivity = false;
+            hideWithSpotify = true;
+            shareUsername = false;
+            shareSong = true;
+            statusName = "some music";
+            nameFormat = "artist";
+            useListeningStatus = true;
+            missingArt = "lastfmLogo";
+            showLastFmLogo = true;
+            username = "couscousdude";
+            apiKey = "8cf7c619e321677733819dbcc0411c10";
+          };
+          SpotifyCrack.enabled = true;
+          VolumeBooster.enabled = true;
+          "WebRichPresence (arRPC)".enabled = true;
+          PlatformIndicators.enabled = true;
+        };
+      };
+    };
 
     programs.element-desktop.enable = lib.mkIf cfg.instantMessaging.enable true;
 

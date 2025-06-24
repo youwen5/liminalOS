@@ -27,10 +27,5 @@
     spt = "${lib.getExe pkgs.spotify-player}";
   };
 
-  home.file = lib.mkIf config.liminalOS.programs.enable {
-    ".config/vesktop/settings.json".source =
-      config.lib.file.mkOutOfStoreSymlink "${osConfig.liminalOS.flakeLocation}/hm/modules/linux/var/settings.json";
-  };
-
   services.gnome-keyring.enable = true;
 }
