@@ -20,7 +20,7 @@ in
       '';
     };
   };
-  config = {
+  config = lib.mkIf pkgs.stdenv.targetPlatform.isx86_64 {
     home.packages = lib.mkIf cfg.enable [ pkgs.tidal-hifi ];
     xdg.configFile."tidal-hifi/themes/stylix.css".text = lib.mkIf (cfg.theme != null) cfg.theme;
 
