@@ -11,7 +11,8 @@
   imports = [ ./hardware-configuration.nix ];
 
   networking.hostName = "callisto";
-  time.timeZone = "America/Los_Angeles";
+  # time.timeZone = "America/Los_Angeles";
+  time.timeZone = "Asia/Shanghai";
 
   liminalOS = {
     flakeLocation = "/home/youwen/.config/liminalOS";
@@ -25,6 +26,11 @@
         backend = "iwd";
       };
     };
+  };
+
+  services.mullvad-vpn = {
+    enable = true;
+    package = pkgs.mullvad-vpn;
   };
 
   boot = {
