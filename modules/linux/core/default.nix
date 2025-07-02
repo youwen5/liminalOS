@@ -107,6 +107,8 @@ in
 
     services.gnome.gnome-keyring.enable = true;
 
+    services.resolved.enable = true;
+
     nix = lib.mkIf cfg.nixSaneDefaults {
       gc = lib.mkIf (!cfg.useNh) {
         automatic = true;
