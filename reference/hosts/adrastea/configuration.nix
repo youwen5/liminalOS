@@ -1,5 +1,4 @@
 # Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 {
   config,
@@ -67,22 +66,47 @@
 
   time.timeZone = "America/Los_Angeles";
 
-  # hardware.nvidia = {
-  #   modesetting.enable = true;
-  #   powerManagement.enable = true;
-  #   powerManagement.finegrained = false;
-  #   nvidiaSettings = true;
-  #   open = true;
-  #   # prime = {
-  #   #   amdgpuBusId = "PCI:4:0:0";
-  #   #   nvidiaBusId = "PCI:1:0:0";
-  #   #   # offload = {
-  #   #   #   enable = true;
-  #   #   #   enableOffloadCmd = true;
-  #   #   # };
-  #   #   sync.enable = true;
-  #   # };
-  # };
+  hardware.nvidia = {
+    # modesetting.enable = true;
+    # powerManagement.enable = true;
+    # powerManagement.finegrained = false;
+    # nvidiaSettings = true;
+    # open = true;
+    prime = {
+      amdgpuBusId = "PCI:4:0:0";
+      nvidiaBusId = "PCI:1:0:0";
+      # offload = {
+      #   enable = true;
+      #   enableOffloadCmd = true;
+      # };
+      sync.enable = true;
+    };
+  };
+
+  services.keyd = {
+    enable = true;
+    keyboards = {
+      default = {
+        ids = [ "*" ];
+        settings = {
+          main = {
+            capslock = "esc";
+            leftmeta = "leftcontrol";
+            leftalt = "leftmeta";
+            leftcontrol = "leftalt";
+            rightmeta = "leftalt";
+            rightalt = "layer(rightalt)";
+          };
+          rightalt = {
+            h = "left";
+            j = "down";
+            k = "up";
+            l = "right";
+          };
+        };
+      };
+    };
+  };
 
   hardware.graphics.enable = true;
 
