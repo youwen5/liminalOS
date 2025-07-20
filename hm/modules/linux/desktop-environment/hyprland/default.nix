@@ -85,6 +85,7 @@ in
 
     wayland.windowManager.hyprland = {
       enable = true;
+      package = inputs.hyprland.packages.x86_64-linux.hyprland;
       plugins = [ inputs.hyprscroller.packages.x86_64-linux.hyprscroller ];
       settings = {
         exec-once = [

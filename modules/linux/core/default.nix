@@ -130,9 +130,13 @@ in
         ];
         substituters = [
           "https://cache.nixos.org"
+          "https://hyprland.cachix.org"
+          "https://cache.garnix.io"
         ];
         trusted-public-keys = [
           "hydra.nixos.org-1:CNHJZBh9K4tP3EKF6FkkgeVYsS3ohTl+oS0Qa8bezVs="
+          "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
+          "cache.garnix.io:CTFPyKSLcx5RMJKfLo5EEPUObbA78b0YQ2DTCJXqr9g="
         ];
         trusted-users = [ "@wheel" ];
       };

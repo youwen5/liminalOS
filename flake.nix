@@ -56,6 +56,11 @@
       url = "github:binary-star-systems/apple-firmware";
       flake = false;
     };
+    
+    hyprland = {
+      url = "github:hyprwm/hyprland";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     spicetify = {
       url = "github:Gerg-L/spicetify-nix";
@@ -202,6 +207,7 @@
               inputs.stylix.nixosModules.stylix
               inputs.agenix.nixosModules.age
               inputs.musnix.nixosModules.musnix
+              inputs.hyprland.nixosModules.hyprscroller
               inputs.hyprscroller.nixosModules.hyprscroller
               inputs.nur.modules.nixos.default
               ./modules/default.nix
