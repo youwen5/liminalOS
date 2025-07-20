@@ -207,8 +207,6 @@
               inputs.stylix.nixosModules.stylix
               inputs.agenix.nixosModules.age
               inputs.musnix.nixosModules.musnix
-              inputs.hyprland.nixosModules.hyprland
-              inputs.hyprscroller.nixosModules.hyprscroller
               inputs.nur.modules.nixos.default
               ./modules/default.nix
               ./overlays
