@@ -53,7 +53,7 @@
     };
 
     apple-firmware = {
-      url = "github:youwen5/apple-firmware";
+      url = "github:binary-star-systems/apple-firmware";
       flake = false;
     };
 
@@ -126,6 +126,12 @@
       inputs.flake-utils.follows = "flake-utils";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    
+    # Use latest Hyprscroller plugin
+    hyprscroller = {
+      url = "github:cpiber/hyprscroller";
+      inputs.hyprland.follows = "hyprland";
+    };
   };
 
   outputs =
@@ -196,6 +202,7 @@
               inputs.stylix.nixosModules.stylix
               inputs.agenix.nixosModules.age
               inputs.musnix.nixosModules.musnix
+              inputs.hyprscroller.nixosModules.hyprscroller
               inputs.nur.modules.nixos.default
               ./modules/default.nix
               ./overlays
