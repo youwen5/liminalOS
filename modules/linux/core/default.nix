@@ -129,7 +129,8 @@ in
           "flakes"
         ];
         substituters = [
-          "https://cache.nixos.org"
+          "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store?priority=1"
+          "https://cache.nixos.org?priority=2"
         ];
         trusted-public-keys = [
           "hydra.nixos.org-1:CNHJZBh9K4tP3EKF6FkkgeVYsS3ohTl+oS0Qa8bezVs="
