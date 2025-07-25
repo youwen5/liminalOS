@@ -129,7 +129,7 @@ in
           "flakes"
         ];
         substituters = lib.mkForce [
-          "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store?priority=1"
+          "https://mirrors4.tuna.tsinghua.edu.cn/nix-channels/store?priority=1"
           "https://cache.nixos.org?priority=2"
         ];
         trusted-public-keys = [
