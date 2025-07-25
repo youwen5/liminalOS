@@ -64,7 +64,6 @@
       border = {
         color = "#${config.lib.stylix.colors.base0B}";
       };
-      displayHorizontalTabs = false;
       displayWindowControls = false;
       displayNavButtons = true;
       displayUrlbarIcons = true;
