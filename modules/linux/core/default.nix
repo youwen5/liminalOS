@@ -128,7 +128,7 @@ in
           "nix-command"
           "flakes"
         ];
-        substituters = [
+        substituters = lib.mkForce [
           "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store?priority=1"
           "https://cache.nixos.org?priority=2"
         ];
