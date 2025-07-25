@@ -91,13 +91,6 @@ in
         with pkgs;
         [
           noto-fonts-cjk-sans
-          (google-fonts.override {
-            fonts = [
-              "Lora"
-              "Inter"
-              "Source Sans 3"
-            ];
-          })
           nerd-fonts.geist-mono
         ]
         ++ (lib.optionals (!config.liminalOS.theming.enable) [
