@@ -50,6 +50,22 @@ in
   config = lib.mkIf cfg.enable {
     services.openssh.enable = true;
 
+    networking.nftables = {
+      enable = true;
+      ruleset = ''
+        define EXCLUDED_IPS = {
+          101.6.15.130
+        }
+
+        table inet excludeTraffic {
+          chain excludeOutgoing {
+            type route hook output priority 0; policy accept;
+            ip daddr $EXCLUDED_IPS ct mark set 0x00000f41 meta mark set 0x6d6f6c65;
+          }
+        }
+      '';
+    };
+
     networking.firewall = {
       enable = true;
       allowedTCPPorts = universalAllowedPorts;
