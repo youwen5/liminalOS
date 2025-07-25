@@ -45,7 +45,6 @@
   hardware.asahi = {
     enable = true;
     peripheralFirmwareDirectory = "${inputs.apple-firmware}/firmware";
-    withRust = true;
   };
 
   nixpkgs.overlays = [
