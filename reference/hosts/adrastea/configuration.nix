@@ -12,6 +12,11 @@
 
   networking.hostName = "adrastea";
 
+  services.mullvad-vpn = {
+    enable = true;
+    package = pkgs.mullvad-vpn;
+  };
+
   liminalOS = {
     flakeLocation = "/home/youwen/.config/liminalOS";
     config.allowUnfree = true;
@@ -64,23 +69,24 @@
 
   powerManagement.cpuFreqGovernor = "performance";
 
-  time.timeZone = "America/Los_Angeles";
+  # time.timeZone = "America/Los_Angeles";
+  time.timeZone = "Asia/Shanghai";
 
   hardware.nvidia = {
-    # modesetting.enable = true;
-    # powerManagement.enable = true;
-    # powerManagement.finegrained = false;
+    modesetting.enable = true;
+    powerManagement.enable = true;
+    powerManagement.finegrained = false;
     # nvidiaSettings = true;
-    # open = true;
-    prime = {
-      amdgpuBusId = "PCI:4:0:0";
-      nvidiaBusId = "PCI:1:0:0";
-      # offload = {
-      #   enable = true;
-      #   enableOffloadCmd = true;
-      # };
-      sync.enable = true;
-    };
+    open = true;
+    # prime = {
+    #   amdgpuBusId = "PCI:4:0:0";
+    #   nvidiaBusId = "PCI:1:0:0";
+    #   # offload = {
+    #   #   enable = true;
+    #   #   enableOffloadCmd = true;
+    #   # };
+    #   sync.enable = true;
+    # };
   };
 
   services.keyd = {
@@ -91,10 +97,8 @@
         settings = {
           main = {
             capslock = "esc";
-            leftmeta = "leftcontrol";
-            leftalt = "leftmeta";
+            leftalt = "leftcontrol";
             leftcontrol = "leftalt";
-            rightmeta = "leftalt";
             rightalt = "layer(rightalt)";
           };
           rightalt = {
