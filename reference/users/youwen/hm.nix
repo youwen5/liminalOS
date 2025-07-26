@@ -27,6 +27,8 @@
     programs.browserDesktopFile = "firefox.desktop";
   };
 
+  programs.tidal-hifi.enable = false;
+
   programs.git = {
     userName = "Youwen Wu";
     userEmail = "youwenw@gmail.com";

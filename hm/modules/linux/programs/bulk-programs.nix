@@ -145,6 +145,7 @@ in
             nautilus
             nicotine-plus # soulseek client
             gapless # music player
+            high-tide # tidal client
             loupe # image viewer
           ]
           ++ lib.optionals pkgs.stdenv.targetPlatform.isx86_64 [
