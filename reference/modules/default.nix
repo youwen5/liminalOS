@@ -144,6 +144,8 @@
     polarity = lib.mkDefault "dark";
   };
 
+  liminalOS.desktop.localization.chinese.input.enable = true;
+
   environment.etc.polarity.text = lib.mkDefault "dusk";
 
   specialisation = {

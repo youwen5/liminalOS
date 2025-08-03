@@ -15,6 +15,7 @@
     ./wine
     ./wsl
     ./graphics
+    ./localization
   ];
 
   options.liminalOS.enable = lib.mkOption {
