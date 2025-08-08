@@ -37,7 +37,7 @@ in
     in
     {
       environment.systemPackages = with pkgs; [
-        ryujinx
+        ryubing
         lutris
         # heroic
         mangohud
