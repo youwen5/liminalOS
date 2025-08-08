@@ -50,7 +50,8 @@ in
   config = lib.mkIf cfg.enable {
     services.openssh.enable = true;
 
-    networking.nftables = {
+    # setting these bits allows requests to the IP of Tsinghua University TUNA to bypass Mullvad VPN. Helps with binary cache speed in Mainland China.
+    networking.nftables = lib.mkIf config.liminalOS.system.core.chinaOptimizations {
       enable = true;
       ruleset = ''
         define EXCLUDED_IPS = {
