@@ -66,6 +66,7 @@ in
         Whether to enable the GVFS and alias `rm` to send files to trash instead.
       '';
     };
+    chinaOptimizations = lib.mkEnableOption "optimizations for Nix operations in Mainland China. e.g. use the Tsinghua University binary cache, set firewall options to tunnel Nix binary cache operations past Mullvad VPN to preven throttling.";
   };
 
   config = lib.mkIf cfg.enable {
@@ -128,11 +129,13 @@ in
           "nix-command"
           "flakes"
         ];
-        substituters = lib.mkForce [
-          "https://mirrors4.tuna.tsinghua.edu.cn/nix-channels/store?priority=1"
-          "https://cache.nixos.org?priority=2"
-        ];
-        trusted-public-keys = [
+        substituters = lib.mkIf cfg.chinaOptimizations (
+          lib.mkForce [
+            "https://mirrors4.tuna.tsinghua.edu.cn/nix-channels/store?priority=1"
+            "https://cache.nixos.org?priority=2"
+          ]
+        );
+        trusted-public-keys = lib.mkForce [
           "hydra.nixos.org-1:CNHJZBh9K4tP3EKF6FkkgeVYsS3ohTl+oS0Qa8bezVs="
         ];
         trusted-users = [ "@wheel" ];
