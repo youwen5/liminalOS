@@ -27,7 +27,7 @@
     programs.browserDesktopFile = "firefox.desktop";
   };
 
-  programs.tidal-hifi.enable = false;
+  programs.tidal-hifi.enable = !pkgs.stdenv.targetPlatform.isAarch64;
 
   programs.git = {
     userName = "Youwen Wu";
