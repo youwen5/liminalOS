@@ -135,9 +135,6 @@ in
             "https://cache.nixos.org?priority=2"
           ]
         );
-        trusted-public-keys = lib.mkForce [
-          "hydra.nixos.org-1:CNHJZBh9K4tP3EKF6FkkgeVYsS3ohTl+oS0Qa8bezVs="
-        ];
         trusted-users = [ "@wheel" ];
       };
 
