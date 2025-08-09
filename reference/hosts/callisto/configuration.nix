@@ -11,8 +11,8 @@
   imports = [ ./hardware-configuration.nix ];
 
   networking.hostName = "callisto";
-  # time.timeZone = "America/Los_Angeles";
-  time.timeZone = "Asia/Shanghai";
+  time.timeZone = "America/Los_Angeles";
+  # time.timeZone = "Asia/Shanghai";
 
   liminalOS = {
     flakeLocation = "/home/youwen/.config/liminalOS";
