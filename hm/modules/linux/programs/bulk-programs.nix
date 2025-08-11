@@ -146,14 +146,20 @@ in
             nicotine-plus # soulseek client
             gapless # music player
             loupe # image viewer
+            (high-tide.overrideAttrs {
+              src = pkgs.fetchFromGitHub {
+                owner = "Nokse22";
+                repo = "high-tide";
+                rev = "3b4fdfaeea7850ea9e077256b2eecd3c33f022c1";
+                hash = "sha256-06kJZcD8qyPcZ0izmrdsZXByey/xi3wbf4o8/tc5/oA=";
+              };
+            }) # tidal client
           ]
           ++ lib.optionals pkgs.stdenv.targetPlatform.isx86_64 [
             bitwarden-desktop
             sbctl
           ]
-          ++ lib.optionals pkgs.stdenv.targetPlatform.isAarch64 [
-            high-tide
-          ]
+          ++ lib.optionals pkgs.stdenv.targetPlatform.isAarch64 [ ]
         )
       );
   };
