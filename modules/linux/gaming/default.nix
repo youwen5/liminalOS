@@ -44,7 +44,8 @@ in
         mangojuice
         r2modman
 
-        modrinth-app
+        # modrinth-app
+        prismlauncher
         # (modrinth-app.overrideAttrs (oldAttrs: {
         #   buildCommand =
         #     ''
