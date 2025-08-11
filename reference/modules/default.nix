@@ -88,6 +88,11 @@
     };
   };
 
+  services.mullvad-vpn = {
+    enable = true;
+    package = pkgs.mullvad-vpn;
+  };
+
   security.polkit.extraConfig = ''
         polkit.addRule(function(action, subject) {
         if (action.id == "org.freedesktop.systemd1.manage-units") {
@@ -135,8 +140,8 @@
         # url = "https://w.wallhaven.cc/full/rr/wallhaven-rrv23j.jpg";
         # hash = "sha256-PCyWyFgMxVYgDjPMtFbQoMTzN61zdUtiP6Lmgc3dRfk=";
         # hash = "sha256-PcE9TR82IupRl/zqAZ028GMuARAk2CQaU0XUNfw4gkI=";
-        url = "https://i.imgur.com/jlKXCA3.jpeg";
-        hash = "sha256-yJGYLqBLScJkUSbre8Ve3dWEj49f1RYNS/bnfXzRzbU=";
+        url = "https://w.wallhaven.cc/full/ml/wallhaven-mld5v8.png";
+        hash = "sha256-I/6A8yOvKYYgPiayn/RJ254nW6JVZ7eKidTZjEJ8xao=";
       }
     );
 
@@ -153,7 +158,10 @@
       environment.etc."specialisation".text = "dawn";
       environment.etc.polarity.text = "dawn";
       liminalOS.theming = {
-        wallpaper = "${inputs.wallpapers}/d2/Etheric-Strands.jpg";
+        wallpaper = pkgs.fetchurl {
+          url = "https://w.wallhaven.cc/full/rq/wallhaven-rq75r7.jpg";
+          hash = "sha256-QH2CYMSJcfF6bBxpjb/gJImgPbVjSeISB/PuSRLdePs=";
+        };
         base16Scheme = "${pkgs.base16-schemes}/share/themes/oxocarbon-light.yaml";
         polarity = "light";
       };
