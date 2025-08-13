@@ -26,15 +26,6 @@
   #   };
   # };
   #
-  # environment.systemPackages = [
-  #   (pkgs.writeShellScriptBin "light.sh" ''
-  #     /nix/var/nix/profiles/system/specialisation/dawn/bin/switch-to-configuration test
-  #   '')
-  #   (pkgs.writeShellScriptBin "dark.sh" ''
-  #     /nix/var/nix/profiles/nix/system/bin/switch-to-configuration test
-  #   '')
-  # ];
-
   systemd.services = {
     colorscheme-dawn = {
       description = "Set system colorscheme to dawn";
@@ -121,6 +112,8 @@
   fonts.packages = [
     inputs.valkyrie.packages.${pkgs.system}.default
   ];
+
+  virtualisation.waydroid.enable = true;
 
   liminalOS.theming = {
     # wallpaper = "${inputs.wallpapers}/aesthetic/afterglow_city_skyline_at_night.png";
