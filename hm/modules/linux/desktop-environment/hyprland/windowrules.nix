@@ -19,7 +19,7 @@ in
           "opacity 0.80 0.80,class:^(steamwebhelper)$"
           "opacity 0.80 0.80,class:^(io.github.nokse22.high-tide)$"
           "opacity 0.80 0.80,class:^(tidal-hifi)$"
-          "opacity 0.80 0.80,class:^(Spotify)$"
+          "opacity 0.80 0.80,class:^(spotify)$"
           "opacity 0.80 0.80,initialTitle:^(Spotify Premium)$"
           "opacity 0.80 0.80,initialTitle:^(Spotify Free)$"
           "opacity 0.80 0.80,class:^(code-oss)$"

@@ -8,7 +8,7 @@
 {
   config = lib.mkIf (config.liminalOS.programs.enable && osConfig.liminalOS.config.allowUnfree) {
     programs.spicetify = {
-      enable = false;
+      enable = true;
       # theme = spicepkgs.themes.dribbblish;
       # colorScheme = "rosepine";
       enabledExtensions = with spicepkgs.extensions; [
