@@ -151,10 +151,11 @@
       environment.etc."specialisation".text = "dawn";
       environment.etc.polarity.text = "dawn";
       liminalOS.theming = {
-        wallpaper = pkgs.fetchurl {
-          url = "https://w.wallhaven.cc/full/rq/wallhaven-rq75r7.jpg";
-          hash = "sha256-QH2CYMSJcfF6bBxpjb/gJImgPbVjSeISB/PuSRLdePs=";
-        };
+        # wallpaper = pkgs.fetchurl {
+        #   url = "https://images.unsplash.com/photo-1545893835-abaa50cbe628?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8c2hhbmdoYWl8ZW58MHx8MHx8fDA%3D";
+        #   hash = "sha256-QH2CYMSJcfF6bBxpjb/gJImgPbVjSeISB/PuSRLdePs=";
+        # };
+        wallpaper = "${inputs.wallpapers}/cityscapes/shanghai-the-bund.png";
         base16Scheme = "${pkgs.base16-schemes}/share/themes/oxocarbon-light.yaml";
         polarity = "light";
       };

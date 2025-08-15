@@ -1185,11 +1185,11 @@
     "wallpapers": {
       "flake": false,
       "locked": {
-        "lastModified": 1748382155,
-        "narHash": "sha256-90oLSTRdATyBd5xNZJZSIVy+BmVe8GX+YZs4IwE2UKs=",
+        "lastModified": 1755281805,
+        "narHash": "sha256-MoM9rRRnsG89hOE2JiQhbmuv7J3QebHKsdR/Xo6FrS4=",
         "owner": "youwen5",
         "repo": "wallpapers",
-        "rev": "e7f3fbf486f7ac3540a0e2f5847b796b81525669",
+        "rev": "d615b7168fdc99d937d40e7f22b1f2ed95ac619b",
         "type": "github"
       },
       "original": {
