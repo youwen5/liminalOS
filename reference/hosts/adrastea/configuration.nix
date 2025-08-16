@@ -12,11 +12,6 @@
 
   networking.hostName = "adrastea";
 
-  services.mullvad-vpn = {
-    enable = true;
-    package = pkgs.mullvad-vpn;
-  };
-
   virtualisation.waydroid.enable = true;
 
   liminalOS = {
