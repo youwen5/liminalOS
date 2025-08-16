@@ -113,8 +113,6 @@
     inputs.valkyrie.packages.${pkgs.system}.default
   ];
 
-  virtualisation.waydroid.enable = true;
-
   liminalOS.theming = {
     # wallpaper = "${inputs.wallpapers}/aesthetic/afterglow_city_skyline_at_night.png";
     # wallpaper = "${

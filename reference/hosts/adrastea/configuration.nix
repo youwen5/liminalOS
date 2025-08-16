@@ -17,6 +17,8 @@
     package = pkgs.mullvad-vpn;
   };
 
+  virtualisation.waydroid.enable = true;
+
   liminalOS = {
     flakeLocation = "/home/youwen/.config/liminalOS";
     config.allowUnfree = true;
