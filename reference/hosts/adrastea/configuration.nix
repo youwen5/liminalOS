@@ -39,20 +39,6 @@
     extras.distrobox.enable = true;
   };
 
-  boot = {
-    loader = {
-      efi.canTouchEfiVariables = true;
-      systemd-boot = {
-        enable = true;
-        consoleMode = "auto";
-      };
-    };
-    kernelPackages = pkgs.linuxPackages_zen;
-    initrd.luks.devices."luks-52d1be6d-b32f-41e0-a6d7-2ff52599fe7c".device =
-      "/dev/disk/by-uuid/52d1be6d-b32f-41e0-a6d7-2ff52599fe7c";
-    kernelParams = [ "microcode.amd_sha_check=off" ];
-  };
-
   services.ucodenix = {
     enable = true;
     cpuModelId = "00A50F00";
@@ -73,7 +59,7 @@
     modesetting.enable = true;
     powerManagement.enable = true;
     powerManagement.finegrained = false;
-    # nvidiaSettings = true;
+    nvidiaSettings = true;
     open = true;
     prime = {
       amdgpuBusId = "PCI:4:0:0";
@@ -111,7 +97,7 @@
 
   hardware.graphics.enable = true;
 
-  hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.beta;
+  hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.latest;
 
   services.xserver.videoDrivers = [ "nvidia" ];
 

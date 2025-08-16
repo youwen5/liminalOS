@@ -10,7 +10,6 @@
     "eDP-1,2560x1440@165,0x0,1.6"
     # "eDP-1, disable"
     # "HDMI-A-1,2560x1440@144,0x0,1.0"
-    # "HDMI-A-1,1920x1080@60,0x0,1.0"
   ];
 
   wayland.windowManager.hyprland.settings.input = {
@@ -32,6 +31,6 @@
   # programs.waybar.settings.mainBar.output = "HDMI-A-1";
   programs.waybar.settings.mainBar.output = "eDP-1";
 
-  # liminalOS.desktop.hyprland.screenlocker.monitor = "HDMI-A-1";
   liminalOS.desktop.hyprland.screenlocker.monitor = "eDP-1";
+  # liminalOS.desktop.hyprland.screenlocker.monitor = "HDMI-A-1";
 }
