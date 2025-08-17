@@ -52,11 +52,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    apple-firmware = {
-      url = "github:youwen5/apple-firmware";
-      flake = false;
-    };
-
     spicetify = {
       url = "github:Gerg-L/spicetify-nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -112,13 +107,8 @@
     };
 
     valkyrie = {
-      url = "github:youwen5/valkyrie";
+      url = "git+ssh://git@github.com/youwen5/valkyrie";
       inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    wallpapers = {
-      url = "github:youwen5/wallpapers";
-      flake = false;
     };
 
     iamb = {

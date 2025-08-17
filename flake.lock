@@ -50,22 +50,6 @@
         "type": "github"
       }
     },
-    "apple-firmware": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1743755657,
-        "narHash": "sha256-0dLRi5QFuCLVedJgHT6eO5lJ7r8gJjR7a9F/t11UItE=",
-        "owner": "youwen5",
-        "repo": "apple-firmware",
-        "rev": "da57d34f99f2789368e2def65b832239346dcbee",
-        "type": "github"
-      },
-      "original": {
-        "owner": "youwen5",
-        "repo": "apple-firmware",
-        "type": "github"
-      }
-    },
     "apple-silicon": {
       "inputs": {
         "flake-compat": "flake-compat",
@@ -566,11 +550,11 @@
         "rust-overlay": "rust-overlay_2"
       },
       "locked": {
-        "lastModified": 1750095849,
-        "narHash": "sha256-RHkuv+mFgHDRXk6Y5tfn5Xat7qDptOhS7lY38972cNc=",
+        "lastModified": 1753380461,
+        "narHash": "sha256-g3Ehg7Np6wUQaiUWjY0ChZedtYMHwHV36WVLawwickU=",
         "owner": "youwen5",
         "repo": "iamb",
-        "rev": "d2b06d16ee3e042ddcf4f17f20849b67002c2760",
+        "rev": "1475d9ce50a8ceaef020f1eed6eed43521690762",
         "type": "github"
       },
       "original": {
@@ -880,7 +864,6 @@
     "root": {
       "inputs": {
         "agenix": "agenix",
-        "apple-firmware": "apple-firmware",
         "apple-silicon": "apple-silicon",
         "flake-parts": "flake-parts",
         "flake-utils": "flake-utils",
@@ -903,7 +886,6 @@
         "ucode": "ucode",
         "valkyrie": "valkyrie",
         "viminal": "viminal",
-        "wallpapers": "wallpapers",
         "zen-browser": "zen-browser",
         "zenTyp": "zenTyp"
       }
@@ -1262,15 +1244,15 @@
       "locked": {
         "lastModified": 1746987703,
         "narHash": "sha256-nohUzFfguTGYeZCe5Ky5TXPqZhei5HuoPKsUsPbBN5g=",
-        "owner": "youwen5",
-        "repo": "valkyrie",
+        "ref": "refs/heads/main",
         "rev": "8a22da3b7743e052776013b48ed829cee4c48650",
-        "type": "github"
+        "revCount": 4,
+        "type": "git",
+        "url": "ssh://git@github.com/youwen5/valkyrie"
       },
       "original": {
-        "owner": "youwen5",
-        "repo": "valkyrie",
-        "type": "github"
+        "type": "git",
+        "url": "ssh://git@github.com/youwen5/valkyrie"
       }
     },
     "viminal": {
@@ -1289,22 +1271,6 @@
       "original": {
         "owner": "youwen5",
         "repo": "viminal2",
-        "type": "github"
-      }
-    },
-    "wallpapers": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1748382155,
-        "narHash": "sha256-90oLSTRdATyBd5xNZJZSIVy+BmVe8GX+YZs4IwE2UKs=",
-        "owner": "youwen5",
-        "repo": "wallpapers",
-        "rev": "e7f3fbf486f7ac3540a0e2f5847b796b81525669",
-        "type": "github"
-      },
-      "original": {
-        "owner": "youwen5",
-        "repo": "wallpapers",
         "type": "github"
       }
     },

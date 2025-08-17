@@ -8,6 +8,7 @@
   modulesPath,
   ...
 }:
+
 {
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
@@ -22,15 +23,15 @@
   boot.extraModulePackages = [ ];
 
   fileSystems."/" = {
-    device = "/dev/mapper/crypted";
+    device = "/dev/disk/by-uuid/9f593e39-8dd7-426d-91c4-b1b5ff92644f";
     fsType = "ext4";
   };
 
-  boot.initrd.luks.devices."crypted".device =
-    "/dev/disk/by-uuid/f4c552be-a4c2-4ca0-aec6-ed692d78fe24";
+  boot.initrd.luks.devices."cryptroot".device =
+    "/dev/disk/by-uuid/2a3f1a5a-7fbd-4233-98c4-3faf7b209b1a";
 
   fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/852F-07F1";
+    device = "/dev/disk/by-uuid/07CE-1DF0";
     fsType = "vfat";
     options = [
       "fmask=0022"
@@ -38,11 +39,14 @@
     ];
   };
 
+  swapDevices = [ ];
+
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
   # (the default) this is the recommended approach. When using systemd-networkd it's
   # still possible to use this option, but it's recommended to use it in conjunction
   # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
   networking.useDHCP = lib.mkDefault true;
+  # networking.interfaces.enu1u1u4.useDHCP = lib.mkDefault true;
   # networking.interfaces.wlan0.useDHCP = lib.mkDefault true;
 
   nixpkgs.hostPlatform = lib.mkDefault "aarch64-linux";

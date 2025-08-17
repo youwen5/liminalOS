@@ -151,7 +151,14 @@
       environment.etc."specialisation".text = "dawn";
       environment.etc.polarity.text = "dawn";
       liminalOS.theming = {
-        wallpaper = "${inputs.wallpapers}/d2/Etheric-Strands.jpg";
+        wallpaper = pkgs.fetchurl {
+          # url = "https://code.youwen.dev/youwen5/wallpapers/raw/branch/main/anime-with-people/eternal-blue.jpg";
+          # url = "https://w.wallhaven.cc/full/rr/wallhaven-rrv23j.jpg";
+          # hash = "sha256-PCyWyFgMxVYgDjPMtFbQoMTzN61zdUtiP6Lmgc3dRfk=";
+          # hash = "sha256-PcE9TR82IupRl/zqAZ028GMuARAk2CQaU0XUNfw4gkI=";
+          url = "https://i.imgur.com/jlKXCA3.jpeg";
+          hash = "sha256-yJGYLqBLScJkUSbre8Ve3dWEj49f1RYNS/bnfXzRzbU=";
+        };
         base16Scheme = "${pkgs.base16-schemes}/share/themes/oxocarbon-light.yaml";
         polarity = "light";
       };

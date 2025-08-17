@@ -38,7 +38,7 @@
 
   hardware.asahi = {
     enable = true;
-    peripheralFirmwareDirectory = "${inputs.apple-firmware}/firmware";
+    peripheralFirmwareDirectory = ./firmware;
     withRust = true;
   };
 

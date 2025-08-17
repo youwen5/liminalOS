@@ -8,6 +8,6 @@
       "wheel"
     ];
     shell = pkgs.nushell;
-    initialHashedPassword = "$y$j9T$v0OkEeCntj8KwgPJQxyWx0$dx8WtFDYgZZ8WE3FWetWwRfutjQkznRuJ0IG3LLAtP2";
+    initialHashedPassword = "";
   };
 }
