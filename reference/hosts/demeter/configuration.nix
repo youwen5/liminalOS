@@ -4,6 +4,7 @@
 {
   inputs,
   pkgs,
+  lib,
   ...
 }:
 {
@@ -52,8 +53,8 @@
       # generated at installation time. So we force it to false
       # for now.
       systemd-boot = {
-        enable = false;
-        consoleMode = "auto";
+        enable = lib.mkForce false;
+        consoleMode = "0";
       };
     };
     lanzaboote = {
