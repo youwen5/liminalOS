@@ -14,6 +14,8 @@
 
   networking.hostName = "demeter";
 
+  virtualisation.waydroid.enable = true;
+
   liminalOS = {
     flakeLocation = "/home/youwen/.config/liminalOS";
     config.allowUnfree = true;
