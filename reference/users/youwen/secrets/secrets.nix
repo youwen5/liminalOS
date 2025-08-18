@@ -13,4 +13,5 @@ in
   "gallium_server_ssh.age".publicKeys = users;
   "wakatime_cfg.age".publicKeys = users;
   "code_functor_systems_key.age".publicKeys = users;
+  "youwen_sourcehut_ssh_key.age".publicKeys = users;
 }

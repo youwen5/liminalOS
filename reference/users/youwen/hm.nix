@@ -154,6 +154,11 @@
         identitiesOnly = true;
         identityFile = config.age.secrets.gallium_server_ssh.path;
       };
+      "git.sr.ht" = {
+        host = "git.sr.ht";
+        identitiesOnly = true;
+        identityFile = config.age.secrets.youwen_sourcehut_ssh_key.path;
+      };
     };
     addKeysToAgent = "yes";
   };

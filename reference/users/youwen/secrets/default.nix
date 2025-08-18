@@ -43,5 +43,9 @@
       file = ./code_functor_systems_key.age;
       mode = "600";
     };
+    youwen_sourcehut_ssh_key = {
+      file = ./youwen_sourcehut_ssh_key.age;
+      mode = "600";
+    };
   };
 }
