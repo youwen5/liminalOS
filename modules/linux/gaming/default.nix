@@ -44,6 +44,17 @@ in
         mangojuice
         r2modman
 
+        (pkgs.writeShellScriptBin "steam-run-game" ''
+          set -euo pipefail
+
+          if [ $# -lt 1 ]; then
+            echo "Usage: $0 <command> [args...]"
+            exit 1
+          fi
+
+          winediscordipcbridge-steam.sh mangohud gamemoderun "$@"
+        '')
+
         # modrinth-app
         prismlauncher
         # (modrinth-app.overrideAttrs (oldAttrs: {
