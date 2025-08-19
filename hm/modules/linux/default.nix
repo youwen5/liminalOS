@@ -14,6 +14,7 @@
     ./theming
     ./platform-tweaks
     ./tidal-hifi
+    ./var/mangohud
   ];
 
   programs.fish.functions = lib.mkIf config.liminalOS.programs.enable {
