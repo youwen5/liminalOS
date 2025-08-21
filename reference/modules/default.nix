@@ -136,7 +136,8 @@
       }
     );
 
-    base16Scheme = lib.mkDefault "${pkgs.base16-schemes}/share/themes/oxocarbon-dark.yaml";
+    # base16Scheme = lib.mkDefault "${pkgs.base16-schemes}/share/themes/oxocarbon-dark.yaml";
+    base16Scheme = lib.mkDefault "${pkgs.base16-schemes}/share/themes/tokyo-night-dark.yaml";
     polarity = lib.mkDefault "dark";
   };
 
@@ -154,7 +155,8 @@
         #   hash = "sha256-QH2CYMSJcfF6bBxpjb/gJImgPbVjSeISB/PuSRLdePs=";
         # };
         wallpaper = "${inputs.wallpapers}/cityscapes/shanghai-the-bund.png";
-        base16Scheme = "${pkgs.base16-schemes}/share/themes/oxocarbon-light.yaml";
+        # base16Scheme = "${pkgs.base16-schemes}/share/themes/oxocarbon-light.yaml";
+        base16Scheme = "${pkgs.base16-schemes}/share/themes/tokyo-night-light.yaml";
         polarity = "light";
       };
     };
