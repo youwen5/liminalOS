@@ -11,6 +11,8 @@
     ../users/youwen/nixos.nix
   ];
 
+  home-manager.extraSpecialArgs = { inherit inputs; };
+
   # systemd.services.suntheme = {
   #   wantedBy = [ "default.target" ];
   #   after = [

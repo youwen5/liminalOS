@@ -1,6 +1,5 @@
 {
   inputs,
-  self,
   ...
 }:
 {
@@ -8,12 +7,12 @@
     [
       ./configuration.nix
       ../../modules
-      self.nixosModules.liminalOS
+      inputs.functorOS.nixosModules.default
       {
         home-manager.users.youwen = {
           imports = [
             ./home.nix
-            self.homeManagerModules.default
+            inputs.functorOS.homeManagerModules.default
           ];
         };
       }

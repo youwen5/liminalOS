@@ -38,12 +38,6 @@
       flake = false;
     };
 
-    lanzaboote = {
-      url = "github:nix-community/lanzaboote/v0.4.2";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.flake-parts.follows = "flake-parts";
-    };
-
     ucode.url = "github:e-tho/ucodenix";
 
     apple-silicon = {
@@ -61,9 +55,6 @@
       url = "github:Gerg-L/spicetify-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    # viminal.url = "git+https://code.youwen.dev/youwen5/viminal2";
-    viminal.url = "github:youwen5/viminal2";
 
     stylix = {
       url = "github:danth/stylix";
@@ -104,26 +95,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    zenTyp.url = "github:youwen5/zen.typ";
-
     musnix = {
       url = "github:musnix/musnix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    valkyrie = {
-      url = "github:youwen5/valkyrie";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    wallpapers = {
-      url = "github:youwen5/wallpapers";
-      flake = false;
-    };
-
-    iamb = {
-      url = "github:youwen5/iamb";
-      inputs.flake-utils.follows = "flake-utils";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
