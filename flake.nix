@@ -78,18 +78,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nur = {
-      url = "github:nix-community/NUR";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.flake-parts.follows = "flake-parts";
-    };
-
-    textfox = {
-      url = "github:youwen5/textfox";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.nur.follows = "nur";
-    };
-
     nixos-wsl = {
       url = "github:nix-community/NixOS-WSL";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -169,7 +157,6 @@
               inputs.stylix.nixosModules.stylix
               inputs.agenix.nixosModules.age
               inputs.musnix.nixosModules.musnix
-              inputs.nur.modules.nixos.default
               ./modules/default.nix
               ./overlays
               (
@@ -200,7 +187,6 @@
               inputs.nix-index-database.hmModules.nix-index
               inputs.spicetify.homeManagerModules.default
               inputs.agenix.homeManagerModules.age
-              inputs.textfox.homeManagerModules.textfox
               ./hm/modules/default.nix
             ];
           };

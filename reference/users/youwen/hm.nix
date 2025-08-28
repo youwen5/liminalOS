@@ -11,6 +11,7 @@
     ./secrets
     ./neomutt.nix
     inputs.zenTyp.homeManagerModules.default
+    inputs.textfox.homeManagerModules.textfox
   ];
 
   zenTyp.enable = true;

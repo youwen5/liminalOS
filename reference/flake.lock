@@ -821,6 +821,30 @@
         "type": "github"
       }
     },
+    "nur_3": {
+      "inputs": {
+        "flake-parts": [
+          "functorOS",
+          "flake-parts"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1756362539,
+        "narHash": "sha256-kiXa1qGjfCCERDc+ZCVRvdbMy2dmcjqXmE7WOlX/5oA=",
+        "owner": "nix-community",
+        "repo": "NUR",
+        "rev": "d0dc086d7a925e6e54cdd124508f28954c383cae",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "NUR",
+        "type": "github"
+      }
+    },
     "pre-commit-hooks-nix": {
       "inputs": {
         "flake-compat": [
@@ -857,6 +881,8 @@
           "functorOS",
           "nixpkgs"
         ],
+        "nur": "nur_3",
+        "textfox": "textfox_2",
         "valkyrie": "valkyrie",
         "viminal": "viminal",
         "wallpapers": "wallpapers",
@@ -1052,6 +1078,29 @@
         ],
         "nur": [
           "functorOS",
+          "nur"
+        ]
+      },
+      "locked": {
+        "lastModified": 1750526509,
+        "narHash": "sha256-MBQ/LDzndzvej6G/Zu13rFbzg3lgh+cl0nBIPRLd03c=",
+        "owner": "youwen5",
+        "repo": "textfox",
+        "rev": "a2b2f5998cf58bebb2b721bb978bf93c404c280a",
+        "type": "github"
+      },
+      "original": {
+        "owner": "youwen5",
+        "repo": "textfox",
+        "type": "github"
+      }
+    },
+    "textfox_2": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "nur": [
           "nur"
         ]
       },

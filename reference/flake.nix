@@ -22,7 +22,16 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.flake-parts.follows = "functorOS/flake-parts";
     };
-
+    textfox = {
+      url = "github:youwen5/textfox";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nur.follows = "nur";
+    };
+    nur = {
+      url = "github:nix-community/NUR";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-parts.follows = "functorOS/flake-parts";
+    };
   };
 
   outputs =
