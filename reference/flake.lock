@@ -382,19 +382,17 @@
         "nix-index-database": "nix-index-database",
         "nixos-wsl": "nixos-wsl",
         "nixpkgs": "nixpkgs",
-        "nur": "nur",
         "spicetify": "spicetify",
         "stylix": "stylix",
-        "textfox": "textfox",
         "ucode": "ucode",
         "zen-browser": "zen-browser"
       },
       "locked": {
-        "lastModified": 1756366158,
-        "narHash": "sha256-mcRyNpmLChDJGxNRnmRrSrRJ3p6u4E6CdGgj7/rO/98=",
+        "lastModified": 1756366827,
+        "narHash": "sha256-pB0rzsEEwvVfi/mHoPoWsZwKV4t+EighxTfL6inpLiE=",
         "ref": "refs/heads/functorOS",
-        "rev": "cf7281d3bca578f96e7f79699ae20eb3b03470d8",
-        "revCount": 1089,
+        "rev": "3b86e924f880f0863240ed39061c96fa5d135c67",
+        "revCount": 1091,
         "type": "git",
         "url": "https://code.functor.systems/functor.systems/functorOS.git"
       },
@@ -773,31 +771,6 @@
       "inputs": {
         "flake-parts": [
           "functorOS",
-          "flake-parts"
-        ],
-        "nixpkgs": [
-          "functorOS",
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1756316263,
-        "narHash": "sha256-pKtOWF0ike6QRk9nVDCqhQK5S10OvN8jxNCEUF1bNQk=",
-        "owner": "nix-community",
-        "repo": "NUR",
-        "rev": "9e0cff7371e59778ca4408f55a0107505c3da233",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nix-community",
-        "repo": "NUR",
-        "type": "github"
-      }
-    },
-    "nur_2": {
-      "inputs": {
-        "flake-parts": [
-          "functorOS",
           "stylix",
           "flake-parts"
         ],
@@ -821,7 +794,7 @@
         "type": "github"
       }
     },
-    "nur_3": {
+    "nur_2": {
       "inputs": {
         "flake-parts": [
           "functorOS",
@@ -881,8 +854,8 @@
           "functorOS",
           "nixpkgs"
         ],
-        "nur": "nur_3",
-        "textfox": "textfox_2",
+        "nur": "nur_2",
+        "textfox": "textfox",
         "valkyrie": "valkyrie",
         "viminal": "viminal",
         "wallpapers": "wallpapers",
@@ -988,7 +961,7 @@
           "functorOS",
           "nixpkgs"
         ],
-        "nur": "nur_2",
+        "nur": "nur",
         "systems": "systems_4",
         "tinted-foot": "tinted-foot",
         "tinted-kitty": "tinted-kitty",
@@ -1071,31 +1044,6 @@
       }
     },
     "textfox": {
-      "inputs": {
-        "nixpkgs": [
-          "functorOS",
-          "nixpkgs"
-        ],
-        "nur": [
-          "functorOS",
-          "nur"
-        ]
-      },
-      "locked": {
-        "lastModified": 1750526509,
-        "narHash": "sha256-MBQ/LDzndzvej6G/Zu13rFbzg3lgh+cl0nBIPRLd03c=",
-        "owner": "youwen5",
-        "repo": "textfox",
-        "rev": "a2b2f5998cf58bebb2b721bb978bf93c404c280a",
-        "type": "github"
-      },
-      "original": {
-        "owner": "youwen5",
-        "repo": "textfox",
-        "type": "github"
-      }
-    },
-    "textfox_2": {
       "inputs": {
         "nixpkgs": [
           "nixpkgs"
