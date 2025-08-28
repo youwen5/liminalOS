@@ -203,6 +203,7 @@
       perSystem =
         {
           pkgs,
+          self',
           ...
         }:
         {
@@ -218,7 +219,13 @@
             ];
           };
 
-          packages.docs = pkgs.callPackage ./docs { };
+          packages.docs-raw = pkgs.callPackage ./docs/raw.nix {
+            hash = if (self ? rev) then self.rev else "placeholder_hash";
+          };
+          packages.docs-rendered = pkgs.callPackage ./docs/rendered.nix {
+            inherit (self'.packages) docs-raw;
+            title = ''functorOS module options for ${if (self ? rev) then self.rev else "placeholder_hash"})'';
+          };
         };
     };
 }
