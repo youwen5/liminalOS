@@ -6,7 +6,7 @@
   ...
 }:
 {
-  config = lib.mkIf (config.liminalOS.programs.enable && osConfig.liminalOS.config.allowUnfree) {
+  config = lib.mkIf (config.functorOS.programs.enable && osConfig.functorOS.config.allowUnfree) {
     programs.spicetify = {
       enable = true;
       # theme = spicepkgs.themes.dribbblish;

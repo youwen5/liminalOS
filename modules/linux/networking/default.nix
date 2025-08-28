@@ -1,6 +1,6 @@
 { lib, config, ... }:
 let
-  cfg = config.liminalOS.system.networking;
+  cfg = config.functorOS.system.networking;
 
   universalAllowedPorts =
     (lib.optionals cfg.firewallPresets.grimDawn [
@@ -21,10 +21,10 @@ let
   universalAllowedRanges = [ ];
 in
 {
-  options.liminalOS.system.networking = {
+  options.functorOS.system.networking = {
     enable = lib.mkOption {
       type = lib.types.bool;
-      default = config.liminalOS.enable;
+      default = config.functorOS.enable;
       description = ''
         Whether to enable networking features.
       '';
@@ -51,7 +51,7 @@ in
     services.openssh.enable = true;
 
     # setting these bits allows requests to the IP of Tsinghua University TUNA to bypass Mullvad VPN. Helps with binary cache speed in Mainland China.
-    networking.nftables = lib.mkIf config.liminalOS.system.core.chinaOptimizations {
+    networking.nftables = lib.mkIf config.functorOS.system.core.chinaOptimizations {
       enable = true;
       ruleset = ''
         define EXCLUDED_IPS = {

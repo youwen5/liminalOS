@@ -1,11 +1,11 @@
 { lib, config, ... }:
 let
-  cfg = config.liminalOS.system.audio;
+  cfg = config.functorOS.system.audio;
 in
 {
-  options.liminalOS.system.audio.enable = lib.mkOption {
+  options.functorOS.system.audio.enable = lib.mkOption {
     type = lib.types.bool;
-    default = config.liminalOS.enable;
+    default = config.functorOS.enable;
     description = ''
       Whether to set up PipeWire and default audio utilities.
     '';

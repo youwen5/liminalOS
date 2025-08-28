@@ -5,10 +5,10 @@
   ...
 }:
 let
-  cfg = config.liminalOS.extras.distrobox;
+  cfg = config.functorOS.extras.distrobox;
 in
 {
-  options.liminalOS.extras.distrobox.enable = lib.mkEnableOption "distrobox and podman";
+  options.functorOS.extras.distrobox.enable = lib.mkEnableOption "distrobox and podman";
 
   config = lib.mkIf cfg.enable {
     virtualisation.podman = {

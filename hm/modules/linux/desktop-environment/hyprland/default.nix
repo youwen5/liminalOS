@@ -6,7 +6,7 @@
   ...
 }:
 let
-  cfg = config.liminalOS.desktop.hyprland;
+  cfg = config.functorOS.desktop.hyprland;
 in
 {
   imports = [
@@ -15,10 +15,10 @@ in
     ./windowrules.nix
   ];
 
-  options.liminalOS.desktop.hyprland = {
+  options.functorOS.desktop.hyprland = {
     enable = lib.mkOption {
       type = lib.types.bool;
-      default = config.liminalOS.desktop.enable;
+      default = config.functorOS.desktop.enable;
       description = ''
         Whether to enable and rice Hyprland as well as some basic desktop utilities.
       '';
@@ -85,7 +85,7 @@ in
         libsForQt5.qt5ct
         hyprland-qtutils
       ]
-      ++ (lib.optionals (!osConfig.liminalOS.theming.enable) [
+      ++ (lib.optionals (!osConfig.functorOS.theming.enable) [
         pkgs.bibata-cursors
       ]);
 
@@ -110,13 +110,13 @@ in
           (lib.optionals cfg.gtkUseOpenGL [
             "GSK_RENDERER,ngl"
           ])
-          ++ (lib.optionals (config.liminalOS.formFactor == "laptop" && !osConfig.liminalOS.theming.enable) [
+          ++ (lib.optionals (config.functorOS.formFactor == "laptop" && !osConfig.functorOS.theming.enable) [
             "HYPRCURSOR_THEME,Bibata-Modern-Ice"
             "HYPRCURSOR_SIZE,24"
             "XCURSOR_THEME,Bibata-Modern-Ice"
             "XCURSOR_SIZE,24"
           ])
-          ++ (lib.optionals (config.liminalOS.formFactor == "desktop" && !osConfig.liminalOS.theming.enable) [
+          ++ (lib.optionals (config.functorOS.formFactor == "desktop" && !osConfig.functorOS.theming.enable) [
             "HYPRCURSOR_THEME,Bibata-Modern-Ice"
             "HYPRCURSOR_SIZE,26"
             "XCURSOR_THEME,Bibata-Modern-Ice"
@@ -160,7 +160,7 @@ in
               # "layers, 1, 8, default, slide"
               "workspaces, 1, 5, wind, slidefadevert"
             ]
-            ++ (lib.optionals (!osConfig.liminalOS.powersave) [
+            ++ (lib.optionals (!osConfig.functorOS.powersave) [
               "border, 1, 1, liner"
               "borderangle, 1, 30, liner, loop"
             ]);
@@ -208,7 +208,7 @@ in
           };
         };
         input = {
-          sensitivity = if config.liminalOS.formFactor == "laptop" then "0.0" else "-0.65";
+          sensitivity = if config.functorOS.formFactor == "laptop" then "0.0" else "-0.65";
         };
         plugin.scroller = {
           column_widths = "onethird onehalf twothirds one";
@@ -219,7 +219,7 @@ in
     };
 
     wayland.windowManager.hyprland.settings.input.touchpad =
-      lib.mkIf (config.liminalOS.formFactor == "laptop")
+      lib.mkIf (config.functorOS.formFactor == "laptop")
         {
           natural_scroll = true;
           disable_while_typing = true;

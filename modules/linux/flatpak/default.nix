@@ -9,10 +9,10 @@
   ...
 }:
 let
-  cfg = config.liminalOS.programs.flatpak;
+  cfg = config.functorOS.programs.flatpak;
 in
 {
-  options.liminalOS.programs.flatpak = {
+  options.functorOS.programs.flatpak = {
     enable = lib.mkOption {
       type = lib.types.bool;
       default = false;

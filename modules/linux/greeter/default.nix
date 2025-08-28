@@ -5,22 +5,22 @@
   ...
 }:
 let
-  cfg = config.liminalOS.desktop.greeter;
+  cfg = config.functorOS.desktop.greeter;
 in
 {
-  options.liminalOS.desktop.greeter = {
+  options.functorOS.desktop.greeter = {
     enable = lib.mkOption {
       type = lib.types.bool;
-      default = config.liminalOS.desktop.enable;
+      default = config.functorOS.desktop.enable;
       description = ''
-        Whether to enable and set up tui-greet, the default greeter for liminalOS.
+        Whether to enable and set up tui-greet, the default greeter for functorOS.
       '';
     };
     command = lib.mkOption {
       type = lib.types.str;
-      default = if config.liminalOS.desktop.enable then "Hyprland" else "";
+      default = if config.functorOS.desktop.enable then "Hyprland" else "";
       description = ''
-        Command for the greeter to execute to launch the desktop. If the liminalOS Hyprland Desktop is enabled, defaults to `Hyprland`.
+        Command for the greeter to execute to launch the desktop. If the functorOS Hyprland Desktop is enabled, defaults to `Hyprland`.
       '';
     };
   };

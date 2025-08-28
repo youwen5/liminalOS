@@ -5,10 +5,10 @@
   ...
 }:
 let
-  cfg = config.liminalOS.desktop.localization;
+  cfg = config.functorOS.desktop.localization;
 in
 {
-  options.liminalOS.desktop.localization = {
+  options.functorOS.desktop.localization = {
     chinese.input.enable = lib.mkEnableOption "Chinese input method using fcitx5.";
     chinese.script = lib.mkOption {
       type = lib.types.enum [

@@ -15,9 +15,9 @@
     ./hardware-configuration.nix
   ];
 
-  networking.hostName = "liminalOS"; # Define your hostname.
+  networking.hostName = "functorOS"; # Define your hostname.
 
-  liminalOS = {
+  functorOS = {
     # Set this to the absolute path of the location of this configuration flake
     # to enable some UX enhanacements
     flakeLocation = null;
@@ -68,7 +68,7 @@
   # Set up a user
   users.users.default-user = {
     isNormalUser = true;
-    description = "Default liminalOS user!";
+    description = "Default functorOS user!";
     extraGroups = [
       "networkmanager"
       "wheel"

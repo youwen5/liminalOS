@@ -8,7 +8,7 @@
 let
   cfg = config.programs.tidal-hifi;
 in
-# TODO: add check for unfree: ++ lib.optionals osConfig.liminalOS.config.allowUnfree [ tidal-hifi ]
+# TODO: add check for unfree: ++ lib.optionals osConfig.functorOS.config.allowUnfree [ tidal-hifi ]
 {
   options.programs.tidal-hifi = {
     enable = lib.mkEnableOption "tidal Hi-Fi client";
@@ -25,7 +25,7 @@ in
     xdg.configFile."tidal-hifi/themes/stylix.css".text = lib.mkIf (cfg.theme != null) cfg.theme;
 
     programs.tidal-hifi =
-      lib.mkIf (config.liminalOS.programs.enable && osConfig.liminalOS.config.allowUnfree)
+      lib.mkIf (config.functorOS.programs.enable && osConfig.functorOS.config.allowUnfree)
         {
           enable = lib.mkDefault true;
           theme =

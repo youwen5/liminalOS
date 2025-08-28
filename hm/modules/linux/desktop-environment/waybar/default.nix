@@ -6,17 +6,17 @@
   ...
 }:
 let
-  cfg = config.liminalOS.desktop.waybar;
+  cfg = config.functorOS.desktop.waybar;
   theme = config.lib.stylix;
   palette = theme.colors;
 in
 {
-  options.liminalOS.desktop.waybar = {
+  options.functorOS.desktop.waybar = {
     enable = lib.mkOption {
       type = lib.types.bool;
-      default = config.liminalOS.desktop.enable;
+      default = config.functorOS.desktop.enable;
       description = ''
-        Whether to enable Waybar and the liminalOS rice.
+        Whether to enable Waybar and the functorOS rice.
       '';
     };
   };
@@ -24,13 +24,13 @@ in
     home.packages = with pkgs; [ playerctl ];
     programs.waybar =
       let
-        isDesktop = osConfig.liminalOS.formFactor == "desktop";
-        isLaptop = osConfig.liminalOS.formFactor == "laptop";
+        isDesktop = osConfig.functorOS.formFactor == "desktop";
+        isLaptop = osConfig.functorOS.formFactor == "laptop";
       in
       {
         enable = true;
         systemd.enable = true;
-        systemd.target = lib.mkIf config.liminalOS.desktop.hyprland.enable "hyprland-session.target";
+        systemd.target = lib.mkIf config.functorOS.desktop.hyprland.enable "hyprland-session.target";
         settings.mainBar = {
           name = "bar0";
           reload_style_on_change = true;

@@ -5,15 +5,15 @@
   ...
 }:
 let
-  cfg = config.liminalOS.desktop;
+  cfg = config.functorOS.desktop;
 in
 {
-  options.liminalOS.desktop = {
+  options.functorOS.desktop = {
     enable = lib.mkOption {
       type = lib.types.bool;
-      default = config.liminalOS.enable;
+      default = config.functorOS.enable;
       description = ''
-        Whether to enable the liminalOS desktop environment.
+        Whether to enable the functorOS desktop environment.
       '';
     };
     hyprland.enable = lib.mkOption {

@@ -5,21 +5,21 @@
   ...
 }:
 let
-  cfg = config.liminalOS;
+  cfg = config.functorOS;
   inherit (lib) mkIf;
 in
 {
-  options.liminalOS = {
+  options.functorOS = {
     system.printing.enable = lib.mkOption {
       type = lib.types.bool;
-      default = config.liminalOS.enable;
+      default = config.functorOS.enable;
       description = ''
         Whether to set up default options for printing and printer discover on UNIX.
       '';
     };
     system.fonts.enable = lib.mkOption {
       type = lib.types.bool;
-      default = config.liminalOS.enable;
+      default = config.functorOS.enable;
       description = ''
         Whether to set up some nice default fonts, including a Nerd Font, Noto Fonts, and CJK.
       '';
@@ -28,7 +28,7 @@ in
       type = lib.types.bool;
       default = false;
       description = ''
-        Whether to enable some proprietary packages required by certain liminalOS modules. This does not set allowUnfree for the whole system, it merely allows the installation of a few proprietary packages such as Nvidia drivers, etc. You should still set this option even if you already set nixpkgs.config.allowUnfree for the whole system since it tells liminalOS it can enable certain options that require  proprietary packages.
+        Whether to enable some proprietary packages required by certain functorOS modules. This does not set allowUnfree for the whole system, it merely allows the installation of a few proprietary packages such as Nvidia drivers, etc. You should still set this option even if you already set nixpkgs.config.allowUnfree for the whole system since it tells functorOS it can enable certain options that require  proprietary packages.
       '';
     };
     config.extraUnfreePackages = lib.mkOption {
@@ -93,17 +93,17 @@ in
           noto-fonts-cjk-sans
           nerd-fonts.geist-mono
         ]
-        ++ (lib.optionals (!config.liminalOS.theming.enable) [
+        ++ (lib.optionals (!config.functorOS.theming.enable) [
           noto-fonts
           noto-fonts-emoji
           nerd-fonts.caskaydia-cove
         ]);
     };
 
-    nixpkgs.config.allowUnfreePredicate = lib.mkIf config.liminalOS.config.allowUnfree (
+    nixpkgs.config.allowUnfreePredicate = lib.mkIf config.functorOS.config.allowUnfree (
       pkg:
       builtins.elem (pkgs.lib.getName pkg) (
-        config.liminalOS.config.extraUnfreePackages
+        config.functorOS.config.extraUnfreePackages
         ++ [
           "spotify"
           "tidal-hifi"
@@ -139,7 +139,7 @@ in
       {
         assertion = cfg.formFactor != null;
         message = ''
-          You must set `liminalOS.formFactor` to either "laptop" or "desktop"!
+          You must set `functorOS.formFactor` to either "laptop" or "desktop"!
         '';
       }
     ];

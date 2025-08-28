@@ -1,6 +1,6 @@
 { osConfig, lib, ... }:
 {
-  config = lib.mkIf osConfig.liminalOS.theming.enable {
+  config = lib.mkIf osConfig.functorOS.theming.enable {
     stylix.targets = {
       waybar.enable = false;
       kitty.variant256Colors = true;

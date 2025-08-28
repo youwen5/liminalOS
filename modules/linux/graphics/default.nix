@@ -5,10 +5,10 @@
   ...
 }:
 let
-  cfg = config.liminalOS.system.graphics;
+  cfg = config.functorOS.system.graphics;
 in
 {
-  options.liminalOS.system.graphics = {
+  options.functorOS.system.graphics = {
     enable = lib.mkOption {
       type = lib.types.bool;
       default = true;
@@ -58,7 +58,7 @@ in
 
     services.xserver.videoDrivers = lib.mkIf cfg.nvidia.enable [ "nvidia" ];
 
-    liminalOS.config.extraUnfreePackages = lib.mkIf cfg.nvidia.enable [
+    functorOS.config.extraUnfreePackages = lib.mkIf cfg.nvidia.enable [
       "nvidia-x11"
       "nvidia-settings"
     ];
@@ -67,9 +67,9 @@ in
       {
         assertion =
           !cfg.nvidia.enable
-          || (config.liminalOS.config.allowUnfree && cfg.nvidia.enable)
+          || (config.functorOS.config.allowUnfree && cfg.nvidia.enable)
           || cfg.nvidia.suppressUnfreeWarning;
-        message = "You enabled Nvidia proprietary driver installation but did not allow unfree packages to be installed! Consider setting liminalOS.config.allowUnfree = true or nixpkgs.config.allowUnfree = true. If you are using an allowUnfreePredicate to whitelist these packages manually, you can set liminalOS.system.graphics.nvidia.suppressUnfreeWarning = true";
+        message = "You enabled Nvidia proprietary driver installation but did not allow unfree packages to be installed! Consider setting functorOS.config.allowUnfree = true or nixpkgs.config.allowUnfree = true. If you are using an allowUnfreePredicate to whitelist these packages manually, you can set functorOS.system.graphics.nvidia.suppressUnfreeWarning = true";
       }
     ];
   };

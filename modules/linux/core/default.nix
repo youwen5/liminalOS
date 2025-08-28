@@ -5,22 +5,22 @@
   ...
 }:
 let
-  cfg = config.liminalOS.system.core;
+  cfg = config.functorOS.system.core;
 in
 {
-  options.liminalOS.system.core = {
+  options.functorOS.system.core = {
     enable = lib.mkOption {
       type = lib.types.bool;
-      default = config.liminalOS.enable;
+      default = config.functorOS.enable;
       description = ''
-        Whether to enable core liminalOS system utilities and configurations (such as security policies, Nix options, etc)
+        Whether to enable core functorOS system utilities and configurations (such as security policies, Nix options, etc)
       '';
     };
     replaceSudoWithDoas = lib.mkOption {
       type = lib.types.bool;
       default = cfg.enable;
       description = ''
-        Whether to replace sudo with doas, the Dedicated OpenBSD Application Subexecutor. Doas is the preferred liminalOS setuid program.
+        Whether to replace sudo with doas, the Dedicated OpenBSD Application Subexecutor. Doas is the preferred functorOS setuid program.
       '';
     };
     waylandFixes = lib.mkOption {
@@ -77,7 +77,7 @@ in
         curl
       ])
       ++ [
-        config.liminalOS.defaultEditor
+        config.functorOS.defaultEditor
       ]
       ++ lib.optionals cfg.replaceSudoWithDoas [ pkgs.doas-sudo-shim ]
       ++ lib.optionals cfg.uutils.enable [
@@ -151,7 +151,7 @@ in
         enable = true;
         extraArgs = "--keep-since 4d --keep 3";
       };
-      flake = config.liminalOS.flakeLocation;
+      flake = config.functorOS.flakeLocation;
     };
 
     # environment.variables = lib.mkIf (cfg.useNh && config.security.doas.enable) {
@@ -180,8 +180,8 @@ in
 
     programs.fish.enable = true;
 
-    services.tlp.enable = lib.mkIf (config.liminalOS.formFactor == "laptop") true;
-    programs.light.enable = lib.mkIf (config.liminalOS.formFactor == "laptop") true;
+    services.tlp.enable = lib.mkIf (config.functorOS.formFactor == "laptop") true;
+    programs.light.enable = lib.mkIf (config.functorOS.formFactor == "laptop") true;
 
     hardware.bluetooth = lib.mkIf cfg.bluetooth.enable {
       enable = true;
@@ -193,9 +193,9 @@ in
     services.gvfs.enable = lib.mkIf cfg.useGvfs.enable true;
 
     warnings =
-      if !cfg.suppressWarnings && cfg.useNh && config.liminalOS.flakeLocation == "" then
+      if !cfg.suppressWarnings && cfg.useNh && config.functorOS.flakeLocation == "" then
         [
-          ''The `nh` CLI is enabled but `liminalOS.flakeLocation` is not set. It is recommended that you set this option to the absolute file path of your configuration flake so that `nh` can work without specifying the flake path every time. You can disable this warning by setting `liminalOS.system.core.suppressWarnings`.''
+          ''The `nh` CLI is enabled but `functorOS.flakeLocation` is not set. It is recommended that you set this option to the absolute file path of your configuration flake so that `nh` can work without specifying the flake path every time. You can disable this warning by setting `functorOS.system.core.suppressWarnings`.''
         ]
       else
         [ ];

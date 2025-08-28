@@ -5,13 +5,13 @@
   ...
 }:
 let
-  cfg = config.liminalOS.theming;
+  cfg = config.functorOS.theming;
 in
 {
-  options.liminalOS.theming = {
+  options.functorOS.theming = {
     enable = lib.mkOption {
       type = lib.types.bool;
-      default = config.liminalOS.enable;
+      default = config.functorOS.enable;
       description = ''
         Whether to uniformly theme the entire system using Stylix.
       '';
@@ -82,7 +82,7 @@ in
       cursor = {
         package = pkgs.bibata-cursors;
         name = "Bibata-Modern-Ice";
-        size = if config.liminalOS.formFactor == "laptop" then 24 else 26;
+        size = if config.functorOS.formFactor == "laptop" then 24 else 26;
       };
     };
 

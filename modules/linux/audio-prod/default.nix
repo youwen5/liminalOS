@@ -5,7 +5,7 @@
   ...
 }:
 let
-  cfg = config.liminalOS.system.audio.prod;
+  cfg = config.functorOS.system.audio.prod;
   forAllUsers = lib.genAttrs cfg.realtimeAudioUsers;
   wine = pkgs.wineWowPackages.full;
   overrideWine =
@@ -15,7 +15,7 @@ let
     });
 in
 {
-  options.liminalOS.system.audio.prod = {
+  options.functorOS.system.audio.prod = {
     enable = lib.mkEnableOption "audio production";
     realtimeAudioUsers = lib.mkOption {
       type = lib.types.listOf lib.types.str;
@@ -27,10 +27,10 @@ in
   };
 
   config = {
-    liminalOS = lib.mkIf cfg.enable {
+    functorOS = lib.mkIf cfg.enable {
       programs.wine.enable = true;
       system.audio.enable = true;
-      config.extraUnfreePackages = lib.mkIf config.liminalOS.config.allowUnfree [
+      config.extraUnfreePackages = lib.mkIf config.functorOS.config.allowUnfree [
         "reaper"
       ];
     };
@@ -41,7 +41,7 @@ in
         (overrideWine yabridgectl)
         alsa-scarlett-gui
       ])
-      ++ (lib.optionals config.liminalOS.config.allowUnfree (
+      ++ (lib.optionals config.functorOS.config.allowUnfree (
         with pkgs;
         [
           (reaper.overrideAttrs (

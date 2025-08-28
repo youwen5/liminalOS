@@ -6,14 +6,14 @@
   ...
 }:
 let
-  cfg = config.liminalOS;
+  cfg = config.functorOS;
 in
 {
   imports = [
     ./fastfetch
   ];
 
-  options.liminalOS.shellEnv = {
+  options.functorOS.shellEnv = {
     enable = lib.mkOption {
       type = lib.types.bool;
       default = true;
@@ -83,15 +83,15 @@ in
 
     programs.git = {
       enable = true;
-      userName = lib.mkDefault "liminalOS user";
-      userEmail = lib.mkDefault "liminalOS@localhost";
+      userName = lib.mkDefault "functorOS user";
+      userEmail = lib.mkDefault "functorOS@localhost";
       delta.enable = true;
       maintenance.enable = true;
       extraConfig = {
         init.defaultBranch = "main";
         safe.directory = lib.mkIf (
-          osConfig.liminalOS.flakeLocation != null
-        ) osConfig.liminalOS.flakeLocation;
+          osConfig.functorOS.flakeLocation != null
+        ) osConfig.functorOS.flakeLocation;
       };
     };
 

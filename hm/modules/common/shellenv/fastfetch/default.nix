@@ -7,13 +7,13 @@
 }:
 let
   fastfetchConfig = builtins.fromJSON (builtins.readFile ./config.json);
-  cfg = config.liminalOS.shellEnv.fastfetch;
+  cfg = config.functorOS.shellEnv.fastfetch;
 in
 {
-  options.liminalOS.shellEnv.fastfetch = {
+  options.functorOS.shellEnv.fastfetch = {
     enable = lib.mkOption {
       type = lib.types.bool;
-      default = config.liminalOS.shellEnv.enable;
+      default = config.functorOS.shellEnv.enable;
       description = ''
         Whether to set up and configure fastfetch.
       '';
@@ -27,7 +27,7 @@ in
     };
     tintImage = lib.mkOption {
       type = lib.types.bool;
-      default = osConfig.liminalOS.theming.enable;
+      default = osConfig.functorOS.theming.enable;
       description = ''
         Whether to tint the image with system wide colors.
       '';

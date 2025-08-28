@@ -116,7 +116,7 @@
     inputs.valkyrie.packages.${pkgs.system}.default
   ];
 
-  liminalOS.theming = {
+  functorOS.theming = {
     # wallpaper = "${inputs.wallpapers}/aesthetic/afterglow_city_skyline_at_night.png";
     # wallpaper = "${
     #   pkgs.fetchFromGitHub {
@@ -144,7 +144,7 @@
     polarity = lib.mkDefault "dark";
   };
 
-  liminalOS.desktop.localization.chinese.input.enable = true;
+  functorOS.desktop.localization.chinese.input.enable = true;
 
   environment.etc.polarity.text = lib.mkDefault "dusk";
 
@@ -152,7 +152,7 @@
     dawn.configuration = {
       environment.etc."specialisation".text = "dawn";
       environment.etc.polarity.text = "dawn";
-      liminalOS.theming = {
+      functorOS.theming = {
         # wallpaper = pkgs.fetchurl {
         #   url = "https://images.unsplash.com/photo-1545893835-abaa50cbe628?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8c2hhbmdoYWl8ZW58MHx8MHx8fDA%3D";
         #   hash = "sha256-QH2CYMSJcfF6bBxpjb/gJImgPbVjSeISB/PuSRLdePs=";

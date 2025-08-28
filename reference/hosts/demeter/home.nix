@@ -11,5 +11,5 @@
   ];
   wayland.windowManager.hyprland.settings.misc.vrr = 3;
 
-  liminalOS.desktop.hyprland.screenlocker.monitor = "DP-3";
+  functorOS.desktop.hyprland.screenlocker.monitor = "DP-3";
 }

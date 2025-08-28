@@ -1,9 +1,9 @@
 { lib, config, ... }:
 let
-  cfg = config.liminalOS.desktop.niri;
+  cfg = config.functorOS.desktop.niri;
 in
 {
-  options.liminalOS.desktop.niri = {
+  options.functorOS.desktop.niri = {
     enable = lib.mkOption {
       type = lib.types.bool;
       default = false;

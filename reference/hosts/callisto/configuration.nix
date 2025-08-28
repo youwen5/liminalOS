@@ -14,8 +14,8 @@
   time.timeZone = "America/Los_Angeles";
   # time.timeZone = "Asia/Shanghai";
 
-  liminalOS = {
-    flakeLocation = "/home/youwen/.config/liminalOS";
+  functorOS = {
+    flakeLocation = "/home/youwen/.config/functorOS";
     config.allowUnfree = false;
     defaultEditor = inputs.viminal.packages.${pkgs.system}.default;
     formFactor = "laptop";

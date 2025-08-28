@@ -18,11 +18,11 @@
     ./localization
   ];
 
-  options.liminalOS.enable = lib.mkOption {
+  options.functorOS.enable = lib.mkOption {
     type = lib.types.bool;
     default = true;
     description = ''
-      Whether to enable liminalOS's default modules and options for Linux.
+      Whether to enable functorOS's default modules and options for Linux.
     '';
   };
 }

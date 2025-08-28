@@ -17,13 +17,13 @@
     ./var/mangohud
   ];
 
-  programs.fish.functions = lib.mkIf config.liminalOS.programs.enable {
-    # rebuild = ''doas nixos-rebuild --flake ~/.config/liminalOS\#${osConfig.networking.hostName} switch &| nom'';
-    # os-test = ''doas nixos-rebuild --flake ~/.config/liminalOS\#${osConfig.networking.hostName} test &| nom'';
+  programs.fish.functions = lib.mkIf config.functorOS.programs.enable {
+    # rebuild = ''doas nixos-rebuild --flake ~/.config/functorOS\#${osConfig.networking.hostName} switch &| nom'';
+    # os-test = ''doas nixos-rebuild --flake ~/.config/functorOS\#${osConfig.networking.hostName} test &| nom'';
     # nixos-update = ''
-    #   cd ~/.config/liminalOS
+    #   cd ~/.config/functorOS
     #   nix flake update --commit-lock-file
-    #   doas nixos-rebuild --flake ~/.config/liminalOS\#${osConfig.networking.hostName} switch &| nom
+    #   doas nixos-rebuild --flake ~/.config/functorOS\#${osConfig.networking.hostName} switch &| nom
     # '';
     spt = "${lib.getExe pkgs.spotify-player}";
   };

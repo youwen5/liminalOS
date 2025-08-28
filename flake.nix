@@ -98,7 +98,7 @@
       ...
     }:
     let
-      buildLiminalOS = import ./lib/buildLiminalOS.nix;
+      buildFunctorOS = import ./lib/buildFunctorOS.nix;
     in
     flake-parts.lib.mkFlake { inherit inputs; } {
       systems = [
@@ -108,48 +108,9 @@
         # aarch64-darwin is currently disabled due to lack of maintenance
       ];
       flake = {
-        nixosConfigurations = {
-          demeter = nixpkgs.lib.nixosSystem {
-            specialArgs = {
-              inherit inputs self;
-            };
-            modules = [
-              ./reference/hosts/demeter
-            ];
-          };
-          callisto = nixpkgs.lib.nixosSystem {
-            specialArgs = {
-              inherit inputs self;
-            };
-            modules = [
-              ./reference/hosts/callisto
-            ];
-          };
-          adrastea = nixpkgs.lib.nixosSystem {
-            specialArgs = {
-              inherit inputs self;
-            };
-            modules = [
-              ./reference/hosts/adrastea
-            ];
-          };
-          cassini = buildLiminalOS {
-            inherit inputs nixpkgs;
-            systemModule = ./reference/hosts/cassini;
-          };
-        };
-        darwinConfigurations.phobos = nix-darwin.lib.darwinSystem {
-          specialArgs = {
-            inherit inputs;
-          };
-          modules = [
-            ./hosts/phobos
-          ];
-        };
-
         nixosModules = rec {
-          default = liminalOS;
-          liminalOS = {
+          default = functorOS;
+          functorOS = {
             imports = [
               inputs.nix-flatpak.nixosModules.nix-flatpak
               inputs.home-manager.nixosModules.home-manager
@@ -181,8 +142,8 @@
         };
 
         homeManagerModules = rec {
-          default = liminalOS;
-          liminalOS = {
+          default = functorOS;
+          functorOS = {
             imports = [
               inputs.nix-index-database.hmModules.nix-index
               inputs.spicetify.homeManagerModules.default
@@ -193,11 +154,11 @@
         };
 
         templates = rec {
-          liminalOS = {
+          functorOS = {
             path = ./templates/minimal;
-            description = "Barebones configuration of liminalOS";
+            description = "Barebones configuration of functorOS";
           };
-          default = liminalOS;
+          default = functorOS;
         };
       };
       perSystem =
@@ -229,3 +190,4 @@
         };
     };
 }
+

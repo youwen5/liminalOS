@@ -5,16 +5,16 @@
   ...
 }:
 let
-  cfg = config.liminalOS.wsl;
+  cfg = config.functorOS.wsl;
 in
 {
-  options.liminalOS.wsl = {
+  options.functorOS.wsl = {
     enable = lib.mkEnableOption "WSL";
   };
 
   config.wsl = lib.mkIf cfg.enable {
     enable = true;
-    defaultUser = config.liminalOS.username;
+    defaultUser = config.functorOS.username;
     useWindowsDriver = true;
   };
 }

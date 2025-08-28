@@ -11,12 +11,12 @@
     ./swaync.nix
   ];
 
-  options.liminalOS.desktop = {
+  options.functorOS.desktop = {
     enable = lib.mkOption {
       type = lib.types.bool;
-      default = osConfig.liminalOS.desktop.enable;
+      default = osConfig.functorOS.desktop.enable;
       description = ''
-        Whether to enable the default configuration for the userland portions of the liminalOS desktop environment.
+        Whether to enable the default configuration for the userland portions of the functorOS desktop environment.
       '';
     };
   };

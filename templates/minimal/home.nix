@@ -1,8 +1,8 @@
 { inputs, ... }:
 {
   imports = [
-    # import the liminalOS home manager module
-    inputs.liminalOS.homeManagerModules.default
+    # import the functorOS home manager module
+    inputs.functorOS.homeManagerModules.default
   ];
 
   home = {
@@ -10,7 +10,7 @@
     homeDirectory = "/home/default-user";
   };
 
-  liminalOS = {
+  functorOS = {
     # Enable the easyeffects program to easily EQ your headphones and add
     # microphone effects
     utils.easyeffects.enable = true;

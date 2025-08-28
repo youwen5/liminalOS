@@ -5,10 +5,10 @@
   ...
 }:
 let
-  cfg = config.liminalOS;
+  cfg = config.functorOS;
 in
 {
-  options.liminalOS = {
+  options.functorOS = {
     formFactor = lib.mkOption {
       type = lib.types.nullOr (
         lib.types.enum [
@@ -16,9 +16,9 @@ in
           "desktop"
         ]
       );
-      default = osConfig.liminalOS.formFactor;
+      default = osConfig.functorOS.formFactor;
       description = ''
-        Form factor of the machine. Adjusts some UI features. Inherited from system configuration liminalOS.formFactor if set, otherwise you must set it here.
+        Form factor of the machine. Adjusts some UI features. Inherited from system configuration functorOS.formFactor if set, otherwise you must set it here.
       '';
     };
   };
@@ -27,7 +27,7 @@ in
     assertions = [
       {
         assertion = cfg.formFactor != null;
-        message = "You must set liminalOS.formFactor either in the home-manager configuration for the user or in the OS configuration for the system!";
+        message = "You must set functorOS.formFactor either in the home-manager configuration for the user or in the OS configuration for the system!";
       }
     ];
   };

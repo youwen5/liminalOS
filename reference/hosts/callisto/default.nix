@@ -8,7 +8,7 @@
     [
       ./configuration.nix
       ../../modules
-      self.nixosModules.liminalOS
+      self.nixosModules.functorOS
       {
         home-manager.users.youwen = {
           imports = [

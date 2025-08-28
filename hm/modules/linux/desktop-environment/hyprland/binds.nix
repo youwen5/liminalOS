@@ -5,7 +5,7 @@
   ...
 }:
 let
-  cfg = config.liminalOS.desktop.hyprland;
+  cfg = config.functorOS.desktop.hyprland;
   hyprnome = "${lib.getExe pkgs.hyprnome}";
 in
 {
@@ -66,12 +66,12 @@ in
         ''$mod, P, exec, ${lib.getExe pkgs.grim} -g "$(${lib.getExe pkgs.slurp})" - | ${lib.getExe pkgs.swappy} -f -'' # Screenshot
 
         # browser
-        "$mod, B, exec, ${lib.getExe config.liminalOS.programs.defaultBrowser}"
+        "$mod, B, exec, ${lib.getExe config.functorOS.programs.defaultBrowser}"
       ]
-      ++ (lib.optionals config.liminalOS.desktop.swaync.enable [
+      ++ (lib.optionals config.functorOS.desktop.swaync.enable [
         "$mod, N, exec, sleep 0.1 && ${pkgs.swaynotificationcenter}/bin/swaync-client -t -sw"
       ])
-      ++ (lib.optionals config.liminalOS.programs.enable [
+      ++ (lib.optionals config.functorOS.programs.enable [
         # Application Keybinds
         "$mod, R, exec, ${lib.getExe pkgs.pavucontrol} -t 3" # open pavucontrol on 'outputs' tab
         "$mod, T, exec, ${lib.getExe pkgs.kitty}"

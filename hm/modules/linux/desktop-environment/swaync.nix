@@ -1,12 +1,12 @@
 { config, lib, ... }:
 let
-  cfg = config.liminalOS.desktop.swaync;
+  cfg = config.functorOS.desktop.swaync;
 in
 {
-  options.liminalOS.desktop.swaync = {
+  options.functorOS.desktop.swaync = {
     enable = lib.mkOption {
       type = lib.types.bool;
-      default = config.liminalOS.desktop.enable;
+      default = config.functorOS.desktop.enable;
       description = ''
         Whether to enable the swaync notification center and daemon.
       '';

@@ -5,19 +5,19 @@
   ...
 }:
 let
-  cfg = config.liminalOS;
+  cfg = config.functorOS;
 in
 {
   imports = [
     ./linux
     ../hm
   ];
-  options.liminalOS = {
+  options.functorOS = {
     darwin.enable = lib.mkOption {
       type = lib.types.bool;
       default = false;
       description = ''
-        Whether to enable liminalOS's default modules and options for Darwin.
+        Whether to enable functorOS's default modules and options for Darwin.
       '';
     };
   };

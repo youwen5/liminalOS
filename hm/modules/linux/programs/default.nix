@@ -6,14 +6,14 @@
   ...
 }:
 let
-  cfg = config.liminalOS.programs;
+  cfg = config.functorOS.programs;
 in
 {
   imports = [
     ./bulk-programs.nix
   ];
 
-  options.liminalOS.programs = {
+  options.functorOS.programs = {
     enable = lib.mkOption {
       type = lib.types.bool;
       default = true;
@@ -75,7 +75,7 @@ in
       settings = {
         font = {
           normal = [ "CaskaydiaCove Nerd Font" ];
-          size = if config.liminalOS.formFactor == "laptop" then 11 else 13;
+          size = if config.functorOS.formFactor == "laptop" then 11 else 13;
         };
       };
     };

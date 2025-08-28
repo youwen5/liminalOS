@@ -1,10 +1,10 @@
 { config, lib, ... }:
 let
-  cfg = config.liminalOS.desktop.hyprland;
+  cfg = config.functorOS.desktop.hyprland;
 in
 {
   config.wayland.windowManager.hyprland.settings.windowrulev2 =
-    lib.mkIf config.liminalOS.desktop.hyprland.enable
+    lib.mkIf config.functorOS.desktop.hyprland.enable
       (
         [
           "opacity 0.90 0.90,class:^(librewolf)$"

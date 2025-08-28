@@ -22,7 +22,7 @@
     homeDirectory = "/home/youwen";
   };
 
-  liminalOS = {
+  functorOS = {
     utils.easyeffects.enable = true;
     programs.defaultBrowser = pkgs.firefox;
     programs.browserDesktopFile = "firefox.desktop";
@@ -165,7 +165,7 @@
   };
 
   xdg.configFile."harper-ls" = {
-    source = config.lib.file.mkOutOfStoreSymlink "${osConfig.liminalOS.flakeLocation}/reference/users/youwen/config/harper-ls";
+    source = config.lib.file.mkOutOfStoreSymlink "${osConfig.functorOS.flakeLocation}/reference/users/youwen/config/harper-ls";
     recursive = true;
   };
 

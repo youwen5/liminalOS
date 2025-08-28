@@ -14,8 +14,8 @@
 
   virtualisation.waydroid.enable = true;
 
-  liminalOS = {
-    flakeLocation = "/home/youwen/.config/liminalOS";
+  functorOS = {
+    flakeLocation = "/home/youwen/.config/functorOS";
     config.allowUnfree = true;
     defaultEditor = inputs.viminal.packages.${pkgs.system}.default;
     formFactor = "desktop";

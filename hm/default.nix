@@ -5,14 +5,14 @@
   ...
 }:
 let
-  cfg = config.liminalOS;
+  cfg = config.functorOS;
 in
 {
-  options.liminalOS.integrateHomeManager = lib.mkOption {
+  options.functorOS.integrateHomeManager = lib.mkOption {
     type = lib.types.bool;
     default = cfg.enable;
     description = ''
-      Whether to activate home manager with default options. Keep in mind you still have to import the liminalOS home-manager module.
+      Whether to activate home manager with default options. Keep in mind you still have to import the functorOS home-manager module.
     '';
   };
 

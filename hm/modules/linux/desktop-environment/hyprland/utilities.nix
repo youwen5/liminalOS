@@ -5,7 +5,7 @@
   ...
 }:
 let
-  cfg = config.liminalOS.desktop.hyprland;
+  cfg = config.functorOS.desktop.hyprland;
 in
 {
   config = lib.mkIf cfg.enable {

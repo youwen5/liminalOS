@@ -31,6 +31,6 @@
   # programs.waybar.settings.mainBar.output = "HDMI-A-1";
   programs.waybar.settings.mainBar.output = "eDP-1";
 
-  liminalOS.desktop.hyprland.screenlocker.monitor = "eDP-1";
-  # liminalOS.desktop.hyprland.screenlocker.monitor = "HDMI-A-1";
+  functorOS.desktop.hyprland.screenlocker.monitor = "eDP-1";
+  # functorOS.desktop.hyprland.screenlocker.monitor = "HDMI-A-1";
 }

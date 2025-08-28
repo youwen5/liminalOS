@@ -5,10 +5,10 @@
   ...
 }:
 let
-  cfg = config.liminalOS.extras.gaming;
+  cfg = config.functorOS.extras.gaming;
 in
 {
-  options.liminalOS.extras.gaming = {
+  options.functorOS.extras.gaming = {
     enable = lib.mkEnableOption "gaming";
     utilities = {
       hamachi.enable = lib.mkEnableOption "hamachi";
@@ -75,7 +75,7 @@ in
         ))
       ];
 
-      liminalOS.programs.flatpak.enable = true;
+      functorOS.programs.flatpak.enable = true;
 
       services.flatpak.packages = lib.mkIf cfg.roblox.enable [
         "org.vinegarhq.Sober"
@@ -108,7 +108,7 @@ in
         };
       };
 
-      liminalOS.config.extraUnfreePackages = lib.mkIf config.liminalOS.config.allowUnfree [
+      functorOS.config.extraUnfreePackages = lib.mkIf config.functorOS.config.allowUnfree [
         "modrinth-app"
         "modrinth-app-unwrapped"
         "ModrinthApp"
@@ -148,16 +148,16 @@ in
       warnings =
         if cfg.utilities.gamemode.enable && (builtins.length cfg.utilities.gamemode.gamemodeUsers == 0) then
           [
-            ''You enabled gamemode without setting any gamemode users in `liminalOS.extras.gaming.utilities.gamemode.gamemodeUsers. Gamemode is unlikely to work unless you add your user to gamemodeUsers.''
+            ''You enabled gamemode without setting any gamemode users in `functorOS.extras.gaming.utilities.gamemode.gamemodeUsers. Gamemode is unlikely to work unless you add your user to gamemodeUsers.''
           ]
         else
           [ ];
 
       assertions = [
         {
-          assertion = !cfg.roblox.enable || (config.liminalOS.config.allowUnfree && cfg.roblox.enable);
+          assertion = !cfg.roblox.enable || (config.functorOS.config.allowUnfree && cfg.roblox.enable);
           message = ''
-            You enabled Roblox but did not allow unfree software in liminalOS! Roblox is installed using the Sober Flatpak <sober.vinegarhq.org>, which is a proprietary unfree package! You must set liminalOS.config.allowUnfree to enable Roblox.
+            You enabled Roblox but did not allow unfree software in functorOS! Roblox is installed using the Sober Flatpak <sober.vinegarhq.org>, which is a proprietary unfree package! You must set functorOS.config.allowUnfree to enable Roblox.
           '';
         }
       ];

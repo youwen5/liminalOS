@@ -6,7 +6,7 @@
   ...
 }:
 let
-  cfg = config.liminalOS.programs.bulk;
+  cfg = config.functorOS.programs.bulk;
   mkEnableOption' =
     desc:
     lib.mkOption {
@@ -18,10 +18,10 @@ let
     };
 in
 {
-  options.liminalOS.programs.bulk = {
+  options.functorOS.programs.bulk = {
     enable = lib.mkOption {
       type = lib.types.bool;
-      default = config.liminalOS.programs.enable;
+      default = config.functorOS.programs.enable;
       description = ''
         Whether to enable installation of various useful programs in the system.
       '';
