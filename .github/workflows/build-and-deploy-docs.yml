@@ -1,7 +1,9 @@
 name: Build system documentation and deploy it
 
 on:
-  pull_request:
+  push:
+    branches:
+      - "functorOS"
 
 jobs:
   build-and-deploy-docs:
