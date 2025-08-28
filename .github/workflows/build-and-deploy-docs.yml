@@ -15,8 +15,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       - uses: DeterminateSystems/nix-installer-action@main
-        with:
-          github-token: ${{ secrets.GH_TOKEN_FOR_UPDATES }}
       - name: Build docs
         run: |
           nix build .#docs-rendered
