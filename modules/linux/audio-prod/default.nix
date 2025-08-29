@@ -19,7 +19,7 @@ in
     enable = lib.mkEnableOption "audio production";
     realtimeAudioUsers = lib.mkOption {
       type = lib.types.listOf lib.types.str;
-      default = [ ];
+      default = builtins.map (x: x.username) config.functorOS._users;
       description = ''
         List of users to add to the audio group for realtime capabilities.
       '';
@@ -103,3 +103,4 @@ in
     ];
   };
 }
+
