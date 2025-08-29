@@ -96,6 +96,7 @@ in
         enable = true;
         extraRules = [
           {
+            users = builtins.map (x: x.username) (builtins.filter (x: x.superuser) config.functorOS._users);
             keepEnv = true;
             persist = true;
           }
@@ -201,4 +202,3 @@ in
 
   };
 }
-

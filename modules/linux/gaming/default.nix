@@ -16,7 +16,7 @@ in
         enable = lib.mkEnableOption "gamemode";
         gamemodeUsers = lib.mkOption {
           type = lib.types.listOf lib.types.str;
-          default = [ ];
+          default = builtins.map (x: x.username) config.functorOS._users;
           description = ''
             List of users to add to the gamemode group. Gamemode will likely not work unless you add your user to the group!
           '';
@@ -164,3 +164,4 @@ in
     }
   );
 }
+

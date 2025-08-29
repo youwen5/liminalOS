@@ -25,4 +25,13 @@
       Whether to enable functorOS's default modules and options for Linux.
     '';
   };
+
+  options.functorOS._users = lib.mkOption {
+    type = lib.types.listOf lib.types.attrs;
+    description = ''
+      INTERNAL functorOS OPTION --- DO NOT SET!
+    '';
+    default = [ ];
+  };
 }
+

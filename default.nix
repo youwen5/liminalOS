@@ -31,6 +31,7 @@ rec {
       configuration,
       fullName,
       email,
+      superuser ? true,
       configureGitUser ? true,
       initialHashedPassword ? null,
       extraGroups ? [ ],
@@ -38,30 +39,36 @@ rec {
     }:
     { pkgs, config, ... }:
     {
-      users.users.${username} = {
-        shell = nixpkgs.lib.mkOverride 999 pkgs.nushell;
-        isNormalUser = true;
-        description = fullName;
-        extraGroups = [
-          "wheel"
-        ]
-        ++ nixpkgs.lib.optionals config.networking.networkmanager.enable [ "networkmanager" ]
-        ++ extraGroups;
-        initialHashedPassword = nixpkgs.lib.mkIf (initialHashedPassword != null) initialHashedPassword;
-      };
-      home-manager.extraSpecialArgs = { inherit self inputs; };
-      home-manager.users.${username} = {
-        imports = [
-          functorOS.homeManagerModules.functorOS
-          configuration
-          _extraConfig
-        ];
-        home = {
-          inherit username homeDirectory;
+      config = {
+        users.users.${username} = {
+          shell = nixpkgs.lib.mkOverride 999 pkgs.nushell;
+          isNormalUser = true;
+          description = fullName;
+          extraGroups =
+            nixpkgs.lib.optionals superuser [
+              "wheel"
+            ]
+            ++ nixpkgs.lib.optionals config.networking.networkmanager.enable [ "networkmanager" ]
+            ++ extraGroups;
+          initialHashedPassword = nixpkgs.lib.mkIf (initialHashedPassword != null) initialHashedPassword;
         };
-        programs.git = nixpkgs.lib.mkIf configureGitUser {
-          userName = fullName;
-          userEmail = email;
+
+        functorOS._users = [ { inherit username superuser; } ];
+
+        home-manager.extraSpecialArgs = { inherit self inputs; };
+        home-manager.users.${username} = {
+          imports = [
+            functorOS.homeManagerModules.functorOS
+            configuration
+            _extraConfig
+          ];
+          home = {
+            inherit username homeDirectory;
+          };
+          programs.git = nixpkgs.lib.mkIf configureGitUser {
+            userName = fullName;
+            userEmail = email;
+          };
         };
       };
     };
