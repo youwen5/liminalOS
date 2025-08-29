@@ -2,6 +2,7 @@
   nixpkgs,
   self,
   inputs,
+  functorOS,
 }:
 rec {
   # a thin wrapper around nixosSystem
@@ -14,6 +15,7 @@ rec {
     nixpkgs.lib.nixosSystem {
       specialArgs = { inherit self inputs; };
       modules = [
+        functorOS.nixosModules.functorOS
         configuration
         {
           networking.hostName = hostname;
@@ -50,6 +52,7 @@ rec {
       home-manager.extraSpecialArgs = { inherit self inputs; };
       home-manager.users.${username} = {
         imports = [
+          functorOS.homeManagerModules.functorOS
           configuration
           _extraConfig
         ];
