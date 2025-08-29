@@ -31,7 +31,6 @@ flowchart TB
     subgraph PlatformModules
         direction TB
         Linux["Linux Modules"]:::linux
-        Darwin["Darwin Modules"]:::darwin
 
         subgraph LinuxComponents
             direction TB
@@ -49,7 +48,6 @@ flowchart TB
         Desktop["Desktop Environment"]:::hm
         Shell["Shell Environment"]:::hm
         Platform["Platform-Specific Tweaks"]:::hm
-        DarwinHome["Darwin-Specific Home"]:::darwin
     end
 
     subgraph ConfigLayer
@@ -63,12 +61,10 @@ flowchart TB
     %% Relationships
     NixOS --> SysCore
     SysCore --> Linux
-    SysCore --> Darwin
     BuildTools --> HostConfig
     
     Linux --> LinuxComponents
     Linux --> Desktop
-    Darwin --> DarwinHome
 
     HMCore --> Shell
     HMCore --> Platform
@@ -82,7 +78,6 @@ flowchart TB
     click SysCore "https://github.com/youwen5/liminalos/tree/main/modules/linux/core/"
     click BuildTools "https://github.com/youwen5/liminalos/blob/main/lib/buildLiminalOS.nix"
     click Linux "https://github.com/youwen5/liminalos/tree/main/modules/linux/"
-    click Darwin "https://github.com/youwen5/liminalos/tree/main/modules/darwin/"
     click Audio "https://github.com/youwen5/liminalos/tree/main/modules/linux/audio/"
     click Gaming "https://github.com/youwen5/liminalos/tree/main/modules/linux/gaming/"
     click Graphics "https://github.com/youwen5/liminalos/tree/main/modules/linux/graphics/"
@@ -92,7 +87,6 @@ flowchart TB
     click Desktop "https://github.com/youwen5/liminalos/tree/main/hm/modules/linux/desktop-environment/"
     click Shell "https://github.com/youwen5/liminalos/tree/main/hm/modules/common/shellenv/"
     click Platform "https://github.com/youwen5/liminalos/tree/main/hm/modules/linux/platform-tweaks/"
-    click DarwinHome "https://github.com/youwen5/liminalos/blob/main/hm/modules/darwin/darwin-home.nix"
     click HostConfig "https://github.com/youwen5/liminalos/tree/main/reference/hosts/"
     click UserConfig "https://github.com/youwen5/liminalos/tree/main/reference/users/"
     click Secrets "https://github.com/youwen5/liminalos/tree/main/reference/secrets/"
@@ -101,7 +95,6 @@ flowchart TB
     %% Styling
     classDef core fill:#2196F3,stroke:#1565C0,color:white
     classDef linux fill:#4CAF50,stroke:#2E7D32,color:white
-    classDef darwin fill:#9C27B0,stroke:#6A1B9A,color:white
     classDef hm fill:#FF9800,stroke:#EF6C00,color:white
     classDef config fill:#795548,stroke:#4E342E,color:white
     classDef security fill:#F44336,stroke:#C62828,color:white
