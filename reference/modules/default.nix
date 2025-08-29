@@ -8,7 +8,6 @@
 {
   imports = [
     ../secrets/nixos
-    ../users/youwen/nixos.nix
     inputs.nur.modules.nixos.default
   ];
 
@@ -165,3 +164,4 @@
     };
   };
 }
+

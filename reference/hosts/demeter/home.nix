@@ -1,9 +1,5 @@
 { lib, ... }:
 {
-  imports = [
-    ../../users/youwen/hm.nix
-  ];
-
   home.stateVersion = "24.05";
 
   wayland.windowManager.hyprland.settings.monitor = [
@@ -13,3 +9,4 @@
 
   functorOS.desktop.hyprland.screenlocker.monitor = "DP-3";
 }
+

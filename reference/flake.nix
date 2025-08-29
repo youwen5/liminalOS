@@ -40,14 +40,26 @@
       nixpkgs,
       ...
     }:
+    let
+      functorLib = (import inputs.functorOS) { inherit self nixpkgs inputs; };
+
+      userYouwen = functorLib.user.instantiate' {
+        username = "youwen";
+        homeDirectory = "/home/youwen";
+        fullName = "Youwen Wu";
+        email = "youwenw@gmail.com";
+        configureGitUser = true;
+        configuration.imports = [ ./users/youwen/hm.nix ];
+        initialHashedPassword = "$y$j9T$v0OkEeCntj8KwgPJQxyWx0$dx8WtFDYgZZ8WE3FWetWwRfutjQkznRuJ0IG3LLAtP2";
+      };
+    in
     {
       nixosConfigurations = {
-        demeter = nixpkgs.lib.nixosSystem {
-          specialArgs = {
-            inherit self inputs;
-          };
-          modules = [
-            ./hosts/demeter
+        demeter = functorLib.system.instantiate {
+          hostname = "demeter";
+          configuration.imports = [ ./hosts/demeter ];
+          users = [
+            (userYouwen ./hosts/demeter/home.nix)
           ];
         };
       };

@@ -12,8 +12,6 @@
     ./hardware-configuration.nix
   ];
 
-  networking.hostName = "demeter";
-
   virtualisation.waydroid.enable = true;
 
   functorOS = {
@@ -78,3 +76,4 @@
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "24.05"; # Did you read the comment?
 }
+

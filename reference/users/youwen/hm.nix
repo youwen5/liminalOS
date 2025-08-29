@@ -17,11 +17,6 @@
   zenTyp.enable = true;
   zenTyp.compat = true;
 
-  home = {
-    username = "youwen";
-    homeDirectory = "/home/youwen";
-  };
-
   functorOS = {
     utils.easyeffects.enable = true;
     programs.defaultBrowser = pkgs.firefox;
@@ -31,8 +26,6 @@
   programs.tidal-hifi.enable = !pkgs.stdenv.targetPlatform.isAarch64;
 
   programs.git = {
-    userName = "Youwen Wu";
-    userEmail = "youwenw@gmail.com";
     signing = {
       signByDefault = true;
       key = "8F5E6C1AF90976CA7102917A865658ED1FE61EC3";
@@ -211,3 +204,4 @@
     '';
   };
 }
+
