@@ -93,14 +93,13 @@ in
       enable = true;
       plugins = [ pkgs.hyprlandPlugins.hyprscroller ];
       settings = {
-        exec-once =
-          [
-            "hyprctl dispatch workspace 100000"
-          ]
-          ++ (lib.optionals cfg.fcitx5.enable [
-            "fcitx5 -d -r"
-            "fcitx5-remote -r"
-          ]);
+        exec-once = [
+          "hyprctl dispatch workspace 100000"
+        ]
+        ++ (lib.optionals cfg.fcitx5.enable [
+          "fcitx5 -d -r"
+          "fcitx5-remote -r"
+        ]);
         "$mod" = "SUPER";
         "$Left" = "H";
         "$Right" = "L";
@@ -136,6 +135,9 @@ in
           "blur,swaync-control-center"
           "ignorezero,swaync-control-center"
           "blur,logout_dialog"
+          "blur,waybar"
+          "ignorezero,waybar"
+          "animation slide top 0.2 0.2 wind,waybar"
         ];
         dwindle = {
           pseudotile = "yes";
@@ -150,20 +152,19 @@ in
             "liner, 1, 1, 1, 1"
             "windup, 0.05, 0.9, 0.1, 1.05"
           ];
-          animation =
-            [
-              "windows, 1, 6, wind, slide"
-              "windowsIn, 1, 6, winIn, slide"
-              "windowsOut, 1, 5, winOut, slide"
-              "windowsMove, 1, 5, wind, slide"
-              "fade, 1, 10, default"
-              # "layers, 1, 8, default, slide"
-              "workspaces, 1, 5, wind, slidefadevert"
-            ]
-            ++ (lib.optionals (!osConfig.functorOS.powersave) [
-              "border, 1, 1, liner"
-              "borderangle, 1, 30, liner, loop"
-            ]);
+          animation = [
+            "windows, 1, 6, wind, slide"
+            "windowsIn, 1, 6, winIn, slide"
+            "windowsOut, 1, 5, winOut, slide"
+            "windowsMove, 1, 5, wind, slide"
+            "fade, 1, 10, default"
+            # "layers, 1, 8, default, slide"
+            "workspaces, 1, 5, wind, slidefadevert"
+          ]
+          ++ (lib.optionals (!osConfig.functorOS.powersave) [
+            "border, 1, 1, liner"
+            "borderangle, 1, 30, liner, loop"
+          ]);
         };
 
         general =

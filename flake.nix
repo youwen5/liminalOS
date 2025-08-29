@@ -91,21 +91,14 @@
 
   outputs =
     inputs@{
-      nixpkgs,
-      nix-darwin,
       flake-parts,
       self,
       ...
     }:
-    let
-      buildFunctorOS = import ./lib/buildFunctorOS.nix;
-    in
     flake-parts.lib.mkFlake { inherit inputs; } {
       systems = [
         "x86_64-linux"
         "aarch64-linux"
-        # "aarch64-darwin"
-        # aarch64-darwin is currently disabled due to lack of maintenance
       ];
       flake = {
         nixosModules = rec {
@@ -190,4 +183,3 @@
         };
     };
 }
-

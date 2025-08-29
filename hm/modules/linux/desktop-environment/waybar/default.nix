@@ -37,28 +37,27 @@ in
           position = "top";
           layer = "top";
           height = 37;
-          margin-top = 0;
+          margin-top = 8;
           margin-bottom = 0;
-          margin-left = 0;
-          margin-right = 0;
-          modules-left =
-            [
-              "custom/launcher"
-            ]
-            ++ (lib.optionals isDesktop [
-              "custom/playerctl#backward"
-              "custom/playerctl#play"
-              "custom/playerctl#forward"
-            ])
-            ++ [
-              "idle_inhibitor"
-            ]
-            ++ (lib.optionals isLaptop [
-              "hyprland/workspaces"
-            ])
-            ++ [
-              "custom/playerlabel"
-            ];
+          margin-left = 8;
+          margin-right = 8;
+          modules-left = [
+            "custom/launcher"
+          ]
+          ++ (lib.optionals isDesktop [
+            "custom/playerctl#backward"
+            "custom/playerctl#play"
+            "custom/playerctl#forward"
+          ])
+          ++ [
+            "idle_inhibitor"
+          ]
+          ++ (lib.optionals isLaptop [
+            "hyprland/workspaces"
+          ])
+          ++ [
+            "custom/playerlabel"
+          ];
           modules-center = lib.mkIf isDesktop [
             "cava#left"
             "hyprland/workspaces"
@@ -288,6 +287,17 @@ in
             };
         };
         style =
+          let
+            mkRgba =
+              opacity: color:
+              let
+                c = config.lib.stylix.colors;
+                r = c."${color}-rgb-r";
+                g = c."${color}-rgb-g";
+                b = c."${color}-rgb-b";
+              in
+              "rgba(${r}, ${g}, ${b}, ${opacity})";
+          in
           ''
             * {
               border: none;
@@ -297,7 +307,14 @@ in
               min-height: 0;
             }
             window#waybar {
-              background: #${palette.base01};
+              background: transparent;
+              opacity: 0.9;
+              border-radius: 24px;
+            }
+
+            #waybar > box {
+              background: ${mkRgba "0.6" "base01"};
+              border-radius: 24px;
             }
 
             #cava.left, #cava.right {
@@ -307,10 +324,16 @@ in
                 color: #${palette.base00};
             }
             #cava.left {
-                border-radius: 24px 10px 24px 10px;
+                border-radius: 16px;
+                border-color: #${palette.base03};
+                border-style: solid;
+                border-width: 2px;
             }
             #cava.right {
-                border-radius: 10px 24px 10px 24px;
+                border-radius: 16px;
+                border-color: #${palette.base03};
+                border-style: solid;
+                border-width: 2px;
             }
             #workspaces {
                 background: #${palette.base00};
@@ -321,13 +344,13 @@ in
                 margin: 0px 3px;
                 border-radius: 16px;
                 color: transparent;
-                background: #${palette.base01};
+                background: #${palette.base03};
                 transition: all 0.3s ease-in-out;
             }
 
             #workspaces button.active {
                 background-color: #${palette.base0A};
-                color: #${palette.base01};
+                color: #${palette.base03};
                 border-radius: 16px;
                 min-width: 50px;
                 background-size: 400% 400%;
@@ -336,7 +359,7 @@ in
 
             #workspaces button:hover {
                 background-color: #${palette.base05};
-                color: #${palette.base01};
+                color: #${palette.base05};
                 border-radius: 16px;
                 min-width: 50px;
                 background-size: 400% 400%;
@@ -350,15 +373,18 @@ in
             }
             #tray, #pulseaudio, #network, #battery{
                 color: #${palette.base05};
-                border-radius: 10px 24px 10px 24px;
+                border-radius: 16px;
+                border-color: #${palette.base03};
+                border-style: solid;
+                border-width: 2px;
                 padding: 0 20px;
                 margin-left: 7px;
             }
             #clock {
                 color: #${palette.base05};
                 background: #${palette.base00};
-                border-radius: 0px 0px 0px 40px;
-                padding: 8px 10px 8px 25px;
+                border-radius: 18px 12px 12px 18px;
+                padding: 8px 25px 8px 25px;
                 margin-left: 7px;
                 font-weight: bold;
                 font-size: 14px;
@@ -366,9 +392,9 @@ in
             #custom-launcher {
                 color: #${palette.base0A};
                 background: #${palette.base00};
-                border-radius: 0px 0px 40px 0px;
+                border-radius: 12px 18px 18px 12px;
                 margin: 0px;
-                padding: 0px 35px 0px 15px;
+                padding: 0px 35px 0px 25px;
                 font-size: 24px;
             }
 
@@ -377,21 +403,30 @@ in
                 font-size: 20px;
             }
             #custom-playerctl.backward:hover, #custom-playerctl.play:hover, #custom-playerctl.forward:hover{
-                color: #${palette.base05};
+                color: #${palette.base00};
             }
             #custom-playerctl.backward {
                 color: #${palette.base08};
-                border-radius: 24px 0px 0px 10px;
+                border-radius: 16px 0px 0px 16px;
+                border-color: #${palette.base03} #${palette.base00} #${palette.base03} #${palette.base03};
+                border-style: solid;
+                border-width: 2px 0px 2px 2px;
                 padding-left: 16px;
                 margin-left: 7px;
             }
             #custom-playerctl.play {
                 color: #${palette.base0A};
                 padding: 0 5px;
+                border-color: #${palette.base03} #${palette.base00} #${palette.base03} #${palette.base00};
+                border-style: solid;
+                border-width: 2px 0px 2px 0px;
             }
             #custom-playerctl.forward {
                 color: #${palette.base08};
-                border-radius: 0px 10px 24px 0px;
+                border-radius: 0px 16px 16px 0px;
+                border-color: #${palette.base03} #${palette.base03} #${palette.base03} #${palette.base00};
+                border-style: solid;
+                border-width: 2px 2px 2px 0px;
                 padding-right: 12px;
                 margin-right: 7px
             }
@@ -399,7 +434,10 @@ in
                 background: #${palette.base00};
                 color: #${palette.base05};
                 padding: 0 20px;
-                border-radius: 24px 10px 24px 10px;
+                border-radius: 16px;
+                border-color: #${palette.base03};
+                border-style: solid;
+                border-width: 2px;
                 margin: 4px 0;
                 font-weight: bold;
             }
@@ -407,7 +445,10 @@ in
                 background: #${palette.base00};
                 color: #${palette.base05};
                 padding: 0 10px 0 15px;
-                border-radius: 24px 10px 24px 10px;
+                border-radius: 16px;
+                border-color: #${palette.base03};
+                border-style: solid;
+                border-width: 2px;
                 margin: 4px 7px 4px 0;
                 font-weight: bold;
             }
@@ -426,7 +467,10 @@ in
             #workspaces {
               margin: 4px;
               padding: 6px 16px;
-              border-radius: 24px 10px 24px 10px;
+              border-radius: 16px;
+              border-color: #${palette.base03};
+              border-style: solid;
+              border-width: 2px;
             }
           '')
           + (lib.optionalString isDesktop ''
@@ -434,6 +478,9 @@ in
               margin: 4px 5px;
               padding: 6px 5px;
               border-radius: 16px;
+              border-width: 2px;
+              border-color: #${palette.base03};
+              border-style: solid;
             }
           '');
       };
