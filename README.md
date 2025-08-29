@@ -17,3 +17,8 @@ configuration for functorOS.
 ```sh
 nix flake init -t "git+https://code.functor.systems/functor.systems/functorOS"
 ```
+
+## Reference implementations
+
+- Minimal template --- see [Try it](#try-it).
+- @youwen --- [shezhi](https://code.functor.systems/youwen/shezhi). An advanced functorOS deployment featuring multiple hosts, additional flake inputs, custom configurations, and secret management.
