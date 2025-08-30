@@ -7,6 +7,9 @@
 > functorOS](https://code.functor.systems/functor.systems/functorOS), where it
 > lives on as a truly modular NixOS-based operating system used by the members
 > of functor.systems.
+>
+> My own NixOS configurations live on as a deployment of functorOS
+> [here](https://code.functor.systems/youwen/shezhi).
 
 ---
 
