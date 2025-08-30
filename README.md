@@ -1,5 +1,15 @@
 # liminalOS
 
+> [!WARNING]
+> liminalOS will be likely be archived soon.
+>
+> [functor.systems](https://functor.systems) has forked liminalOS to [create
+> functorOS](https://code.functor.systems/functor.systems/functorOS), where it
+> lives on as a truly modular NixOS-based operating system used by the members
+> of functor.systems.
+
+---
+
 This is a repository that implements liminalOS, my personal Linux distribution
 based on [NixOS](https://nixos.org/). The most overengineered personal
 computing environment, ever. Imagine having to `vim` into source code and
