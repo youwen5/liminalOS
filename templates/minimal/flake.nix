@@ -158,8 +158,8 @@
                 # wallpaper!
                 theming = {
                   wallpaper = pkgs.fetchurl {
-                    url = "https://w.wallhaven.cc/full/l8/wallhaven-l8x1pr.jpg";
-                    hash = "sha256-Ts8igtDxLsnAnpy+tiGAXVhJWYLMHGOb2fd8lpV+UnM=";
+                    url = "https://w.wallhaven.cc/full/5g/wallhaven-5g22q5.png";
+                    hash = "sha256-snqkeQecU0opsBfIrnkl6aiV71hSCmqnZBAsibNG4w8=";
                   };
                 };
                 system = {
