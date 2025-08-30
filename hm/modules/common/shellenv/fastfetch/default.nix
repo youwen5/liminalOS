@@ -8,6 +8,12 @@
 let
   fastfetchConfig = builtins.fromJSON (builtins.readFile ./config.json);
   cfg = config.functorOS.shellEnv.fastfetch;
+  useFunctorOSImage = osConfig.functorOS.system.core.customOSName;
+  functorOSImage =
+    if osConfig.functorOS.theming.enable then
+      if (osConfig.stylix.polarity == "dark") then ./functoros-dark.png else ./functoros.png
+    else
+      null;
 in
 {
   options.functorOS.shellEnv.fastfetch = {
@@ -36,7 +42,9 @@ in
   config.programs.fastfetch =
     let
       image =
-        if !cfg.tintImage then
+        if useFunctorOSImage then
+          functorOSImage
+        else if !cfg.tintImage then
           ./nixos-logo.png
         else
           pkgs.runCommand "nixos-logo.png" { } ''
@@ -61,3 +69,4 @@ in
       );
     };
 }
+

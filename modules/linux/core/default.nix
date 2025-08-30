@@ -67,7 +67,16 @@ in
       '';
     };
     chinaOptimizations = lib.mkEnableOption "optimizations for Nix operations in Mainland China. e.g. use the Tsinghua University binary cache, set firewall options to tunnel Nix binary cache operations past Mullvad VPN to preven throttling.";
+    customOSName = lib.mkOption {
+      type = lib.types.bool;
+      default = cfg.enable;
+      description = ''
+        Whether to set the OS string to functorOS instead of NixOS. This means tools like neofetch/fastfetch will report your operating system as functorOS rather than NixOS. Note that we also patch fastfetch to display a custom logo if this is enabled.
+      '';
+    };
   };
+
+  options.system.nixos.codeName = lib.mkOption { readOnly = false; };
 
   config = lib.mkIf cfg.enable {
     environment.systemPackages =
@@ -143,6 +152,14 @@ in
       };
 
       channel.enable = false;
+    };
+
+    system.nixos = lib.mkIf cfg.customOSName {
+      distroName = "functorOS";
+      distroId = "functoros";
+      vendorName = "functor.systems";
+      vendorId = "functorsystems";
+      codeName = "Spivak";
     };
 
     programs.nh = lib.mkIf cfg.useNh {
